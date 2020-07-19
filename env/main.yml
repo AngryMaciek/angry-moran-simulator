@@ -1,0 +1,25 @@
+###############################################################################
+#
+#   Software to be installed in the environment
+#
+#   AUTHOR: Maciej_Bak
+#   AFFILIATION: University_of_Basel
+#   AFFILIATION: Swiss_Institute_of_Bioinformatics
+#   CONTACT: wsciekly.maciek@gmail.com
+#   CREATED: 20-07-2020
+#   LICENSE: MIT
+#
+###############################################################################
+---
+
+  name: moran-simulator
+    
+  channels:
+    - bioconda
+    - conda-forge
+    
+  dependencies:
+    - pandas=1.0.1
+    - python=3.7.4
+
+...
