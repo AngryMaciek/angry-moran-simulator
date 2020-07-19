@@ -13,4 +13,4 @@
 ##############################################################################
 """
 
-from .Individual import hello_there
+from .Individual import hello
