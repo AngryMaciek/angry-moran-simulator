@@ -20,4 +20,4 @@ before_script:
   - pip install .
 
 script:
-  - echo 123
+  - python tests/unit/Individual.py
