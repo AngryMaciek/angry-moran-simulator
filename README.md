@@ -3,6 +3,40 @@
 
 # [Angry] Moran Simulator
 
+## Table of Contents
+
+- [[Angry] Moran Simulator](#angry-moran-simulator)
+  - [Table of Contents](#table-of-contents)
+  - [General information](#general-information)
+  - [Installation instructions](#installation-instructions)
+  - [Contact](#contact)
+  - [License](#license)
+
+## General information
+
+## Installation instructions
+
+## Contact
+
+For questions or suggestions regarding the code, please use the
+[issue tracker](https://github.com/zavolanlab/binding-scanner/issues).  
+For any other inquiries, please contact us by emails:
+* 1
+* 2
+
 ## License
 
 MIT License
+
+---
+
+Notes:
+* https://arxiv.org/pdf/1811.09552.pdf
+* https://github.com/dwyl/learn-coveralls.io
+* https://github.com/coveralls-clients/coveralls-python
+* https://github.com/Axelrod-Python/Axelrod
+* https://axelrod.readthedocs.io/en/stable/
+* https://github.com/daffidwilde/matching
+* https://coverage.readthedocs.io/en/coverage-5.2/
+* https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2728855/pdf/GEN18241141.pdf
+* https://en.wikipedia.org/wiki/Moran_process
