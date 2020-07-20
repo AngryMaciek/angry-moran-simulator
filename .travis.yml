@@ -15,9 +15,14 @@ before_script:
   # Create conda virtual environments
   - conda env create -f env/main.yml
   - conda env create -f env/dev.yml
-  # Activate the main env
-  - conda activate moran-simulator && echo $CONDA_DEFAULT_ENV
-  - pip install .
 
 script:
+  # Activate the dev env
+  - conda activate moran-simulator-dev && echo $CONDA_DEFAULT_ENV
+  - pip install .
+  # Run unit tests and measure code coverage
   - python tests/unit/Individual.py
+  # Activate the main env
+  #- conda activate moran-simulator && echo $CONDA_DEFAULT_ENV
+  #- pip install .
+  #- python tests/unit/Individual.py

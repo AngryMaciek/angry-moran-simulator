@@ -13,6 +13,7 @@
 ##############################################################################
 """
 
-import moran_simulator
-
-moran_simulator.hello()
+class TestClass:
+    def test_one(self):
+        x = "this"
+        assert "h" in x
