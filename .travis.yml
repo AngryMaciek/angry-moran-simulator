@@ -24,8 +24,8 @@ script:
   - coverage run -m pytest tests/unit/Individual.py
   - coverage report -m
   # Activate the main env
-  #- conda activate moran-simulator && echo $CONDA_DEFAULT_ENV
-  #- pip install .
+  - conda activate moran-simulator && echo $CONDA_DEFAULT_ENV
+  - pip install .
 
 after_success:
   - conda activate moran-simulator-dev && echo $CONDA_DEFAULT_ENV
