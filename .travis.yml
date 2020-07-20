@@ -28,4 +28,5 @@ script:
   #- pip install .
 
 after_success:
+  - conda activate moran-simulator-dev && echo $CONDA_DEFAULT_ENV
   - coveralls

@@ -21,6 +21,7 @@
   dependencies:
     - black=19.10b0
     - coverage=5.1
+    - coveralls=2.1.1
     - flake8=3.8.3
     - pandas=1.0.1
     - pip=20.1.1
