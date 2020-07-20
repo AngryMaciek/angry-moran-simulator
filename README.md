@@ -40,3 +40,5 @@ Notes:
 * https://coverage.readthedocs.io/en/coverage-5.2/
 * https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2728855/pdf/GEN18241141.pdf
 * https://en.wikipedia.org/wiki/Moran_process
+* https://en.wikipedia.org/wiki/Chicken_(game)#Chicken_and_prisoner's_dilemma
+* https://locusofctrl.github.io/blog/posts-output/2019-02-03-male-strategy/
