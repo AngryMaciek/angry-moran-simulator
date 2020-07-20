@@ -13,7 +13,9 @@
 ##############################################################################
 """
 
+import moran_simulator as ms
+
 class TestClass:
     def test_one(self):
-        x = "this"
-        assert "h" in x
+        x = ms.hello()
+        assert x == "Hello There!"
