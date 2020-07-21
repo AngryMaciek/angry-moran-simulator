@@ -11,12 +11,21 @@
   - [Table of Contents](#table-of-contents)
   - [General information](#general-information)
   - [Installation instructions](#installation-instructions)
+  - [Contributing](#contributing)
   - [Contact](#contact)
   - [License](#license)
 
 ## General information
 
 ## Installation instructions
+
+## Contributing
+
+This project lives off your contributions, be it in the form of bug reports,
+feature requests, discussions, or fixes and other code changes. Please refer
+to the [contributing guidelines](CONTRIBUTING.md) if you are interested to
+contribute. Please mind the [code of conduct](CODE_OF_CONDUCT.md) for all
+interactions with the community.
 
 ## Contact
 
@@ -43,9 +52,12 @@ Notes:
 * https://locusofctrl.github.io/blog/posts-output/2019-02-03-male-strategy/
 * https://en.wikipedia.org/wiki/Evolutionary_game_theory
 
+
+
+
+
+
 ---
-
-
 
 ## Installation instructions
 
@@ -94,27 +106,10 @@ conda activate binding-scanner
 ```
 
 
-
-
-
-[Snakemake]: https://snakemake.readthedocs.io/en/stable/
-[rule-graph]: images/rulegraph.svg
 [Python 3]: https://www.python.org/download/releases/3.0/
 [bioconda]: https://bioconda.github.io/
 [anaconda cloud]: https://anaconda.org/
 [miniconda]: https://docs.conda.io/en/latest/miniconda.html
 [git]: https://git-scm.com/
-[ATtRACT]: https://attract.cnic.es/index
 [res-issue-tracker]: <https://github.com/zavolanlab/binding-scanner/issues>
 [res-zavolab]: <https://zavolan.biozentrum.unibas.ch/>
-
-
-
-
-## Contributing
-
-This project lives off your contributions, be it in the form of bug reports,
-feature requests, discussions, or fixes and other code changes. Please refer
-to the [contributing guidelines](CONTRIBUTING.md) if you are interested to
-contribute. Please mind the [code of conduct](CODE_OF_CONDUCT.md) for all
-interactions with the community.
