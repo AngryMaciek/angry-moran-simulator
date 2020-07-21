@@ -13,9 +13,15 @@
 ##############################################################################
 """
 
+# imports
 import moran_simulator as ms
 
 class TestClass:
-    def test_one(self):
-        x = ms.hello()
-        assert x == "Hello There!"
+    
+    def test_classIndividualInit(self):
+        ind1 = ms.Individual(100, "A")
+        assert ind1.BirthFitness is None and ind1.DeathFitness is None
+
+    # test both getters
+    #    assert ind1.ID == 100
+    #    assert ind1.label == "A"

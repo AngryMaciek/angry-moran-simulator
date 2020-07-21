@@ -13,5 +13,12 @@
 ##############################################################################
 """
 
-def hello():
-    return("Hello There!")
+class Individual:
+    '''
+    Abstract representation of an individual in the population
+    '''
+    def __init__(self, ID, ind_label):
+        self.ID = ID # private, + getter
+        self.label = ind_label # private, + getter
+        self.BirthFitness = None
+        self.DeathFitness = None

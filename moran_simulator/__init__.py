@@ -13,4 +13,6 @@
 ##############################################################################
 """
 
-from .Individual import hello
+# imports
+from .Individual import Individual
+#from .MoranProcess import MoranProcess
