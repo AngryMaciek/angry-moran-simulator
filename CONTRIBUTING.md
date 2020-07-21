@@ -70,7 +70,7 @@ happen smoothly:
    to review your changes
 
 
-[res-issue-tracker]: <https://github.com/zavolanlab/binding-scanner/issues>
+[res-issue-tracker]: <https://github.com/AngryMaciek/angry-moran-simulator/issues>
 [res-bug-report]: .github/ISSUE_TEMPLATE/bug_report.md
 [res-feature-request]: .github/ISSUE_TEMPLATE/feature_request.md
 [res-py]: <https://www.python.org/>
