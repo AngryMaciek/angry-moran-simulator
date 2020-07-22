@@ -19,4 +19,7 @@ import moran_simulator as ms
 class TestClass:
     
     def test_classMoranProcessInit(self):
-        assert True
+        size_list = [10,0,90]
+        label_list = ["A","B","C"]
+        mp = ms.MoranProcess(size_list=s, label_list=label_list)
+        assert len(mp.population) = 100
