@@ -13,6 +13,9 @@
 ##############################################################################
 """
 
+# imports
+import moran_simulator as ms
+
 class MoranProcess:
     '''
     General Moran Process with multiple types of individuals
@@ -28,7 +31,7 @@ class MoranProcess:
         ID_counter = 0
         self.population = []
         for label_index in range(len(label_list)):
-            for i in range(len(size_list[label_index])):
+            for i in range(size_list[label_index]):
                 self.population.append(
                     ms.Individual(ID=ID_counter, ind_label=label_list[label_index])
                 )
