@@ -22,4 +22,4 @@ class TestClass:
         size_list = [10,0,90]
         label_list = ["A","B","C"]
         mp = ms.MoranProcess(size_list=s, label_list=label_list)
-        assert len(mp.population) = 100
+        assert len(mp.population) == 100
