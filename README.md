@@ -11,6 +11,10 @@
   - [Table of Contents](#table-of-contents)
   - [General information](#general-information)
   - [Installation instructions](#installation-instructions)
+    - [Download and install Miniconda](#download-and-install-miniconda)
+    - [Clone the repository](#clone-the-repository)
+    - [Build and activate a virtual environment](#build-and-activate-a-virtual-environment)
+    - [Install the package](#install-the-package)
   - [Contributing](#contributing)
   - [Contact](#contact)
   - [License](#license)
@@ -21,7 +25,7 @@
 
 Our software is built as a [Python 3] package. Keeping research reproducibility in mind in this repository we provide a recipe for *conda* virtual environment which would contain all the required dependencies.
 
-### Download and install Miniconda3
+### Download and install Miniconda
 
 To install the latest version of [miniconda] please execute:  
   
@@ -47,7 +51,7 @@ Please use [git] to clone this repository into a desired location (here: `moran_
 git clone https://github.com/AngryMaciek/angry-moran-simulator moran_simulator
 ```
 
-### Build and activate virtual environment for Binding Scanner
+### Build and activate a virtual environment
 
 Dedicated environment might be created and activated with the following commands:
 
