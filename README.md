@@ -19,6 +19,52 @@
 
 ## Installation instructions
 
+Our software is built as a [Python 3] package. Keeping research reproducibility in mind in this repository we provide a recipe for *conda* virtual environment which would contain all the required dependencies.
+
+### Download and install Miniconda3
+
+To install the latest version of [miniconda] please execute:  
+  
+[Linux]:
+```bash
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+source .bashrc
+```
+
+[macOS]:
+```bash
+wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+bash Miniconda3-latest-MacOSX-x86_64.sh
+source .bashrc
+```
+
+### Clone the repository
+
+Please use [git] to clone this repository into a desired location (here: `moran_simulator`) with the following command:
+
+```bash
+git clone https://github.com/AngryMaciek/angry-moran-simulator moran_simulator
+```
+
+### Build and activate virtual environment for Binding Scanner
+
+Dedicated environment might be created and activated with the following commands:
+
+```bash
+cd moran_simulator
+conda env create -f env/main.yml
+conda activate moran-simulator
+```
+
+### Install the package
+
+Finally, please install our package into the new virtual environment with the [Python package manager]:
+
+```bash
+pip install .
+```
+
 ## Contributing
 
 This project lives off your contributions, be it in the form of bug reports,
@@ -39,6 +85,11 @@ For any other inquiries, please contact us by emails:
 
 MIT License
 
+[Python 3]: https://www.python.org/download/releases/3.0/
+[miniconda]: https://docs.conda.io/en/latest/miniconda.html
+[git]: https://git-scm.com/
+[Python package manager]: <https://pypi.org/project/pip/>
+
 ---
 
 Notes:
@@ -51,65 +102,3 @@ Notes:
 * https://en.wikipedia.org/wiki/Chicken_(game)#Chicken_and_prisoner's_dilemma
 * https://locusofctrl.github.io/blog/posts-output/2019-02-03-male-strategy/
 * https://en.wikipedia.org/wiki/Evolutionary_game_theory
-
-
-
-
-
-
----
-
-## Installation instructions
-
-Snakemake is a workflow management system that helps to create and execute data processing pipelines. It requires [Python 3] and can be most easily installed via the [bioconda] channel from the [anaconda cloud] service.
-
-### Step 1: Download and install Miniconda3
-
-To install the latest version of [miniconda] please execute:  
-  
-[Linux]:
-```bash
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
-source .bashrc
-```
-
-[macOS]:
-```bash
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-bash Miniconda3-latest-MacOSX-x86_64.sh
-source .bashrc
-```
-
-### Step 2: Clone the repository
-
-Please clone this git repository into a desired location (here: binding_scanner_git) with the following command:
-
-```bash
-git clone https://github.com/zavolanlab/binding-scanner.git binding_scanner_git
-```
-
-Cloning repositories requires [git] to be installed.
-
-### Step 3: Build and activate virtual environment for Binding Scanner
-
-To ease the users in the installation process we have prepared a recipe for a *conda* virtual environment which contains all the software needed in order to run Binding Scanner. This environment might be created by the following script:
-
-```bash
-bash binding_scanner_git/scripts/create-conda-environment-main.sh
-```
-
-Following the built *conda* environment may be activated with:
-
-```bash
-conda activate binding-scanner
-```
-
-
-[Python 3]: https://www.python.org/download/releases/3.0/
-[bioconda]: https://bioconda.github.io/
-[anaconda cloud]: https://anaconda.org/
-[miniconda]: https://docs.conda.io/en/latest/miniconda.html
-[git]: https://git-scm.com/
-[res-issue-tracker]: <https://github.com/zavolanlab/binding-scanner/issues>
-[res-zavolab]: <https://zavolan.biozentrum.unibas.ch/>
