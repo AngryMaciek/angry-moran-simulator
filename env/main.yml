@@ -19,6 +19,7 @@
     - conda-forge
     
   dependencies:
+    - numpy=1.19.0
     - pandas=1.0.1
     - pip=20.1.1
     - python=3.7.4
