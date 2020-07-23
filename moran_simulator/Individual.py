@@ -13,10 +13,12 @@
 ##############################################################################
 """
 
+
 class Individual:
-    '''
+    """
     Abstract representation of an individual in the population
-    '''
+    """
+
     def __init__(self, ID, ind_label):
         self.ID = ID
         self.label = ind_label
@@ -30,7 +32,7 @@ class Individual:
     @ID.setter
     def ID(self, ID):
         self._ID = ID
-    
+
     @property
     def label(self):
         return self._label

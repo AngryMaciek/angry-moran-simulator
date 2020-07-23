@@ -16,8 +16,8 @@
 # imports
 import moran_simulator as ms
 
+
 class TestClass:
-    
     def test_classIndividualInit(self):
         ind1 = ms.Individual(100, "A")
         assert ind1.ID == 100
