@@ -14,13 +14,14 @@
 """
 
 # imports
+import numpy as np
 import moran_simulator as ms
 
 class MoranProcess:
     '''
     General Moran Process with multiple types of individuals
     '''
-    def __init__(self, size_list, label_list):
+    def __init__(self, size_list, label_list, BirthPayoffMatrix, DeathPayoffMatrix):
 
         try:
             assert len(size_list) == len(label_list)
@@ -37,6 +38,8 @@ class MoranProcess:
                 )
                 ID_counter += 1
         
-        self.
+        self.init_size_list = size_list
+        self.init_label_list = label_list
+        
 
     # a method to count labels, counter
