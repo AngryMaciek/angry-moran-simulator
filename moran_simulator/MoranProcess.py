@@ -14,8 +14,10 @@
 """
 
 # imports
+import random
 import numpy as np
 import moran_simulator as ms
+
 
 class MoranProcess:
     '''
@@ -40,6 +42,7 @@ class MoranProcess:
         
         self.init_size_list = size_list
         self.init_label_list = label_list
+        self.population_info = {j:i for i,j in zip(size_list, label_list)}
 
         try:
             assert len(BirthPayoffMatrix.shape) == 2
@@ -55,8 +58,29 @@ class MoranProcess:
             e.args += (".")
             raise
 
+        # initiate fitnesses
+
         self.BirthPayoffMatrix = BirthPayoffMatrix
         self.DeathPayoffMatrix = DeathPayoffMatrix
         
-        self.population_info = {j:i for i,j in zip(size_list, label_list)}
 
+
+        def roulette_wheel_selection_Birth():
+            '''A simple implementation of fitness proportional selection'''
+            max_value = sum(ind.BirthFitness for ind in self.population)
+            pick = random.uniform(0, max_value)
+            current = 0
+            for ind in self.population:
+                current += ind.BirthFitness
+                if current > pick:
+                    return(ind)
+
+        def roulette_wheel_selection_Death():
+            '''A simple implementation of fitness proportional selection'''
+            max_value = sum(ind.DeathFitness for ind in self.population)
+            pick = random.uniform(0, max_value)
+            current = 0
+            for ind in self.population:
+                current += ind.DeathFitness
+                if current > pick:
+                    return(ind)
