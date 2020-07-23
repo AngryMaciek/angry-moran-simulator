@@ -22,7 +22,7 @@ class TestClass:
     def test_classMoranProcessInit(self):
         size_list = [10,90]
         label_list = ["A","B"]
-        BirthPayoffMatrix = np.array([0,0],[0,0])
-        DeathPayoffMatrix = np.array([0,0],[0,0])
+        BirthPayoffMatrix = np.array([[0,0],[0,0]])
+        DeathPayoffMatrix = np.array([[0,0],[0,0]])
         mp = ms.MoranProcess(size_list=size_list, label_list=label_list, BirthPayoffMatrix=BirthPayoffMatrix, DeathPayoffMatrix=DeathPayoffMatrix)
         assert len(mp.population) == 100

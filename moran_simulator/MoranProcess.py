@@ -58,5 +58,5 @@ class MoranProcess:
         self.BirthPayoffMatrix = BirthPayoffMatrix
         self.DeathPayoffMatrix = DeathPayoffMatrix
         
+        self.population_info = {j:i for i,j in zip(size_list, label_list)}
 
-    # a method to count labels, counter
