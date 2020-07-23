@@ -60,8 +60,8 @@ class MoranProcess:
 
         # initiate fitnesses
 
-        self.BirthPayoffMatrix = BirthPayoffMatrix
-        self.DeathPayoffMatrix = DeathPayoffMatrix
+        self.BirthPayoffMatrix = np.asmatrix(BirthPayoffMatrix)
+        self.DeathPayoffMatrix = np.asmatrix(DeathPayoffMatrix)
         
 
 
@@ -84,3 +84,6 @@ class MoranProcess:
                 current += ind.DeathFitness
                 if current > pick:
                     return(ind)
+
+        def simulate():
+            pass
