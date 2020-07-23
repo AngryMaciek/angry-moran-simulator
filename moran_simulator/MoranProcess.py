@@ -36,5 +36,7 @@ class MoranProcess:
                     ms.Individual(ID=ID_counter, ind_label=label_list[label_index])
                 )
                 ID_counter += 1
+        
+        self.
 
     # a method to count labels, counter
