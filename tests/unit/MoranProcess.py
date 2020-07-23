@@ -14,12 +14,15 @@
 """
 
 # imports
+import numpy as np
 import moran_simulator as ms
 
 class TestClass:
     
     def test_classMoranProcessInit(self):
-        size_list = [10,0,90]
-        label_list = ["A","B","C"]
-        mp = ms.MoranProcess(size_list=size_list, label_list=label_list)
+        size_list = [10,90]
+        label_list = ["A","B"]
+        BirthPayoffMatrix = np.array([0,0],[0,0])
+        DeathPayoffMatrix = np.array([0,0],[0,0])
+        mp = ms.MoranProcess(size_list=size_list, label_list=label_list, BirthPayoffMatrix=BirthPayoffMatrix, DeathPayoffMatrix=DeathPayoffMatrix)
         assert len(mp.population) == 100

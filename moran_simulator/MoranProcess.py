@@ -40,6 +40,23 @@ class MoranProcess:
         
         self.init_size_list = size_list
         self.init_label_list = label_list
+
+        try:
+            assert len(BirthPayoffMatrix.shape) == 2
+            assert BirthPayoffMatrix.shape[0] == BirthPayoffMatrix.shape[1] == len(label_list)
+        except AssertionError as e:
+            e.args += (".")
+            raise
+
+        try:
+            assert len(DeathPayoffMatrix.shape) == 2
+            assert DeathPayoffMatrix.shape[0] == DeathPayoffMatrix.shape[1] == len(label_list)
+        except AssertionError as e:
+            e.args += (".")
+            raise
+
+        self.BirthPayoffMatrix = BirthPayoffMatrix
+        self.DeathPayoffMatrix = DeathPayoffMatrix
         
 
     # a method to count labels, counter
