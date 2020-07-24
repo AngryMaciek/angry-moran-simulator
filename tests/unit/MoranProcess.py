@@ -44,13 +44,11 @@ class TestClass:
         comparison = (mp.DeathPayoffMatrix == DeathPayoffMatrix)
         assert comparison.all()
 
+        assert round(mp.AvgBirthPayoffDict["A"],3) == 19.091
+        assert round(mp.AvgBirthPayoffDict["B"],3) == 38.990
 
-
-        #self.AvgBirthPayoffDict = {}
-        #self.UpdateAvgBirthPayoffForAll()
-
-        #self.AvgDeathPayoffDict = {}
-        #self.UpdateAvgDeathPayoffForAll()
+        assert round(mp.AvgDeathPayoffDict["A"],3) == 1.909
+        assert round(mp.AvgDeathPayoffDict["B"],3) == 3.899
 
         #self.BirthFitnessDict = {}
         #self.UpdateBirthFitnessForAll()
