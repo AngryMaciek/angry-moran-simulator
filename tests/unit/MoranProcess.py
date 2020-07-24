@@ -47,8 +47,24 @@ class TestClass:
         assert round(mp.AvgBirthPayoffDict["A"],3) == 19.091
         assert round(mp.AvgBirthPayoffDict["B"],3) == 38.990
 
+        assert round(mp.population[10].AvgBirthPayoff,3) == 19.091 or round(mp.population[10].AvgBirthPayoff,3) == 38.990
+        assert round(mp.population[20].AvgBirthPayoff,3) == 19.091 or round(mp.population[20].AvgBirthPayoff,3) == 38.990
+        assert round(mp.population[30].AvgBirthPayoff,3) == 19.091 or round(mp.population[30].AvgBirthPayoff,3) == 38.990
+        assert round(mp.population[40].AvgBirthPayoff,3) == 19.091 or round(mp.population[40].AvgBirthPayoff,3) == 38.990
+        assert round(mp.population[50].AvgBirthPayoff,3) == 19.091 or round(mp.population[50].AvgBirthPayoff,3) == 38.990
+
         assert round(mp.AvgDeathPayoffDict["A"],3) == 1.909
         assert round(mp.AvgDeathPayoffDict["B"],3) == 3.899
+
+        assert round(mp.population[10].AvgDeathPayoff,3) == 1.909 or round(mp.population[10].AvgDeathPayoff,3) == 3.899
+        assert round(mp.population[20].AvgDeathPayoff,3) == 1.909 or round(mp.population[20].AvgDeathPayoff,3) == 3.899
+        assert round(mp.population[30].AvgDeathPayoff,3) == 1.909 or round(mp.population[30].AvgDeathPayoff,3) == 3.899
+        assert round(mp.population[40].AvgDeathPayoff,3) == 1.909 or round(mp.population[40].AvgDeathPayoff,3) == 3.899
+        assert round(mp.population[50].AvgDeathPayoff,3) == 1.909 or round(mp.population[50].AvgDeathPayoff,3) == 3.899
+
+
+
+
 
         #self.BirthFitnessDict = {}
         #self.UpdateBirthFitnessForAll()
