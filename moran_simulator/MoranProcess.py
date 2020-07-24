@@ -42,6 +42,7 @@ class MoranProcess:
                 ID_counter += 1
         
         self.init_size_list = size_list
+        self.curr_size_list = size_list
         self.init_label_list = label_list
         self.population_info = {j:i for i,j in zip(size_list, label_list)}
 
@@ -64,15 +65,29 @@ class MoranProcess:
         self.BirthPayoffMatrix = np.asmatrix(BirthPayoffMatrix)
         self.DeathPayoffMatrix = np.asmatrix(DeathPayoffMatrix)
 
-        self.AvgBirthPayoffDict = None
+        self.AvgBirthPayoffDict = {}
 
-        #def avg_payoff(A,N,i):
-        #'''Function to calculate the average payoff given the prisoners dilemma model'''
-        #pi_H = (A[0,0]*(N-i-1)+A[0][1]*i)/(N-1)
-        #pi_C = (A[1,0]*(N-i)+A[1][1]*(i-1))/(N-1)
-        #return((pi_H,pi_C))
+        def UpdateAvgBirthPayoffDict():
+            nrows = np.shape(self.BirthPayoffMatrix)[0]
+            ncols = np.shape(self.BirthPayoffMatrix)[1]
+            for r in range(nrows):
+                payoff = 0
+                for c in range(ncols):
+                    payoff += BirthPayoffMatrix[r,c] * (self.curr_size_list[c] - int(r==c))
+                payoff = payoff / (sum(self.curr_size_list) - 1)
+                self.AvgBirthPayoffDict[self.init_label_list[r]] = payoff
 
-        # the same for death
+        self.AvgDeathPayoffDict = {}
+
+        def UpdateAvgDeathPayoffDict():
+            nrows = np.shape(self.DeathPayoffMatrix)[0]
+            ncols = np.shape(self.DeathPayoffMatrix)[1]
+            for r in range(nrows):
+                payoff = 0
+                for c in range(ncols):
+                    payoff += DeathPayoffMatrix[r,c] * (self.curr_size_list[c] - int(r==c))
+                payoff = payoff / (sum(self.curr_size_list) - 1)
+                self.AvgDeathPayoffDict[self.init_label_list[r]] = payoff
 
         # Having Payoffs - calculate Fitnessess
 
@@ -87,28 +102,39 @@ class MoranProcess:
 
 
 
-        
-
 
         def roulette_wheel_selection_Birth():
+            return(__roulette_wheel_selection(attr="BirthFitness"))
+
+        def roulette_wheel_selection_Death():
+            return(__roulette_wheel_selection(attr="DeathFitness"))
+
+        def __roulette_wheel_selection(attr):
             '''A simple implementation of fitness proportional selection'''
-            max_value = sum(ind.BirthFitness for ind in self.population)
+            max_value = sum(ind.eval(attr) for ind in self.population)
             pick = random.uniform(0, max_value)
             current = 0
             for ind in self.population:
-                current += ind.BirthFitness
+                current += ind.eval(attr)
                 if current > pick:
                     return(ind)
 
-        def roulette_wheel_selection_Death():
-            '''A simple implementation of fitness proportional selection'''
-            max_value = sum(ind.DeathFitness for ind in self.population)
-            pick = random.uniform(0, max_value) # sed seed for random!
-            current = 0
-            for ind in self.population:
-                current += ind.DeathFitness
-                if current > pick:
-                    return(ind)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -186,3 +212,4 @@ class MoranProcess:
                     fitness_log_df.at[g+1,"gamma"] = -1
                 else:
                     fitness_log_df.at[g+1,"gamma"] = fitness_log_df.at[g+1,"P_i_i-1"] / fitness_log_df.at[g+1,"P_i_i+1"]
+\
