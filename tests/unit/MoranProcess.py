@@ -30,4 +30,30 @@ class TestClass:
             BirthPayoffMatrix=BirthPayoffMatrix,
             DeathPayoffMatrix=DeathPayoffMatrix,
         )
-        assert len(mp.population) == 100
+        assert mp.init_size_list == size_list
+        assert mp.curr_size_list == size_list
+        assert mp.init_label_list ==label_list
+        assert len(mp.population) == sum(size_list)
+        assert mp.w == 0.5
+
+        population_info = {j: i for i, j in zip(size_list, label_list)}
+        assert mp.population_info == population_info
+
+        comparison = (mp.BirthPayoffMatrix == BirthPayoffMatrix)
+        assert comparison.all()
+        comparison = (mp.DeathPayoffMatrix == DeathPayoffMatrix)
+        assert comparison.all()
+
+
+
+        #self.AvgBirthPayoffDict = {}
+        #self.UpdateAvgBirthPayoffForAll()
+
+        #self.AvgDeathPayoffDict = {}
+        #self.UpdateAvgDeathPayoffForAll()
+
+        #self.BirthFitnessDict = {}
+        #self.UpdateBirthFitnessForAll()
+
+        #self.DeathFitnessDict = {}
+        #self.UpdateDeathFitnessForAll()
