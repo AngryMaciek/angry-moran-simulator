@@ -69,8 +69,8 @@ class MoranProcess:
             e.args += "."
             raise
 
-        self.BirthPayoffMatrix = np.asmatrix(BirthPayoffMatrix)
-        self.DeathPayoffMatrix = np.asmatrix(DeathPayoffMatrix)
+        self.BirthPayoffMatrix = BirthPayoffMatrix
+        self.DeathPayoffMatrix = DeathPayoffMatrix
         self.w = 0.5
 
         self.AvgBirthPayoffDict = {}
@@ -91,14 +91,14 @@ class MoranProcess:
         for r in range(nrows):
             payoff = 0
             for c in range(ncols):
-                payoff += BirthPayoffMatrix[r, c] * (
+                payoff += self.BirthPayoffMatrix[r, c] * (
                     self.curr_size_list[c] - int(r == c)
                 )
             payoff = payoff / (sum(self.curr_size_list) - 1)
             self.AvgBirthPayoffDict[self.init_label_list[r]] = payoff
         # Update attributes of individuals
         for ind in self.population:
-            ind.AvgBirthPayoff = AvgBirthPayoffDict[ind.label]
+            ind.AvgBirthPayoff = self.AvgBirthPayoffDict[ind.label]
 
     def UpdateAvgDeathPayoffForAll(self):
         nrows = np.shape(self.DeathPayoffMatrix)[0]
@@ -106,18 +106,18 @@ class MoranProcess:
         for r in range(nrows):
             payoff = 0
             for c in range(ncols):
-                payoff += DeathPayoffMatrix[r, c] * (
+                payoff += self.DeathPayoffMatrix[r, c] * (
                     self.curr_size_list[c] - int(r == c)
                 )
             payoff = payoff / (sum(self.curr_size_list) - 1)
             self.AvgDeathPayoffDict[self.init_label_list[r]] = payoff
         # Update attributes of individuals
         for ind in self.population:
-            ind.AvgDeathPayoff = AvgDeathPayoffDict[ind.label]
+            ind.AvgDeathPayoff = self.AvgDeathPayoffDict[ind.label]
 
     def UpdateBirthFitnessForAll(self):
         for label in self.init_label_list:
-            BirthFitnessDict[label] = (
+            self.BirthFitnessDict[label] = (
                 1 - self.w + self.w * self.AvgBirthPayoffDict[label]
             )
         for ind in self.population:
@@ -125,7 +125,7 @@ class MoranProcess:
 
     def UpdateDeathFitnessForAll(self):
         for label in self.init_label_list:
-            DeathFitnessDict[label] = (
+            self.DeathFitnessDict[label] = (
                 1 - self.w + self.w * self.AvgDeathPayoffDict[label]
             )
         for ind in self.population:
