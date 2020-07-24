@@ -22,7 +22,7 @@ class TestClass:
         ind1 = ms.Individual(100, "A")
         assert ind1.ID == 100
         assert ind1.label == "A"
-        assert ind1.BirthFitness is None
-        assert ind1.DeathFitness is None
         assert ind1.AvgBirthPayoff is None
         assert ind1.AvgDeathPayoff is None
+        assert ind1.BirthFitness is None
+        assert ind1.DeathFitness is None

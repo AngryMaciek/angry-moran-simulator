@@ -32,42 +32,115 @@ class TestClass:
         )
         assert mp.init_size_list == size_list
         assert mp.curr_size_list == size_list
-        assert mp.init_label_list ==label_list
+        assert mp.init_label_list == label_list
         assert len(mp.population) == sum(size_list)
         assert mp.w == 0.5
 
         population_info = {j: i for i, j in zip(size_list, label_list)}
         assert mp.population_info == population_info
 
-        comparison = (mp.BirthPayoffMatrix == BirthPayoffMatrix)
+        comparison = mp.BirthPayoffMatrix == BirthPayoffMatrix
         assert comparison.all()
-        comparison = (mp.DeathPayoffMatrix == DeathPayoffMatrix)
+        comparison = mp.DeathPayoffMatrix == DeathPayoffMatrix
         assert comparison.all()
 
-        assert round(mp.AvgBirthPayoffDict["A"],3) == 19.091
-        assert round(mp.AvgBirthPayoffDict["B"],3) == 38.990
+        assert round(mp.AvgBirthPayoffDict["A"], 3) == 19.091
+        assert round(mp.AvgBirthPayoffDict["B"], 3) == 38.990
 
-        assert round(mp.population[10].AvgBirthPayoff,3) == 19.091 or round(mp.population[10].AvgBirthPayoff,3) == 38.990
-        assert round(mp.population[20].AvgBirthPayoff,3) == 19.091 or round(mp.population[20].AvgBirthPayoff,3) == 38.990
-        assert round(mp.population[30].AvgBirthPayoff,3) == 19.091 or round(mp.population[30].AvgBirthPayoff,3) == 38.990
-        assert round(mp.population[40].AvgBirthPayoff,3) == 19.091 or round(mp.population[40].AvgBirthPayoff,3) == 38.990
-        assert round(mp.population[50].AvgBirthPayoff,3) == 19.091 or round(mp.population[50].AvgBirthPayoff,3) == 38.990
+        assert (
+            round(mp.population[10].AvgBirthPayoff, 3) == 19.091
+            or round(mp.population[10].AvgBirthPayoff, 3) == 38.990
+        )
+        assert (
+            round(mp.population[20].AvgBirthPayoff, 3) == 19.091
+            or round(mp.population[20].AvgBirthPayoff, 3) == 38.990
+        )
+        assert (
+            round(mp.population[30].AvgBirthPayoff, 3) == 19.091
+            or round(mp.population[30].AvgBirthPayoff, 3) == 38.990
+        )
+        assert (
+            round(mp.population[40].AvgBirthPayoff, 3) == 19.091
+            or round(mp.population[40].AvgBirthPayoff, 3) == 38.990
+        )
+        assert (
+            round(mp.population[50].AvgBirthPayoff, 3) == 19.091
+            or round(mp.population[50].AvgBirthPayoff, 3) == 38.990
+        )
 
-        assert round(mp.AvgDeathPayoffDict["A"],3) == 1.909
-        assert round(mp.AvgDeathPayoffDict["B"],3) == 3.899
+        assert round(mp.AvgDeathPayoffDict["A"], 3) == 1.909
+        assert round(mp.AvgDeathPayoffDict["B"], 3) == 3.899
 
-        assert round(mp.population[10].AvgDeathPayoff,3) == 1.909 or round(mp.population[10].AvgDeathPayoff,3) == 3.899
-        assert round(mp.population[20].AvgDeathPayoff,3) == 1.909 or round(mp.population[20].AvgDeathPayoff,3) == 3.899
-        assert round(mp.population[30].AvgDeathPayoff,3) == 1.909 or round(mp.population[30].AvgDeathPayoff,3) == 3.899
-        assert round(mp.population[40].AvgDeathPayoff,3) == 1.909 or round(mp.population[40].AvgDeathPayoff,3) == 3.899
-        assert round(mp.population[50].AvgDeathPayoff,3) == 1.909 or round(mp.population[50].AvgDeathPayoff,3) == 3.899
+        assert (
+            round(mp.population[10].AvgDeathPayoff, 3) == 1.909
+            or round(mp.population[10].AvgDeathPayoff, 3) == 3.899
+        )
+        assert (
+            round(mp.population[20].AvgDeathPayoff, 3) == 1.909
+            or round(mp.population[20].AvgDeathPayoff, 3) == 3.899
+        )
+        assert (
+            round(mp.population[30].AvgDeathPayoff, 3) == 1.909
+            or round(mp.population[30].AvgDeathPayoff, 3) == 3.899
+        )
+        assert (
+            round(mp.population[40].AvgDeathPayoff, 3) == 1.909
+            or round(mp.population[40].AvgDeathPayoff, 3) == 3.899
+        )
+        assert (
+            round(mp.population[50].AvgDeathPayoff, 3) == 1.909
+            or round(mp.population[50].AvgDeathPayoff, 3) == 3.899
+        )
+
+        assert round(mp.BirthFitnessDict["A"], 3) == 10.045
+        assert round(mp.BirthFitnessDict["B"], 3) == 19.995
+
+        assert (
+            round(mp.population[10].BirthFitness, 3) == 10.045
+            or round(mp.population[10].BirthFitness, 3) == 19.995
+        )
+        assert (
+            round(mp.population[20].BirthFitness, 3) == 10.045
+            or round(mp.population[20].BirthFitness, 3) == 19.995
+        )
+        assert (
+            round(mp.population[30].BirthFitness, 3) == 10.045
+            or round(mp.population[30].BirthFitness, 3) == 19.995
+        )
+        assert (
+            round(mp.population[40].BirthFitness, 3) == 10.045
+            or round(mp.population[40].BirthFitness, 3) == 19.995
+        )
+        assert (
+            round(mp.population[50].BirthFitness, 3) == 10.045
+            or round(mp.population[50].BirthFitness, 3) == 19.995
+        )
 
 
 
 
 
-        #self.BirthFitnessDict = {}
-        #self.UpdateBirthFitnessForAll()
 
-        #self.DeathFitnessDict = {}
-        #self.UpdateDeathFitnessForAll()
+        assert round(mp.BirthFitnessDict["A"], 3) == 10.045
+        assert round(mp.BirthFitnessDict["B"], 3) == 19.995
+
+        assert (
+            round(mp.population[10].BirthFitness, 3) == 10.045
+            or round(mp.population[10].BirthFitness, 3) == 19.995
+        )
+        assert (
+            round(mp.population[20].BirthFitness, 3) == 10.045
+            or round(mp.population[20].BirthFitness, 3) == 19.995
+        )
+        assert (
+            round(mp.population[30].BirthFitness, 3) == 10.045
+            or round(mp.population[30].BirthFitness, 3) == 19.995
+        )
+        assert (
+            round(mp.population[40].BirthFitness, 3) == 10.045
+            or round(mp.population[40].BirthFitness, 3) == 19.995
+        )
+        assert (
+            round(mp.population[50].BirthFitness, 3) == 10.045
+            or round(mp.population[50].BirthFitness, 3) == 19.995
+        )
