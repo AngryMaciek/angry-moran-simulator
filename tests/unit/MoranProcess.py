@@ -116,31 +116,26 @@ class TestClass:
             or round(mp.population[50].BirthFitness, 3) == 19.995
         )
 
-
-
-
-
-
-        assert round(mp.BirthFitnessDict["A"], 3) == 10.045
-        assert round(mp.BirthFitnessDict["B"], 3) == 19.995
+        assert round(mp.DeathFitnessDict["A"], 3) == 1.455
+        assert round(mp.DeathFitnessDict["B"], 3) == 2.449
 
         assert (
-            round(mp.population[10].BirthFitness, 3) == 10.045
-            or round(mp.population[10].BirthFitness, 3) == 19.995
+            round(mp.population[10].DeathFitness, 3) == 1.455
+            or round(mp.population[10].DeathFitness, 3) == 2.449
         )
         assert (
-            round(mp.population[20].BirthFitness, 3) == 10.045
-            or round(mp.population[20].BirthFitness, 3) == 19.995
+            round(mp.population[20].DeathFitness, 3) == 1.455
+            or round(mp.population[20].DeathFitness, 3) == 2.449
         )
         assert (
-            round(mp.population[30].BirthFitness, 3) == 10.045
-            or round(mp.population[30].BirthFitness, 3) == 19.995
+            round(mp.population[30].DeathFitness, 3) == 1.455
+            or round(mp.population[30].DeathFitness, 3) == 2.449
         )
         assert (
-            round(mp.population[40].BirthFitness, 3) == 10.045
-            or round(mp.population[40].BirthFitness, 3) == 19.995
+            round(mp.population[40].DeathFitness, 3) == 1.455
+            or round(mp.population[40].DeathFitness, 3) == 2.449
         )
         assert (
-            round(mp.population[50].BirthFitness, 3) == 10.045
-            or round(mp.population[50].BirthFitness, 3) == 19.995
+            round(mp.population[50].DeathFitness, 3) == 1.455
+            or round(mp.population[50].DeathFitness, 3) == 2.449
         )
