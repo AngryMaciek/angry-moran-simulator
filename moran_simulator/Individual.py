@@ -22,6 +22,8 @@ class Individual:
     def __init__(self, ID, ind_label):
         self.ID = ID
         self.label = ind_label
+        self.AvgBirthPayoff = None
+        self.AvgDeathPayoff = None
         self.BirthFitness = None
         self.DeathFitness = None
 
@@ -56,3 +58,19 @@ class Individual:
     @DeathFitness.setter
     def DeathFitness(self, DeathFitness):
         self._DeathFitness = DeathFitness
+
+    @property
+    def AvgBirthPayoff(self):
+        return self._AvgBirthPayoff
+
+    @AvgBirthPayoff.setter
+    def AvgBirthPayoff(self, AvgBirthPayoff):
+        self._AvgBirthPayoff = AvgBirthPayoff
+
+    @property
+    def AvgDeathPayoff(self):
+        return self._AvgDeathPayoff
+
+    @AvgDeathPayoff.setter
+    def AvgDeathPayoff(self, AvgDeathPayoff):
+        self._AvgDeathPayoff = AvgDeathPayoff

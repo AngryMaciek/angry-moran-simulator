@@ -24,3 +24,5 @@ class TestClass:
         assert ind1.label == "A"
         assert ind1.BirthFitness is None
         assert ind1.DeathFitness is None
+        assert ind1.AvgBirthPayoff is None
+        assert ind1.AvgDeathPayoff is None

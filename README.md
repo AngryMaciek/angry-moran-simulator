@@ -105,3 +105,4 @@ Notes:
 * https://en.wikipedia.org/wiki/Chicken_(game)#Chicken_and_prisoner's_dilemma
 * https://locusofctrl.github.io/blog/posts-output/2019-02-03-male-strategy/
 * https://en.wikipedia.org/wiki/Evolutionary_game_theory
+* 4 usecase tests: PD, RPS, Chicken, 2teams, 2v2? incorporate death fitness?

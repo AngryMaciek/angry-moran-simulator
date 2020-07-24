@@ -15,6 +15,7 @@
 
 # imports
 import numpy as np
+import pandas as pd
 import moran_simulator as ms
 
 class TestClass:

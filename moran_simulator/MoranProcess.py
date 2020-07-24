@@ -16,6 +16,7 @@
 # imports
 import random
 import numpy as np
+import pandas as pd
 import moran_simulator as ms
 
 
@@ -62,6 +63,30 @@ class MoranProcess:
 
         self.BirthPayoffMatrix = np.asmatrix(BirthPayoffMatrix)
         self.DeathPayoffMatrix = np.asmatrix(DeathPayoffMatrix)
+
+        self.AvgBirthPayoffDict = None
+
+        #def avg_payoff(A,N,i):
+        #'''Function to calculate the average payoff given the prisoners dilemma model'''
+        #pi_H = (A[0,0]*(N-i-1)+A[0][1]*i)/(N-1)
+        #pi_C = (A[1,0]*(N-i)+A[1][1]*(i-1))/(N-1)
+        #return((pi_H,pi_C))
+
+        # the same for death
+
+        # Having Payoffs - calculate Fitnessess
+
+
+        # evaluate fitness of all cells in the initial poopulation
+        #payoff, fitness, = prisoners_dilemma_fitness_evaluate(A, N, current_i, w)
+        #for ind in population:
+        #    if is_cancer(ind):
+        #        ind.fitness = fitness[1]
+        #    else:
+        #        ind.fitness = fitness[0]
+
+
+
         
 
 
@@ -78,12 +103,86 @@ class MoranProcess:
         def roulette_wheel_selection_Death():
             '''A simple implementation of fitness proportional selection'''
             max_value = sum(ind.DeathFitness for ind in self.population)
-            pick = random.uniform(0, max_value)
+            pick = random.uniform(0, max_value) # sed seed for random!
             current = 0
             for ind in self.population:
                 current += ind.DeathFitness
                 if current > pick:
                     return(ind)
 
-        def simulate():
-            pass
+
+
+        def simulate(generations):
+            # modify the self. population, return df with scores
+
+            
+
+            # copy the initial population as population 0
+            #population = copy.copy(init_population)
+            #current_i = 0
+
+            # evaluate fitness of all cells in the initial poopulation
+            payoff, fitness, = prisoners_dilemma_fitness_evaluate(A, N, current_i, w)
+            for ind in population:
+                if is_cancer(ind):
+                    ind.fitness = fitness[1]
+                else:
+                    ind.fitness = fitness[0]
+
+            # prepare a dataframe for storing statistics
+            columns=["N","i","pi_H","pi_C","f_H","f_C","E","E_HC","P_i_i-1","P_i_i+1","gamma"]
+            fitness_log_df = pd.DataFrame(index=range(generations+1), columns=columns)
+            fitness_log_df.index.name = "generation"
+            fitness_log_df["N"] = N
+            fitness_log_df.at[0,"i"] = current_i
+            fitness_log_df.at[0,"pi_H"] = payoff[0]
+            fitness_log_df.at[0,"pi_C"] = payoff[1]
+            fitness_log_df.at[0,"f_H"] = fitness[0]
+            fitness_log_df.at[0,"f_C"] = fitness[1]
+            fitness_log_df.at[0,"E"] = calculate_full_entropy(population)
+            fitness_log_df.at[0,"E_HC"] = calculate_entropy_healthy_cancer(N,current_i)
+            fitness_log_df.at[0,"P_i_i-1"] = 0
+            fitness_log_df.at[0,"P_i_i+1"] = 0
+            fitness_log_df.at[0,"gamma"] = -1 # marks an invalid gamma value
+
+            # one generation is a one birth-death cycle:
+            # fitness-proportional random cell division + random apoptosis
+            for g in range(generations):
+                # select one cell to divide
+                selected = toolbox.select_roulette(population)
+                # create a copy
+                offspring = toolbox.clone(selected)
+                # apply mutation on the offspring
+                offspring = toolbox.mutate(offspring)    
+                # add the new cell to the population
+                population.append(offspring)
+                # select one cell to die
+                selected = toolbox.select_random(population)[0]
+                population.remove(selected)
+                # after each generation the number of cancer cells 'i' might change
+                # fitness of each cell depends on 'i'
+                # that is why after each birth-death cycle we need to
+                # re-evaluate the fitnesses of all cells in the population
+                current_i = estimate_cancer(population)
+                payoff, fitness, = prisoners_dilemma_fitness_evaluate(A, N, current_i, w)
+                for ind in population:
+                    if is_cancer(ind):
+                        ind.fitness = fitness[1]
+                    else:
+                        ind.fitness = fitness[0]
+                # dump the population at generation g to a txtfile
+                dump_population_with_fitness(populations_dir,population,str(g+1)+"_population.txt")
+                # update the log dataframe
+                fitness_log_df.at[g+1,"i"] = current_i
+                fitness_log_df.at[g+1,"pi_H"] = payoff[0]
+                fitness_log_df.at[g+1,"pi_C"] = payoff[1]
+                fitness_log_df.at[g+1,"f_H"] = fitness[0]
+                fitness_log_df.at[g+1,"f_C"] = fitness[1]
+                fitness_log_df.at[g+1,"E"] = calculate_full_entropy(population)
+                fitness_log_df.at[g+1,"E_HC"] = calculate_entropy_healthy_cancer(N,current_i)
+                fitness_log_df.at[g+1,"P_i_i-1"] = fitness[0]*(N-current_i)/(current_i*fitness[1]+fitness[0]*(N-current_i))*current_i/N
+                fitness_log_df.at[g+1,"P_i_i+1"] = current_i*fitness[1]/(current_i*fitness[1]+fitness[0]*(N-current_i))*(N-current_i)/N
+                if fitness_log_df.at[g+1,"P_i_i-1"]==0 and fitness_log_df.at[g+1,"P_i_i+1"]==0:
+                    fitness_log_df.at[g+1,"gamma"] = -1
+                else:
+                    fitness_log_df.at[g+1,"gamma"] = fitness_log_df.at[g+1,"P_i_i-1"] / fitness_log_df.at[g+1,"P_i_i+1"]
