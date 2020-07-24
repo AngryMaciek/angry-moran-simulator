@@ -132,18 +132,24 @@ class MoranProcess:
             ind.DeathFitness = self.DeathFitnessDict[ind.label]
 
     def roulette_wheel_selection_Birth(self):
-        return __roulette_wheel_selection(attr="BirthFitness")
+        return self.__roulette_wheel_selection(attr="BirthFitness")
 
     def roulette_wheel_selection_Death(self):
-        return __roulette_wheel_selection(attr="DeathFitness")
+        return self.__roulette_wheel_selection(attr="DeathFitness")
 
     def __roulette_wheel_selection(self, attr):
         """A simple implementation of fitness proportional selection"""
-        max_value = sum(ind.eval(attr) for ind in self.population)
+        if attr == "BirthFitness":
+            max_value = sum(ind.BirthFitness for ind in self.population)
+        elif attr == "DeathFitness":
+            max_value = sum(ind.DeathFitness for ind in self.population)
         pick = random.uniform(0, max_value)
         current = 0
         for ind in self.population:
-            current += ind.eval(attr)
+            if attr == "BirthFitness":
+                current += ind.BirthFitness
+            elif attr == "DeathFitness":
+                current += ind.DeathFitness
             if current > pick:
                 return ind
 

@@ -14,6 +14,7 @@
 """
 
 # imports
+import random
 import numpy as np
 import moran_simulator as ms
 
@@ -139,3 +140,24 @@ class TestClass:
             round(mp.population[50].DeathFitness, 3) == 1.455
             or round(mp.population[50].DeathFitness, 3) == 2.449
         )
+
+    def test_classMoranProcess_roulette_wheel_selection_Birth(self):
+        size_list = [4, 1]
+        label_list = ["abc", "def"]
+        BirthPayoffMatrix = np.array([[100, 100], [1, 1]])
+        DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
+        mp = ms.MoranProcess(
+            size_list=size_list,
+            label_list=label_list,
+            BirthPayoffMatrix=BirthPayoffMatrix,
+            DeathPayoffMatrix=DeathPayoffMatrix,
+        )
+        random.seed(0)
+        ind = mp.roulette_wheel_selection_Birth()
+        assert ind.ID == 3
+        assert ind.label == "abc"
+
+
+
+    #def roulette_wheel_selection_Death(self):
+    #    return __roulette_wheel_selection(attr="DeathFitness")
