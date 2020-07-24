@@ -157,7 +157,18 @@ class TestClass:
         assert ind.ID == 3
         assert ind.label == "abc"
 
-
-
-    #def roulette_wheel_selection_Death(self):
-    #    return __roulette_wheel_selection(attr="DeathFitness")
+    def test_classMoranProcess_roulette_wheel_selection_Death(self):
+        size_list = [15, 15]
+        label_list = ["XYZ", "ZYX"]
+        BirthPayoffMatrix = np.array([[1, 1], [1, 1]])
+        DeathPayoffMatrix = np.array([[1, 1], [100, 100]])
+        mp = ms.MoranProcess(
+            size_list=size_list,
+            label_list=label_list,
+            BirthPayoffMatrix=BirthPayoffMatrix,
+            DeathPayoffMatrix=DeathPayoffMatrix,
+        )
+        random.seed(0)
+        ind = mp.roulette_wheel_selection_Death()
+        assert ind.ID == 27
+        assert ind.label == "ZYX"
