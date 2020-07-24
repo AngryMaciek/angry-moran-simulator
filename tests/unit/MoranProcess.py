@@ -22,8 +22,8 @@ class TestClass:
     def test_classMoranProcessInit(self):
         size_list = [10, 90]
         label_list = ["A", "B"]
-        BirthPayoffMatrix = np.array([[0, 0], [0, 0]])
-        DeathPayoffMatrix = np.array([[0, 0], [0, 0]])
+        BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
+        DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
         mp = ms.MoranProcess(
             size_list=size_list,
             label_list=label_list,

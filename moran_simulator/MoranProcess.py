@@ -85,7 +85,7 @@ class MoranProcess:
         self.DeathFitnessDict = {}
         self.UpdateDeathFitnessForAll()
 
-    def UpdateAvgBirthPayoffForAll():
+    def UpdateAvgBirthPayoffForAll(self):
         nrows = np.shape(self.BirthPayoffMatrix)[0]
         ncols = np.shape(self.BirthPayoffMatrix)[1]
         for r in range(nrows):
@@ -100,7 +100,7 @@ class MoranProcess:
         for ind in self.population:
             ind.AvgBirthPayoff = AvgBirthPayoffDict[ind.label]
 
-    def UpdateAvgDeathPayoffForAll():
+    def UpdateAvgDeathPayoffForAll(self):
         nrows = np.shape(self.DeathPayoffMatrix)[0]
         ncols = np.shape(self.DeathPayoffMatrix)[1]
         for r in range(nrows):
@@ -115,7 +115,7 @@ class MoranProcess:
         for ind in self.population:
             ind.AvgDeathPayoff = AvgDeathPayoffDict[ind.label]
 
-    def UpdateBirthFitnessForAll():
+    def UpdateBirthFitnessForAll(self):
         for label in self.init_label_list:
             BirthFitnessDict[label] = (
                 1 - self.w + self.w * self.AvgBirthPayoffDict[label]
@@ -123,7 +123,7 @@ class MoranProcess:
         for ind in self.population:
             ind.BirthFitness = self.BirthFitnessDict[ind.label]
 
-    def UpdateDeathFitnessForAll():
+    def UpdateDeathFitnessForAll(self):
         for label in self.init_label_list:
             DeathFitnessDict[label] = (
                 1 - self.w + self.w * self.AvgDeathPayoffDict[label]
@@ -131,13 +131,13 @@ class MoranProcess:
         for ind in self.population:
             ind.DeathFitness = self.DeathFitnessDict[ind.label]
 
-    def roulette_wheel_selection_Birth():
+    def roulette_wheel_selection_Birth(self):
         return __roulette_wheel_selection(attr="BirthFitness")
 
-    def roulette_wheel_selection_Death():
+    def roulette_wheel_selection_Death(self):
         return __roulette_wheel_selection(attr="DeathFitness")
 
-    def __roulette_wheel_selection(attr):
+    def __roulette_wheel_selection(self, attr):
         """A simple implementation of fitness proportional selection"""
         max_value = sum(ind.eval(attr) for ind in self.population)
         pick = random.uniform(0, max_value)
@@ -147,7 +147,7 @@ class MoranProcess:
             if current > pick:
                 return ind
 
-    def simulate(generations):
+    def simulate(self, generations):
         pass
         # modify the self. population, return df with scores
 
