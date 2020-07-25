@@ -4,6 +4,8 @@
 
 # [Angry] Moran Simulator
 
+![scheme.png](images/scheme.png)
+
 ## Table of Contents
 
 - [[Angry] Moran Simulator](#angry-moran-simulator)
@@ -25,7 +27,7 @@ INFO
 
 ## Example results
 
-![figure.png](images/figure.png "Title")
+![figure.png](images/figure.png)
 
 > CAPTION
 
