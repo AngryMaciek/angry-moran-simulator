@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/AngryMaciek/angry-moran-simulator.svg?branch=master)](https://travis-ci.org/AngryMaciek/angry-moran-simulator)
-[![Coverage Status](https://coveralls.io/repos/github/AngryMaciek/angry-moran-simulator/badge.svg?branch=master&kill_cache=1&service=github)](https://coveralls.io/github/AngryMaciek/angry-moran-simulator?branch=master&kill_cache=1&service=github)
+[![Coverage Status](https://coveralls.io/repos/github/AngryMaciek/angry-moran-simulator/badge.svg?branch=master)](https://coveralls.io/github/AngryMaciek/angry-moran-simulator?branch=master)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
 # [Angry] Moran Simulator
