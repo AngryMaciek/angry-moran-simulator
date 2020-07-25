@@ -4,7 +4,7 @@
 
 # [Angry] Moran Simulator
 
-![scheme.png](images/scheme.png)
+![scheme.svg](images/scheme.svg)
 
 ## Table of Contents
 
