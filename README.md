@@ -112,9 +112,6 @@ Notes:
 * https://github.com/daffidwilde/matching
 * https://en.wikipedia.org/wiki/Moran_process
 * https://en.wikipedia.org/wiki/Chicken_(game)#Chicken_and_prisoner's_dilemma
-* https://locusofctrl.github.io/blog/posts-output/2019-02-03-male-strategy/
-* missing docstring, comments, incorporate death fitness?
-* add entropy and heoretical transition probabilities to the df
+* https://locusofctrl.github.io/blog/posts-output/2019-02-03-male-strategy/  
+* missing docstring, comments, flake8
 * notebook: payoffs should not be negative?!, comment the code, explain the models
-* refactor plot
-* documentation.md
