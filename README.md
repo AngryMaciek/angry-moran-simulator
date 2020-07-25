@@ -9,6 +9,7 @@
 - [[Angry] Moran Simulator](#angry-moran-simulator)
   - [Table of Contents](#table-of-contents)
   - [General information](#general-information)
+  - [Example results](#example-results)
   - [Installation instructions](#installation-instructions)
     - [Download and install Miniconda](#download-and-install-miniconda)
     - [Clone the repository](#clone-the-repository)
@@ -19,6 +20,14 @@
   - [License](#license)
 
 ## General information
+
+INFO
+
+## Example results
+
+![text](images/figure.png "Title")
+
+> CAPTION
 
 ## Installation instructions
 
@@ -96,14 +105,12 @@ MIT License
 ---
 
 Notes:
-* https://arxiv.org/pdf/1811.09552.pdf
 * https://github.com/Axelrod-Python/Axelrod
 * https://axelrod.readthedocs.io/en/stable/
 * https://github.com/daffidwilde/matching
-* https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2728855/pdf/GEN18241141.pdf
 * https://en.wikipedia.org/wiki/Moran_process
 * https://en.wikipedia.org/wiki/Chicken_(game)#Chicken_and_prisoner's_dilemma
 * https://locusofctrl.github.io/blog/posts-output/2019-02-03-male-strategy/
-* https://en.wikipedia.org/wiki/Evolutionary_game_theory
-* 4 usecase tests: PD, RPS, Chicken, 2teams, 2v2? incorporate death fitness?
+* missing docstring, comments, incorporate death fitness?
 * add entropy and heoretical transition probabilities to the df
+* notebook: payoffs should not be negative?!, comment the code, explain the models
