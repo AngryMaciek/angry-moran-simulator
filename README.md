@@ -25,7 +25,7 @@ INFO
 
 ## Example results
 
-![text](images/figure.png "Title")
+![figure.png](images/figure.png "Title")
 
 > CAPTION
 
