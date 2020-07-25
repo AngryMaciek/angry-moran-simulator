@@ -182,9 +182,10 @@ class TestClass:
             DeathPayoffMatrix=DeathPayoffMatrix,
         )
         random.seed(0)
-        ind = mp.simulate(generations=10)
+        simulation = mp.simulate(generations=10)
         assert round(mp.AvgBirthPayoffDict["a"], 3) == 1.737
         assert round(mp.AvgBirthPayoffDict["b"], 3) == 3.684
         assert round(mp.AvgDeathPayoffDict["a"], 3) == 0.174
         assert round(mp.AvgDeathPayoffDict["b"], 3) == 0.368
         assert mp.curr_size_list == [6, 14]
+        assert simulation.shape == (11,10)

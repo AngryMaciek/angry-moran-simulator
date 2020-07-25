@@ -160,25 +160,23 @@ class MoranProcess:
 
         # prepare a dataframe to store the results
         colnames = (
-            [l + "_size" for l in self.init_label_list]
-            + [l + "_AvgBirthPayoff" for l in self.init_label_list]
-            + [l + "_AvgDeathPayoff" for l in self.init_label_list]
-            + [l + "_BirthFitness" for l in self.init_label_list]
-            + [l + "_DeathFitness" for l in self.init_label_list]
+            [l + "__size" for l in self.init_label_list]
+            + [l + "__AvgBirthPayoff" for l in self.init_label_list]
+            + [l + "__AvgDeathPayoff" for l in self.init_label_list]
+            + [l + "__BirthFitness" for l in self.init_label_list]
+            + [l + "__DeathFitness" for l in self.init_label_list]
         )
         log_df = pd.DataFrame(index=range(generations + 1), columns=colnames)
         log_df.index.name = "generation"
 
         # update the dataframe with the features of the initial population
-        # log_df["N"] = N
-        # log_df.at[0,"i"] = current_i
-        # log_df.at[0,"pi_H"] = payoff[0]
-        # log_df.at[0,"pi_C"] = payoff[1]
-        # log_df.at[0,"f_H"] = fitness[0]
-        # log_df.at[0,"f_C"] = fitness[1]
-        # log_df.at[0,"E_HC"] = calculate_entropy_healthy_cancer(N,current_i)
-        # log_df.at[0,"P_i_i-1"] = 0
-        # log_df.at[0,"P_i_i+1"] = 0
+        for l in range(len(self.init_label_list)):
+            label = self.init_label_list[l]
+            log_df.at[0,label + "__size"] = self.init_size_list[l]
+            log_df.at[0,label + "__AvgBirthPayoff"] = self.AvgBirthPayoffDict[label]
+            log_df.at[0,label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[label]
+            log_df.at[0,label + "__BirthFitness"] = self.BirthFitnessDict[label]
+            log_df.at[0,label + "__DeathFitness"] = self.DeathFitnessDict[label]
 
         for g in range(generations):
             # select one individual to multiply
@@ -202,14 +200,12 @@ class MoranProcess:
             self.UpdateDeathFitnessForAll()
 
             # update the log dataframe
-            # log_df.at[g+1,"i"] = current_i
-            # log_df.at[g+1,"pi_H"] = payoff[0]
-            # log_df.at[g+1,"pi_C"] = payoff[1]
-            # log_df.at[g+1,"f_H"] = fitness[0]
-            # log_df.at[g+1,"f_C"] = fitness[1]
-            # log_df.at[g+1,"E_HC"] = calculate_entropy_healthy_cancer(N,current_i)
-            # log_df.at[g+1,"P_i_i-1"] = fitness[0]*(N-current_i)/(current_i*fitness[1]+fitness[0]*(N-current_i))*current_i/N
-            # log_df.at[g+1,"P_i_i+1"] = current_i*fitness[1]/(current_i*fitness[1]+fitness[0]*(N-current_i))*(N-current_i)/N
+            for l in range(len(self.init_label_list)):
+                label = self.init_label_list[l]
+                log_df.at[g+1,label + "__size"] = self.curr_size_list[l]
+                log_df.at[g+1,label + "__AvgBirthPayoff"] = self.AvgBirthPayoffDict[label]
+                log_df.at[g+1,label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[label]
+                log_df.at[g+1,label + "__BirthFitness"] = self.BirthFitnessDict[label]
+                log_df.at[g+1,label + "__DeathFitness"] = self.DeathFitnessDict[label]
 
-        print(self.curr_size_list)
-        return log_df
+        return(log_df)
