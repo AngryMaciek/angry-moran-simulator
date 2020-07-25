@@ -12,3 +12,6 @@
 
 # Local coverage summary
 .coverage
+
+# Notebook checkpoints
+.ipynb_checkpoints
