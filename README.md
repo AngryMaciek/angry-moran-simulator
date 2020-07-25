@@ -116,3 +116,5 @@ Notes:
 * missing docstring, comments, incorporate death fitness?
 * add entropy and heoretical transition probabilities to the df
 * notebook: payoffs should not be negative?!, comment the code, explain the models
+* refactor plot
+* documentation.md
