@@ -37,9 +37,6 @@ class TestClass:
         assert len(mp.population) == sum(size_list)
         assert mp.w == 0.5
 
-        population_info = {j: i for i, j in zip(size_list, label_list)}
-        assert mp.population_info == population_info
-
         comparison = mp.BirthPayoffMatrix == BirthPayoffMatrix
         assert comparison.all()
         comparison = mp.DeathPayoffMatrix == DeathPayoffMatrix
@@ -172,3 +169,22 @@ class TestClass:
         ind = mp.roulette_wheel_selection_Death()
         assert ind.ID == 27
         assert ind.label == "ZYX"
+
+    def test_classMoranProcess_simulate(self):
+        size_list = [10, 10]
+        label_list = ["a", "b"]
+        BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
+        DeathPayoffMatrix = np.array([[0.1, 0.2], [0.3, 0.4]])
+        mp = ms.MoranProcess(
+            size_list=size_list,
+            label_list=label_list,
+            BirthPayoffMatrix=BirthPayoffMatrix,
+            DeathPayoffMatrix=DeathPayoffMatrix,
+        )
+        random.seed(0)
+        ind = mp.simulate(generations=10)
+        assert round(mp.AvgBirthPayoffDict["a"], 3) == 1.737
+        assert round(mp.AvgBirthPayoffDict["b"], 3) == 3.684
+        assert round(mp.AvgDeathPayoffDict["a"], 3) == 0.174
+        assert round(mp.AvgDeathPayoffDict["b"], 3) == 0.368
+        assert mp.curr_size_list == [6, 14]

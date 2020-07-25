@@ -106,3 +106,4 @@ Notes:
 * https://locusofctrl.github.io/blog/posts-output/2019-02-03-male-strategy/
 * https://en.wikipedia.org/wiki/Evolutionary_game_theory
 * 4 usecase tests: PD, RPS, Chicken, 2teams, 2v2? incorporate death fitness?
+* add entropy and heoretical transition probabilities to the df

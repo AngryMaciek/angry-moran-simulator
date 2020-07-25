@@ -15,6 +15,7 @@
 
 # imports
 import random
+import copy
 import numpy as np
 import pandas as pd
 import moran_simulator as ms
@@ -45,7 +46,6 @@ class MoranProcess:
         self.init_size_list = size_list
         self.curr_size_list = size_list
         self.init_label_list = label_list
-        self.population_info = {j: i for i, j in zip(size_list, label_list)}
 
         try:
             assert len(BirthPayoffMatrix.shape) == 2
@@ -154,67 +154,62 @@ class MoranProcess:
                 return ind
 
     def simulate(self, generations):
-        pass
         # modify the self. population, return df with scores
-
-        # copy the initial population as population 0
-        # population = copy.copy(init_population)
-        # current_i = 0
-
-        # prepare a dataframe for storing statistics
-        # columns=["N","i","pi_H","pi_C","f_H","f_C","E","E_HC","P_i_i-1","P_i_i+1","gamma"]
-        # fitness_log_df = pd.DataFrame(index=range(generations+1), columns=columns)
-        # fitness_log_df.index.name = "generation"
-        # fitness_log_df["N"] = N
-        # fitness_log_df.at[0,"i"] = current_i
-        # fitness_log_df.at[0,"pi_H"] = payoff[0]
-        # fitness_log_df.at[0,"pi_C"] = payoff[1]
-        # fitness_log_df.at[0,"f_H"] = fitness[0]
-        # fitness_log_df.at[0,"f_C"] = fitness[1]
-        # fitness_log_df.at[0,"E"] = calculate_full_entropy(population)
-        # fitness_log_df.at[0,"E_HC"] = calculate_entropy_healthy_cancer(N,current_i)
-        # fitness_log_df.at[0,"P_i_i-1"] = 0
-        # fitness_log_df.at[0,"P_i_i+1"] = 0
-        # fitness_log_df.at[0,"gamma"] = -1 # marks an invalid gamma value
-
         # one generation is a one birth-death cycle:
-        # fitness-proportional random cell division + random apoptosis
-        # for g in range(generations):
-        # select one cell to divide
-        # selected = toolbox.select_roulette(population)
-        # create a copy
-        # offspring = toolbox.clone(selected)
-        # apply mutation on the offspring
-        # offspring = toolbox.mutate(offspring)
-        # add the new cell to the population
-        # population.append(offspring)
-        # select one cell to die
-        # selected = toolbox.select_random(population)[0]
-        # population.remove(selected)
-        # after each generation the number of cancer cells 'i' might change
-        # fitness of each cell depends on 'i'
-        # that is why after each birth-death cycle we need to
-        # re-evaluate the fitnesses of all cells in the population
-        # current_i = estimate_cancer(population)
-        # payoff, fitness, = prisoners_dilemma_fitness_evaluate(A, N, current_i, w)
-        # for ind in population:
-        #    if is_cancer(ind):
-        #        ind.fitness = fitness[1]
-        #    else:
-        #        ind.fitness = fitness[0]
-        # dump the population at generation g to a txtfile
-        # dump_population_with_fitness(populations_dir,population,str(g+1)+"_population.txt")
-        # update the log dataframe
-        # fitness_log_df.at[g+1,"i"] = current_i
-        # fitness_log_df.at[g+1,"pi_H"] = payoff[0]
-        # fitness_log_df.at[g+1,"pi_C"] = payoff[1]
-        # fitness_log_df.at[g+1,"f_H"] = fitness[0]
-        # fitness_log_df.at[g+1,"f_C"] = fitness[1]
-        # fitness_log_df.at[g+1,"E"] = calculate_full_entropy(population)
-        # fitness_log_df.at[g+1,"E_HC"] = calculate_entropy_healthy_cancer(N,current_i)
-        # fitness_log_df.at[g+1,"P_i_i-1"] = fitness[0]*(N-current_i)/(current_i*fitness[1]+fitness[0]*(N-current_i))*current_i/N
-        # fitness_log_df.at[g+1,"P_i_i+1"] = current_i*fitness[1]/(current_i*fitness[1]+fitness[0]*(N-current_i))*(N-current_i)/N
-        # if fitness_log_df.at[g+1,"P_i_i-1"]==0 and fitness_log_df.at[g+1,"P_i_i+1"]==0:
-        #    fitness_log_df.at[g+1,"gamma"] = -1
-        # else:
-        #    fitness_log_df.at[g+1,"gamma"] = fitness_log_df.at[g+1,"P_i_i-1"] / fitness_log_df.at[g+1,"P_i_i+1"]
+        # fitness-proportional cell division + fitness-proportional apoptosis
+
+        # prepare a dataframe to store the results
+        colnames = (
+            [l + "_size" for l in self.init_label_list]
+            + [l + "_AvgBirthPayoff" for l in self.init_label_list]
+            + [l + "_AvgDeathPayoff" for l in self.init_label_list]
+            + [l + "_BirthFitness" for l in self.init_label_list]
+            + [l + "_DeathFitness" for l in self.init_label_list]
+        )
+        log_df = pd.DataFrame(index=range(generations + 1), columns=colnames)
+        log_df.index.name = "generation"
+
+        # update the dataframe with the features of the initial population
+        # log_df["N"] = N
+        # log_df.at[0,"i"] = current_i
+        # log_df.at[0,"pi_H"] = payoff[0]
+        # log_df.at[0,"pi_C"] = payoff[1]
+        # log_df.at[0,"f_H"] = fitness[0]
+        # log_df.at[0,"f_C"] = fitness[1]
+        # log_df.at[0,"E_HC"] = calculate_entropy_healthy_cancer(N,current_i)
+        # log_df.at[0,"P_i_i-1"] = 0
+        # log_df.at[0,"P_i_i+1"] = 0
+
+        for g in range(generations):
+            # select one individual to multiply
+            selectedBirth = self.roulette_wheel_selection_Birth()
+            # create a copy
+            new_individual = copy.deepcopy(selectedBirth)
+            # select one individual to die
+            selectedDeath = self.roulette_wheel_selection_Death()
+            # add the new individual to the population
+            self.population.append(new_individual)
+            # remove the selected individual from the population
+            self.population.remove(selectedDeath)
+            # update curr size list!
+            self.curr_size_list[self.init_label_list.index(selectedBirth.label)] += 1
+            self.curr_size_list[self.init_label_list.index(selectedDeath.label)] -= 1
+            # after each birth-death cycle we need to
+            # re-evaluate the payoffs and fitnesses of all cells in the population
+            self.UpdateAvgBirthPayoffForAll()
+            self.UpdateAvgDeathPayoffForAll()
+            self.UpdateBirthFitnessForAll()
+            self.UpdateDeathFitnessForAll()
+
+            # update the log dataframe
+            # log_df.at[g+1,"i"] = current_i
+            # log_df.at[g+1,"pi_H"] = payoff[0]
+            # log_df.at[g+1,"pi_C"] = payoff[1]
+            # log_df.at[g+1,"f_H"] = fitness[0]
+            # log_df.at[g+1,"f_C"] = fitness[1]
+            # log_df.at[g+1,"E_HC"] = calculate_entropy_healthy_cancer(N,current_i)
+            # log_df.at[g+1,"P_i_i-1"] = fitness[0]*(N-current_i)/(current_i*fitness[1]+fitness[0]*(N-current_i))*current_i/N
+            # log_df.at[g+1,"P_i_i+1"] = current_i*fitness[1]/(current_i*fitness[1]+fitness[0]*(N-current_i))*(N-current_i)/N
+
+        print(self.curr_size_list)
+        return log_df
