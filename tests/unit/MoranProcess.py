@@ -188,4 +188,4 @@ class TestClass:
         assert round(mp.AvgDeathPayoffDict["a"], 3) == 0.174
         assert round(mp.AvgDeathPayoffDict["b"], 3) == 0.368
         assert mp.curr_size_list == [6, 14]
-        assert simulation.shape == (11,10)
+        assert simulation.shape == (11, 10)

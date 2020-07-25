@@ -172,11 +172,11 @@ class MoranProcess:
         # update the dataframe with the features of the initial population
         for l in range(len(self.init_label_list)):
             label = self.init_label_list[l]
-            log_df.at[0,label + "__size"] = self.init_size_list[l]
-            log_df.at[0,label + "__AvgBirthPayoff"] = self.AvgBirthPayoffDict[label]
-            log_df.at[0,label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[label]
-            log_df.at[0,label + "__BirthFitness"] = self.BirthFitnessDict[label]
-            log_df.at[0,label + "__DeathFitness"] = self.DeathFitnessDict[label]
+            log_df.at[0, label + "__size"] = self.init_size_list[l]
+            log_df.at[0, label + "__AvgBirthPayoff"] = self.AvgBirthPayoffDict[label]
+            log_df.at[0, label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[label]
+            log_df.at[0, label + "__BirthFitness"] = self.BirthFitnessDict[label]
+            log_df.at[0, label + "__DeathFitness"] = self.DeathFitnessDict[label]
 
         for g in range(generations):
             # select one individual to multiply
@@ -202,10 +202,18 @@ class MoranProcess:
             # update the log dataframe
             for l in range(len(self.init_label_list)):
                 label = self.init_label_list[l]
-                log_df.at[g+1,label + "__size"] = self.curr_size_list[l]
-                log_df.at[g+1,label + "__AvgBirthPayoff"] = self.AvgBirthPayoffDict[label]
-                log_df.at[g+1,label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[label]
-                log_df.at[g+1,label + "__BirthFitness"] = self.BirthFitnessDict[label]
-                log_df.at[g+1,label + "__DeathFitness"] = self.DeathFitnessDict[label]
+                log_df.at[g + 1, label + "__size"] = self.curr_size_list[l]
+                log_df.at[g + 1, label + "__AvgBirthPayoff"] = self.AvgBirthPayoffDict[
+                    label
+                ]
+                log_df.at[g + 1, label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[
+                    label
+                ]
+                log_df.at[g + 1, label + "__BirthFitness"] = self.BirthFitnessDict[
+                    label
+                ]
+                log_df.at[g + 1, label + "__DeathFitness"] = self.DeathFitnessDict[
+                    label
+                ]
 
-        return(log_df)
+        return log_df
