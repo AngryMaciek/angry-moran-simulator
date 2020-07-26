@@ -22,11 +22,10 @@ import moran_simulator as ms
 
 
 class MoranProcess:
-    """
-    General Moran Process with multiple types of individuals
-    """
+    """General Moran Process with multiple types of individuals."""
 
     def __init__(self, size_list, label_list, BirthPayoffMatrix, DeathPayoffMatrix):
+        """Class initializer."""
 
         try:
             assert len(size_list) == len(label_list)
@@ -86,6 +85,7 @@ class MoranProcess:
         self.UpdateDeathFitnessForAll()
 
     def UpdateAvgBirthPayoffForAll(self):
+        """Calculate avg Birth Payoffs in the whole population."""
         nrows = np.shape(self.BirthPayoffMatrix)[0]
         ncols = np.shape(self.BirthPayoffMatrix)[1]
         for r in range(nrows):
@@ -101,6 +101,7 @@ class MoranProcess:
             ind.AvgBirthPayoff = self.AvgBirthPayoffDict[ind.label]
 
     def UpdateAvgDeathPayoffForAll(self):
+        """Calculate avg Death Payoffs in the whole population."""
         nrows = np.shape(self.DeathPayoffMatrix)[0]
         ncols = np.shape(self.DeathPayoffMatrix)[1]
         for r in range(nrows):
@@ -116,6 +117,7 @@ class MoranProcess:
             ind.AvgDeathPayoff = self.AvgDeathPayoffDict[ind.label]
 
     def UpdateBirthFitnessForAll(self):
+        """Calculate Birth Fitness in the whole population."""
         for label in self.init_label_list:
             self.BirthFitnessDict[label] = (
                 1 - self.w + self.w * self.AvgBirthPayoffDict[label]
@@ -124,6 +126,7 @@ class MoranProcess:
             ind.BirthFitness = self.BirthFitnessDict[ind.label]
 
     def UpdateDeathFitnessForAll(self):
+        """Calculate Death Fitness in the whole population."""
         for label in self.init_label_list:
             self.DeathFitnessDict[label] = (
                 1 - self.w + self.w * self.AvgDeathPayoffDict[label]
@@ -132,13 +135,15 @@ class MoranProcess:
             ind.DeathFitness = self.DeathFitnessDict[ind.label]
 
     def roulette_wheel_selection_Birth(self):
+        """Select an individual according to the Birth Fitness."""
         return self.__roulette_wheel_selection(attr="BirthFitness")
 
     def roulette_wheel_selection_Death(self):
+        """Select an individual according to the Death Fitness."""
         return self.__roulette_wheel_selection(attr="DeathFitness")
 
     def __roulette_wheel_selection(self, attr):
-        """A simple implementation of fitness proportional selection"""
+        """A simple implementation of fitness proportional selection."""
         if attr == "BirthFitness":
             max_value = sum(ind.BirthFitness for ind in self.population)
         elif attr == "DeathFitness":
