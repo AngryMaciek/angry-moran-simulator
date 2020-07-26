@@ -18,8 +18,13 @@ import moran_simulator as ms
 
 
 class TestClass:
+    """Test class for pytest package."""
+
     def test_classIndividualInit(self):
+        """Test the initializer."""
+        # initialize an instance of Individual:
         ind1 = ms.Individual(100, "A")
+        # test all the attributes:
         assert ind1.ID == 100
         assert ind1.label == "A"
         assert ind1.AvgBirthPayoff is None

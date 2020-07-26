@@ -20,7 +20,11 @@ import moran_simulator as ms
 
 
 class TestClass:
+    """Test class for pytest package."""
+
     def test_classMoranProcessInit(self):
+        """Test the initializer."""
+        # initialize an instance of MoranProcess:
         size_list = [10, 90]
         label_list = ["A", "B"]
         BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
@@ -31,6 +35,7 @@ class TestClass:
             BirthPayoffMatrix=BirthPayoffMatrix,
             DeathPayoffMatrix=DeathPayoffMatrix,
         )
+        # test all the attributes:
         assert mp.init_size_list == size_list
         assert mp.curr_size_list == size_list
         assert mp.init_label_list == label_list
@@ -139,6 +144,8 @@ class TestClass:
         )
 
     def test_classMoranProcess_roulette_wheel_selection_Birth(self):
+        """Test the roulette wheel selection method for Birth."""
+        # initialize an instance of MoranProcess:
         size_list = [4, 1]
         label_list = ["abc", "def"]
         BirthPayoffMatrix = np.array([[100, 100], [1, 1]])
@@ -149,12 +156,15 @@ class TestClass:
             BirthPayoffMatrix=BirthPayoffMatrix,
             DeathPayoffMatrix=DeathPayoffMatrix,
         )
+        # test the selection:
         random.seed(0)
         ind = mp.roulette_wheel_selection_Birth()
         assert ind.ID == 3
         assert ind.label == "abc"
 
     def test_classMoranProcess_roulette_wheel_selection_Death(self):
+        """Test the roulette wheel selection method for Death."""
+        # initialize an instance of MoranProcess:
         size_list = [15, 15]
         label_list = ["XYZ", "ZYX"]
         BirthPayoffMatrix = np.array([[1, 1], [1, 1]])
@@ -165,12 +175,15 @@ class TestClass:
             BirthPayoffMatrix=BirthPayoffMatrix,
             DeathPayoffMatrix=DeathPayoffMatrix,
         )
+        # test the selection:
         random.seed(0)
         ind = mp.roulette_wheel_selection_Death()
         assert ind.ID == 27
         assert ind.label == "ZYX"
 
     def test_classMoranProcess_simulate(self):
+        """Test the simulation process."""
+        # initialize an instance of MoranProcess:
         size_list = [10, 10]
         label_list = ["a", "b"]
         BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
@@ -181,6 +194,7 @@ class TestClass:
             BirthPayoffMatrix=BirthPayoffMatrix,
             DeathPayoffMatrix=DeathPayoffMatrix,
         )
+        # test the simulation:
         random.seed(0)
         simulation = mp.simulate(generations=10)
         assert round(mp.AvgBirthPayoffDict["a"], 3) == 1.737
