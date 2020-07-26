@@ -27,12 +27,14 @@ class MoranProcess:
     def __init__(self, size_list, label_list, BirthPayoffMatrix, DeathPayoffMatrix):
         """Class initializer."""
 
+        # check if the argument lists length match
         try:
             assert len(size_list) == len(label_list)
         except AssertionError as e:
             e.args += "Mismatch length of size and label lists"
             raise
 
+        # initialize a list of Individuals
         ID_counter = 0
         self.population = []
         for label_index in range(len(label_list)):
@@ -42,10 +44,12 @@ class MoranProcess:
                 )
                 ID_counter += 1
 
+        # keep record of the argument lists
         self.init_size_list = size_list
         self.curr_size_list = size_list
         self.init_label_list = label_list
 
+        # check if the argument matrices shape match
         try:
             assert len(BirthPayoffMatrix.shape) == 2
             assert (
@@ -56,7 +60,6 @@ class MoranProcess:
         except AssertionError as e:
             e.args += "."
             raise
-
         try:
             assert len(DeathPayoffMatrix.shape) == 2
             assert (
@@ -68,19 +71,22 @@ class MoranProcess:
             e.args += "."
             raise
 
+        # keep record of the argument matrices
         self.BirthPayoffMatrix = BirthPayoffMatrix
         self.DeathPayoffMatrix = DeathPayoffMatrix
+
+        # introduce a payoff weight for the fitness calculation
         self.w = 0.5
 
+        # calculate avg payoffs
         self.AvgBirthPayoffDict = {}
         self.UpdateAvgBirthPayoffForAll()
-
         self.AvgDeathPayoffDict = {}
         self.UpdateAvgDeathPayoffForAll()
 
+        # calculate fitnesses
         self.BirthFitnessDict = {}
         self.UpdateBirthFitnessForAll()
-
         self.DeathFitnessDict = {}
         self.UpdateDeathFitnessForAll()
 
@@ -88,6 +94,7 @@ class MoranProcess:
         """Calculate avg Birth Payoffs in the whole population."""
         nrows = np.shape(self.BirthPayoffMatrix)[0]
         ncols = np.shape(self.BirthPayoffMatrix)[1]
+        # calculate avg payoff for distinct Individual types:
         for r in range(nrows):
             payoff = 0
             for c in range(ncols):
@@ -96,7 +103,7 @@ class MoranProcess:
                 )
             payoff = payoff / (sum(self.curr_size_list) - 1)
             self.AvgBirthPayoffDict[self.init_label_list[r]] = payoff
-        # Update attributes of individuals
+        # update attributes of all Individuals:
         for ind in self.population:
             ind.AvgBirthPayoff = self.AvgBirthPayoffDict[ind.label]
 
@@ -104,6 +111,7 @@ class MoranProcess:
         """Calculate avg Death Payoffs in the whole population."""
         nrows = np.shape(self.DeathPayoffMatrix)[0]
         ncols = np.shape(self.DeathPayoffMatrix)[1]
+        # calculate avg payoff for distinct Individual types:
         for r in range(nrows):
             payoff = 0
             for c in range(ncols):
@@ -112,25 +120,29 @@ class MoranProcess:
                 )
             payoff = payoff / (sum(self.curr_size_list) - 1)
             self.AvgDeathPayoffDict[self.init_label_list[r]] = payoff
-        # Update attributes of individuals
+        # update attributes of all Individuals:
         for ind in self.population:
             ind.AvgDeathPayoff = self.AvgDeathPayoffDict[ind.label]
 
     def UpdateBirthFitnessForAll(self):
         """Calculate Birth Fitness in the whole population."""
+        # calculate fitness for distinct Individual types:
         for label in self.init_label_list:
             self.BirthFitnessDict[label] = (
                 1 - self.w + self.w * self.AvgBirthPayoffDict[label]
             )
+        # update attributes of all Individuals:
         for ind in self.population:
             ind.BirthFitness = self.BirthFitnessDict[ind.label]
 
     def UpdateDeathFitnessForAll(self):
         """Calculate Death Fitness in the whole population."""
+        # calculate fitness for distinct Individual types:
         for label in self.init_label_list:
             self.DeathFitnessDict[label] = (
                 1 - self.w + self.w * self.AvgDeathPayoffDict[label]
             )
+        # update attributes of all Individuals:
         for ind in self.population:
             ind.DeathFitness = self.DeathFitnessDict[ind.label]
 
@@ -159,11 +171,9 @@ class MoranProcess:
                 return ind
 
     def simulate(self, generations):
-        # modify the self. population, return df with scores
-        # one generation is a one birth-death cycle:
-        # fitness-proportional cell division + fitness-proportional apoptosis
+        """Simulate population evolution: Birth-Death process with fitness-based selection."""
 
-        # prepare a dataframe to store the results
+        # prepare a dataframe to store the logs
         colnames = (
             [l + "__size" for l in self.init_label_list]
             + [l + "__AvgBirthPayoff" for l in self.init_label_list]
@@ -174,7 +184,7 @@ class MoranProcess:
         log_df = pd.DataFrame(index=range(generations + 1), columns=colnames)
         log_df.index.name = "generation"
 
-        # update the dataframe with the features of the initial population
+        # update the dataframe with features of the initial population
         for l in range(len(self.init_label_list)):
             label = self.init_label_list[l]
             log_df.at[0, label + "__size"] = self.init_size_list[l]
@@ -194,11 +204,11 @@ class MoranProcess:
             self.population.append(new_individual)
             # remove the selected individual from the population
             self.population.remove(selectedDeath)
-            # update curr size list!
+            # update the list with population info
             self.curr_size_list[self.init_label_list.index(selectedBirth.label)] += 1
             self.curr_size_list[self.init_label_list.index(selectedDeath.label)] -= 1
-            # after each birth-death cycle we need to
-            # re-evaluate the payoffs and fitnesses of all cells in the population
+            # after each birth-death cycle:
+            # re-evaluate the payoffs and fitnesses of all Individuals in the population
             self.UpdateAvgBirthPayoffForAll()
             self.UpdateAvgDeathPayoffForAll()
             self.UpdateBirthFitnessForAll()
