@@ -23,7 +23,7 @@
 
 ## General information
 
-INFO
+The following [git] repository present a general game-theoretical framework to carry out scientific simulations according to the [Moran model]. Registering distinct types of individuals together with specification of payoffs between them allows to replicate evolution of the population and observe growth dynamics.
 
 ## Example results
 
@@ -55,7 +55,7 @@ source .bashrc
 
 ### Clone the repository
 
-Please use [git] to clone this repository into a desired location (here: `moran_simulator`) with the following command:
+Please use git to clone this repository into a desired location (here: `moran_simulator`) with the following command:
 
 ```bash
 git clone https://github.com/AngryMaciek/angry-moran-simulator moran_simulator
@@ -102,4 +102,5 @@ MIT License
 [Python 3]: https://www.python.org/download/releases/3.0/
 [miniconda]: https://docs.conda.io/en/latest/miniconda.html
 [git]: https://git-scm.com/
+[Moran model]: <https://en.wikipedia.org/wiki/Moran_process>
 [Python package manager]: <https://pypi.org/project/pip/>
