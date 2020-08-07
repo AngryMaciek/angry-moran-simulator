@@ -46,12 +46,8 @@ df = mp.simulate(1000)
 ```
 
 Information which are stored in the dataframe's columns include:
-* per-sub-population sub-population size
-
-
-```
-            log_df.at[0, label + "__AvgBirthPayoff"] = self.AvgBirthPayoffDict[label]
-            log_df.at[0, label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[label]
-            log_df.at[0, label + "__BirthFitness"] = self.BirthFitnessDict[label]
-            log_df.at[0, label + "__DeathFitness"] = self.DeathFitnessDict[label]
-```
+* per-sub-population sub-population's size
+* per-sub-population Average Birth Payoff for a single individual of a given sub-population (averaged over interactions with all other individuals of the whole population)
+* per-sub-population Average Death Payoff for a single individual of a given sub-population (averaged over interactions with all other individuals of the whole population)
+* per-sub-population Birth Fitness of an individual from a given sub-popualtion
+* per-sub-population Death Fitness of an individual from a given sub-popualtion
