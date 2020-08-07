@@ -219,11 +219,23 @@ class TestClass:
                 BirthPayoffMatrix=BirthPayoffMatrix,
                 DeathPayoffMatrix=DeathPayoffMatrix,
             )
-        # test improper Payoff Matrices
+        # test improper Birth Payoff Matrix
         size_list = [10, 90]
         label_list = ["A", "B"]
         BirthPayoffMatrix = np.array([[10, 20, 20], [30, 40, 40], [1, 1, 1]])
         DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
+        with pytest.raises(Exception):
+            mp = ms.MoranProcess(
+                size_list=size_list,
+                label_list=label_list,
+                BirthPayoffMatrix=BirthPayoffMatrix,
+                DeathPayoffMatrix=DeathPayoffMatrix,
+            )
+        # test improper Death Payoff Matrix
+        size_list = [10, 90]
+        label_list = ["A", "B"]
+        BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
+        DeathPayoffMatrix = np.array([[10, 20, 20], [30, 40, 40], [1, 1, 1]])
         with pytest.raises(Exception):
             mp = ms.MoranProcess(
                 size_list=size_list,
