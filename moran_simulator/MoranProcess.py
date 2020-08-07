@@ -31,7 +31,7 @@ class MoranProcess:
         try:
             assert len(size_list) == len(label_list)
         except AssertionError as e:
-            e.args += "Mismatch length of size and label lists",
+            e.args += ("Mismatch length of size and label lists",)
             raise
 
         # initialize a list of Individuals
@@ -58,7 +58,7 @@ class MoranProcess:
                 == len(label_list)
             )
         except AssertionError as e:
-            e.args += "Invalid Payoff Matrix",
+            e.args += ("Invalid Payoff Matrix",)
             raise
         try:
             assert len(DeathPayoffMatrix.shape) == 2
@@ -68,7 +68,7 @@ class MoranProcess:
                 == len(label_list)
             )
         except AssertionError as e:
-            e.args += "Invalid Payoff Matrix",
+            e.args += ("Invalid Payoff Matrix",)
             raise
 
         # keep record of the argument matrices
