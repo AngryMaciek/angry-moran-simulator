@@ -36,3 +36,22 @@ mp = ms.MoranProcess(
     DeathPayoffMatrix=DeathPayoffMatrix,
 )
 ```
+
+The key method of this object is a called `simulate(generations)` and it takes an integer as an argument (simulation time specified as a number of birth-death cycles). This function returns a `pandas` dataframe with a per-cycle summary of the population's state.
+The following code demonstrated the simulation:
+```python
+import pandas as pd
+
+df = mp.simulate(1000)
+```
+
+Information which are stored in the dataframe's columns include:
+* per-sub-population sub-population size
+
+
+```
+            log_df.at[0, label + "__AvgBirthPayoff"] = self.AvgBirthPayoffDict[label]
+            log_df.at[0, label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[label]
+            log_df.at[0, label + "__BirthFitness"] = self.BirthFitnessDict[label]
+            log_df.at[0, label + "__DeathFitness"] = self.DeathFitnessDict[label]
+```
