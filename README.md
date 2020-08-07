@@ -17,6 +17,7 @@
     - [Clone the repository](#clone-the-repository)
     - [Build and activate a virtual environment](#build-and-activate-a-virtual-environment)
     - [Install the package](#install-the-package)
+  - [Code documentation](#code-documentation)
   - [Contributing](#contributing)
   - [Contact](#contact)
   - [License](#license)
