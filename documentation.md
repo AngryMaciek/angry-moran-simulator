@@ -17,6 +17,8 @@ BirthPayoffMatrix # payoff matrix based on which individuals' Birth Fitness is c
 DeathPayoffMatrix # payoff matrix based on which individuals' Death Fitness is calculated. Used for the roulette-based selection of an individual to die
 ```
 
+Both individuals' selcection for reproduction and death are proportional to individuals' fitnesses calculated based on two separate payoffs matrices (Birth/Death). For a *random* selection please provide a `numpy` array composed entirely of single values.
+
 Example of creating a *MoranProcess* instance:  
 (assuming working in an environment where the package is installed)
 
