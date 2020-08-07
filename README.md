@@ -79,6 +79,10 @@ Finally, please install our package into the new virtual environment with the [P
 pip install .
 ```
 
+## Code documentation
+
+Inspect the documentation & how-to [here](documentation.md).
+
 ## Contributing
 
 This project lives off your contributions, be it in the form of bug reports,
