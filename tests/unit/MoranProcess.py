@@ -17,6 +17,7 @@
 import random
 import numpy as np
 import moran_simulator as ms
+import pytest
 
 
 class TestClass:
@@ -203,3 +204,18 @@ class TestClass:
         assert round(mp.AvgDeathPayoffDict["b"], 3) == 0.368
         assert mp.curr_size_list == [6, 14]
         assert simulation.shape == (11, 10)
+
+    def test_classMoranProcessWrongInit(self):
+        """Test assertion errors in the initializer."""
+        # test improper lists error
+        size_list = [10, 90]
+        label_list = ["A", "B", "C"]
+        BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
+        DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
+        with pytest.raises(Exception):
+            mp = ms.MoranProcess(
+                size_list=size_list,
+                label_list=label_list,
+                BirthPayoffMatrix=BirthPayoffMatrix,
+                DeathPayoffMatrix=DeathPayoffMatrix,
+            )
