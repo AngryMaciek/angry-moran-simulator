@@ -388,3 +388,37 @@ def PlotSize(mp, df, path):
     ax.tick_params(axis="both", which="major", labelsize=12)
     ax.legend(loc=4, fontsize=20)
     plt.savefig(fname=path, dpi=300)
+
+
+def PlotAvgBirthPayoff(mp, df, path):
+    """Plot the sub-populations' AvgBirthPayoff after a simulation of a given Moran Process."""
+    plt.figure(figsize=(14, 6))
+    ax = plt.gca()
+    ax.tick_params(width=1)
+    for axis in ["top", "bottom", "left", "right"]:
+        ax.spines[axis].set_linewidth(1)
+    for l in mp.init_label_list:
+        column = l + "__AvgBirthPayoff"
+        df[column].plot(linewidth=1.5, ax=ax, label=l)
+    plt.xlabel("Generation", size=14)
+    plt.ylabel("Average Birth Payoff", size=14)
+    ax.tick_params(axis="both", which="major", labelsize=12)
+    ax.legend(loc=4, fontsize=20)
+    plt.savefig(fname=path, dpi=300)
+
+
+def PlotAvgDeathPayoff(mp, df, path):
+    """Plot the sub-populations' AvgDeathPayoff after a simulation of a given Moran Process."""
+    plt.figure(figsize=(14, 6))
+    ax = plt.gca()
+    ax.tick_params(width=1)
+    for axis in ["top", "bottom", "left", "right"]:
+        ax.spines[axis].set_linewidth(1)
+    for l in mp.init_label_list:
+        column = l + "__AvgDeathPayoff"
+        df[column].plot(linewidth=1.5, ax=ax, label=l)
+    plt.xlabel("Generation", size=14)
+    plt.ylabel("Average Death Payoff", size=14)
+    ax.tick_params(axis="both", which="major", labelsize=12)
+    ax.legend(loc=4, fontsize=20)
+    plt.savefig(fname=path, dpi=300)

@@ -262,4 +262,6 @@ class TestClass:
         simulation = mp.simulate(generations=25000)
         # test the plotting:
         ms.PlotSize(mp, simulation, "./PD_size.png")
+        ms.PlotAvgBirthPayoff(mp, simulation, "./PD_PlotAvgBirthPayoff.png")
+        ms.PlotAvgDeathPayoff(mp, simulation, "./PD_PlotAvgDeathPayoff.png")
         assert True  # mark that no error was raised before
