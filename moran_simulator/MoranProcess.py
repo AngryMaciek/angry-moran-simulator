@@ -94,6 +94,26 @@ class MoranProcess:
         self.Entropy = 0
         self.UpdateEntropy()
 
+    @property
+    def population(self):
+        """Python getter."""
+        return self._population
+
+    @property
+    def init_size_list(self):
+        """Python getter."""
+        return self._init_size_list
+
+    @property
+    def curr_size_list(self):
+        """Python getter."""
+        return self._curr_size_list
+
+    @property
+    def init_label_list(self):
+        """Python getter."""
+        return self._init_label_list
+
     def UpdateAvgBirthPayoffForAll(self):
         """Calculate avg Birth Payoffs in the whole population."""
         nrows = np.shape(self.BirthPayoffMatrix)[0]
