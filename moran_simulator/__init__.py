@@ -18,3 +18,4 @@ from .Individual import Individual
 from .MoranProcess import MoranProcess
 from .MoranProcess import PlotSize
 from .MoranProcess import PlotAvgBirthPayoff, PlotAvgDeathPayoff
+from .MoranProcess import PlotBirthFitness, PlotDeathFitness

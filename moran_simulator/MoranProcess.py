@@ -422,3 +422,37 @@ def PlotAvgDeathPayoff(mp, df, path):
     ax.tick_params(axis="both", which="major", labelsize=12)
     ax.legend(loc=4, fontsize=20)
     plt.savefig(fname=path, dpi=300)
+
+
+def PlotBirthFitness(mp, df, path):
+    """Plot the sub-populations' BirthFitness after a simulation of a given Moran Process."""
+    plt.figure(figsize=(14, 6))
+    ax = plt.gca()
+    ax.tick_params(width=1)
+    for axis in ["top", "bottom", "left", "right"]:
+        ax.spines[axis].set_linewidth(1)
+    for l in mp.init_label_list:
+        column = l + "__BirthFitness"
+        df[column].plot(linewidth=1.5, ax=ax, label=l)
+    plt.xlabel("Generation", size=14)
+    plt.ylabel("Birth Fitness", size=14)
+    ax.tick_params(axis="both", which="major", labelsize=12)
+    ax.legend(loc=4, fontsize=20)
+    plt.savefig(fname=path, dpi=300)
+
+
+def PlotDeathFitness(mp, df, path):
+    """Plot the sub-populations' DeathFitness after a simulation of a given Moran Process."""
+    plt.figure(figsize=(14, 6))
+    ax = plt.gca()
+    ax.tick_params(width=1)
+    for axis in ["top", "bottom", "left", "right"]:
+        ax.spines[axis].set_linewidth(1)
+    for l in mp.init_label_list:
+        column = l + "__DeathFitness"
+        df[column].plot(linewidth=1.5, ax=ax, label=l)
+    plt.xlabel("Generation", size=14)
+    plt.ylabel("Death Fitness", size=14)
+    ax.tick_params(axis="both", which="major", labelsize=12)
+    ax.legend(loc=4, fontsize=20)
+    plt.savefig(fname=path, dpi=300)
