@@ -266,4 +266,5 @@ class TestClass:
         ms.PlotAvgDeathPayoff(mp, simulation, "./PD_AvgDeathPayoff.png")
         ms.PlotBirthFitness(mp, simulation, "./PD_BirthFitness.png")
         ms.PlotDeathFitness(mp, simulation, "./PD_DeathFitness.png")
+        ms.PlotEntropy(mp, simulation, "./PD_Entropy.png")
         assert True  # mark that no error was raised before

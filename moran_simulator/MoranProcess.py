@@ -456,3 +456,18 @@ def PlotDeathFitness(mp, df, path):
     ax.tick_params(axis="both", which="major", labelsize=12)
     ax.legend(loc=4, fontsize=20)
     plt.savefig(fname=path, dpi=300)
+
+
+def PlotEntropy(mp, df, path):
+    """Plot the whole populations entropy after a simulation of a given Moran Process."""
+    plt.figure(figsize=(14, 6))
+    ax = plt.gca()
+    ax.tick_params(width=1)
+    for axis in ["top", "bottom", "left", "right"]:
+        ax.spines[axis].set_linewidth(1)
+    df["Entropy"].plot(color="black", linewidth=1.5, ax=ax, label="Entropy")
+    plt.xlabel("Generation", size=14)
+    plt.ylabel("", size=14)
+    ax.tick_params(axis="both", which="major", labelsize=12)
+    ax.legend(loc=4, fontsize=20)
+    plt.savefig(fname=path, dpi=300)
