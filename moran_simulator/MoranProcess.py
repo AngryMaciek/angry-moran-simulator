@@ -99,20 +99,40 @@ class MoranProcess:
         """Python getter."""
         return self._population
 
+    @population.setter
+    def population(self, population):
+        """Python setter."""
+        self._population = population
+
     @property
     def init_size_list(self):
         """Python getter."""
         return self._init_size_list
+
+    @init_size_list.setter
+    def init_size_list(self, init_size_list):
+        """Python setter."""
+        self._init_size_list = init_size_list
 
     @property
     def curr_size_list(self):
         """Python getter."""
         return self._curr_size_list
 
+    @curr_size_list.setter
+    def curr_size_list(self, curr_size_list):
+        """Python setter."""
+        self._curr_size_list = curr_size_list
+
     @property
     def init_label_list(self):
         """Python getter."""
         return self._init_label_list
+
+    @init_label_list.setter
+    def init_label_list(self, init_label_list):
+        """Python setter."""
+        self._init_label_list = init_label_list
 
     def UpdateAvgBirthPayoffForAll(self):
         """Calculate avg Birth Payoffs in the whole population."""
