@@ -19,6 +19,7 @@ import copy
 import numpy as np
 import pandas as pd
 import moran_simulator as ms
+import matplotlib.pyplot as plt
 
 
 class MoranProcess:
@@ -368,3 +369,22 @@ class MoranProcess:
         for type_size in self.curr_size_list:
             fraction = float(type_size) / len(self.population)
             self.Entropy -= fraction * np.log2(fraction)
+
+
+def PlotSize(mp, df, path):
+    """Plot the sub-populations' sizes after a simulation of a given Moran Process."""
+    plt.figure(figsize=(14, 6))
+    ax = plt.gca()
+    ax.tick_params(width=1)
+    for axis in ["top", "bottom", "left", "right"]:
+        ax.spines[axis].set_linewidth(1)
+    for l in mp.init_label_list:
+        column = l + "__size"
+        df[column].plot(linewidth=1.5, ax=ax, label=l)
+    population_size = len(mp.population)
+    ax.set_ylim([0, population_size])
+    plt.xlabel("Generation", size=14)
+    plt.ylabel("# Individuals", size=14)
+    ax.tick_params(axis="both", which="major", labelsize=12)
+    ax.legend(loc=4, fontsize=20)
+    plt.savefig(fname=path, dpi=300)

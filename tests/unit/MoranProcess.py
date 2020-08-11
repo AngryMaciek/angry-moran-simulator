@@ -243,3 +243,23 @@ class TestClass:
                 BirthPayoffMatrix=BirthPayoffMatrix,
                 DeathPayoffMatrix=DeathPayoffMatrix,
             )
+
+    def test_plots(self):
+        """Test the plotting functions."""
+        # initialize an instance of MoranProcess (PD):
+        size_list = [990, 10]
+        label_list = ["cooperate", "defect"]
+        BirthPayoffMatrix = np.array([[3, 0], [5, 1]])
+        DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
+        mp = ms.MoranProcess(
+            size_list=size_list,
+            label_list=label_list,
+            BirthPayoffMatrix=BirthPayoffMatrix,
+            DeathPayoffMatrix=DeathPayoffMatrix,
+        )
+        # run the simulation:
+        random.seed(0)
+        simulation = mp.simulate(generations=25000)
+        # test the plotting:
+        ms.PlotSize(mp, simulation, "./PD_size.png")
+        assert True  # mark that no error was raised before

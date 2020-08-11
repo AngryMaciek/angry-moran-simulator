@@ -16,3 +16,4 @@
 # imports
 from .Individual import Individual
 from .MoranProcess import MoranProcess
+from .MoranProcess import PlotSize
