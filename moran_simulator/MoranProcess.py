@@ -90,6 +90,10 @@ class MoranProcess:
         self.DeathFitnessDict = {}
         self.UpdateDeathFitnessForAll()
 
+        # calculate entropy of the types distribution
+        self.Entropy = 0
+        self.UpdateEntropy()
+
     def UpdateAvgBirthPayoffForAll(self):
         """Calculate avg Birth Payoffs in the whole population."""
         nrows = np.shape(self.BirthPayoffMatrix)[0]
@@ -180,6 +184,7 @@ class MoranProcess:
             + [l + "__AvgDeathPayoff" for l in self.init_label_list]
             + [l + "__BirthFitness" for l in self.init_label_list]
             + [l + "__DeathFitness" for l in self.init_label_list]
+            + ["Entropy"]
         )
         log_df = pd.DataFrame(index=range(generations + 1), columns=colnames)
         log_df.index.name = "generation"
@@ -192,6 +197,7 @@ class MoranProcess:
             log_df.at[0, label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[label]
             log_df.at[0, label + "__BirthFitness"] = self.BirthFitnessDict[label]
             log_df.at[0, label + "__DeathFitness"] = self.DeathFitnessDict[label]
+            log_df.at[0, "Entropy"] = self.Entropy
 
         for g in range(generations):
             # select one individual to multiply
@@ -213,6 +219,8 @@ class MoranProcess:
             self.UpdateAvgDeathPayoffForAll()
             self.UpdateBirthFitnessForAll()
             self.UpdateDeathFitnessForAll()
+            # re-evaluate the population Entropy
+            self.UpdateEntropy()
 
             # update the log dataframe
             for l in range(len(self.init_label_list)):
@@ -230,5 +238,13 @@ class MoranProcess:
                 log_df.at[g + 1, label + "__DeathFitness"] = self.DeathFitnessDict[
                     label
                 ]
+                log_df.at[g + 1, "Entropy"] = self.Entropy
 
         return log_df
+
+    def UpdateEntropy(self):
+        """Calculate entropy of Individual types for the population."""
+        self.Entropy = 0
+        for type_size in self.curr_size_list:
+            fraction = float(type_size) / len(self.population)
+            self.Entropy -= fraction * np.log2(fraction)
