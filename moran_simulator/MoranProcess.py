@@ -134,6 +134,86 @@ class MoranProcess:
         """Python setter."""
         self._init_label_list = init_label_list
 
+    @property
+    def BirthPayoffMatrix(self):
+        """Python getter."""
+        return self._BirthPayoffMatrix
+
+    @BirthPayoffMatrix.setter
+    def BirthPayoffMatrix(self, BirthPayoffMatrix):
+        """Python setter."""
+        self._BirthPayoffMatrix = BirthPayoffMatrix
+
+    @property
+    def DeathPayoffMatrix(self):
+        """Python getter."""
+        return self._DeathPayoffMatrix
+
+    @DeathPayoffMatrix.setter
+    def DeathPayoffMatrix(self, DeathPayoffMatrix):
+        """Python setter."""
+        self._DeathPayoffMatrix = DeathPayoffMatrix
+
+    @property
+    def w(self):
+        """Python getter."""
+        return self._w
+
+    @w.setter
+    def w(self, w):
+        """Python setter."""
+        self._w = w
+
+    @property
+    def AvgBirthPayoffDict(self):
+        """Python getter."""
+        return self._AvgBirthPayoffDict
+
+    @AvgBirthPayoffDict.setter
+    def AvgBirthPayoffDict(self, AvgBirthPayoffDict):
+        """Python setter."""
+        self._AvgBirthPayoffDict = AvgBirthPayoffDict
+
+    @property
+    def AvgDeathPayoffDict(self):
+        """Python getter."""
+        return self._AvgDeathPayoffDict
+
+    @AvgDeathPayoffDict.setter
+    def AvgDeathPayoffDict(self, AvgDeathPayoffDict):
+        """Python setter."""
+        self._AvgDeathPayoffDict = AvgDeathPayoffDict
+
+    @property
+    def BirthFitnessDict(self):
+        """Python getter."""
+        return self._BirthFitnessDict
+
+    @BirthFitnessDict.setter
+    def BirthFitnessDict(self, BirthFitnessDict):
+        """Python setter."""
+        self._BirthFitnessDict = BirthFitnessDict
+
+    @property
+    def DeathFitnessDict(self):
+        """Python getter."""
+        return self._DeathFitnessDict
+
+    @DeathFitnessDict.setter
+    def DeathFitnessDict(self, DeathFitnessDict):
+        """Python setter."""
+        self._DeathFitnessDict = DeathFitnessDict
+
+    @property
+    def Entropy(self):
+        """Python getter."""
+        return self._Entropy
+
+    @Entropy.setter
+    def Entropy(self, Entropy):
+        """Python setter."""
+        self._Entropy = Entropy
+
     def UpdateAvgBirthPayoffForAll(self):
         """Calculate avg Birth Payoffs in the whole population."""
         nrows = np.shape(self.BirthPayoffMatrix)[0]
