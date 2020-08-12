@@ -302,7 +302,7 @@ class TestClass:
         """Test the simulation with a Transition Matrix."""
 
         # initialize an instance of MoranProcess:
-        size_list = [100, 0]
+        size_list = [10, 0]
         label_list = ["A", "B"]
         BirthPayoffMatrix = np.array([[1, 1], [1, 1]])
         DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
@@ -321,3 +321,4 @@ class TestClass:
         # run the simulation:
         random.seed(0)
         simulation = mp.simulate(generations=100)
+        # assert mp.curr_size_list == [0, 10]

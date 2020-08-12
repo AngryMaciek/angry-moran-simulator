@@ -358,6 +358,7 @@ class MoranProcess:
             log_df.at[0, "Entropy"] = self.Entropy
 
         for g in range(generations):
+
             # select one individual to multiply
             selectedBirth = self.roulette_wheel_selection_Birth()
             # create a copy
@@ -371,6 +372,12 @@ class MoranProcess:
             # update the list with population info
             self.curr_size_list[self.init_label_list.index(selectedBirth.label)] += 1
             self.curr_size_list[self.init_label_list.index(selectedDeath.label)] -= 1
+
+            # perform transitions (if TransitionMatrix was specified)
+            if self.TransitionMatrix is not None:
+                for ind in self.population:
+                    pass
+
             # after each birth-death cycle:
             # re-evaluate the payoffs and fitnesses of all Individuals in the population
             self.UpdateAvgBirthPayoffForAll()
