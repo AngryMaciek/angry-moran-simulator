@@ -18,17 +18,17 @@ before_script:
 
 script:
   # Activate the dev env
-  - conda activate moran-simulator-dev && echo $CONDA_DEFAULT_ENV
+  - conda activate moranpycess-dev && echo $CONDA_DEFAULT_ENV
   - pip install .
   # Run unit tests and measure code coverage
   - coverage run -m pytest tests/unit/Individual.py tests/unit/MoranProcess.py
   #- coverage run -m pytest tests/unit/Process.py
   - coverage report -m
   # Activate the main env
-  - conda activate moran-simulator && echo $CONDA_DEFAULT_ENV
+  - conda activate moranpycess && echo $CONDA_DEFAULT_ENV
   - pip install .
   # usecase test here
 
 after_success:
-  - conda activate moran-simulator-dev && echo $CONDA_DEFAULT_ENV
+  - conda activate moranpycess-dev && echo $CONDA_DEFAULT_ENV
   - coveralls

@@ -69,7 +69,7 @@ Dedicated environment might be created and activated with the following commands
 ```bash
 cd moran-simulator
 conda env create -f env/main.yml
-conda activate moran-pycess
+conda activate moranpycess
 ```
 
 ### Install the package

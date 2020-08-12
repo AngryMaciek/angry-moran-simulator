@@ -12,7 +12,7 @@
 ###############################################################################
 ---
 
-  name: moran-pycess
+  name: moranpycess
     
   channels:
     - bioconda
