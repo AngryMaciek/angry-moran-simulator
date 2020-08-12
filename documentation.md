@@ -25,14 +25,14 @@ Example of creating a *MoranProcess* instance:
 
 ```python
 import numpy as np
-import moran_simulator as ms
+import moranpycess
 
 size_list = [10, 10]
 label_list = ["a", "b"]
 BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
 DeathPayoffMatrix = np.array([[0.1, 0.2], [0.3, 0.4]])
 
-mp = ms.MoranProcess(
+mp = moranpycess.MoranProcess(
     size_list=size_list,
     label_list=label_list,
     BirthPayoffMatrix=BirthPayoffMatrix,

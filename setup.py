@@ -17,13 +17,13 @@
 from setuptools import setup
 
 setup(
-    name="moran-simulator",
+    name="moranpycess",
     version="0.0.1",
     author="Maciek Bak",
     author_email="wsciekly.maciek@gmail.com",
     description="Moran Process for multiple types of individuals",
     url="https://github.com/AngryMaciek/angry-moran-simulator",
-    packages=["moran_simulator"],
+    packages=["moranpycess"],
     license="MIT",
     classifiers=[
         "Programming Language :: Python :: 3",

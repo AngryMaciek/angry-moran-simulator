@@ -18,8 +18,8 @@ import random
 import copy
 import numpy as np
 import pandas as pd
-import moran_simulator as ms
 import matplotlib.pyplot as plt
+import moranpycess
 
 
 class MoranProcess:
@@ -41,7 +41,9 @@ class MoranProcess:
         for label_index in range(len(label_list)):
             for i in range(size_list[label_index]):
                 self.population.append(
-                    ms.Individual(ID=ID_counter, ind_label=label_list[label_index])
+                    moranpycess.Individual(
+                        ID=ID_counter, ind_label=label_list[label_index]
+                    )
                 )
                 ID_counter += 1
 

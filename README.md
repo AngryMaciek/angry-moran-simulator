@@ -2,13 +2,13 @@
 [![Coverage Status](https://coveralls.io/repos/github/AngryMaciek/angry-moran-simulator/badge.svg?branch=master)](https://coveralls.io/github/AngryMaciek/angry-moran-simulator?branch=master)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-# [Angry] Moran Simulator
+# Moran [Py]cess
 
 ![scheme.svg](images/scheme.svg)
 
 ## Table of Contents
 
-- [[Angry] Moran Simulator](#angry-moran-simulator)
+- [Moran [Py]cess](#moran-pycess)
   - [Table of Contents](#table-of-contents)
   - [General information](#general-information)
   - [Example results](#example-results)
@@ -56,10 +56,10 @@ source .bashrc
 
 ### Clone the repository
 
-Please use git to clone this repository into a desired location (here: `moran_simulator`) with the following command:
+Please use git to clone this repository into a desired location (here: `moran-simulator`) with the following command:
 
 ```bash
-git clone https://github.com/AngryMaciek/angry-moran-simulator moran_simulator
+git clone https://github.com/AngryMaciek/angry-moran-simulator moran-simulator
 ```
 
 ### Build and activate a virtual environment
@@ -67,9 +67,9 @@ git clone https://github.com/AngryMaciek/angry-moran-simulator moran_simulator
 Dedicated environment might be created and activated with the following commands:
 
 ```bash
-cd moran_simulator
+cd moran-simulator
 conda env create -f env/main.yml
-conda activate moran-simulator
+conda activate moran-pycess
 ```
 
 ### Install the package

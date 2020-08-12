@@ -14,7 +14,7 @@
 """
 
 # imports
-import moran_simulator as ms
+import moranpycess
 
 
 class TestClass:
@@ -23,7 +23,7 @@ class TestClass:
     def test_classIndividualInit(self):
         """Test the initializer."""
         # initialize an instance of Individual:
-        ind1 = ms.Individual(100, "A")
+        ind1 = moranpycess.Individual(100, "A")
         # test all the attributes:
         assert ind1.ID == 100
         assert ind1.label == "A"

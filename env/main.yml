@@ -12,7 +12,7 @@
 ###############################################################################
 ---
 
-  name: moran-simulator
+  name: moran-pycess
     
   channels:
     - bioconda

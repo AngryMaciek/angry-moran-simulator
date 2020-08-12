@@ -16,7 +16,7 @@
 # imports
 import random
 import numpy as np
-import moran_simulator as ms
+import moranpycess
 import pytest
 
 
@@ -30,7 +30,7 @@ class TestClass:
         label_list = ["A", "B"]
         BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
         DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
-        mp = ms.MoranProcess(
+        mp = moranpycess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
             BirthPayoffMatrix=BirthPayoffMatrix,
@@ -151,7 +151,7 @@ class TestClass:
         label_list = ["abc", "def"]
         BirthPayoffMatrix = np.array([[100, 100], [1, 1]])
         DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
-        mp = ms.MoranProcess(
+        mp = moranpycess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
             BirthPayoffMatrix=BirthPayoffMatrix,
@@ -170,7 +170,7 @@ class TestClass:
         label_list = ["XYZ", "ZYX"]
         BirthPayoffMatrix = np.array([[1, 1], [1, 1]])
         DeathPayoffMatrix = np.array([[1, 1], [100, 100]])
-        mp = ms.MoranProcess(
+        mp = moranpycess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
             BirthPayoffMatrix=BirthPayoffMatrix,
@@ -189,7 +189,7 @@ class TestClass:
         label_list = ["a", "b"]
         BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
         DeathPayoffMatrix = np.array([[0.1, 0.2], [0.3, 0.4]])
-        mp = ms.MoranProcess(
+        mp = moranpycess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
             BirthPayoffMatrix=BirthPayoffMatrix,
@@ -213,7 +213,7 @@ class TestClass:
         BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
         DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
         with pytest.raises(Exception):
-            mp = ms.MoranProcess(
+            mp = moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
@@ -225,7 +225,7 @@ class TestClass:
         BirthPayoffMatrix = np.array([[10, 20, 20], [30, 40, 40], [1, 1, 1]])
         DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
         with pytest.raises(Exception):
-            mp = ms.MoranProcess(
+            mp = moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
@@ -237,7 +237,7 @@ class TestClass:
         BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
         DeathPayoffMatrix = np.array([[10, 20, 20], [30, 40, 40], [1, 1, 1]])
         with pytest.raises(Exception):
-            mp = ms.MoranProcess(
+            mp = moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
@@ -251,7 +251,7 @@ class TestClass:
         label_list = ["cooperate", "defect"]
         BirthPayoffMatrix = np.array([[3, 0], [5, 1]])
         DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
-        mp = ms.MoranProcess(
+        mp = moranpycess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
             BirthPayoffMatrix=BirthPayoffMatrix,
@@ -261,10 +261,10 @@ class TestClass:
         random.seed(0)
         simulation = mp.simulate(generations=25000)
         # test the plotting:
-        ms.PlotSize(mp, simulation, "./PD_size.png")
-        ms.PlotAvgBirthPayoff(mp, simulation, "./PD_AvgBirthPayoff.png")
-        ms.PlotAvgDeathPayoff(mp, simulation, "./PD_AvgDeathPayoff.png")
-        ms.PlotBirthFitness(mp, simulation, "./PD_BirthFitness.png")
-        ms.PlotDeathFitness(mp, simulation, "./PD_DeathFitness.png")
-        ms.PlotEntropy(mp, simulation, "./PD_Entropy.png")
+        moranpycess.PlotSize(mp, simulation, "./PD_size.png")
+        moranpycess.PlotAvgBirthPayoff(mp, simulation, "./PD_AvgBirthPayoff.png")
+        moranpycess.PlotAvgDeathPayoff(mp, simulation, "./PD_AvgDeathPayoff.png")
+        moranpycess.PlotBirthFitness(mp, simulation, "./PD_BirthFitness.png")
+        moranpycess.PlotDeathFitness(mp, simulation, "./PD_DeathFitness.png")
+        moranpycess.PlotEntropy(mp, simulation, "./PD_Entropy.png")
         assert True  # mark that no error was raised before
