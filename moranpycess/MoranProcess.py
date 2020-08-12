@@ -25,7 +25,14 @@ import moranpycess
 class MoranProcess:
     """General Moran Process with multiple types of individuals."""
 
-    def __init__(self, size_list, label_list, BirthPayoffMatrix, DeathPayoffMatrix):
+    def __init__(
+        self,
+        size_list,
+        label_list,
+        BirthPayoffMatrix,
+        DeathPayoffMatrix,
+        TransitionMatrix=None,
+    ):
         """Class initializer."""
 
         # check if the argument lists length match
@@ -96,6 +103,24 @@ class MoranProcess:
         # calculate entropy of the types distribution
         self.Entropy = 0
         self.UpdateEntropy()
+
+        # assign the transition matrix between types
+        if TransitionMatrix is not None:
+            try:
+                # check if the argument matrix shape match
+                assert len(TransitionMatrix.shape) == 2
+                assert (
+                    TransitionMatrix.shape[0]
+                    == TransitionMatrix.shape[1]
+                    == len(label_list)
+                )
+                # check if the values are correct
+                for v in np.sum(TransitionMatrix, axis=1):
+                    assert v == 1.0
+            except AssertionError as e:
+                e.args += ("Invalid Transition Matrix",)
+                raise
+        self.TransitionMatrix = TransitionMatrix
 
     @property
     def population(self):
@@ -216,6 +241,16 @@ class MoranProcess:
     def Entropy(self, Entropy):
         """Python setter."""
         self._Entropy = Entropy
+
+    @property
+    def TransitionMatrix(self):
+        """Python getter."""
+        return self._TransitionMatrix
+
+    @TransitionMatrix.setter
+    def TransitionMatrix(self, TransitionMatrix):
+        """Python setter."""
+        self._TransitionMatrix = TransitionMatrix
 
     def UpdateAvgBirthPayoffForAll(self):
         """Calculate avg Birth Payoffs in the whole population."""
@@ -370,7 +405,8 @@ class MoranProcess:
         self.Entropy = 0
         for type_size in self.curr_size_list:
             fraction = float(type_size) / len(self.population)
-            self.Entropy -= fraction * np.log2(fraction)
+            if fraction != 0.0:
+                self.Entropy -= fraction * np.log2(fraction)
 
 
 def PlotSize(mp, df, path):

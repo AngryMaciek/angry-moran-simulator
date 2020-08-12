@@ -42,6 +42,7 @@ class TestClass:
         assert mp.init_label_list == label_list
         assert len(mp.population) == sum(size_list)
         assert mp.w == 0.5
+        assert mp.TransitionMatrix is None
 
         comparison = mp.BirthPayoffMatrix == BirthPayoffMatrix
         assert comparison.all()
@@ -243,6 +244,34 @@ class TestClass:
                 BirthPayoffMatrix=BirthPayoffMatrix,
                 DeathPayoffMatrix=DeathPayoffMatrix,
             )
+        # test improper Transition Matrix
+        size_list = [10, 90]
+        label_list = ["A", "B"]
+        BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
+        DeathPayoffMatrix = np.array([[10, 20], [30, 40]])
+        TransitionMatrix = np.array([[0.0], [0.0]])
+        with pytest.raises(Exception):
+            mp = moranpycess.MoranProcess(
+                size_list=size_list,
+                label_list=label_list,
+                BirthPayoffMatrix=BirthPayoffMatrix,
+                DeathPayoffMatrix=DeathPayoffMatrix,
+                TransitionMatrix=TransitionMatrix,
+            )
+        # test improper values in Transition Matrix
+        size_list = [10, 90]
+        label_list = ["A", "B"]
+        BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
+        DeathPayoffMatrix = np.array([[10, 20], [30, 40]])
+        TransitionMatrix = np.array([[0.5, 0.4], [0.5, 0.5]])
+        with pytest.raises(Exception):
+            mp = moranpycess.MoranProcess(
+                size_list=size_list,
+                label_list=label_list,
+                BirthPayoffMatrix=BirthPayoffMatrix,
+                DeathPayoffMatrix=DeathPayoffMatrix,
+                TransitionMatrix=TransitionMatrix,
+            )
 
     def test_plots(self):
         """Test the plotting functions."""
@@ -268,3 +297,27 @@ class TestClass:
         moranpycess.PlotDeathFitness(mp, simulation, "./PD_DeathFitness.png")
         moranpycess.PlotEntropy(mp, simulation, "./PD_Entropy.png")
         assert True  # mark that no error was raised before
+
+    def test_MoranProcessWithTransitionMatrix(self):
+        """Test the simulation with a Transition Matrix."""
+
+        # initialize an instance of MoranProcess:
+        size_list = [100, 0]
+        label_list = ["A", "B"]
+        BirthPayoffMatrix = np.array([[1, 1], [1, 1]])
+        DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
+        TransitionMatrix = np.array([[0.9, 0.1], [0.0, 1.0]])
+        mp = moranpycess.MoranProcess(
+            size_list=size_list,
+            label_list=label_list,
+            BirthPayoffMatrix=BirthPayoffMatrix,
+            DeathPayoffMatrix=DeathPayoffMatrix,
+            TransitionMatrix=TransitionMatrix,
+        )
+
+        comparison = mp.TransitionMatrix == TransitionMatrix
+        assert comparison.all()
+
+        # run the simulation:
+        random.seed(0)
+        simulation = mp.simulate(generations=100)
