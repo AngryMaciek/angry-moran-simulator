@@ -376,7 +376,17 @@ class MoranProcess:
             # perform transitions (if TransitionMatrix was specified)
             if self.TransitionMatrix is not None:
                 for ind in self.population:
-                    pass
+                    row_index = self.init_label_list.index(ind.label)
+                    new_label = np.random.choice(
+                        a=self.init_label_list,
+                        size=1,
+                        p=self.TransitionMatrix[row_index,],
+                    )[0]
+                    old_label = ind.label
+                    ind.label = new_label
+                    # update the list with population info
+                    self.curr_size_list[self.init_label_list.index(new_label)] += 1
+                    self.curr_size_list[self.init_label_list.index(old_label)] -= 1
 
             # after each birth-death cycle:
             # re-evaluate the payoffs and fitnesses of all Individuals in the population

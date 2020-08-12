@@ -306,7 +306,7 @@ class TestClass:
         label_list = ["A", "B"]
         BirthPayoffMatrix = np.array([[1, 1], [1, 1]])
         DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
-        TransitionMatrix = np.array([[0.9, 0.1], [0.0, 1.0]])
+        TransitionMatrix = np.array([[0.5, 0.5], [0.0, 1.0]])
         mp = moranpycess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
@@ -320,5 +320,5 @@ class TestClass:
 
         # run the simulation:
         random.seed(0)
-        simulation = mp.simulate(generations=100)
-        # assert mp.curr_size_list == [0, 10]
+        simulation = mp.simulate(generations=10)
+        assert mp.curr_size_list == [0, 10]
