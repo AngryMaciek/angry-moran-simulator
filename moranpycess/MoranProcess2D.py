@@ -370,40 +370,20 @@ class MoranProcess2D:
         max_value = sum(neighbours_scores)
         pick = random.uniform(0, max_value)
         current = 0
-        current += self.population[
-            (x - 1) % pop_nrows, (y - 1) % pop_ncols
-        ].DeathFitness
-        if current > pick:
-            return (x - 1, y - 1)
-        current += self.population[(x - 1) % pop_nrows, y % pop_ncols].DeathFitness
-        if current > pick:
-            return (x - 1, y)
-        current += self.population[
-            (x - 1) % pop_nrows, (y + 1) % pop_ncols
-        ].DeathFitness
-        if current > pick:
-            return (x - 1, y + 1)
-        current += self.population[x % pop_nrows, (y - 1) % pop_ncols].DeathFitness
-        if current > pick:
-            return (x, y - 1)
-        current += self.population[x % pop_nrows, (y + 1) % pop_ncols].DeathFitness
-        if current > pick:
-            return (x, y + 1)
-        current += self.population[
-            (x + 1) % pop_nrows, (y - 1) % pop_ncols
-        ].DeathFitness
-        if current > pick:
-            return (x + 1, y - 1)
-        current += self.population[(x + 1) % pop_nrows, y % pop_ncols].DeathFitness
-        if current > pick:
-            return (x + 1, y)
-        current += self.population[
-            (x + 1) % pop_nrows, (y + 1) % pop_ncols
-        ].DeathFitness
-        if current > pick:
-            return (x + 1, y + 1)
+        indices_list = [
+            (x - 1, y - 1),
+            (x - 1, y),
+            (x - 1, y + 1),
+            (x, y - 1),
+            (x, y + 1),
+            (x + 1, y - 1),
+            (x + 1, y),
+            (x + 1, y + 1),
+        ]
+        for score, indices in zip(neighbours_scores, indices_list):
+            current += score
+            if current > pick:
+                return indices
 
-
-# def simulate(self, generations):
 
 # all plots!
