@@ -353,9 +353,55 @@ class MoranProcess2D:
                 if current > pick:
                     return (x, y)
 
-    # def roulette_wheel_selection_Death(self):
-    #    """Select an individual according to the Death Fitness."""
-    #    return self.__roulette_wheel_selection(attr="DeathFitness")
+    def roulette_wheel_selection_Death(self, x, y):
+        """Fitness-proportional selection (from neighbours) according to the Death Fitness."""
+        pop_nrows = self.population.shape[0]
+        pop_ncols = self.population.shape[1]
+        neighbours_scores = [
+            self.population[(x - 1) % pop_nrows, (y - 1) % pop_ncols].DeathFitness,
+            self.population[(x - 1) % pop_nrows, y % pop_ncols].DeathFitness,
+            self.population[(x - 1) % pop_nrows, (y + 1) % pop_ncols].DeathFitness,
+            self.population[x % pop_nrows, (y - 1) % pop_ncols].DeathFitness,
+            self.population[x % pop_nrows, (y + 1) % pop_ncols].DeathFitness,
+            self.population[(x + 1) % pop_nrows, (y - 1) % pop_ncols].DeathFitness,
+            self.population[(x + 1) % pop_nrows, y % pop_ncols].DeathFitness,
+            self.population[(x + 1) % pop_nrows, (y + 1) % pop_ncols].DeathFitness,
+        ]
+        max_value = sum(neighbours_scores)
+        pick = random.uniform(0, max_value)
+        current = 0
+        current += self.population[
+            (x - 1) % pop_nrows, (y - 1) % pop_ncols
+        ].DeathFitness
+        if current > pick:
+            return (x - 1, y - 1)
+        current += self.population[(x - 1) % pop_nrows, y % pop_ncols].DeathFitness
+        if current > pick:
+            return (x - 1, y)
+        current += self.population[
+            (x - 1) % pop_nrows, (y + 1) % pop_ncols
+        ].DeathFitness
+        if current > pick:
+            return (x - 1, y + 1)
+        current += self.population[x % pop_nrows, (y - 1) % pop_ncols].DeathFitness
+        if current > pick:
+            return (x, y - 1)
+        current += self.population[x % pop_nrows, (y + 1) % pop_ncols].DeathFitness
+        if current > pick:
+            return (x, y + 1)
+        current += self.population[
+            (x + 1) % pop_nrows, (y - 1) % pop_ncols
+        ].DeathFitness
+        if current > pick:
+            return (x + 1, y - 1)
+        current += self.population[(x + 1) % pop_nrows, y % pop_ncols].DeathFitness
+        if current > pick:
+            return (x + 1, y)
+        current += self.population[
+            (x + 1) % pop_nrows, (y + 1) % pop_ncols
+        ].DeathFitness
+        if current > pick:
+            return (x + 1, y + 1)
 
 
 # def simulate(self, generations):
