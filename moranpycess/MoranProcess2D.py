@@ -108,6 +108,8 @@ class MoranProcess2D:
             for y in range(self.population.shape[1]):
                 self.UpdateBirthPayoff(x, y)
                 self.UpdateDeathPayoff(x, y)
+                self.UpdateBirthFitness(x, y)
+                self.UpdateDeathFitness(x, y)
 
         # calculate entropy of the types distribution
         self.Entropy = 0
@@ -324,3 +326,15 @@ class MoranProcess2D:
             )
         payoff = payoff / 8.0
         self.population[x, y].AvgDeathPayoff = payoff
+
+    def UpdateBirthFitness(self, x, y):
+        """Calculate Birth Fitness for a given Individual"""
+        self.population[x, y].BirthFitness = (
+            1 - self.w + self.w * self.population[x, y].AvgBirthPayoff
+        )
+
+    def UpdateDeathFitness(self, x, y):
+        """Calculate Death Fitness for a given Individual"""
+        self.population[x, y].DeathFitness = (
+            1 - self.w + self.w * self.population[x, y].AvgDeathPayoff
+        )
