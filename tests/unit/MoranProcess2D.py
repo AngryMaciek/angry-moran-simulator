@@ -244,3 +244,25 @@ class TestClass:
         )
         assert round(mp.population[0, 0].DeathFitness, 3) == 3.750
         assert round(mp.population[1, 1].DeathFitness, 3) == 2.594
+
+    def test_classMoranProcess2D_roulette_wheel_selection_Birth(self):
+        """Test the roulette wheel selection method for Birth."""
+        # initialize an instance of MoranProcess:
+        size_list = [3, 1]
+        label_list = ["A", "B"]
+        grid = np.array([["A", "A"], ["A", "B"]])
+        BirthPayoffMatrix = np.array([[1, 1], [100, 1]])
+        DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
+        mp = moranpycess.MoranProcess2D(
+            size_list=size_list,
+            label_list=label_list,
+            grid=grid,
+            BirthPayoffMatrix=BirthPayoffMatrix,
+            DeathPayoffMatrix=DeathPayoffMatrix,
+        )
+        # test the selection:
+        random.seed(0)
+        (x, y) = mp.roulette_wheel_selection_Birth()
+        ind = mp.population[x, y]
+        assert ind.ID == 3
+        assert ind.label == "B"

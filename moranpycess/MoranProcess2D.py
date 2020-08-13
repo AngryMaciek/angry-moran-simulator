@@ -133,14 +133,6 @@ class MoranProcess2D:
                 raise
         self.TransitionMatrix = TransitionMatrix
 
-    def UpdateEntropy(self):
-        """Calculate entropy of Individual types for the population."""
-        self.Entropy = 0
-        for type_size in self.curr_size_list:
-            fraction = float(type_size) / self.population.size
-            if fraction != 0.0:
-                self.Entropy -= fraction * np.log2(fraction)
-
     @property
     def population(self):
         """Python getter."""
@@ -338,3 +330,34 @@ class MoranProcess2D:
         self.population[x, y].DeathFitness = (
             1 - self.w + self.w * self.population[x, y].AvgDeathPayoff
         )
+
+    def UpdateEntropy(self):
+        """Calculate entropy of Individual types for the population."""
+        self.Entropy = 0
+        for type_size in self.curr_size_list:
+            fraction = float(type_size) / self.population.size
+            if fraction != 0.0:
+                self.Entropy -= fraction * np.log2(fraction)
+
+    def roulette_wheel_selection_Birth(self):
+        """Fitness-proportional selection according to the Birth Fitness."""
+        max_value = 0
+        for x in range(self.init_grid.shape[0]):
+            for y in range(self.init_grid.shape[1]):
+                max_value += self.population[x, y].BirthFitness
+        pick = random.uniform(0, max_value)
+        current = 0
+        for x in range(self.init_grid.shape[0]):
+            for y in range(self.init_grid.shape[1]):
+                current += self.population[x, y].BirthFitness
+                if current > pick:
+                    return (x, y)
+
+    # def roulette_wheel_selection_Death(self):
+    #    """Select an individual according to the Death Fitness."""
+    #    return self.__roulette_wheel_selection(attr="DeathFitness")
+
+
+# def simulate(self, generations):
+
+# all plots!
