@@ -20,3 +20,4 @@ from .MoranProcess import PlotSize
 from .MoranProcess import PlotAvgBirthPayoff, PlotAvgDeathPayoff
 from .MoranProcess import PlotBirthFitness, PlotDeathFitness
 from .MoranProcess import PlotEntropy
+from .MoranProcess2D import MoranProcess2D
