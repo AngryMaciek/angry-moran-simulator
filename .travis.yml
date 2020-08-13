@@ -17,17 +17,15 @@ before_script:
   - conda env create -f env/dev.yml
 
 script:
-  # Activate the dev env
+  # Activate the main env and test package installation
+  - conda activate moranpycess && echo $CONDA_DEFAULT_ENV
+  - pip install .
+  # Activate the dev env and test package installation
   - conda activate moranpycess-dev && echo $CONDA_DEFAULT_ENV
   - pip install .
   # Run unit tests and measure code coverage
   - coverage run -m pytest tests/unit/Individual.py tests/unit/MoranProcess.py tests/unit/MoranProcess2D.py
-  #- coverage run -m pytest tests/unit/Process.py
   - coverage report -m
-  # Activate the main env
-  - conda activate moranpycess && echo $CONDA_DEFAULT_ENV
-  - pip install .
-  # usecase test here
 
 after_success:
   - conda activate moranpycess-dev && echo $CONDA_DEFAULT_ENV
