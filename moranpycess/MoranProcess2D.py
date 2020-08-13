@@ -132,3 +132,113 @@ class MoranProcess2D:
             fraction = float(type_size) / self.population.size
             if fraction != 0.0:
                 self.Entropy -= fraction * np.log2(fraction)
+
+    @property
+    def population(self):
+        """Python getter."""
+        return self._population
+
+    @population.setter
+    def population(self, population):
+        """Python setter."""
+        self._population = population
+
+    @property
+    def init_size_list(self):
+        """Python getter."""
+        return self._init_size_list
+
+    @init_size_list.setter
+    def init_size_list(self, init_size_list):
+        """Python setter."""
+        self._init_size_list = init_size_list
+
+    @property
+    def curr_size_list(self):
+        """Python getter."""
+        return self._curr_size_list
+
+    @curr_size_list.setter
+    def curr_size_list(self, curr_size_list):
+        """Python setter."""
+        self._curr_size_list = curr_size_list
+
+    @property
+    def init_label_list(self):
+        """Python getter."""
+        return self._init_label_list
+
+    @init_label_list.setter
+    def init_label_list(self, init_label_list):
+        """Python setter."""
+        self._init_label_list = init_label_list
+
+    @property
+    def init_grid(self):
+        """Python getter."""
+        return self._init_grid
+
+    @init_grid.setter
+    def init_grid(self, init_grid):
+        """Python setter."""
+        self._init_grid = init_grid
+
+    @property
+    def curr_grid(self):
+        """Python getter."""
+        return self._curr_grid
+
+    @curr_grid.setter
+    def curr_grid(self, curr_grid):
+        """Python setter."""
+        self._curr_grid = curr_grid
+
+    @property
+    def BirthPayoffMatrix(self):
+        """Python getter."""
+        return self._BirthPayoffMatrix
+
+    @BirthPayoffMatrix.setter
+    def BirthPayoffMatrix(self, BirthPayoffMatrix):
+        """Python setter."""
+        self._BirthPayoffMatrix = BirthPayoffMatrix
+
+    @property
+    def DeathPayoffMatrix(self):
+        """Python getter."""
+        return self._DeathPayoffMatrix
+
+    @DeathPayoffMatrix.setter
+    def DeathPayoffMatrix(self, DeathPayoffMatrix):
+        """Python setter."""
+        self._DeathPayoffMatrix = DeathPayoffMatrix
+
+    @property
+    def w(self):
+        """Python getter."""
+        return self._w
+
+    @w.setter
+    def w(self, w):
+        """Python setter."""
+        self._w = w
+
+    @property
+    def Entropy(self):
+        """Python getter."""
+        return self._Entropy
+
+    @Entropy.setter
+    def Entropy(self, Entropy):
+        """Python setter."""
+        self._Entropy = Entropy
+
+    @property
+    def TransitionMatrix(self):
+        """Python getter."""
+        return self._TransitionMatrix
+
+    @TransitionMatrix.setter
+    def TransitionMatrix(self, TransitionMatrix):
+        """Python setter."""
+        self._TransitionMatrix = TransitionMatrix
