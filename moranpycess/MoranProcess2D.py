@@ -371,19 +371,98 @@ class MoranProcess2D:
         pick = random.uniform(0, max_value)
         current = 0
         indices_list = [
-            (x - 1, y - 1),
-            (x - 1, y),
-            (x - 1, y + 1),
-            (x, y - 1),
-            (x, y + 1),
-            (x + 1, y - 1),
-            (x + 1, y),
-            (x + 1, y + 1),
+            ((x - 1) % pop_nrows, (y - 1) % pop_ncols),
+            ((x - 1) % pop_nrows, y),
+            ((x - 1) % pop_nrows, (y + 1) % pop_ncols),
+            (x, (y - 1) % pop_ncols),
+            (x, (y + 1) % pop_ncols),
+            ((x + 1) % pop_nrows, (y - 1) % pop_ncols),
+            ((x + 1) % pop_nrows, y),
+            ((x + 1) % pop_nrows, (y + 1) % pop_ncols),
         ]
         for score, indices in zip(neighbours_scores, indices_list):
             current += score
             if current > pick:
                 return indices
 
+    def simulate(self, generations):
+        """Simulate 2D population evolution: Birth-Death process with fitness-based selection."""
 
-# all plots!
+        pop_nrows = self.population.shape[0]
+        pop_ncols = self.population.shape[1]
+
+        # prepare a dataframe to store the logs
+        colnames = [l + "__size" for l in self.init_label_list] + ["Entropy"]
+        log_df = pd.DataFrame(index=range(generations + 1), columns=colnames)
+        log_df.index.name = "generation"
+
+        # update the dataframe with features of the initial population
+        for l in range(len(self.init_label_list)):
+            label = self.init_label_list[l]
+            log_df.at[0, label + "__size"] = self.init_size_list[l]
+            log_df.at[0, "Entropy"] = self.Entropy
+
+        for g in range(generations):
+
+            # select one individual to multiply
+            (x, y) = self.roulette_wheel_selection_Birth()
+            selectedBirth = self.population[x, y]
+            # create a copy
+            new_individual = copy.deepcopy(selectedBirth)
+            # select one individual to die
+            (x, y) = self.roulette_wheel_selection_Death(x, y)
+            selectedDeath = copy.deepcopy(self.population[x, y])
+            # swap the individuals
+            self.population[x, y] = new_individual
+            # update the list with population info
+            self.curr_size_list[self.init_label_list.index(selectedBirth.label)] += 1
+            self.curr_size_list[self.init_label_list.index(selectedDeath.label)] -= 1
+
+            # perform transitions (if TransitionMatrix was specified)
+            # if self.TransitionMatrix is not None:
+            #    for ind in self.population:
+            #        row_index = self.init_label_list.index(ind.label)
+            #        new_label = np.random.choice(
+            #            a=self.init_label_list,
+            #            size=1,
+            #            p=self.TransitionMatrix[row_index,],
+            #        )[0]
+            #        old_label = ind.label
+            #        ind.label = new_label
+            #        # update the list with population info
+            #        self.curr_size_list[self.init_label_list.index(new_label)] += 1
+            #        self.curr_size_list[self.init_label_list.index(old_label)] -= 1
+
+            # after each birth-death cycle:
+            # re-evaluate the payoffs and fitnesses of the affected Individuals in the population
+            indices_list = [
+                ((x - 1) % pop_nrows, (y - 1) % pop_ncols),
+                ((x - 1) % pop_nrows, y),
+                ((x - 1) % pop_nrows, (y + 1) % pop_ncols),
+                (x, (y - 1) % pop_ncols),
+                (x, (y + 1) % pop_ncols),
+                ((x + 1) % pop_nrows, (y - 1) % pop_ncols),
+                ((x + 1) % pop_nrows, y),
+                ((x + 1) % pop_nrows, (y + 1) % pop_ncols),
+            ]
+            for indices in indices_list:
+                self.UpdateBirthPayoff(indices[0], indices[1])
+                self.UpdateDeathPayoff(indices[0], indices[1])
+                self.UpdateBirthFitness(indices[0], indices[1])
+                self.UpdateDeathFitness(indices[0], indices[1])
+
+            # update the grid
+            for x in range(self.curr_grid.shape[0]):
+                for y in range(self.curr_grid.shape[1]):
+                    self.curr_grid[x, y] = self.population[x, y].label
+
+            # re-evaluate the population Entropy
+            self.UpdateEntropy()
+
+            # update the log dataframe
+            for l in range(len(self.init_label_list)):
+                label = self.init_label_list[l]
+                log_df.at[g + 1, label + "__size"] = self.curr_size_list[l]
+                log_df.at[g + 1, "Entropy"] = self.Entropy
+
+        return log_df

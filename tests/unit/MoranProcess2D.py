@@ -287,3 +287,37 @@ class TestClass:
         ind = mp.population[x, y]
         assert ind.ID == 0
         assert ind.label == "A"
+
+    def test_classMoranProcess2D_simulate(self):
+        """Test the simulation process."""
+        # initialize an instance of MoranProcess2D:
+        size_list = [96, 4]
+        label_list = ["A", "B"]
+        grid = np.array(
+            [
+                ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "B", "B", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "B", "B", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
+                ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A"],
+            ]
+        )
+        BirthPayoffMatrix = np.array([[1, 1], [100, 1]])
+        DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
+        mp = moranpycess.MoranProcess2D(
+            size_list=size_list,
+            label_list=label_list,
+            grid=grid,
+            BirthPayoffMatrix=BirthPayoffMatrix,
+            DeathPayoffMatrix=DeathPayoffMatrix,
+        )
+        # test the simulation:
+        random.seed(0)
+        simulation = mp.simulate(generations=100)
+        assert mp.curr_size_list == [46, 54]
+        assert simulation.shape == (101, 3)
