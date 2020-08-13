@@ -181,3 +181,24 @@ class TestClass:
         )
         assert round(mp.population[0, 0].AvgBirthPayoff, 3) == 6.500
         assert round(mp.population[1, 1].AvgBirthPayoff, 3) == 4.189
+
+    def test_classMoranProcess2DUpdateDeathPayoff(self):
+        """Test the UpdateDeathPayoff function."""
+        # initialize an instance of MoranProcess:
+        size_list = [5, 6, 1]
+        label_list = ["A", "B", "C"]
+        grid = np.array(
+            [["A", "B", "B", "B"], ["A", "C", "A", "B"], ["A", "B", "A", "B"],]
+        )
+
+        BirthPayoffMatrix = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
+        DeathPayoffMatrix = np.array([[1, 5, 25], [0.1, 7, 0.02], [0.99, 9.52, 0.111]])
+        mp = moranpycess.MoranProcess2D(
+            size_list=size_list,
+            label_list=label_list,
+            grid=grid,
+            BirthPayoffMatrix=BirthPayoffMatrix,
+            DeathPayoffMatrix=DeathPayoffMatrix,
+        )
+        assert round(mp.population[0, 0].AvgDeathPayoff, 3) == 6.500
+        assert round(mp.population[1, 1].AvgDeathPayoff, 3) == 4.189

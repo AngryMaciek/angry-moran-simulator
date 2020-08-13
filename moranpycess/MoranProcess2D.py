@@ -107,6 +107,7 @@ class MoranProcess2D:
         for x in range(self.population.shape[0]):
             for y in range(self.population.shape[1]):
                 self.UpdateBirthPayoff(x, y)
+                self.UpdateDeathPayoff(x, y)
 
         # calculate entropy of the types distribution
         self.Entropy = 0
@@ -285,3 +286,41 @@ class MoranProcess2D:
             )
         payoff = payoff / 8.0
         self.population[x, y].AvgBirthPayoff = payoff
+
+    def UpdateDeathPayoff(self, x, y):
+        """Calculate Death Payoff for a given Individual"""
+
+        this_label = self.population[x, y].label
+        this_label_index = self._init_label_list.index(this_label)
+
+        pop_nrows = self.population.shape[0]
+        pop_ncols = self.population.shape[1]
+
+        # Select direct neighbours in the grid with periodical boundary conditions:
+        # upper left, upper middle, upper right
+        # middle left, middle right
+        # lower left, lower middle, lower right
+        neighbours_labels = [
+            self.population[(x - 1) % pop_nrows, (y - 1) % pop_ncols].label,
+            self.population[(x - 1) % pop_nrows, y % pop_ncols].label,
+            self.population[(x - 1) % pop_nrows, (y + 1) % pop_ncols].label,
+            self.population[x % pop_nrows, (y - 1) % pop_ncols].label,
+            self.population[x % pop_nrows, (y + 1) % pop_ncols].label,
+            self.population[(x + 1) % pop_nrows, (y - 1) % pop_ncols].label,
+            self.population[(x + 1) % pop_nrows, y % pop_ncols].label,
+            self.population[(x + 1) % pop_nrows, (y + 1) % pop_ncols].label,
+        ]
+
+        # calculate the payoff based on the DeathPayoffMatrix
+        nrows = np.shape(self.DeathPayoffMatrix)[0]
+        ncols = np.shape(self.DeathPayoffMatrix)[1]
+
+        payoff = 0
+        for neighbour_label in set(neighbours_labels):
+            c = self._init_label_list.index(neighbour_label)
+            payoff += (
+                neighbours_labels.count(neighbour_label)
+                * self.DeathPayoffMatrix[this_label_index, c]
+            )
+        payoff = payoff / 8.0
+        self.population[x, y].AvgDeathPayoff = payoff
