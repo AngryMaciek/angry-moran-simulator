@@ -90,7 +90,7 @@ class MoranProcess2D:
             e.args += ("Invalid Population Grid",)
             raise
 
-        # initialize a list of Individuals
+        # initialize a 2D array of Individuals
         ID_counter = 0
         self.population = np.empty(
             (self.init_grid.shape[0], self.init_grid.shape[1]),
@@ -102,6 +102,11 @@ class MoranProcess2D:
                     ID=ID_counter, ind_label=self.init_grid[x, y]
                 )
                 ID_counter += 1
+
+        # iterate over the whole 2D population and update payoffs
+        for x in range(self.population.shape[0]):
+            for y in range(self.population.shape[1]):
+                self.UpdateBirthPayoff(x, y)
 
         # calculate entropy of the types distribution
         self.Entropy = 0
@@ -242,3 +247,41 @@ class MoranProcess2D:
     def TransitionMatrix(self, TransitionMatrix):
         """Python setter."""
         self._TransitionMatrix = TransitionMatrix
+
+    def UpdateBirthPayoff(self, x, y):
+        """Calculate Birth Payoff for a given Individual"""
+
+        this_label = self.population[x, y].label
+        this_label_index = self._init_label_list.index(this_label)
+
+        pop_nrows = self.population.shape[0]
+        pop_ncols = self.population.shape[1]
+
+        # Select direct neighbours in the grid with periodical boundary conditions:
+        # upper left, upper middle, upper right
+        # middle left, middle right
+        # lower left, lower middle, lower right
+        neighbours_labels = [
+            self.population[(x - 1) % pop_nrows, (y - 1) % pop_ncols].label,
+            self.population[(x - 1) % pop_nrows, y % pop_ncols].label,
+            self.population[(x - 1) % pop_nrows, (y + 1) % pop_ncols].label,
+            self.population[x % pop_nrows, (y - 1) % pop_ncols].label,
+            self.population[x % pop_nrows, (y + 1) % pop_ncols].label,
+            self.population[(x + 1) % pop_nrows, (y - 1) % pop_ncols].label,
+            self.population[(x + 1) % pop_nrows, y % pop_ncols].label,
+            self.population[(x + 1) % pop_nrows, (y + 1) % pop_ncols].label,
+        ]
+
+        # calculate the payoff based on the BirthPayoffMatrix
+        nrows = np.shape(self.BirthPayoffMatrix)[0]
+        ncols = np.shape(self.BirthPayoffMatrix)[1]
+
+        payoff = 0
+        for neighbour_label in set(neighbours_labels):
+            c = self._init_label_list.index(neighbour_label)
+            payoff += (
+                neighbours_labels.count(neighbour_label)
+                * self.BirthPayoffMatrix[this_label_index, c]
+            )
+        payoff = payoff / 8.0
+        self.population[x, y].AvgBirthPayoff = payoff
