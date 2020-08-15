@@ -475,9 +475,11 @@ def PlotSize2D(mp, df, path):
     ax.tick_params(width=1)
     for axis in ["top", "bottom", "left", "right"]:
         ax.spines[axis].set_linewidth(1)
-    for l in mp.init_label_list:
-        column = l + "__size"
-        df[column].plot(linewidth=1.5, ax=ax, label=l)
+    cmap = plt.get_cmap("coolwarm")
+    columns = [l + "__size" for l in mp.init_label_list]
+    df_copy = df[columns].copy()
+    df_copy.columns = mp.init_label_list
+    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
     population_size = mp.population.size
     ax.set_ylim([0, population_size])
     plt.xlabel("Generation", size=14)

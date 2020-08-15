@@ -433,9 +433,11 @@ def PlotSize(mp, df, path):
     ax.tick_params(width=1)
     for axis in ["top", "bottom", "left", "right"]:
         ax.spines[axis].set_linewidth(1)
-    for l in mp.init_label_list:
-        column = l + "__size"
-        df[column].plot(linewidth=1.5, ax=ax, label=l)
+    cmap = plt.get_cmap("coolwarm")
+    columns = [l + "__size" for l in mp.init_label_list]
+    df_copy = df[columns].copy()
+    df_copy.columns = mp.init_label_list
+    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
     population_size = len(mp.population)
     ax.set_ylim([0, population_size])
     plt.xlabel("Generation", size=14)
@@ -452,9 +454,11 @@ def PlotAvgBirthPayoff(mp, df, path):
     ax.tick_params(width=1)
     for axis in ["top", "bottom", "left", "right"]:
         ax.spines[axis].set_linewidth(1)
-    for l in mp.init_label_list:
-        column = l + "__AvgBirthPayoff"
-        df[column].plot(linewidth=1.5, ax=ax, label=l)
+    cmap = plt.get_cmap("coolwarm")
+    columns = [l + "__AvgBirthPayoff" for l in mp.init_label_list]
+    df_copy = df[columns].copy()
+    df_copy.columns = mp.init_label_list
+    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
     plt.xlabel("Generation", size=14)
     plt.ylabel("Average Birth Payoff", size=14)
     ax.tick_params(axis="both", which="major", labelsize=12)
@@ -469,9 +473,11 @@ def PlotAvgDeathPayoff(mp, df, path):
     ax.tick_params(width=1)
     for axis in ["top", "bottom", "left", "right"]:
         ax.spines[axis].set_linewidth(1)
-    for l in mp.init_label_list:
-        column = l + "__AvgDeathPayoff"
-        df[column].plot(linewidth=1.5, ax=ax, label=l)
+    cmap = plt.get_cmap("coolwarm")
+    columns = [l + "__AvgDeathPayoff" for l in mp.init_label_list]
+    df_copy = df[columns].copy()
+    df_copy.columns = mp.init_label_list
+    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
     plt.xlabel("Generation", size=14)
     plt.ylabel("Average Death Payoff", size=14)
     ax.tick_params(axis="both", which="major", labelsize=12)
@@ -486,9 +492,11 @@ def PlotBirthFitness(mp, df, path):
     ax.tick_params(width=1)
     for axis in ["top", "bottom", "left", "right"]:
         ax.spines[axis].set_linewidth(1)
-    for l in mp.init_label_list:
-        column = l + "__BirthFitness"
-        df[column].plot(linewidth=1.5, ax=ax, label=l)
+    cmap = plt.get_cmap("coolwarm")
+    columns = [l + "__BirthFitness" for l in mp.init_label_list]
+    df_copy = df[columns].copy()
+    df_copy.columns = mp.init_label_list
+    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
     plt.xlabel("Generation", size=14)
     plt.ylabel("Birth Fitness", size=14)
     ax.tick_params(axis="both", which="major", labelsize=12)
@@ -503,9 +511,11 @@ def PlotDeathFitness(mp, df, path):
     ax.tick_params(width=1)
     for axis in ["top", "bottom", "left", "right"]:
         ax.spines[axis].set_linewidth(1)
-    for l in mp.init_label_list:
-        column = l + "__DeathFitness"
-        df[column].plot(linewidth=1.5, ax=ax, label=l)
+    cmap = plt.get_cmap("coolwarm")
+    columns = [l + "__DeathFitness" for l in mp.init_label_list]
+    df_copy = df[columns].copy()
+    df_copy.columns = mp.init_label_list
+    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
     plt.xlabel("Generation", size=14)
     plt.ylabel("Death Fitness", size=14)
     ax.tick_params(axis="both", which="major", labelsize=12)
