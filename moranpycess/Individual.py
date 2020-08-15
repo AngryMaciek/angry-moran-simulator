@@ -13,14 +13,17 @@
 ##############################################################################
 """
 
+# imports
+import copy
+
 
 class Individual:
     """Abstract representation of an individual in the population."""
 
     def __init__(self, ID, ind_label):
         """Basic initializer."""
-        self.ID = ID
-        self.label = ind_label
+        self.ID = copy.deepcopy(ID)
+        self.label = copy.deepcopy(ind_label)
         self.AvgBirthPayoff = None
         self.AvgDeathPayoff = None
         self.BirthFitness = None

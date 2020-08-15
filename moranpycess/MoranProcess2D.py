@@ -44,11 +44,11 @@ class MoranProcess2D:
             raise
 
         # keep record of the argument lists
-        self.init_size_list = size_list
-        self.curr_size_list = size_list
-        self.init_label_list = label_list
-        self.init_grid = grid
-        self.curr_grid = grid
+        self.init_size_list = copy.deepcopy(size_list)
+        self.curr_size_list = copy.deepcopy(size_list)
+        self.init_label_list = copy.deepcopy(label_list)
+        self.init_grid = copy.deepcopy(grid)
+        self.curr_grid = copy.deepcopy(grid)
 
         # check if the argument matrices shape match
         try:
@@ -73,8 +73,8 @@ class MoranProcess2D:
             raise
 
         # keep record of the argument matrices
-        self.BirthPayoffMatrix = BirthPayoffMatrix
-        self.DeathPayoffMatrix = DeathPayoffMatrix
+        self.BirthPayoffMatrix = BirthPayoffMatrix.copy()
+        self.DeathPayoffMatrix = DeathPayoffMatrix.copy()
 
         # introduce a payoff weight for the fitness calculation
         self.w = 0.5
@@ -131,7 +131,7 @@ class MoranProcess2D:
             except AssertionError as e:
                 e.args += ("Invalid Transition Matrix",)
                 raise
-        self.TransitionMatrix = TransitionMatrix
+        self.TransitionMatrix = copy.deepcopy(TransitionMatrix)
 
     @property
     def population(self):
