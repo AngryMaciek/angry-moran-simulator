@@ -319,7 +319,7 @@ class TestClass:
         # test the simulation:
         random.seed(0)
         simulation = mp.simulate(generations=100)
-        assert mp.curr_size_list == [46, 54]
+        assert mp.curr_size_list == [42, 58]
         assert simulation.shape == (101, 3)
 
     def test_plots2D(self):

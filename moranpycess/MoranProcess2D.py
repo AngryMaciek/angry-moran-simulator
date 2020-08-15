@@ -421,9 +421,9 @@ class MoranProcess2D:
 
             # perform transitions (if TransitionMatrix was specified)
             if self.TransitionMatrix is not None:
-                for x in range(pop_nrows):
-                    for y in range(pop_ncols):
-                        ind = self.population[x, y]
+                for x_ in range(pop_nrows):
+                    for y_ in range(pop_ncols):
+                        ind = self.population[x_, y_]
                         row_index = self.init_label_list.index(ind.label)
                         new_label = np.random.choice(
                             a=self.init_label_list,
@@ -443,6 +443,7 @@ class MoranProcess2D:
                 ((x - 1) % pop_nrows, y),
                 ((x - 1) % pop_nrows, (y + 1) % pop_ncols),
                 (x, (y - 1) % pop_ncols),
+                (x, y),
                 (x, (y + 1) % pop_ncols),
                 ((x + 1) % pop_nrows, (y - 1) % pop_ncols),
                 ((x + 1) % pop_nrows, y),
