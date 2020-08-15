@@ -83,8 +83,9 @@ class MoranProcess2D:
         try:
             unique, counts = np.unique(grid, return_counts=True)
             grid_dict = dict(zip(unique, counts))
-            assert sorted(unique) == sorted(self.init_label_list)
-            for i in range(len(self.init_label_list)):
+            for l in unique:
+                assert l in self.init_label_list
+            for i in range(len(unique)):
                 assert self.init_size_list[i] == grid_dict[self.init_label_list[i]]
         except AssertionError as e:
             e.args += ("Invalid Population Grid",)

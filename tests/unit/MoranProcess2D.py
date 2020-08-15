@@ -362,3 +362,30 @@ class TestClass:
         moranpycess.PlotEntropy2D(mp, simulation, "./2D_Entropy.png")
         moranpycess.PlotPopulationSnapshot2D(mp, "./2D_snapshot.png")
         assert True  # mark that no error was raised before
+
+    def test_MoranProcess2DWithTransitionMatrix(self):
+        """Test the 2D simulation with a Transition Matrix."""
+
+        # initialize an instance of MoranProcess2D:
+        size_list = [4, 0]
+        label_list = ["A", "B"]
+        grid = np.array([["A", "A"], ["A", "A"]])
+        BirthPayoffMatrix = np.array([[1, 1], [1, 1]])
+        DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
+        TransitionMatrix = np.array([[0.0, 1.0], [0.0, 1.0]])
+        mp = moranpycess.MoranProcess2D(
+            size_list=size_list,
+            label_list=label_list,
+            grid=grid,
+            BirthPayoffMatrix=BirthPayoffMatrix,
+            DeathPayoffMatrix=DeathPayoffMatrix,
+            TransitionMatrix=TransitionMatrix,
+        )
+
+        comparison = mp.TransitionMatrix == TransitionMatrix
+        assert comparison.all()
+
+        # run the simulation:
+        random.seed(0)
+        simulation = mp.simulate(generations=1)
+        assert mp.curr_size_list == [0, 4]
