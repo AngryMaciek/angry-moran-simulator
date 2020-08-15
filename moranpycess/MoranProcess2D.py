@@ -437,28 +437,41 @@ class MoranProcess2D:
                         self.curr_size_list[self.init_label_list.index(old_label)] -= 1
 
             # after each birth-death cycle:
-            # re-evaluate the payoffs and fitnesses of the affected Individuals in the population
-            indices_list = [
-                ((x - 1) % pop_nrows, (y - 1) % pop_ncols),
-                ((x - 1) % pop_nrows, y),
-                ((x - 1) % pop_nrows, (y + 1) % pop_ncols),
-                (x, (y - 1) % pop_ncols),
-                (x, y),
-                (x, (y + 1) % pop_ncols),
-                ((x + 1) % pop_nrows, (y - 1) % pop_ncols),
-                ((x + 1) % pop_nrows, y),
-                ((x + 1) % pop_nrows, (y + 1) % pop_ncols),
-            ]
-            for indices in indices_list:
-                self.UpdateBirthPayoff(indices[0], indices[1])
-                self.UpdateDeathPayoff(indices[0], indices[1])
-                self.UpdateBirthFitness(indices[0], indices[1])
-                self.UpdateDeathFitness(indices[0], indices[1])
+
+            # update scores for all individuals (if TransitionMatrix was specified)
+            if self.TransitionMatrix is not None:
+                for x_ in range(self.population.shape[0]):
+                    for y_ in range(self.population.shape[1]):
+                        self.UpdateBirthPayoff(x_, y_)
+                        self.UpdateDeathPayoff(x_, y_)
+                        self.UpdateBirthFitness(x_, y_)
+                        self.UpdateDeathFitness(x_, y_)
+            # in other case:
+            # re-evaluate the payoffs and fitnesses of only
+            # the affected neigbours Individuals in the population
+            else:
+                # re-evaluate the payoffs and fitnesses of the affected Individuals in the population
+                indices_list = [
+                    ((x - 1) % pop_nrows, (y - 1) % pop_ncols),
+                    ((x - 1) % pop_nrows, y),
+                    ((x - 1) % pop_nrows, (y + 1) % pop_ncols),
+                    (x, (y - 1) % pop_ncols),
+                    (x, y),
+                    (x, (y + 1) % pop_ncols),
+                    ((x + 1) % pop_nrows, (y - 1) % pop_ncols),
+                    ((x + 1) % pop_nrows, y),
+                    ((x + 1) % pop_nrows, (y + 1) % pop_ncols),
+                ]
+                for indices in indices_list:
+                    self.UpdateBirthPayoff(indices[0], indices[1])
+                    self.UpdateDeathPayoff(indices[0], indices[1])
+                    self.UpdateBirthFitness(indices[0], indices[1])
+                    self.UpdateDeathFitness(indices[0], indices[1])
 
             # update the grid
-            for x in range(self.curr_grid.shape[0]):
-                for y in range(self.curr_grid.shape[1]):
-                    self.curr_grid[x, y] = self.population[x, y].label
+            for x_ in range(self.curr_grid.shape[0]):
+                for y_ in range(self.curr_grid.shape[1]):
+                    self.curr_grid[x_, y_] = self.population[x_, y_].label
 
             # re-evaluate the population Entropy
             self.UpdateEntropy()
