@@ -634,35 +634,3 @@ def PlotEntropy3D(mp, df, path):
     ax.tick_params(axis="both", which="major", labelsize=12)
     ax.legend(loc=4, fontsize=20)
     plt.savefig(fname=path, dpi=300)
-
-
-def PlotPopulationSnapshot3D(mp, path):
-    """Plot the whole populations entropy after a simulation of a given 3D Moran Process."""
-    plt.figure(figsize=(10, 10))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    plot_grid = mp.curr_grid.copy()
-    ticks_labels = []
-    # for label_index in range(len(mp.init_label_list)):
-    #    plot_grid[plot_grid == mp.init_label_list[label_index]] = label_index
-    #    ticks_labels.append(mp.init_label_list[label_index])
-    # plot_grid = plot_grid.astype(float)
-    # cmap = plt.get_cmap(
-    #    "coolwarm", np.max(plot_grid) - np.min(plot_grid) + 1
-    # )  # get discrete colormap
-    # mat = plt.matshow(
-    #    plot_grid, cmap=cmap, vmin=np.min(plot_grid) - 0.5, vmax=np.max(plot_grid) + 0.5
-    # )  # set limits .5 outside true range
-    # cax = plt.colorbar(
-    #    mat, ticks=np.arange(np.min(plot_grid), np.max(plot_grid) + 1)
-    # )  # tell the colorbar to tick at integers
-    # cax.set_ticklabels(ticks_labels)
-    # plt.ylabel("")
-    # plt.yticks([])
-    # plt.xlabel("")
-    # plt.xticks([])
-    plt.savefig(fname=path, dpi=300)
-    # https://stackoverflow.com/questions/48052969/python-2-3d-scatter-plot-with-surface-plot-from-that-data
-    # https://www.geeksforgeeks.org/3d-scatter-plotting-in-python-using-matplotlib/
