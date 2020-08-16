@@ -24,7 +24,7 @@ script:
   - conda activate moranpycess-dev && echo $CONDA_DEFAULT_ENV
   - pip install .
   # Run unit tests and measure code coverage
-  - coverage run -m pytest tests/unit/Individual.py tests/unit/MoranProcess.py tests/unit/MoranProcess2D.py
+  - coverage run -m pytest tests/unit/Individual.py tests/unit/MoranProcess.py tests/unit/MoranProcess2D.py tests/unit/MoranProcess3D.py
   - coverage report -m
 
 after_success:
