@@ -38,16 +38,20 @@ The following [git] repository presents a general game-theoretical framework to 
 
 ### Moran Model based on 2D neighbourhood
 
+Average payoff for an individual is calcualted based on interactions with 8 direct neighbours of a given individual (2D grid). Periodic boundary conditions are applied.
+
 ![figure.png](images/supplementary_figure1a.png)
 > Population snapshots during an evolution according to a Prisoners Dilemma model. Starting from a small subpopulation of Defectors (A, t=0) we observe gradual growth (B, t=50000), (C, t=200000) until the whole population is almost completely overtaken (D, t=500000).
 
 ![figure.png](images/supplementary_figure1b.png)
-> CAPTION
+> Growth curve for the population evolution according a Prisoners Dilemma model.
 
 ### Moran Model based on 3D neighbourhood
 
+Average payoff for an individual is calcualted based on interactions with 26 direct neighbours of a given individual (3D grid). Periodic boundary conditions are applied.
+
 ![figure.png](images/supplementary_figure2.png)
-> CAPTION
+> Growth curve for the population evolution according a Prisoners Dilemma model.
 
 ## Installation instructions
 
