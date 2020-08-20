@@ -113,9 +113,6 @@ interactions with the community.
 
 For questions or suggestions regarding the code, please use the
 [issue tracker](https://github.com/AngryMaciek/angry-moran-simulator/issues).  
-For any other inquiries, please contact us by emails:
-* 1
-* 2
 
 ## License
 
