@@ -39,7 +39,7 @@ The following [git] repository presents a general game-theoretical framework to 
 ### Moran Model based on 2D neighbourhood
 
 ![figure.png](images/supplementary_figure1a.png)
-> CAPTION
+> Population snapshots during an evolution according to a Prisoners Dilemma model. Starting from a small subpopulation of Defectors (A, t=0) we observe gradual growth (B, t=50000), (C, t=200000) until the whole population is almost completely overtaken (D, t=500000).
 
 ![figure.png](images/supplementary_figure1b.png)
 > CAPTION
