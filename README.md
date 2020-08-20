@@ -14,6 +14,7 @@
   - [Example results](#example-results)
     - [General Moran Model](#general-moran-model)
     - [Moran Model based on 2D neighbourhood](#moran-model-based-on-2d-neighbourhood)
+    - [Moran Model based on 3D neighbourhood](#moran-model-based-on-3d-neighbourhood)
   - [Installation instructions](#installation-instructions)
     - [Download and install Miniconda](#download-and-install-miniconda)
     - [Clone the repository](#clone-the-repository)
@@ -41,6 +42,11 @@ The following [git] repository presents a general game-theoretical framework to 
 > CAPTION
 
 ![figure.png](images/supplementary_figure1b.png)
+> CAPTION
+
+### Moran Model based on 3D neighbourhood
+
+![figure.png](images/supplementary_figure2.png)
 > CAPTION
 
 ## Installation instructions
