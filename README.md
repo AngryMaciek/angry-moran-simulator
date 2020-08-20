@@ -34,7 +34,7 @@ The following [git] repository presents a general game-theoretical framework to 
 ### General Moran Model
 
 ![figure.png](images/figure.png)
-> CAPTION
+> Simulations of population evolution according to four basic models of game theory: (A) Stag Hunt, (B) Chicken, (C) Prisoners Dilemma, (D) Rock-Paper-Scissors
 
 ### Moran Model based on 2D neighbourhood
 
