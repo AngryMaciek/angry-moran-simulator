@@ -61,6 +61,7 @@ Information which are stored in the dataframe's columns include:
 * per-sub-population Average Death Payoff for a single individual of a given sub-population (averaged over interactions with all other individuals of the whole population)
 * per-sub-population Birth Fitness of an individual from a given sub-popualtion
 * per-sub-population Death Fitness of an individual from a given sub-popualtion
+* Entropy of the distribution of Strategies in the whole population
 
 Additionally to the *MoranProcess* class the user is equipped with several plotting functions to visualise results of the simulation:
 * `PlotSize`
@@ -134,4 +135,25 @@ The following code demonstrated the simulation:
 import pandas as pd
 
 df = mp.simulate(1000)
+```
+
+Information which are stored in the dataframe's columns include:
+* per-sub-population sub-population's size
+* Entropy of the distribution of Strategies in the whole population
+
+Additionally to the *MoranProcess2D* class the user is equipped with three plotting functions to visualise results of the simulation:
+* `PlotSize2D`
+* `PlotEntropy2D`
+* `PlotPopulationSnapshot2D`
+
+With `PlotSize2D` and `PlotEntropy2D` having the same sygnature as their previous analogues. The latter, `PlotPopulationSnapshot2D`, may produce a heatmap-like snapshot of a population at it's current state:
+```python
+def PlotPopulationSnapshot2D(self, mp, path):
+```
+
+With the following arguments:
+```python
+mp # instance of the MoranProcess2D
+
+path # path for the output plot in png format
 ```
