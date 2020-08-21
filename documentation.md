@@ -4,12 +4,11 @@ Our software is written as a Python package.
 
 ## General Moran Process
 
-
 From the user's perspective only one class is relevant: *MoranProcess*.
 
 Initializer of the *MoranProcess* has the follwing sygnature:
 ```python
-def __init__(self, size_list, label_list, BirthPayoffMatrix, DeathPayoffMatrix):
+def __init__(self, size_list, label_list, BirthPayoffMatrix, DeathPayoffMatrix, TransitionMatrix=None):
 ```
 
 With the following arguments:
@@ -21,6 +20,8 @@ label_list # list of strings which represent the labels of individuals from dist
 BirthPayoffMatrix # payoff matrix based on which individuals' Birth Fitness is calculated. Used for the roulette-based selection of an individual to reproduce
 
 DeathPayoffMatrix # payoff matrix based on which individuals' Death Fitness is calculated. Used for the roulette-based selection of an individual to die
+
+TransitionMatrix # an optional parameter: a matrix similar to Birth/Death payoffs which specifies transition probabilities from a given Strategy (rows) to another (columns). Row sums must equal to one. If this parameter is specified at the end of each Birth-Death cycle each of the individuals will randomly sample to switch Strategies.
 ```
 
 Both individuals' selection for reproduction and death are proportional to individuals' fitnesses calculated based on two separate payoff matrices (Birth/Death). For a *random* selection please provide a `numpy` array composed entirely of single values.  
@@ -82,3 +83,14 @@ df # simulation results - pandas dataframe returned by the method .simulate()
 
 path # path for the output plot in png format
 ```
+
+## Moran Model based on 2D neighbourhood
+
+From the user's perspective only one class is relevant: *MoranProcess2D*.
+
+Initializer of the *MoranProcess2D* has the follwing sygnature:
+```python
+def __init__(self, size_list, label_list, grid, BirthPayoffMatrix, DeathPayoffMatrix, TransitionMatrix=None):
+```
+
+All arguments are the same as for the class *MoranProcess* except the additional one:
