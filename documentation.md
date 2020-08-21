@@ -153,7 +153,69 @@ def PlotPopulationSnapshot2D(self, mp, path):
 
 With the following arguments:
 ```python
-mp # instance of the MoranProcess2D
+mp # instance of the MoranProcess
 
 path # path for the output plot in png format
 ```
+
+
+
+
+
+## Moran Model based on 3D neighbourhood
+
+From the user's perspective only one class is relevant: *MoranProcess3D*.
+
+Initializer of the *MoranProcess3D* has the follwing sygnature:
+```python
+def __init__(self, size_list, label_list, grid, BirthPayoffMatrix, DeathPayoffMatrix, TransitionMatrix=None):
+```
+
+All arguments are the same as for the class *MoranProcess2D* with the note that this time `grid` is a 3-dimensional array.
+
+Similarly as in the previous case:  
+Both individuals' selection for reproduction and death are proportional to individuals' fitnesses calculated based on two separate payoff matrices (Birth/Death).  
+However, the average payoffs (and therefore fitnesses) of each individual is calculated based only on its direct neighbourhood in the population (26 neighbours). For individuals at boundaries we apply periodic boundary conditions.  
+For a *random* selection please provide a `numpy` array composed entirely of single values.  
+**Payoffs always need to be non-negative**
+
+Example of creating a *MoranProcess3D* instance:  
+(assuming working in an environment where the package is installed)
+
+```python
+import numpy as np
+import moranpycess
+
+size_list = [7, 1]
+label_list = ["A", "B"]
+grid = np.array([[["A", "A"], ["A", "B"]], [["A", "A"], ["A", "A"]]])
+BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
+DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
+
+mp = moranpycess.MoranProcess3D(
+    size_list=size_list,
+    label_list=label_list,
+    grid=grid,
+    BirthPayoffMatrix=BirthPayoffMatrix,
+    DeathPayoffMatrix=DeathPayoffMatrix,
+)
+```
+
+Similarly as in the previous cases:  
+The key method of this object is a called `simulate(generations)` and it takes an integer as an argument (simulation time specified as a number of birth-death cycles). This function returns a `pandas` dataframe with a per-cycle summary of the population's state.
+The following code demonstrated the simulation:
+```python
+import pandas as pd
+
+df = mp.simulate(1000)
+```
+
+Information which are stored in the dataframe's columns include:
+* per-sub-population sub-population's size
+* Entropy of the distribution of Strategies in the whole population
+
+Additionally to the *MoranProcess3D* class the user is equipped with two plotting functions to visualise results of the simulation:
+* `PlotSize3D`
+* `PlotEntropy3D`
+
+The functions have the same sygnature as their previous analogues.
