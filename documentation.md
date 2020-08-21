@@ -213,7 +213,7 @@ import pandas as pd
 df = mp.simulate(1000)
 ```
 
-In case of the simulation in 2D each Birth-Death cycle consist of the following steps:
+In case of the simulation in 3D each Birth-Death cycle consist of the following steps:
 1. Select an individual for reproduction (fitness-proportional selection)
 2. Out of its neigbours: select an individual to die (fitness-proportional selection)
 3. Copy the selected individual from (1) in place of the one from (2)
