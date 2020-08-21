@@ -137,6 +137,13 @@ import pandas as pd
 df = mp.simulate(1000)
 ```
 
+In case of the simulation in 2D each Birth-Death cycle consist of the following steps:
+1. Select an individual for reproduction (fitness-proportional selection)
+2. Out of its neigbours: select an individual to die (fitness-proportional selection)
+3. Copy the selected individual from (1) in place of the one from (2)
+4. Perform Transitions for each individual (in case `TransitionMatrix` was specified)
+5. Update Payoffs and Fitnesses
+
 Information which are stored in the dataframe's columns include:
 * per-sub-population sub-population's size
 * Entropy of the distribution of Strategies in the whole population
@@ -146,7 +153,7 @@ Additionally to the *MoranProcess2D* class the user is equipped with three plott
 * `PlotEntropy2D`
 * `PlotPopulationSnapshot2D`
 
-With `PlotSize2D` and `PlotEntropy2D` having the same sygnature as their previous analogues. The latter, `PlotPopulationSnapshot2D`, may produce a heatmap-like snapshot of a population at it's current state:
+With `PlotSize2D` and `PlotEntropy2D` having the same sygnatures as their previous analogues. The latter, `PlotPopulationSnapshot2D`, may produce a heatmap-like snapshot of a population at it's current state:
 ```python
 def PlotPopulationSnapshot2D(self, mp, path):
 ```
@@ -157,10 +164,6 @@ mp # instance of the MoranProcess
 
 path # path for the output plot in png format
 ```
-
-
-
-
 
 ## Moran Model based on 3D neighbourhood
 
@@ -210,6 +213,13 @@ import pandas as pd
 df = mp.simulate(1000)
 ```
 
+In case of the simulation in 2D each Birth-Death cycle consist of the following steps:
+1. Select an individual for reproduction (fitness-proportional selection)
+2. Out of its neigbours: select an individual to die (fitness-proportional selection)
+3. Copy the selected individual from (1) in place of the one from (2)
+4. Perform Transitions for each individual (in case `TransitionMatrix` was specified)
+5. Update Payoffs and Fitnesses
+
 Information which are stored in the dataframe's columns include:
 * per-sub-population sub-population's size
 * Entropy of the distribution of Strategies in the whole population
@@ -218,4 +228,4 @@ Additionally to the *MoranProcess3D* class the user is equipped with two plottin
 * `PlotSize3D`
 * `PlotEntropy3D`
 
-The functions have the same sygnature as their previous analogues.
+The functions have the same sygnatures as their previous analogues.
