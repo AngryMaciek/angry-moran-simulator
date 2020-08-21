@@ -94,3 +94,44 @@ def __init__(self, size_list, label_list, grid, BirthPayoffMatrix, DeathPayoffMa
 ```
 
 All arguments are the same as for the class *MoranProcess* except the additional one:
+
+```python
+grid # 2-dimensional numpy array filled with strings from the "label_list" according to their cardinality in "size_list". This argument essentially specifies the initial spatial state of the population.
+```
+
+Similarly as in the previous case:  
+Both individuals' selection for reproduction and death are proportional to individuals' fitnesses calculated based on two separate payoff matrices (Birth/Death).  
+However, the average payoffs (and therefore fitnesses) of each individual is calculated based only on its direct neighbourhood in the population (8 neighbours). For individuals at boundaries we apply periodic boundary conditions.  
+For a *random* selection please provide a `numpy` array composed entirely of single values.  
+**Payoffs always need to be non-negative**
+
+Example of creating a *MoranProcess2D* instance:  
+(assuming working in an environment where the package is installed)
+
+```python
+import numpy as np
+import moranpycess
+
+size_list = [3, 1]
+label_list = ["A", "B"]
+grid = np.array([["A", "A"], ["A", "B"]])
+BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
+DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
+
+mp = moranpycess.MoranProcess2D(
+    size_list=size_list,
+    label_list=label_list,
+    grid=grid,
+    BirthPayoffMatrix=BirthPayoffMatrix,
+    DeathPayoffMatrix=DeathPayoffMatrix,
+)
+```
+
+Similarly as in the previous case:  
+The key method of this object is a called `simulate(generations)` and it takes an integer as an argument (simulation time specified as a number of birth-death cycles). This function returns a `pandas` dataframe with a per-cycle summary of the population's state.
+The following code demonstrated the simulation:
+```python
+import pandas as pd
+
+df = mp.simulate(1000)
+```
