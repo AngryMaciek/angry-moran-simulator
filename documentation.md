@@ -1,4 +1,10 @@
+# Moran [Py]cess: Documentation & How-to
+
 Our software is written as a Python package.  
+
+## General Moran Process
+
+
 From the user's perspective only one class is relevant: *MoranProcess*.
 
 Initializer of the *MoranProcess* has the follwing sygnature:
@@ -54,3 +60,25 @@ Information which are stored in the dataframe's columns include:
 * per-sub-population Average Death Payoff for a single individual of a given sub-population (averaged over interactions with all other individuals of the whole population)
 * per-sub-population Birth Fitness of an individual from a given sub-popualtion
 * per-sub-population Death Fitness of an individual from a given sub-popualtion
+
+Additionally to the *MoranProcess* class the user is equipped with several plotting functions to visualise results of the simulation:
+* `PlotSize`
+* `PlotAvgBirthPayoff`
+* `PlotAvgDeathPayoff`
+* `PlotBirthFitness`
+* `PlotDeathFitness`
+* `PlotEntropy`
+
+Each of which with the same sygnature:
+```python
+def FUNCTION(self, mp, df, path):
+```
+
+With the following arguments:
+```python
+mp # instance of the MoranProcess
+
+df # simulation results - pandas dataframe returned by the method .simulate()
+
+path # path for the output plot in png format
+```
