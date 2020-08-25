@@ -4,7 +4,7 @@ tags:
 - Python
 - Moran Process
 - evolutionary stable strategy
-- game theory
+- evolutionary game theory
 authors:
 - name: Maciej Bak
   orcid: 0000-0003-1361-7301
