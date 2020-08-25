@@ -13,7 +13,7 @@ authors:
   orcid: 0000-0002-5195-4299
   affiliation: 3
 affiliations:
- - name: University of Basel
+ - name: Biozentrum, University of Basel
    index: 1
  - name: Swiss Institute of Bioinformatics
    index: 2
