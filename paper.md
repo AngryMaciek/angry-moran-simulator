@@ -37,7 +37,7 @@ We have developed a Python package with a general game-theoretical framework for
 
 We have designed four distinct systems based on well-known interaction examples which have been vastly described in the literature `[@Tadelis:2012]`.
 
-![figure1.\label{fig:Example results: A - Stag Hunt, B Chicken, C - Prisoners' Dilemma, D- Rock Paper Scissors.}](images/figure.png)
+![figure1.\label{fig:Simulations of population evolution based on: (A) Stag Hunt (B) Chicken game, (C) Prisoners' Dilemma, (D) Rock Paper Scissors.}](images/figure.png)
 
 (A) The stag hunt model describes a conflict between safety and social cooperation: hare -  small but certain profit, stag - great benefit but adventurous. Failure in cooperation leads to a player’s loss. There is no dominant strategy in this game as it is most beneficial for individuals to agree on the same strategy. Both stag hunt and hare hunt are considered as an ESS. A perfect example of this type of interaction is the “carousel feeding” as a cooperative hunting method used by Norwegian orcas which force the school of fish to form a tight ball, then stun fish with their tails `[@Fort:2007]`.
 
