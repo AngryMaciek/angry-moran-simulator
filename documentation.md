@@ -6,7 +6,7 @@ Our software is written as a Python package.
 
 From the user's perspective only one class is relevant: *MoranProcess*.
 
-Initializer of the *MoranProcess* has the follwing sygnature:
+Initializer of the *MoranProcess* has the follwing signature:
 ```python
 def __init__(self, size_list, label_list, BirthPayoffMatrix, DeathPayoffMatrix, TransitionMatrix=None):
 ```
@@ -71,7 +71,7 @@ Additionally to the *MoranProcess* class the user is equipped with several plott
 * `PlotDeathFitness`
 * `PlotEntropy`
 
-Each of which with the same sygnature:
+Each of which with the same signature:
 ```python
 def FUNCTION(self, mp, df, path):
 ```
@@ -89,7 +89,7 @@ path # path for the output plot in png format
 
 From the user's perspective only one class is relevant: *MoranProcess2D*.
 
-Initializer of the *MoranProcess2D* has the follwing sygnature:
+Initializer of the *MoranProcess2D* has the follwing signature:
 ```python
 def __init__(self, size_list, label_list, grid, BirthPayoffMatrix, DeathPayoffMatrix, TransitionMatrix=None):
 ```
@@ -153,7 +153,7 @@ Additionally to the *MoranProcess2D* class the user is equipped with three plott
 * `PlotEntropy2D`
 * `PlotPopulationSnapshot2D`
 
-With `PlotSize2D` and `PlotEntropy2D` having the same sygnatures as their previous analogues. The latter, `PlotPopulationSnapshot2D`, may produce a heatmap-like snapshot of a population at it's current state:
+With `PlotSize2D` and `PlotEntropy2D` having the same signatures as their previous analogues. The latter, `PlotPopulationSnapshot2D`, may produce a heatmap-like snapshot of a population at it's current state:
 ```python
 def PlotPopulationSnapshot2D(self, mp, path):
 ```
@@ -169,7 +169,7 @@ path # path for the output plot in png format
 
 From the user's perspective only one class is relevant: *MoranProcess3D*.
 
-Initializer of the *MoranProcess3D* has the follwing sygnature:
+Initializer of the *MoranProcess3D* has the follwing signature:
 ```python
 def __init__(self, size_list, label_list, grid, BirthPayoffMatrix, DeathPayoffMatrix, TransitionMatrix=None):
 ```
@@ -228,4 +228,4 @@ Additionally to the *MoranProcess3D* class the user is equipped with two plottin
 * `PlotSize3D`
 * `PlotEntropy3D`
 
-The functions have the same sygnatures as their previous analogues.
+The functions have the same signatures as their previous analogues.
