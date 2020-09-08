@@ -1,10 +1,15 @@
 # Moran [Py]cess: Documentation & How-to
 
 - [Moran [Py]cess: Documentation & How-to](#moran-pycess-documentation--how-to)
+  - [Dependencies](#dependencies)
   - [General Moran Process](#general-moran-process)
   - [Moran Model based on 2D neighbourhood](#moran-model-based-on-2d-neighbourhood)
   - [Moran Model based on 3D neighbourhood](#moran-model-based-on-3d-neighbourhood)
   - [Use cases](#use-cases)
+
+## Dependencies
+
+For a complete list of dependencies for this package please inspect the [conda environment recipe](env/main.yml).
 
 ## General Moran Process
 
