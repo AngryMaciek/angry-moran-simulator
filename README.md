@@ -104,7 +104,6 @@ pip install .
 
 ## Code documentation
 
-Our software is written as a Python package.  
 Inspect the documentation & how-to [here](documentation.md).
 
 ## Contributing
