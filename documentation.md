@@ -1,6 +1,10 @@
 # Moran [Py]cess: Documentation & How-to
 
-Our software is written as a Python package.  
+- [Moran [Py]cess: Documentation & How-to](#moran-[py]cess:-documentation-&-how-to)
+  - [General Moran Process](#general-moran-process)
+  - [Moran Model based on 2D neighbourhood](#moran-model-based-on-2d-neighbourhood)
+  - [Moran Model based on 3D neighbourhood](#moran-model-based-on-3d-neighbourhood)
+  - [Use cases](#use-cases)
 
 ## General Moran Process
 
@@ -229,3 +233,7 @@ Additionally to the *MoranProcess3D* class the user is equipped with two plottin
 * `PlotEntropy3D`
 
 The functions have the same signatures as their previous analogues.
+
+## Use cases
+
+For more real-life examples of how to utilise the package please take a look at our use-case [notebook](tests/usecase.ipynb).
