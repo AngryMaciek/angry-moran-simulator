@@ -87,7 +87,7 @@ Additionally to the *MoranProcess* class the user is equipped with several plott
 
 Each of which with the same signature:
 ```python
-def FUNCTION(self, mp, df, path):
+def FUNCTION(mp, df, path):
 ```
 
 With the following arguments:
@@ -97,6 +97,16 @@ mp # instance of the MoranProcess
 df # simulation results - pandas dataframe returned by the method .simulate()
 
 path # path for the output plot in png format
+```
+
+Following the previous simulation one may generate the plots with:
+```python
+moranpycess.PlotSize(mp, df, "Size.png")
+moranpycess.PlotAvgBirthPayoff(mp, df, "AvgBirthPayoff.png")
+moranpycess.PlotAvgDeathPayoff(mp, df, "AvgDeathPayoff.png")
+moranpycess.PlotBirthFitness(mp, df, "BirthFitness.png")
+moranpycess.PlotDeathFitness(mp, df, "DeathFitness.png")
+moranpycess.PlotEntropy(mp, df, "Entropy.png")
 ```
 
 ## Moran Model based on 2D neighbourhood
@@ -130,8 +140,8 @@ import moranpycess
 size_list = [3, 1]
 label_list = ["A", "B"]
 grid = np.array([["A", "A"], ["A", "B"]])
-BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
-DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
+BirthPayoffMatrix = np.array([[10, 10], [15, 1]])
+DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
 
 mp = moranpycess.MoranProcess2D(
     size_list=size_list,
@@ -148,7 +158,7 @@ The following code demonstrated the simulation:
 ```python
 import pandas as pd
 
-df = mp.simulate(1000)
+df = mp.simulate(10)
 ```
 
 In case of the simulation in 2D each Birth-Death cycle consist of the following steps:
@@ -169,7 +179,7 @@ Additionally to the *MoranProcess2D* class the user is equipped with three plott
 
 With `PlotSize2D` and `PlotEntropy2D` having the same signatures as their previous analogues. The latter, `PlotPopulationSnapshot2D`, may produce a heatmap-like snapshot of a population at it's current state:
 ```python
-def PlotPopulationSnapshot2D(self, mp, path):
+def PlotPopulationSnapshot2D(mp, path):
 ```
 
 With the following arguments:
@@ -177,6 +187,13 @@ With the following arguments:
 mp # instance of the MoranProcess
 
 path # path for the output plot in png format
+```
+
+Following the previous simulation one may generate the plots with:
+```python
+moranpycess.PlotSize2D(mp, df, "Size2D.png")
+moranpycess.PlotEntropy2D(mp, df, "Entropy2D.png")
+moranpycess.PlotPopulationSnapshot2D(mp, "PopulationSnapshot2D.png")
 ```
 
 ## Moran Model based on 3D neighbourhood
@@ -224,7 +241,7 @@ The following code demonstrated the simulation:
 ```python
 import pandas as pd
 
-df = mp.simulate(1000)
+df = mp.simulate(10)
 ```
 
 In case of the simulation in 3D each Birth-Death cycle consist of the following steps:
@@ -242,7 +259,12 @@ Additionally to the *MoranProcess3D* class the user is equipped with two plottin
 * `PlotSize3D`
 * `PlotEntropy3D`
 
-The functions have the same signatures as their previous analogues.
+The functions have the same signatures as their previous analogues.  
+Following the previous simulation one may generate the plots with:
+```python
+moranpycess.PlotSize3D(mp, df, "Size3D.png")
+moranpycess.PlotEntropy3D(mp, df, "Entropy3D.png")
+```
 
 ## Use cases
 
