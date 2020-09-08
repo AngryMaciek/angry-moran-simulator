@@ -1,11 +1,16 @@
 # Moran [Py]cess: Documentation & How-to
 
 - [Moran [Py]cess: Documentation & How-to](#moran-pycess-documentation--how-to)
+  - [Statement of need](#statement-of-need)
   - [Dependencies](#dependencies)
   - [General Moran Process](#general-moran-process)
   - [Moran Model based on 2D neighbourhood](#moran-model-based-on-2d-neighbourhood)
   - [Moran Model based on 3D neighbourhood](#moran-model-based-on-3d-neighbourhood)
   - [Use cases](#use-cases)
+
+## Statement of need
+
+Moran [Py]cess is a Python package with a general game-theoretical framework for scientific simulations according to the Moran model. It is aimed to capture dynamics of populations composed of individuals of distinct phenotypes (which correspond to *strategies* in the language of game theory). Individual's fitness is calcualted based on its average payoff, averaged over interactions with other members of the group. The package is both simple in use and robust, allowing any possible model of an antagonistic game to be considered. It serves well as a research aid for evolutionary, computational as well as cell biologists as it allows to simulate two-dimensional and three-dimensional populations too.
 
 ## Dependencies
 
