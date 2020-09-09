@@ -38,7 +38,11 @@ to simulate dynamics and estimate trajectories of biological systems.
 
 We have developed Moran Pycess - a Python package with a general game-theoretical framework for scientific simulations according to the Moran model. Such an approach allows the stochastic nature of evolution to be preserved. This is not the case for cellular automata, which are completely deterministic systems and where evolution of each cell follows some strictly defined local rules. We chose Python because of its availability and popularity in the fields of bioinformatics and data analysis. It is worth emphasizing that Moran Pycess is capable of carrying out simulations over 2D and 3D grid where individuals consider their direct neighbours. Three-dimensional space is particularly important for modeling dynamics of population growth in cell biology [@Macnamara:2020]. Another strength of Moran Pycess lays in its simplicity which turns it into a useful research aid for evolutionary and computational biologists. An open source license as well as its accessibility endorse Moran Pycess as a practical tool for biology, economics and math students to learn about population evolution based on game theory or for computer science students aiming to properly encapsulate their research software. A remarkable advantage of our module is that any possible model of an antagonistic game may be considered. In terms of quality assurance: our repository incorporates Travis CI mechanism alongside Coveralls code coverage measurement (currently: 100%).
 
-#  Example results
+# State of the field
+
+In principle, such computations could be recreated within DEAP - a framework dedicated to genetic and evolutionary algorithms [@Fortin:2012]. However, these simulations would not be as straightforward to implement in DEAP as in Moran Pycess. Due to its complexity, DEAP is more suitable for users with good software engineering skills. Notably, another powerful Python package - Axelrod - allows to model evolution of cooperation in various strategies, but unlike Moran Pycess is limited to Prisoners’ Dilemma only [@axelrodproject]. 
+
+# Example results
 
 We have designed four distinct systems based on well-known interaction examples which have been vastly described in the literature [@Tadelis:2012].
 
