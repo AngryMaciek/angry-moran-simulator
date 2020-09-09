@@ -22,6 +22,11 @@ affiliations:
 date: 25 August 2020
 bibliography: paper.bib
 ---
+
+# Summary
+
+Moran Pycess is a bioinformatics Python package created to simulate population’s growth based on evolutionary game theory and the Moran Process model. Growth dynamics is controlled solely by the interaction of individuals with each other. Our software is primarily targeted to evolutionary and computational biologists, however students who learn basic concepts behind population’s evolution may find it equally practical.
+
 # Introduction
 
 Population is created by individuals of the same species living simultaneously on a shared area and related to each other by a complex system of mutual dependencies.
