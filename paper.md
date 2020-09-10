@@ -37,7 +37,7 @@ We have developed Moran Pycess - a Python package with a general game-theoretica
 
 # State of the field
 
-In principle, such computations could be recreated within DEAP - a framework dedicated to genetic and evolutionary algorithms [@Fortin:2012]. However, these simulations would not be as straightforward to implement in DEAP as in Moran Pycess. Due to its complexity, DEAP is more suitable for users with good software engineering skills. Notably, another powerful Python package - Axelrod - is limited to Prisoners' Dilemma [@axelrodproject], while Moran Pycess allows to model evolution of cooperation in various strategies. 
+In principle, such computations could be recreated within DEAP - a framework dedicated to genetic and evolutionary algorithms [@Fortin:2012]. However, these simulations would not be as straightforward to implement in DEAP as in Moran Pycess. Due to its complexity, DEAP is more suitable for users with good software engineering skills. Notably, another powerful Python package - Axelrod - is limited to Prisoners' Dilemma, while Moran Pycess allows to model evolution of cooperation in various strategies [@axelrodproject]. 
 
 # Example results
 
