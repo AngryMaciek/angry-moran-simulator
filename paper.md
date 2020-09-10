@@ -25,7 +25,7 @@ bibliography: paper.bib
 
 # Summary
 
-Moran Pycess is a bioinformatics Python package created to simulate population’s growth based on evolutionary game theory and the Moran Process model. Growth dynamics is controlled solely by the interactions of individuals with each other. Our software is primarily targeted to evolutionary and computational biologists, however students who learn basic concepts behind population’s evolution may find it equally practical.
+Moran Pycess is a bioinformatics Python package created to simulate population’s growth based on evolutionary game theory and the Moran Process model. Growth dynamics is controlled solely by the interactions of individuals with each other. Our software is primarily targeted to evolutionary and computational biologists, however students who learn basic concepts behind evolution may find it equally practical.
 
 # Introduction
 
@@ -37,7 +37,7 @@ We have developed Moran Pycess - a Python package with a general game-theoretica
 
 # State of the field
 
-In principle, such computations could be recreated within DEAP - a framework dedicated to genetic and evolutionary algorithms [@Fortin:2012]. However, these simulations would not be as straightforward to implement in DEAP as in Moran Pycess. Due to its complexity, DEAP is more suitable for users with good software engineering skills. Notably, another powerful Python package - Axelrod - allows to model evolution of cooperation in various strategies, but unlike Moran Pycess is limited to Prisoners’ Dilemma only [@axelrodproject]. 
+In principle, such computations could be recreated within DEAP - a framework dedicated to genetic and evolutionary algorithms [@Fortin:2012]. However, these simulations would not be as straightforward to implement in DEAP as in Moran Pycess. Due to its complexity, DEAP is more suitable for users with good software engineering skills. Notably, another powerful Python package - Axelrod - is limited to Prisoners' Dilemma [@axelrodproject], while Moran Pycess allows to model evolution of cooperation in various strategies. 
 
 # Example results
 
