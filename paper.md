@@ -54,7 +54,7 @@ We have designed four distinct systems based on well-known interaction examples 
 
 To demonstrate the stochastic nature of the simulations let us consider a Hawk-Dove model where the resources value is only slightly higher than the confrontational cost. A small group of hawks, having an ESS, try to invade a larger community of doves. However, if the initial number of predators is too low their advantage might not be sufficient for them to overtake the whole population.
 
-![Caption.](images/supplementary_figureA1.png)
+![Replicated simulations of evolution according to the Hawk-Dove model: (A) 5 hawks invade a group of 95 doves: 5/10 times the population is overtaken by the invaders, (B) 15 hawks invade a group of 85 doves: 10/10 times the population is overtaken by the invaders.](images/supplementary_figureA1.png)
 
 # References
 
