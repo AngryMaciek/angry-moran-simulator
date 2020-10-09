@@ -52,7 +52,7 @@ We have designed four distinct systems based on well-known interaction examples 
 
 # Supplementary data: Stochastic nature of the simulations
 
-Text text text.
+To demonstrate the stochastic nature of the simulations let us consider a Hawk-Dove model where the resources value is only slightly higher than the confrontational cost. A small group of hawks, having an ESS, try to invade a larger community of doves. However, if the initial number of predators is too low their advantage might not be sufficient for them to overtake the whole population.
 
 ![Caption.](images/supplementary_figureA1.png)
 
