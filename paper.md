@@ -50,5 +50,11 @@ We have designed four distinct systems based on well-known interaction examples 
 (C) Prisoners’ dilemma, often analyzed in game theory due to its multiple applications, presents a case where two completely rational individuals might not cooperate, even if it appears that it is in their best interests to do so. The most rational strategy yields the worst collective outcome. Every participant has a dominant strategy. The only ESS is to always cooperate. In biological context the prisoner’s dilemma successfully captures the essential features of cancer growth and allows to test hypotheses and formulate claims in a quantitative manne [@West:2016]. In the case of malignant tumors, we observe the possibility of infiltration of adjacent tissues by cancer cells. Their characteristic uncontrolled proliferation leads to the growth of another tumor in this place and the destruction of healthy tissue.
 (D) Rock-paper-scissors is a game with cyclic dominance resulting in an oscillating number of individuals of a given type. There is no ESS in this game. Remark the case of the side-blotched lizard. The male lizards come in three color morphs: orange, yellow, and blue. The orange males defend large territories. The yellow males invade orange males territories. The blue male effectively expels yellow males from their territory but are outcompeted by aggressive orange meles [@Sinevro:1996]. As a result: yellow beats orange, which bests blue which beats yellow.
 
+# Supplementary data: Stochastic nature of the simulations
+
+To demonstrate the stochastic nature of the simulations let us consider a Hawk-Dove model where the resources value is only slightly higher than the confrontational cost. A small group of hawks, having an ESS, try to invade a larger community of doves. However, if the initial number of predators is too low their advantage might not be sufficient for them to overtake the whole population.
+
+![Replicated simulations of evolution according to the Hawk-Dove model: (A) 5 hawks invade a group of 95 doves: 5/10 times the population is overtaken by the invaders, (B) 15 hawks invade a group of 85 doves: 10/10 times the population is overtaken by the invaders.](images/supplementary_figureA1.png)
+
 # References
 

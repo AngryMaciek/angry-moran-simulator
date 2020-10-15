@@ -56,7 +56,10 @@ Average payoff for an individual is calcualted based on interactions with 26 dir
 
 ## Installation instructions
 
-Our software is built as a [Python 3] package. Keeping research reproducibility in mind in this repository we provide a recipe for *conda* virtual environment which would contain all the required dependencies.
+Our software is built as a [Python 3] package. Keeping research reproducibility in mind in this repository we provide a recipe for *conda* virtual environments which would contain all the required dependencies in their proper versions.  
+We provide a YAML-formatted list of dependencies for the software execution [here](env/main.yml).  
+We provide a YAML-formatted list of dependencies for the software development [here](env/dev.yml).  
+Please inspect the files above for a detailed list of dependencies and their versions.
 
 ### Download and install Miniconda
 
