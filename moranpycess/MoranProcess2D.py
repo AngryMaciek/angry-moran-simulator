@@ -268,10 +268,6 @@ class MoranProcess2D:
             self.population[(x + 1) % pop_nrows, (y + 1) % pop_ncols].label,
         ]
 
-        # calculate the payoff based on the BirthPayoffMatrix
-        nrows = np.shape(self.BirthPayoffMatrix)[0]
-        ncols = np.shape(self.BirthPayoffMatrix)[1]
-
         payoff = 0
         for neighbour_label in set(neighbours_labels):
             c = self._init_label_list.index(neighbour_label)
@@ -305,10 +301,6 @@ class MoranProcess2D:
             self.population[(x + 1) % pop_nrows, y % pop_ncols].label,
             self.population[(x + 1) % pop_nrows, (y + 1) % pop_ncols].label,
         ]
-
-        # calculate the payoff based on the DeathPayoffMatrix
-        nrows = np.shape(self.DeathPayoffMatrix)[0]
-        ncols = np.shape(self.DeathPayoffMatrix)[1]
 
         payoff = 0
         for neighbour_label in set(neighbours_labels):
