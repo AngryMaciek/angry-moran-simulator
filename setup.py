@@ -18,7 +18,7 @@ from setuptools import setup
 
 setup(
     name="moranpycess",
-    version="0.0.1",
+    version="1.0.0",
     author="Maciek Bak",
     author_email="wsciekly.maciek@gmail.com",
     description="Moran Process for multiple types of individuals",
