@@ -589,5 +589,5 @@ class TestClass:
 
         # run the simulation:
         random.seed(0)
-        simulation = mp.simulate(generations=1)
+        mp.simulate(generations=1)
         assert mp.curr_size_list == [0, 27]
