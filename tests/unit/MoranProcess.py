@@ -251,7 +251,7 @@ class TestClass:
         DeathPayoffMatrix = np.array([[10, 20], [30, 40]])
         TransitionMatrix = np.array([[0.0], [0.0]])
         with pytest.raises(Exception):
-            mp = moranpycess.MoranProcess(
+            moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
