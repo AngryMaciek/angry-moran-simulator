@@ -49,8 +49,8 @@ jobs:
         shell: bash -l {0}
         run: |
           flake8 --max-line-length=88 --ignore F401 moranpycess/__init__.py
-          flake8 --max-line-length=95 --ignore F401,E231 moranpycess/Individual.py
-          flake8 --max-line-length=88 moranpycess/MoranProcess.py
+          flake8 --max-line-length=88 moranpycess/Individual.py
+          flake8 --max-line-length=95 --ignore F401,E231 moranpycess/MoranProcess.py
           flake8 --max-line-length=88 moranpycess/MoranProcess2D.py
           flake8 --max-line-length=88 moranpycess/MoranProcess3D.py
           flake8 --max-line-length=88 tests/unit/Individual.py
