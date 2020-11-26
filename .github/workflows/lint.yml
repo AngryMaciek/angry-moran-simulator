@@ -1,0 +1,51 @@
+name: flake8
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Miniconda & Environment
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: 3.7
+          auto-update-conda: true
+          activate-environment: moranpycess-dev
+          environment-file: env/dev.yml
+          auto-activate-base: false
+
+      - name: Conda Info
+        shell: bash -l {0}
+        run: |
+          conda info -a
+          conda list
+
+      - name: Black
+        shell: bash -l {0}
+        run: |
+          black --check moranpycess/__init__.py
+          black --check moranpycess/Individual.py
+          black --check moranpycess/MoranProcess.py
+          black --check moranpycess/MoranProcess2D.py
+          black --check moranpycess/MoranProcess3D.py
+          black --check tests/unit/Individual.py
+          black --check tests/unit/MoranProcess.py
+          black --check tests/unit/MoranProcess2D.py
+          black --check tests/unit/MoranProcess3D.py
+
+      - name: Flake8
+        shell: bash -l {0}
+        run: |
+          flake8 --max-line-length=88 moranpycess/__init__.py
