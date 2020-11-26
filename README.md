@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/AngryMaciek/angry-moran-simulator.svg?branch=master)](https://travis-ci.org/AngryMaciek/angry-moran-simulator)
 [![Coverage Status](https://coveralls.io/repos/github/AngryMaciek/angry-moran-simulator/badge.svg?branch=master&kill_cache=1)](https://coveralls.io/github/AngryMaciek/angry-moran-simulator?branch=master&kill_cache=1)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+[![CodeFactor](https://www.codefactor.io/repository/github/angrymaciek/angry-moran-simulator/badge)](https://www.codefactor.io/repository/github/angrymaciek/angry-moran-simulator)
 [![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/angry-moran-simulator)](https://github.com/AngryMaciek/angry-moran-simulator/issues)
 [![GitHub license](https://img.shields.io/github/license/AngryMaciek/angry-moran-simulator)](https://github.com/AngryMaciek/angry-moran-simulator/blob/master/LICENSE)
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.02643/status.svg)](https://doi.org/10.21105/joss.02643)
