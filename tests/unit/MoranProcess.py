@@ -214,7 +214,7 @@ class TestClass:
         BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
         DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
         with pytest.raises(Exception):
-            mp = moranpycess.MoranProcess(
+            moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
@@ -226,7 +226,7 @@ class TestClass:
         BirthPayoffMatrix = np.array([[10, 20, 20], [30, 40, 40], [1, 1, 1]])
         DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
         with pytest.raises(Exception):
-            mp = moranpycess.MoranProcess(
+            moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
@@ -238,7 +238,7 @@ class TestClass:
         BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
         DeathPayoffMatrix = np.array([[10, 20, 20], [30, 40, 40], [1, 1, 1]])
         with pytest.raises(Exception):
-            mp = moranpycess.MoranProcess(
+            moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
