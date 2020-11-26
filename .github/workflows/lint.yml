@@ -55,5 +55,5 @@ jobs:
           flake8 --max-line-length=101 --ignore F401,E231,W503,E741 moranpycess/MoranProcess3D.py
           flake8 --max-line-length=88 tests/unit/Individual.py
           flake8 --max-line-length=88 tests/unit/MoranProcess.py
-          flake8 --max-line-length=88 tests/unit/MoranProcess2D.py
+          flake8 --max-line-length=88 --ignore E231 tests/unit/MoranProcess2D.py
           flake8 --max-line-length=88 tests/unit/MoranProcess3D.py
