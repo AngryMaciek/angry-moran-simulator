@@ -265,7 +265,7 @@ class TestClass:
         DeathPayoffMatrix = np.array([[10, 20], [30, 40]])
         TransitionMatrix = np.array([[0.5, 0.4], [0.5, 0.5]])
         with pytest.raises(Exception):
-            mp = moranpycess.MoranProcess(
+            moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
@@ -320,5 +320,5 @@ class TestClass:
 
         # run the simulation:
         random.seed(0)
-        simulation = mp.simulate(generations=10)
+        mp.simulate(generations=10)
         assert mp.curr_size_list == [0, 10]
