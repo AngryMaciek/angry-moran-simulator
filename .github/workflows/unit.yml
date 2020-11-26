@@ -1,0 +1,63 @@
+name: pytest
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-10.15, ubuntu-20.04]
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup Miniconda & Environment
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          python-version: 3.7
+          auto-update-conda: true
+          activate-environment: moranpycess-dev
+          environment-file: env/dev.yml
+          auto-activate-base: false
+
+      - name: Conda Info
+        shell: bash -l {0}
+        run: |
+          conda info -a
+          conda list
+
+      - name: Install the Package
+        shell: bash -l {0}
+        run: pip install .
+
+      - name: Unit-Test + Coverage
+        shell: bash -l {0}
+        run: |
+          coverage run -m pytest tests/unit/Individual.py tests/unit/MoranProcess.py tests/unit/MoranProcess2D.py tests/unit/MoranProcess3D.py
+          coverage report -m
+
+      - name: Coveralls
+        shell: bash -l {0}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_PARALLEL: true
+        run: coveralls
+
+  complete-coveralls:
+    needs: build
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Coveralls Finished
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        parallel-finished: true
