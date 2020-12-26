@@ -5,7 +5,7 @@
 *.pyc
 
 # Setuptools distribution folder.
-/dist/
+/dist/*
 !/dist/pypi.md
 
 # Python egg metadata, regenerated from source files by setuptools.
