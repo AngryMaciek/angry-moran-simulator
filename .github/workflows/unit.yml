@@ -45,19 +45,8 @@ jobs:
           coverage run -m pytest tests/unit/Individual.py tests/unit/MoranProcess.py tests/unit/MoranProcess2D.py tests/unit/MoranProcess3D.py
           coverage report -m
 
-      - name: Coveralls
+      - name: Submit Report to Codecov
         shell: bash -l {0}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          COVERALLS_PARALLEL: true
-        run: coveralls
-
-  complete-coveralls:
-    needs: build
-    runs-on: ubuntu-20.04
-    steps:
-    - name: Coveralls Finished
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        parallel-finished: true
+        run: |
+          CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}
+          bash <(curl -s https://codecov.io/bash)
