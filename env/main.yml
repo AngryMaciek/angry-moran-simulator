@@ -13,11 +13,11 @@
 ---
 
   name: moranpycess
-    
+
   channels:
     - bioconda
     - conda-forge
-    
+
   dependencies:
     - jupyterlab=2.2.0
     - matplotlib=3.3.0

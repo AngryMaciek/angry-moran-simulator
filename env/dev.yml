@@ -13,11 +13,11 @@
 ---
 
   name: moranpycess-dev
-      
+
   channels:
     - bioconda
     - conda-forge
-      
+
   dependencies:
     - black=19.10b0
     - coverage=5.1
@@ -32,5 +32,5 @@
     - python=3.7.4
     - scipy=1.5.2
     - seaborn=0.10.1
-  
+
 ...
