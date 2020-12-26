@@ -25,9 +25,7 @@ jobs:
         with:
           python-version: 3.7
           auto-update-conda: true
-          activate-environment: moranpycess
-          environment-file: env/main.yml
-          auto-activate-base: false
+          auto-activate-base: true
 
       - name: Conda Info
         shell: bash -l {0}
