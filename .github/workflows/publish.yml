@@ -39,4 +39,5 @@ jobs:
       #uses: pypa/gh-action-pypi-publish@master
       #with:
       #  password: ${{ secrets.PYPI_API_TOKEN }}
-      run: echo ${GITHUB_REF}
+      run: |
+        echo ${GITHUB_REF}
