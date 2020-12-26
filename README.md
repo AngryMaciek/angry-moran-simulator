@@ -6,6 +6,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/angrymaciek/angry-moran-simulator/badge)](https://www.codefactor.io/repository/github/angrymaciek/angry-moran-simulator)
 [![publish](https://github.com/AngryMaciek/angry-moran-simulator/workflows/publish/badge.svg)](https://github.com/AngryMaciek/angry-moran-simulator/actions?query=workflow%3Apublish)
 [![PyPI](https://img.shields.io/badge/pypi-0.0.0.9000-blue)](https://pypi.org/project/moranpycess/)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AngryMaciek/angry-moran-simulator/master?filepath=tests%2Fusecase.ipynb)
 [![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/angry-moran-simulator)](https://github.com/AngryMaciek/angry-moran-simulator/issues)
 [![GitHub license](https://img.shields.io/github/license/AngryMaciek/angry-moran-simulator)](https://github.com/AngryMaciek/angry-moran-simulator/blob/master/LICENSE)
 [![DOI](https://joss.theoj.org/papers/10.21105/joss.02643/status.svg)](https://doi.org/10.21105/joss.02643)
