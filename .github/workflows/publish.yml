@@ -49,27 +49,6 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: Setup Miniconda & Environment
-        uses: conda-incubator/setup-miniconda@v2
-        with:
-          python-version: 3.7
-          auto-update-conda: true
-          auto-activate-base: true
-
-      - name: Conda Info
-        shell: bash -l {0}
-        run: |
-          conda info -a
-          conda list
-
-      - name: Install conda-build
-        shell: bash -l {0}
-        run: conda install -y conda-build
-
-      - name: Build Conda Package
-        shell: bash -l {0}
-        run: conda build .
-
       - name: Publish to Anaconda Cloud
         uses: m0nhawk/conda-package-publish-action@master
         with:
