@@ -14,7 +14,7 @@
 
 package:
   name: moranpycess
-  version: "1.0.1"
+  version: "1.0.3"
 
 source:
   git_url: https://github.com/AngryMaciek/angry-moran-simulator
@@ -49,7 +49,7 @@ about:
   summary: >
     Python framework for Moran Processes driven by game theory
   license: MIT
-  license_file: LICENSE.md
+  license_file: LICENSE
 
 extra:
   maintainers:
