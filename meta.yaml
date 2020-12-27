@@ -1,0 +1,58 @@
+###############################################################################
+#
+#   conda-build recipe for the package
+#
+#   AUTHOR: Maciej_Bak
+#   AFFILIATION: University_of_Basel
+#   AFFILIATION: Swiss_Institute_of_Bioinformatics
+#   CONTACT: wsciekly.maciek@gmail.com
+#   CREATED: 26-12-2020
+#   LICENSE: MIT
+#
+###############################################################################
+---
+
+package:
+  name: moranpycess
+  version: "1.0.1"
+
+source:
+  git_url: https://github.com/AngryMaciek/angry-moran-simulator
+  git_depth: 1
+
+build:
+  noarch: python
+  number: 0
+  script: python -m pip install --no-deps .
+
+channels:
+  - conda-forge
+
+requirements:
+  host:
+    - python>=3.7
+    - pip
+  run:
+    - matplotlib>=3.3.0
+    - numpy>=1.19.0
+    - pandas>=1.0.2
+    - python>=3.7
+    - scipy>=1.5.2
+    - seaborn>=0.10.1
+
+test:
+  imports:
+    - moranpycess
+
+about:
+  home: https://github.com/AngryMaciek/angry-moran-simulator
+  summary: >
+    Python framework for Moran Processes driven by game theory
+  license: MIT
+  license_file: LICENSE.md
+
+extra:
+  maintainers:
+   - Maciek Bak
+
+...
