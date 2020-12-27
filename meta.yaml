@@ -21,7 +21,6 @@ source:
   # https://github.com/conda/conda-build/issues/3563
   git_url: https://github.com/AngryMaciek/angry-moran-simulator.git
   git_depth: 1
-  #folder: dist
 
 build:
   noarch: python # require conda >=4.3 to install
