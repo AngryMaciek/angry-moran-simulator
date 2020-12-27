@@ -73,5 +73,5 @@ jobs:
       - name: Publish to Anaconda Cloud
         shell: bash -l {0}
         run: |
-          anaconda login --username ${{ secrets.ANACONDA_USERNAME }} --password ${{ secrets.ANACONDA_PASSWORD }}
+          anaconda login --username ${{ secrets.ANACONDA_USERNAME }} ${{ secrets.PASSWORD }} ${{ secrets.ANACONDA_PASSWORD }}
           anaconda logout
