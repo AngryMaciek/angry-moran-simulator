@@ -70,8 +70,9 @@ jobs:
         shell: bash -l {0}
         run: conda build .
 
-      - name: Publish to Anaconda Cloud
-        shell: bash -l {0}
-        run: |
-          anaconda login --username ${{ secrets.ANACONDA_USERNAME }} ${{ secrets.PASSWORD }} ${{ secrets.ANACONDA_PASSWORD }}
-          anaconda logout
+      - name: ublish to Anaconda Cloud
+        uses: m0nhawk/conda-package-publish-action@master
+        with:
+          subDir: '.'
+          AnacondaUsername: ${{ secrets.ANACONDA_PASSWORD }}
+          AnacondaPassword: ${{ secrets.ANACONDA_USERNAME }}
