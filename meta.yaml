@@ -14,11 +14,11 @@
 
 package:
   name: moranpycess
-  version: "1.0.11"
+  version: "1.0.12"
 
 source:
-  git_url: https://github.com/AngryMaciek/angry-moran-simulator
-  git_depth: 1
+  path: moranpycess
+  folder: dist
 
 build:
   noarch: python
@@ -48,6 +48,13 @@ about:
   home: https://github.com/AngryMaciek/angry-moran-simulator
   summary: >
     Python framework for Moran Processes driven by game theory
+  description: |
+    The following package presents a general game-theoretical framework
+    to carry out scientific simulations according to the Moran model.
+    Registering distinct types of individuals together with specification
+    of payoffs between them allows to replicate evolution of the population
+    and observe growth dynamics.
+    For more information please visit project's homepage!
   license: MIT
   license_file: LICENSE
 
