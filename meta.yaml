@@ -14,7 +14,7 @@
 
 package:
   name: moranpycess
-  version: "1.0.5"
+  version: "1.0.6"
 
 source:
   git_url: https://github.com/AngryMaciek/angry-moran-simulator

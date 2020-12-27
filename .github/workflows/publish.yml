@@ -70,7 +70,7 @@ jobs:
         shell: bash -l {0}
         run: conda build .
 
-      - name: Publish to Anaconda Cloud # add convert to all platforms and manual push
+      - name: Publish to Anaconda Cloud
         shell: bash -l {0}
         run: |
           anaconda login --username ${{ secrets.ANACONDA_USERNAME }} --password ${{ secrets.ANACONDA_PASSWORD }}
