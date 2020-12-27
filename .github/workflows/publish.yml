@@ -58,7 +58,7 @@ jobs:
 
       - name: Conda Info
         shell: bash -l {0}
-        run: >-
+        run: |
           conda info -a
           conda list
 
@@ -72,6 +72,6 @@ jobs:
 
       - name: Publish to Anaconda Cloud # add convert to all platforms and manual push
         shell: bash -l {0}
-        run: >-
+        run: |
           anaconda login --username ${{ secrets.ANACONDA_USERNAME }} --password ${{ secrets.ANACONDA_PASSWORD }}
           anaconda logout
