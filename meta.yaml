@@ -14,7 +14,7 @@
 
 package:
   name: moranpycess
-  version: "1.0.17"
+  version: "1.0.18"
 
 source:
   # We should build from the local repo; i.e. use 'path': but:
