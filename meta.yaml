@@ -14,11 +14,10 @@
 
 package:
   name: moranpycess
-  version: "1.0.13"
+  version: "1.0.14"
 
 source:
   path: moranpycess
-  folder: dist
 
 build:
   noarch: python # require conda >=4.3 to install
