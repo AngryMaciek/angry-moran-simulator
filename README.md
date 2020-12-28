@@ -65,54 +65,24 @@ Average payoff for an individual is calcualted based on interactions with 26 dir
 
 ## Installation instructions
 
-Our software is built as a [Python 3] package. Keeping research reproducibility in mind in this repository we provide a recipe for *conda* virtual environments which would contain all the required dependencies in their proper versions.  
-We provide a YAML-formatted list of dependencies for the software execution [here](env/main.yml).  
-We provide a YAML-formatted list of dependencies for the software development [here](env/dev.yml).  
-Please inspect the files above for a detailed list of dependencies and their versions.
+### Install from Python Package Index
 
-### Download and install Miniconda
-
-To install the latest version of [miniconda] please execute:  
-  
-[Linux]:
+The easiest way to install our Python package in the current environment is via the `pip` command (requires internet connection):
 ```bash
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
-source .bashrc
+pip install moranpycess
 ```
 
-[macOS]:
+All of the dependencies will be installed alongside automatically. Their versions are specified in the [setup configuration file](setup.cfg).
+
+### Install from Anaconda Cloud
+
+Alternatively, if one uses _conda_ package manager, the software might be installed directly from Anaconda servers with:
 ```bash
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-bash Miniconda3-latest-MacOSX-x86_64.sh
-source .bashrc
+conda install -c angrymaciek moranpycess
 ```
 
-### Clone the repository
-
-Please use git to clone this repository into a desired location (here: `moran-simulator`) with the following command:
-
-```bash
-git clone https://github.com/AngryMaciek/angry-moran-simulator moran-simulator
-```
-
-### Build and activate a virtual environment
-
-Dedicated environment might be created and activated with the following commands:
-
-```bash
-cd moran-simulator
-conda env create -f env/main.yml
-conda activate moranpycess
-```
-
-### Install the package
-
-Finally, please install our package into the new virtual environment with the [Python package manager]:
-
-```bash
-pip install .
-```
+And again, the dependencies are taken care of by the package manager.  
+Please beware that this installation method requires `conda>=4.3` version.
 
 ## Code documentation
 
@@ -135,7 +105,6 @@ For questions or suggestions regarding the code, please use the
 
 MIT License
 
-[Python 3]: https://www.python.org/download/releases/3.0/
 [miniconda]: https://docs.conda.io/en/latest/miniconda.html
 [git]: https://git-scm.com/
 [Moran model]: <https://en.wikipedia.org/wiki/Moran_process>
