@@ -9,7 +9,7 @@ on:
       - master
 
 jobs:
-  ci:
+  pytest:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
