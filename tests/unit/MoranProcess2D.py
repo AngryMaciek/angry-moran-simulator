@@ -14,10 +14,10 @@
 """
 
 # imports
-import random
 import numpy as np
-import moranpycess
 import pytest
+import random
+from .context import moranpycess
 
 
 class TestClass:
