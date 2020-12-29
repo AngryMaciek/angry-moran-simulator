@@ -14,7 +14,7 @@
 """
 
 # imports
-from .context import moranpycess
+from context import moranpycess
 
 
 class TestClass:
