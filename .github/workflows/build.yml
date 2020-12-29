@@ -10,7 +10,7 @@ on:
 
 jobs:
 
-  PyPI pkg:
+  PyPI-pkg:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -35,7 +35,7 @@ jobs:
       - name: Uninstall the Package
         run: python -m pip uninstall moranpycess --yes
 
-  conda pkg:
+  conda-pkg:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
