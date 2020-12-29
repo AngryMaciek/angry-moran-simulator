@@ -45,7 +45,7 @@ class MoranProcess:
         # initialize a list of Individuals
         ID_counter = 0
         self.population = []
-        for label_index in range(len(label_list)):
+        for label_index, label in enumerate(label_list):
             for i in range(size_list[label_index]):
                 self.population.append(
                     moranpycess.Individual(
