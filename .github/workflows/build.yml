@@ -53,6 +53,10 @@ jobs:
           auto-update-conda: true
           auto-activate-base: true
 
+      - name: Install conda-build
+        shell: bash -l {0}
+        run: conda install conda-build
+
       - name: Conda Info
         shell: bash -l {0}
         run: |
