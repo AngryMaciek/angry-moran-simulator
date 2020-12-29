@@ -39,4 +39,4 @@ jobs:
 
       - name: Uninstall the Package
         shell: bash -l {0}
-        run: python -m pip uninstall moranpycess
+        run: python -m pip uninstall moranpycess --yes
