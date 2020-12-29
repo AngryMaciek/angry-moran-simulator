@@ -37,7 +37,7 @@ jobs:
 
       - name: Install the Package
         shell: bash -l {0}
-        run: pip install .
+        run: python -m pip install .
 
       - name: Unit-Test + Coverage
         shell: bash -l {0}
