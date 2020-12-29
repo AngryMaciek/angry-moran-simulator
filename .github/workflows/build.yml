@@ -67,14 +67,14 @@ jobs:
         shell: bash -l {0}
         run: conda build .
 
-      #- name: Install the Package
-      #  shell: bash -l {0}
-      #  run: python -m pip install .
+      - name: Install the Package
+        shell: bash -l {0}
+        run: conda install moranpycess --use-local
 
-      #- name: Test Package Import
-      #  shell: bash -l {0}
-      #  run: python -m pip install .
+      - name: Test Package Import
+        shell: bash -l {0}
+        run: python -c 'import moranpycess'
 
-      #- name: Uninstall the Package
-      #  shell: bash -l {0}
-      #  run: python -m pip uninstall moranpycess --yes
+      - name: Uninstall the Package
+        shell: bash -l {0}
+        run: conda remove moranpycess
