@@ -32,7 +32,7 @@ To make it easier for everyone to maintain, read and contribute to the code,
 as well as to ensure that the code base is robust and of high quality, we
 would kindly ask you to stick to the following guidelines:
 
-- Please use the _conda_ [development environment](env/dev.yml); if needed please update it with new packages. Remember to add novel dependancies for _pip_/_conda_ installation in [setup.cfg](setup.cfg) and [meta.yaml](meta.yaml) respectively.
+- Please use the _conda_ [development environment](env/dev.yml) (create it with `conda env create -f env/dev.yml`); if needed please update it with new packages. Remember to add novel dependancies for _pip_/_conda_ installation in [setup.cfg](setup.cfg) and [meta.yaml](meta.yaml) respectively.
 - Please try to conform to the used code, docstring and commenting style within
   a project to maintain consistency
 - Please use the [`flake8`][res-py-flake8] code linter (use default settings unless otherwise stated)
