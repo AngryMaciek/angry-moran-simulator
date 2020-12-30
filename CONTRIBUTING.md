@@ -26,19 +26,20 @@ reproducible examples.
 Please **do not** use the issue tracker to ask usage questions, installation
 problems etc., unless they appear to be bugs.
 
-## Code style & testing
+## Development
 
 To make it easier for everyone to maintain, read and contribute to the code,
 as well as to ensure that the code base is robust and of high quality, we
-would kindly ask you to stick to the following guidelines for code style and
-testing.
+would kindly ask you to stick to the following guidelines:
 
-- Please use a recent version of [Python 3][res-py] (3.7+)
+- Please use the _conda_ [development environment](env/dev.yml); if needed please update it with new packages. Remember to add novel dependancies for _pip_/_conda_ installation in [setup.cfg](setup.cfg) and [meta.yaml](meta.yaml) respectively.
 - Please try to conform to the used code, docstring and commenting style within
   a project to maintain consistency
 - Please use the [`flake8`][res-py-flake8] code linter (use default settings unless otherwise stated)
 - Please stick to the [`black`][res-py-black] Python code formatting style
 - Please use the following test suites: [`coverage`][res-py-coverage] + [`pytest`][res-py-pytest]
+
+In order to ease the development for all contributors this repository contains a [development Makefile](Makefile). Please type: `make --help` to inspect available commands.
 
 ## Merging your code
 
