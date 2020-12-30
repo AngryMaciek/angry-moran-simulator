@@ -555,8 +555,8 @@ class TestClass:
         random.seed(0)
         simulation = mp.simulate(generations=10)
         # test the plotting:
-        moranpycess.PlotSize3D(mp, simulation, "./3D_size.png")
-        moranpycess.PlotEntropy3D(mp, simulation, "./3D_Entropy.png")
+        moranpycess.PlotSize3D(mp, simulation, "./tests/output/3D_size.png")
+        moranpycess.PlotEntropy3D(mp, simulation, "./tests/output/3D_Entropy.png")
         assert True  # mark that no error was raised before
 
     def test_MoranProcess3DWithTransitionMatrix(self):
