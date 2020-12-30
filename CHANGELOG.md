@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 - Added: makefile for development
+- Added: instructions for development for contributors
 - Changed: CI builds for linux/mac a pip/conda pkg separately, installs it and tests import; unit tests run on **not**-installed pkg.
 - Fixed: Circular import errors
 
