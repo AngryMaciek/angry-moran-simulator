@@ -69,7 +69,7 @@ jobs:
 
       - name: Install the Package
         shell: bash -l {0}
-        run: conda install moranpycess --use-local
+        run: conda install -c ${CONDA_PREFIX}/conda-bld/ moranpycess --yes
 
       - name: Test Package Import
         shell: bash -l {0}
