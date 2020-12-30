@@ -290,12 +290,20 @@ class TestClass:
         random.seed(0)
         simulation = mp.simulate(generations=25000)
         # test the plotting:
-        moranpycess.PlotSize(mp, simulation, "./PD_size.png")
-        moranpycess.PlotAvgBirthPayoff(mp, simulation, "./PD_AvgBirthPayoff.png")
-        moranpycess.PlotAvgDeathPayoff(mp, simulation, "./PD_AvgDeathPayoff.png")
-        moranpycess.PlotBirthFitness(mp, simulation, "./PD_BirthFitness.png")
-        moranpycess.PlotDeathFitness(mp, simulation, "./PD_DeathFitness.png")
-        moranpycess.PlotEntropy(mp, simulation, "./PD_Entropy.png")
+        moranpycess.PlotSize(mp, simulation, "./tests/output/PD_size.png")
+        moranpycess.PlotAvgBirthPayoff(
+            mp, simulation, "./tests/output/PD_AvgBirthPayoff.png"
+        )
+        moranpycess.PlotAvgDeathPayoff(
+            mp, simulation, "./tests/output/PD_AvgDeathPayoff.png"
+        )
+        moranpycess.PlotBirthFitness(
+            mp, simulation, "./tests/output/PD_BirthFitness.png"
+        )
+        moranpycess.PlotDeathFitness(
+            mp, simulation, "./tests/output/PD_DeathFitness.png"
+        )
+        moranpycess.PlotEntropy(mp, simulation, "./tests/output/PD_Entropy.png")
         assert True  # mark that no error was raised before
 
     def test_MoranProcessWithTransitionMatrix(self):
