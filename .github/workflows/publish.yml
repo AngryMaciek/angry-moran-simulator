@@ -45,3 +45,23 @@ jobs:
           subDir: '.'
           AnacondaUsername: ${{ secrets.ANACONDA_USERNAME }}
           AnacondaPassword: ${{ secrets.ANACONDA_PASSWORD }}
+
+  DockerHub:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Build & Publish image to DockerHub
+        env:
+          docker_username: ${{ secrets.DOCKER_USERNAME }}
+          docker_password: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          repo_name="moranpycess"
+          tag=${GITHUB_REF##*/}
+          docker build -t angrymaciek/${repo_name}:latest .
+          docker tag angrymaciek/${repo_name} angrymaciek/${repo_name}:${tag}
+          echo $docker_password | docker login -u $docker_username --password-stdin
+          docker push angrymaciek/${repo_name}:${tag}
