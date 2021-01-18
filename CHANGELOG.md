@@ -12,6 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Changed: CI builds for linux/mac a pip/conda pkg separately, installs it and tests import; unit tests run on **not**-installed pkg.
 - Fixed: Circular import errors
 
+## [1.0.38] - 2021-01-18
+
+### Added
+
+- automatic build and upload images to dockerhub
+
 ## [1.0.29] - 2020-12-28
 
 ### Added
@@ -26,3 +32,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 [unreleased]: https://github.com/AngryMaciek/angry-moran-simulator/compare/1.0.29...HEAD
 [1.0.29]: https://github.com/AngryMaciek/angry-moran-simulator/releases/tag/1.0.29
+[1.0.38]: https://github.com/AngryMaciek/angry-moran-simulator/releases/tag/1.0.38
