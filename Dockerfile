@@ -11,6 +11,8 @@ LABEL software.license="https://github.com/AngryMaciek/angry-moran-simulator/blo
 LABEL software.tags="Bioinformatcs"
 LABEL maintainer="wsciekly.maciek@gmail.com"
 
+##### COPY REPOSITORY #####
+WORKDIR /usr/src/moranpycess
 COPY . .
 
 ##### INSTALL AND TEST-IMPORT #####
