@@ -11,6 +11,9 @@ LABEL software.license="https://github.com/AngryMaciek/angry-moran-simulator/blo
 LABEL software.tags="Bioinformatcs"
 LABEL maintainer="wsciekly.maciek@gmail.com"
 
-##### INSTALL #####
+COPY . .
+
+##### INSTALL AND TEST-IMPORT #####
 RUN pip install --upgrade pip \
-  && python -m pip install .
+  && python -m pip install . \
+  && python -c 'import moranpycess'
