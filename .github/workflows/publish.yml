@@ -58,7 +58,7 @@ jobs:
         env:
           docker_username: ${{ secrets.DOCKER_USERNAME }}
           docker_password: ${{ secrets.DOCKER_PASSWORD }}
-        run: | 
+        run: |
           repo_name="moranpycess"
           tag=${GITHUB_REF##*/}
           docker build -t angrymaciek/${repo_name}:latest .
