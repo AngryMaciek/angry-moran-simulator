@@ -61,7 +61,8 @@ jobs:
         run: |  
           repo_name="moranpycess"
           tag=${GITHUB_REF##*/}
-          echo $repo_name
-          echo $tag
-          tag="${tag:1}"
-          echo $tag
+          docker build -t angrymaciek/${repo_name}:latest .
+          docker tag angrymaciek/${repo_name} angrymaciek/${repo_name}:${tag}
+          echo $docker_password | docker login -u $docker_username --password-stdin
+          docker push angrymaciek/${repo_name}:latest
+          docker push angrymaciek/${repo_name}:${tag}
