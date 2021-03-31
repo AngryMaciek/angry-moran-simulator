@@ -358,9 +358,9 @@ class TestClass:
         random.seed(0)
         simulation = mp.simulate(generations=10)
         # test the plotting:
-        moranpycess.PlotSize2D(mp, simulation, "./tests/output/2D_size.png")
-        moranpycess.PlotEntropy2D(mp, simulation, "./tests/output/2D_Entropy.png")
-        moranpycess.PlotPopulationSnapshot2D(mp, "./tests/output/2D_snapshot.png")
+        mp.PlotSize2D(simulation, "./tests/output/2D_size.png")
+        mp.PlotEntropy2D(simulation, "./tests/output/2D_Entropy.png")
+        mp.PlotPopulationSnapshot2D("./tests/output/2D_snapshot.png")
         assert True  # mark that no error was raised before
 
     def test_MoranProcess2DWithTransitionMatrix(self):
