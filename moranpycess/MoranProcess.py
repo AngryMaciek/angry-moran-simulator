@@ -426,113 +426,113 @@ class MoranProcess:
                 self.Entropy -= fraction * np.log2(fraction)
 
 
-def PlotSize(mp, df, path):
-    """Plot the sub-populations' sizes after a simulation of a given Moran Process."""
-    plt.figure(figsize=(14, 6))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    cmap = plt.get_cmap("coolwarm")
-    columns = [l + "__size" for l in mp.init_label_list]
-    df_copy = df[columns].copy()
-    df_copy.columns = mp.init_label_list
-    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
-    population_size = len(mp.population)
-    ax.set_ylim([0, population_size])
-    plt.xlabel("Generation", size=14)
-    plt.ylabel("# Individuals", size=14)
-    ax.tick_params(axis="both", which="major", labelsize=12)
-    ax.legend(loc=4, fontsize=20)
-    plt.savefig(fname=path, dpi=300)
+    def PlotSize(self, df, path):
+        """Plot the sub-populations' sizes after a simulation of a given Moran Process."""
+        plt.figure(figsize=(14, 6))
+        ax = plt.gca()
+        ax.tick_params(width=1)
+        for axis in ["top", "bottom", "left", "right"]:
+            ax.spines[axis].set_linewidth(1)
+        cmap = plt.get_cmap("coolwarm")
+        columns = [l + "__size" for l in self.init_label_list]
+        df_copy = df[columns].copy()
+        df_copy.columns = self.init_label_list
+        df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
+        population_size = len(self.population)
+        ax.set_ylim([0, population_size])
+        plt.xlabel("Generation", size=14)
+        plt.ylabel("# Individuals", size=14)
+        ax.tick_params(axis="both", which="major", labelsize=12)
+        ax.legend(loc=4, fontsize=20)
+        plt.savefig(fname=path, dpi=300)
 
 
-def PlotAvgBirthPayoff(mp, df, path):
-    """Plot the sub-populations' AvgBirthPayoff after a simulation of a given Moran Process."""
-    plt.figure(figsize=(14, 6))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    cmap = plt.get_cmap("coolwarm")
-    columns = [l + "__AvgBirthPayoff" for l in mp.init_label_list]
-    df_copy = df[columns].copy()
-    df_copy.columns = mp.init_label_list
-    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
-    plt.xlabel("Generation", size=14)
-    plt.ylabel("Average Birth Payoff", size=14)
-    ax.tick_params(axis="both", which="major", labelsize=12)
-    ax.legend(loc=4, fontsize=20)
-    plt.savefig(fname=path, dpi=300)
+    def PlotAvgBirthPayoff(self, df, path):
+        """Plot the sub-populations' AvgBirthPayoff after a simulation of a given Moran Process."""
+        plt.figure(figsize=(14, 6))
+        ax = plt.gca()
+        ax.tick_params(width=1)
+        for axis in ["top", "bottom", "left", "right"]:
+            ax.spines[axis].set_linewidth(1)
+        cmap = plt.get_cmap("coolwarm")
+        columns = [l + "__AvgBirthPayoff" for l in self.init_label_list]
+        df_copy = df[columns].copy()
+        df_copy.columns = self.init_label_list
+        df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
+        plt.xlabel("Generation", size=14)
+        plt.ylabel("Average Birth Payoff", size=14)
+        ax.tick_params(axis="both", which="major", labelsize=12)
+        ax.legend(loc=4, fontsize=20)
+        plt.savefig(fname=path, dpi=300)
 
 
-def PlotAvgDeathPayoff(mp, df, path):
-    """Plot the sub-populations' AvgDeathPayoff after a simulation of a given Moran Process."""
-    plt.figure(figsize=(14, 6))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    cmap = plt.get_cmap("coolwarm")
-    columns = [l + "__AvgDeathPayoff" for l in mp.init_label_list]
-    df_copy = df[columns].copy()
-    df_copy.columns = mp.init_label_list
-    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
-    plt.xlabel("Generation", size=14)
-    plt.ylabel("Average Death Payoff", size=14)
-    ax.tick_params(axis="both", which="major", labelsize=12)
-    ax.legend(loc=4, fontsize=20)
-    plt.savefig(fname=path, dpi=300)
+    def PlotAvgDeathPayoff(self, df, path):
+        """Plot the sub-populations' AvgDeathPayoff after a simulation of a given Moran Process."""
+        plt.figure(figsize=(14, 6))
+        ax = plt.gca()
+        ax.tick_params(width=1)
+        for axis in ["top", "bottom", "left", "right"]:
+            ax.spines[axis].set_linewidth(1)
+        cmap = plt.get_cmap("coolwarm")
+        columns = [l + "__AvgDeathPayoff" for l in self.init_label_list]
+        df_copy = df[columns].copy()
+        df_copy.columns = self.init_label_list
+        df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
+        plt.xlabel("Generation", size=14)
+        plt.ylabel("Average Death Payoff", size=14)
+        ax.tick_params(axis="both", which="major", labelsize=12)
+        ax.legend(loc=4, fontsize=20)
+        plt.savefig(fname=path, dpi=300)
 
 
-def PlotBirthFitness(mp, df, path):
-    """Plot the sub-populations' BirthFitness after a simulation of a given Moran Process."""
-    plt.figure(figsize=(14, 6))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    cmap = plt.get_cmap("coolwarm")
-    columns = [l + "__BirthFitness" for l in mp.init_label_list]
-    df_copy = df[columns].copy()
-    df_copy.columns = mp.init_label_list
-    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
-    plt.xlabel("Generation", size=14)
-    plt.ylabel("Birth Fitness", size=14)
-    ax.tick_params(axis="both", which="major", labelsize=12)
-    ax.legend(loc=4, fontsize=20)
-    plt.savefig(fname=path, dpi=300)
+    def PlotBirthFitness(self, df, path):
+        """Plot the sub-populations' BirthFitness after a simulation of a given Moran Process."""
+        plt.figure(figsize=(14, 6))
+        ax = plt.gca()
+        ax.tick_params(width=1)
+        for axis in ["top", "bottom", "left", "right"]:
+            ax.spines[axis].set_linewidth(1)
+        cmap = plt.get_cmap("coolwarm")
+        columns = [l + "__BirthFitness" for l in self.init_label_list]
+        df_copy = df[columns].copy()
+        df_copy.columns = self.init_label_list
+        df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
+        plt.xlabel("Generation", size=14)
+        plt.ylabel("Birth Fitness", size=14)
+        ax.tick_params(axis="both", which="major", labelsize=12)
+        ax.legend(loc=4, fontsize=20)
+        plt.savefig(fname=path, dpi=300)
 
 
-def PlotDeathFitness(mp, df, path):
-    """Plot the sub-populations' DeathFitness after a simulation of a given Moran Process."""
-    plt.figure(figsize=(14, 6))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    cmap = plt.get_cmap("coolwarm")
-    columns = [l + "__DeathFitness" for l in mp.init_label_list]
-    df_copy = df[columns].copy()
-    df_copy.columns = mp.init_label_list
-    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
-    plt.xlabel("Generation", size=14)
-    plt.ylabel("Death Fitness", size=14)
-    ax.tick_params(axis="both", which="major", labelsize=12)
-    ax.legend(loc=4, fontsize=20)
-    plt.savefig(fname=path, dpi=300)
+    def PlotDeathFitness(self, df, path):
+        """Plot the sub-populations' DeathFitness after a simulation of a given Moran Process."""
+        plt.figure(figsize=(14, 6))
+        ax = plt.gca()
+        ax.tick_params(width=1)
+        for axis in ["top", "bottom", "left", "right"]:
+            ax.spines[axis].set_linewidth(1)
+        cmap = plt.get_cmap("coolwarm")
+        columns = [l + "__DeathFitness" for l in self.init_label_list]
+        df_copy = df[columns].copy()
+        df_copy.columns = self.init_label_list
+        df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
+        plt.xlabel("Generation", size=14)
+        plt.ylabel("Death Fitness", size=14)
+        ax.tick_params(axis="both", which="major", labelsize=12)
+        ax.legend(loc=4, fontsize=20)
+        plt.savefig(fname=path, dpi=300)
 
 
-def PlotEntropy(mp, df, path):
-    """Plot the whole populations entropy after a simulation of a given Moran Process."""
-    plt.figure(figsize=(14, 6))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    df["Entropy"].plot(color="black", linewidth=1.5, ax=ax, label="Entropy")
-    plt.xlabel("Generation", size=14)
-    plt.ylabel("", size=14)
-    ax.tick_params(axis="both", which="major", labelsize=12)
-    ax.legend(loc=4, fontsize=20)
-    plt.savefig(fname=path, dpi=300)
+    def PlotEntropy(self, df, path):
+        """Plot the whole populations entropy after a simulation of a given Moran Process."""
+        plt.figure(figsize=(14, 6))
+        ax = plt.gca()
+        ax.tick_params(width=1)
+        for axis in ["top", "bottom", "left", "right"]:
+            ax.spines[axis].set_linewidth(1)
+        df["Entropy"].plot(color="black", linewidth=1.5, ax=ax, label="Entropy")
+        plt.xlabel("Generation", size=14)
+        plt.ylabel("", size=14)
+        ax.tick_params(axis="both", which="major", labelsize=12)
+        ax.legend(loc=4, fontsize=20)
+        plt.savefig(fname=path, dpi=300)
