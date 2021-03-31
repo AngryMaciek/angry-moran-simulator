@@ -51,7 +51,7 @@ jobs:
         run: |
           flake8 --max-line-length=88 --ignore F401 moranpycess/__init__.py
           flake8 --max-line-length=88 moranpycess/Individual.py
-          flake8 --max-line-length=95 --ignore F401,E231,W503,E741 moranpycess/MoranProcess.py
+          flake8 --max-line-length=100 --ignore F401,E231,W503,E741 moranpycess/MoranProcess.py
           flake8 --max-line-length=101 --ignore F401,E231,W503,E741 moranpycess/MoranProcess2D.py
           flake8 --max-line-length=101 --ignore F401,E231,W503,E741 moranpycess/MoranProcess3D.py
           flake8 --max-line-length=88 --ignore F401,E402 tests/unit/context.py
