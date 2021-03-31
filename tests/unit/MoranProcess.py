@@ -291,18 +291,10 @@ class TestClass:
         simulation = mp.simulate(generations=25000)
         # test the plotting:
         mp.PlotSize(simulation, "./tests/output/PD_size.png")
-        mp.PlotAvgBirthPayoff(
-            simulation, "./tests/output/PD_AvgBirthPayoff.png"
-        )
-        mp.PlotAvgDeathPayoff(
-            simulation, "./tests/output/PD_AvgDeathPayoff.png"
-        )
-        mp.PlotBirthFitness(
-            simulation, "./tests/output/PD_BirthFitness.png"
-        )
-        mp.PlotDeathFitness(
-            simulation, "./tests/output/PD_DeathFitness.png"
-        )
+        mp.PlotAvgBirthPayoff(simulation, "./tests/output/PD_AvgBirthPayoff.png")
+        mp.PlotAvgDeathPayoff(simulation, "./tests/output/PD_AvgDeathPayoff.png")
+        mp.PlotBirthFitness(simulation, "./tests/output/PD_BirthFitness.png")
+        mp.PlotDeathFitness(simulation, "./tests/output/PD_DeathFitness.png")
         mp.PlotEntropy(simulation, "./tests/output/PD_Entropy.png")
         assert True  # mark that no error was raised before
 

@@ -425,7 +425,6 @@ class MoranProcess:
             if fraction != 0.0:
                 self.Entropy -= fraction * np.log2(fraction)
 
-
     def PlotSize(self, df, path):
         """Plot the sub-populations' sizes after a simulation of a given Moran Process."""
         plt.figure(figsize=(14, 6))
@@ -446,7 +445,6 @@ class MoranProcess:
         ax.legend(loc=4, fontsize=20)
         plt.savefig(fname=path, dpi=300)
 
-
     def PlotAvgBirthPayoff(self, df, path):
         """Plot the sub-populations' AvgBirthPayoff after a simulation of a given Moran Process."""
         plt.figure(figsize=(14, 6))
@@ -464,7 +462,6 @@ class MoranProcess:
         ax.tick_params(axis="both", which="major", labelsize=12)
         ax.legend(loc=4, fontsize=20)
         plt.savefig(fname=path, dpi=300)
-
 
     def PlotAvgDeathPayoff(self, df, path):
         """Plot the sub-populations' AvgDeathPayoff after a simulation of a given Moran Process."""
@@ -484,7 +481,6 @@ class MoranProcess:
         ax.legend(loc=4, fontsize=20)
         plt.savefig(fname=path, dpi=300)
 
-
     def PlotBirthFitness(self, df, path):
         """Plot the sub-populations' BirthFitness after a simulation of a given Moran Process."""
         plt.figure(figsize=(14, 6))
@@ -503,7 +499,6 @@ class MoranProcess:
         ax.legend(loc=4, fontsize=20)
         plt.savefig(fname=path, dpi=300)
 
-
     def PlotDeathFitness(self, df, path):
         """Plot the sub-populations' DeathFitness after a simulation of a given Moran Process."""
         plt.figure(figsize=(14, 6))
@@ -521,7 +516,6 @@ class MoranProcess:
         ax.tick_params(axis="both", which="major", labelsize=12)
         ax.legend(loc=4, fontsize=20)
         plt.savefig(fname=path, dpi=300)
-
 
     def PlotEntropy(self, df, path):
         """Plot the whole populations entropy after a simulation of a given Moran Process."""
