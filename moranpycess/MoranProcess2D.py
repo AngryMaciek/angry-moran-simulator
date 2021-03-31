@@ -517,7 +517,7 @@ class MoranProcess2D:
         ax.tick_params(width=1)
         for axis in ["top", "bottom", "left", "right"]:
             ax.spines[axis].set_linewidth(1)
-        plot_grid = mp.curr_grid.copy()
+        plot_grid = self.curr_grid.copy()
         ticks_labels = []
         for label_index in range(len(self.init_label_list)):
             plot_grid[plot_grid == self.init_label_list[label_index]] = label_index
