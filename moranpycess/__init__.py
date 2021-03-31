@@ -16,7 +16,5 @@
 # imports
 from .Individual import Individual
 from .MoranProcess import MoranProcess
-from .MoranProcess2D import MoranProcess2D
-from .MoranProcess2D import PlotSize2D, PlotEntropy2D, PlotPopulationSnapshot2D
 from .MoranProcess3D import MoranProcess3D
 from .MoranProcess3D import PlotSize3D, PlotEntropy3D
