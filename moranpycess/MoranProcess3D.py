@@ -591,38 +591,36 @@ class MoranProcess3D:
 
         return log_df
 
+    def PlotSize3D(self, df, path):
+        """Plot the sub-populations' sizes after a simulation of a given 3D Moran Process."""
+        plt.figure(figsize=(14, 6))
+        ax = plt.gca()
+        ax.tick_params(width=1)
+        for axis in ["top", "bottom", "left", "right"]:
+            ax.spines[axis].set_linewidth(1)
+        cmap = plt.get_cmap("coolwarm")
+        columns = [l + "__size" for l in self.init_label_list]
+        df_copy = df[columns].copy()
+        df_copy.columns = self.init_label_list
+        df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
+        population_size = self.population.size
+        ax.set_ylim([0, population_size])
+        plt.xlabel("Generation", size=14)
+        plt.ylabel("# Individuals", size=14)
+        ax.tick_params(axis="both", which="major", labelsize=12)
+        ax.legend(loc=4, fontsize=20)
+        plt.savefig(fname=path, dpi=300)
 
-def PlotSize3D(mp, df, path):
-    """Plot the sub-populations' sizes after a simulation of a given 3D Moran Process."""
-    plt.figure(figsize=(14, 6))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    cmap = plt.get_cmap("coolwarm")
-    columns = [l + "__size" for l in mp.init_label_list]
-    df_copy = df[columns].copy()
-    df_copy.columns = mp.init_label_list
-    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
-    population_size = mp.population.size
-    ax.set_ylim([0, population_size])
-    plt.xlabel("Generation", size=14)
-    plt.ylabel("# Individuals", size=14)
-    ax.tick_params(axis="both", which="major", labelsize=12)
-    ax.legend(loc=4, fontsize=20)
-    plt.savefig(fname=path, dpi=300)
-
-
-def PlotEntropy3D(mp, df, path):
-    """Plot the whole populations entropy after a simulation of a given 3D Moran Process."""
-    plt.figure(figsize=(14, 6))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    df["Entropy"].plot(color="black", linewidth=1.5, ax=ax, label="Entropy")
-    plt.xlabel("Generation", size=14)
-    plt.ylabel("", size=14)
-    ax.tick_params(axis="both", which="major", labelsize=12)
-    ax.legend(loc=4, fontsize=20)
-    plt.savefig(fname=path, dpi=300)
+    def PlotEntropy3D(self, df, path):
+        """Plot the whole populations entropy after a simulation of a given 3D Moran Process."""
+        plt.figure(figsize=(14, 6))
+        ax = plt.gca()
+        ax.tick_params(width=1)
+        for axis in ["top", "bottom", "left", "right"]:
+            ax.spines[axis].set_linewidth(1)
+        df["Entropy"].plot(color="black", linewidth=1.5, ax=ax, label="Entropy")
+        plt.xlabel("Generation", size=14)
+        plt.ylabel("", size=14)
+        ax.tick_params(axis="both", which="major", labelsize=12)
+        ax.legend(loc=4, fontsize=20)
+        plt.savefig(fname=path, dpi=300)

@@ -77,7 +77,7 @@ Information which are stored in the dataframe's columns include:
 * per-sub-population Death Fitness of an individual from a given sub-popualtion
 * Entropy of the distribution of Strategies in the whole population
 
-Additionally to the *MoranProcess* class the user is equipped with several plotting functions to visualise results of the simulation:
+The *MoranProcess* class is equipped with several plotting methods to visualise results of the simulation:
 * `PlotSize`
 * `PlotAvgBirthPayoff`
 * `PlotAvgDeathPayoff`
@@ -87,13 +87,11 @@ Additionally to the *MoranProcess* class the user is equipped with several plott
 
 Each of which with the same signature:
 ```python
-def FUNCTION(mp, df, path):
+def FUNCTION(self, df, path):
 ```
 
 With the following arguments:
 ```python
-mp # instance of the MoranProcess
-
 df # simulation results - pandas dataframe returned by the method .simulate()
 
 path # path for the output plot in png format
@@ -101,12 +99,12 @@ path # path for the output plot in png format
 
 Following the previous simulation one may generate the plots with:
 ```python
-moranpycess.PlotSize(mp, df, "Size.png")
-moranpycess.PlotAvgBirthPayoff(mp, df, "AvgBirthPayoff.png")
-moranpycess.PlotAvgDeathPayoff(mp, df, "AvgDeathPayoff.png")
-moranpycess.PlotBirthFitness(mp, df, "BirthFitness.png")
-moranpycess.PlotDeathFitness(mp, df, "DeathFitness.png")
-moranpycess.PlotEntropy(mp, df, "Entropy.png")
+mp.PlotSize(df, "Size.png")
+mp.PlotAvgBirthPayoff(df, "AvgBirthPayoff.png")
+mp.PlotAvgDeathPayoff(df, "AvgDeathPayoff.png")
+mp.PlotBirthFitness(df, "BirthFitness.png")
+mp.PlotDeathFitness(df, "DeathFitness.png")
+mp.PlotEntropy(df, "Entropy.png")
 ```
 
 ## Moran Model based on 2D neighbourhood
@@ -172,28 +170,26 @@ Information which are stored in the dataframe's columns include:
 * per-sub-population sub-population's size
 * Entropy of the distribution of Strategies in the whole population
 
-Additionally to the *MoranProcess2D* class the user is equipped with three plotting functions to visualise results of the simulation:
+The *MoranProcess2D* class is equipped with three plotting methods to visualise results of the simulation:
 * `PlotSize2D`
 * `PlotEntropy2D`
 * `PlotPopulationSnapshot2D`
 
 With `PlotSize2D` and `PlotEntropy2D` having the same signatures as their previous analogues. The latter, `PlotPopulationSnapshot2D`, may produce a heatmap-like snapshot of a population at it's current state:
 ```python
-def PlotPopulationSnapshot2D(mp, path):
+def PlotPopulationSnapshot2D(self, path):
 ```
 
 With the following arguments:
 ```python
-mp # instance of the MoranProcess
-
 path # path for the output plot in png format
 ```
 
 Following the previous simulation one may generate the plots with:
 ```python
-moranpycess.PlotSize2D(mp, df, "Size2D.png")
-moranpycess.PlotEntropy2D(mp, df, "Entropy2D.png")
-moranpycess.PlotPopulationSnapshot2D(mp, "PopulationSnapshot2D.png")
+mp.PlotSize2D(df, "Size2D.png")
+mp.PlotEntropy2D(df, "Entropy2D.png")
+mp.PlotPopulationSnapshot2D("PopulationSnapshot2D.png")
 ```
 
 ## Moran Model based on 3D neighbourhood
@@ -255,15 +251,15 @@ Information which are stored in the dataframe's columns include:
 * per-sub-population sub-population's size
 * Entropy of the distribution of Strategies in the whole population
 
-Additionally to the *MoranProcess3D* class the user is equipped with two plotting functions to visualise results of the simulation:
+The *MoranProcess3D* class is equipped with two plotting methods to visualise results of the simulation:
 * `PlotSize3D`
 * `PlotEntropy3D`
 
 The functions have the same signatures as their previous analogues.  
 Following the previous simulation one may generate the plots with:
 ```python
-moranpycess.PlotSize3D(mp, df, "Size3D.png")
-moranpycess.PlotEntropy3D(mp, df, "Entropy3D.png")
+mp.PlotSize3D(df, "Size3D.png")
+mp.PlotEntropy3D(df, "Entropy3D.png")
 ```
 
 ## Use cases

@@ -476,68 +476,68 @@ class MoranProcess2D:
 
         return log_df
 
+    def PlotSize2D(self, df, path):
+        """Plot the sub-populations' sizes after a simulation of a given 2D Moran Process."""
+        plt.figure(figsize=(14, 6))
+        ax = plt.gca()
+        ax.tick_params(width=1)
+        for axis in ["top", "bottom", "left", "right"]:
+            ax.spines[axis].set_linewidth(1)
+        cmap = plt.get_cmap("coolwarm")
+        columns = [l + "__size" for l in self.init_label_list]
+        df_copy = df[columns].copy()
+        df_copy.columns = self.init_label_list
+        df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
+        population_size = self.population.size
+        ax.set_ylim([0, population_size])
+        plt.xlabel("Generation", size=14)
+        plt.ylabel("# Individuals", size=14)
+        ax.tick_params(axis="both", which="major", labelsize=12)
+        ax.legend(loc=4, fontsize=20)
+        plt.savefig(fname=path, dpi=300)
 
-def PlotSize2D(mp, df, path):
-    """Plot the sub-populations' sizes after a simulation of a given 2D Moran Process."""
-    plt.figure(figsize=(14, 6))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    cmap = plt.get_cmap("coolwarm")
-    columns = [l + "__size" for l in mp.init_label_list]
-    df_copy = df[columns].copy()
-    df_copy.columns = mp.init_label_list
-    df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
-    population_size = mp.population.size
-    ax.set_ylim([0, population_size])
-    plt.xlabel("Generation", size=14)
-    plt.ylabel("# Individuals", size=14)
-    ax.tick_params(axis="both", which="major", labelsize=12)
-    ax.legend(loc=4, fontsize=20)
-    plt.savefig(fname=path, dpi=300)
+    def PlotEntropy2D(self, df, path):
+        """Plot the whole populations entropy after a simulation of a given 2D Moran Process."""
+        plt.figure(figsize=(14, 6))
+        ax = plt.gca()
+        ax.tick_params(width=1)
+        for axis in ["top", "bottom", "left", "right"]:
+            ax.spines[axis].set_linewidth(1)
+        df["Entropy"].plot(color="black", linewidth=1.5, ax=ax, label="Entropy")
+        plt.xlabel("Generation", size=14)
+        plt.ylabel("", size=14)
+        ax.tick_params(axis="both", which="major", labelsize=12)
+        ax.legend(loc=4, fontsize=20)
+        plt.savefig(fname=path, dpi=300)
 
-
-def PlotEntropy2D(mp, df, path):
-    """Plot the whole populations entropy after a simulation of a given 2D Moran Process."""
-    plt.figure(figsize=(14, 6))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    df["Entropy"].plot(color="black", linewidth=1.5, ax=ax, label="Entropy")
-    plt.xlabel("Generation", size=14)
-    plt.ylabel("", size=14)
-    ax.tick_params(axis="both", which="major", labelsize=12)
-    ax.legend(loc=4, fontsize=20)
-    plt.savefig(fname=path, dpi=300)
-
-
-def PlotPopulationSnapshot2D(mp, path):
-    """Plot the whole populations entropy after a simulation of a given 2D Moran Process."""
-    plt.figure(figsize=(10, 10))
-    ax = plt.gca()
-    ax.tick_params(width=1)
-    for axis in ["top", "bottom", "left", "right"]:
-        ax.spines[axis].set_linewidth(1)
-    plot_grid = mp.curr_grid.copy()
-    ticks_labels = []
-    for label_index in range(len(mp.init_label_list)):
-        plot_grid[plot_grid == mp.init_label_list[label_index]] = label_index
-        ticks_labels.append(mp.init_label_list[label_index])
-    plot_grid = plot_grid.astype(float)
-    cmap = plt.get_cmap(
-        "coolwarm", np.max(plot_grid) - np.min(plot_grid) + 1
-    )  # get discrete colormap
-    mat = plt.matshow(
-        plot_grid, cmap=cmap, vmin=np.min(plot_grid) - 0.5, vmax=np.max(plot_grid) + 0.5
-    )  # set limits .5 outside true range
-    cax = plt.colorbar(
-        mat, ticks=np.arange(np.min(plot_grid), np.max(plot_grid) + 1)
-    )  # tell the colorbar to tick at integers
-    cax.set_ticklabels(ticks_labels)
-    plt.ylabel("")
-    plt.yticks([])
-    plt.xlabel("")
-    plt.xticks([])
-    plt.savefig(fname=path, dpi=300)
+    def PlotPopulationSnapshot2D(self, path):
+        """Plot the whole populations entropy after a simulation of a given 2D Moran Process."""
+        plt.figure(figsize=(10, 10))
+        ax = plt.gca()
+        ax.tick_params(width=1)
+        for axis in ["top", "bottom", "left", "right"]:
+            ax.spines[axis].set_linewidth(1)
+        plot_grid = self.curr_grid.copy()
+        ticks_labels = []
+        for label_index in range(len(self.init_label_list)):
+            plot_grid[plot_grid == self.init_label_list[label_index]] = label_index
+            ticks_labels.append(self.init_label_list[label_index])
+        plot_grid = plot_grid.astype(float)
+        cmap = plt.get_cmap(
+            "coolwarm", np.max(plot_grid) - np.min(plot_grid) + 1
+        )  # get discrete colormap
+        mat = plt.matshow(
+            plot_grid,
+            cmap=cmap,
+            vmin=np.min(plot_grid) - 0.5,
+            vmax=np.max(plot_grid) + 0.5,
+        )  # set limits .5 outside true range
+        cax = plt.colorbar(
+            mat, ticks=np.arange(np.min(plot_grid), np.max(plot_grid) + 1)
+        )  # tell the colorbar to tick at integers
+        cax.set_ticklabels(ticks_labels)
+        plt.ylabel("")
+        plt.yticks([])
+        plt.xlabel("")
+        plt.xticks([])
+        plt.savefig(fname=path, dpi=300)
