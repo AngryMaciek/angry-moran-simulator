@@ -114,12 +114,16 @@ class MoranProcess:
                     == TransitionMatrix.shape[1]
                     == len(label_list)
                 )
-                # check if the values are correct
-                for v in np.sum(TransitionMatrix, axis=1):
-                    assert v == 1.0
             except AssertionError as e:
                 e.args += ("Invalid Transition Matrix",)
                 raise
+            # check if the values are correct
+            for v in np.sum(TransitionMatrix, axis=1):
+                if v != 1.0:
+                    raise moranpycess.IncorrectValueError(
+                        parameter="Transition Matrix",
+                        message="Transition probabilities need to add up to 1.0.",
+                    )
         self.TransitionMatrix = copy.deepcopy(TransitionMatrix)
 
     @property
