@@ -20,11 +20,11 @@ jobs:
         with:
           docs-folder: "docs/"
 
-      #- name: Deploy
-      #  uses: peaceiris/actions-gh-pages@v3
-      #  with:
-      #    github_token: ${{ secrets.GITHUB_TOKEN }}
-      #    publish_branch: gh-pages
-      #    publish_dir: 'docs'
-      #    destination_dir: 'docs'
-      #    keep_files: true
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: 'docs'
+          destination_dir: 'docs'
+          keep_files: true
