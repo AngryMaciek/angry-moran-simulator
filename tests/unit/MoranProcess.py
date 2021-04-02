@@ -213,7 +213,7 @@ class TestClass:
         label_list = ["A", "B", "C"]
         BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
         DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
-        with pytest.raises(Exception):
+        with pytest.raises(AssertionError):
             moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
@@ -225,7 +225,7 @@ class TestClass:
         label_list = ["A", "B"]
         BirthPayoffMatrix = np.array([[10, 20, 20], [30, 40, 40], [1, 1, 1]])
         DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
-        with pytest.raises(Exception):
+        with pytest.raises(AssertionError):
             moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
@@ -237,7 +237,7 @@ class TestClass:
         label_list = ["A", "B"]
         BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
         DeathPayoffMatrix = np.array([[10, 20, 20], [30, 40, 40], [1, 1, 1]])
-        with pytest.raises(Exception):
+        with pytest.raises(AssertionError):
             moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
@@ -250,7 +250,7 @@ class TestClass:
         BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
         DeathPayoffMatrix = np.array([[10, 20], [30, 40]])
         TransitionMatrix = np.array([[0.0], [0.0]])
-        with pytest.raises(Exception):
+        with pytest.raises(AssertionError):
             moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
@@ -264,7 +264,10 @@ class TestClass:
         BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
         DeathPayoffMatrix = np.array([[10, 20], [30, 40]])
         TransitionMatrix = np.array([[0.5, 0.4], [0.5, 0.5]])
-        with pytest.raises(Exception):
+        expected_error_msg = "Incorrect value for Transition Matrix."
+        expected_error_msg += " "
+        expected_error_msg += "Transition probabilities need to add up to 1.0."
+        with pytest.raises(moranpycess.IncorrectValueError, match=expected_error_msg):
             moranpycess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
