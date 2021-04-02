@@ -11,7 +11,7 @@
 #
 ###############################################################################
 
-.PHONY: help test install uninstall format lint # docs
+.PHONY: help test install uninstall format lint docs
 
 help:
 	@echo "help - display this message"
@@ -20,7 +20,7 @@ help:
 	@echo "uninstall - pip-uninstall the package"
 	@echo "format - format all package & test files with black"
 	@echo "lint - static analysis of all package & test files with flake8"
-#	@echo "docs - generate Sphinx HTML documentation"
+	@echo "docs - generate HTML documentation with Sphinx"
 
 test:
 	coverage run -m pytest \
@@ -61,5 +61,5 @@ lint:
 	flake8 --max-line-length=88 --ignore E231 tests/unit/MoranProcess2D.py
 	flake8 --max-line-length=88 --ignore E231 tests/unit/MoranProcess3D.py
 
-#docs:
-#	$(MAKE) -C docs html
+docs:
+	cd docs && make html && cd ..

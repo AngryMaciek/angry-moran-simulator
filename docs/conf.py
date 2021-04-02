@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'Moran [Py]cess'
-copyright = '2021, Maciej_Bak'
-author = 'Maciej_Bak'
+copyright = '2021, Maciej Bak'
+author = 'Maciej Bak'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0.39'
