@@ -34,20 +34,17 @@ class IncorrectValueError(Error):
     def __init__(
         self,
         parameter,
-        arg,
         message="Please check the documentation for expected argument values.",
     ):
         """Class initializer.
 
         Args:
             parameter (str): parameter name
-            arg (str): provided parameter value
             message (str, optional): error message.
                 Defaults to "Please check the documentation
                 for expected argument values.".
         """
         self.parameter = parameter
-        self.value = arg
         self.message = message
         super().__init__(self.message)
 
@@ -57,6 +54,4 @@ class IncorrectValueError(Error):
         Returns:
             str: error message
         """
-        return (
-            f"{self.value} is not a correct value for {self.parameter}. {self.message}"
-        )
+        return f"Incorrect value for {self.parameter}. {self.message}"
