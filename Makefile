@@ -62,4 +62,7 @@ lint:
 	flake8 --max-line-length=88 --ignore E231 tests/unit/MoranProcess3D.py
 
 docs:
-	cd docs && make html && cd ..
+	cd docs && \
+	make html && \
+	cd ..
+	cp -r images docs/_static/images
