@@ -65,4 +65,3 @@ docs:
 	cd docs && \
 	make html && \
 	cd ..
-	cp -r images docs/_static/images
