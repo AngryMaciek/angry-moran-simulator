@@ -2,6 +2,7 @@
 License
 #######
 
-Moran [Py]cess is licensed under the MIT loicense.
+Moran [Py]cess is licensed under the MIT loicense:
 
-[Highlited LICENSE text here]
+.. literalinclude:: ../../LICENSE
+    :language: text
