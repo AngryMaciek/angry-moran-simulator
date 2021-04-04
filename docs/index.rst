@@ -7,9 +7,27 @@ Moran [Py]cess
 ==========================================
 
 .. toctree::
+   :hidden:
    :maxdepth: 2
-   :caption: Contents:
+   :caption: General Information
 
+   custom/installation
+   custom/background
+   custom/example-results
+   custom/citing-contributing
+   custom/changelog
+   custom/license
+
+.. toctree::
+   :hidden:
+   :maxdepth: 2
+   :caption: API
+
+   custom/users-api
+   custom/internal-api
+
+Shields.
+General information...
 
 
 Indices and tables
