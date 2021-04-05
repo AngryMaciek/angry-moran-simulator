@@ -26,9 +26,20 @@ Moran [Py]cess
    custom/users-api
    custom/internal-api
 
-Shields.
-General information...
+.. image:: https://mybinder.org/badge_logo.svg
+   :alt: GitHub issues
+   :target: https://mybinder.org/v2/gh/AngryMaciek/angry-moran-simulator/master?filepath=tests%2Fusecase.ipynb
+.. image:: https://img.shields.io/github/issues/AngryMaciek/angry-moran-simulator
+   :alt: Binder
+   :target: https://github.com/AngryMaciek/angry-moran-simulator/issues
+.. image:: https://img.shields.io/github/license/AngryMaciek/angry-moran-simulator
+   :alt: GitHub license
+   :target: https://github.com/AngryMaciek/angry-moran-simulator/blob/master/LICENSE
+.. image:: https://joss.theoj.org/papers/10.21105/joss.02643/status.svg
+   :alt: JOSS
+   :target: https://doi.org/10.21105/joss.02643
 
+General information...
 
 Indices and tables
 ==================
