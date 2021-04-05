@@ -17,28 +17,11 @@
 
 ![scheme.svg](images/scheme.svg)
 
-## Table of Contents
-
-- [Moran [Py]cess](#moran-pycess)
-  - [Table of Contents](#table-of-contents)
-  - [General information](#general-information)
-  - [Example results](#example-results)
-    - [General Moran Model](#general-moran-model)
-    - [Moran Model based on 2D neighbourhood](#moran-model-based-on-2d-neighbourhood)
-    - [Moran Model based on 3D neighbourhood](#moran-model-based-on-3d-neighbourhood)
-  - [Installation instructions](#installation-instructions)
-    - [Download and install Miniconda](#download-and-install-miniconda)
-    - [Clone the repository](#clone-the-repository)
-    - [Build and activate a virtual environment](#build-and-activate-a-virtual-environment)
-    - [Install the package](#install-the-package)
-  - [Code documentation](#code-documentation)
-  - [Contributing](#contributing)
-  - [Contact](#contact)
-  - [License](#license)
-
 ## General information
 
-The following [git] repository presents a general game-theoretical framework to carry out scientific simulations according to the [Moran model]. Registering distinct types of individuals together with specification of payoffs between them allows to replicate evolution of the population and observe growth dynamics.
+The following Python package presents a general game-theoretical framework to carry out scientific simulations according to the [Moran model]. Registering distinct types of individuals together with specification of payoffs between them allows to replicate evolution of the population and observe growth dynamics.
+
+For more information please visit project's homepage.
 
 ## Example results
 
@@ -102,11 +85,6 @@ interactions with the community.
 For questions or suggestions regarding the code, please use the
 [issue tracker](https://github.com/AngryMaciek/angry-moran-simulator/issues).  
 
-## License
-
-MIT License
-
 [miniconda]: https://docs.conda.io/en/latest/miniconda.html
-[git]: https://git-scm.com/
 [Moran model]: <https://en.wikipedia.org/wiki/Moran_process>
 [Python package manager]: <https://pypi.org/project/pip/>
