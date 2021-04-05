@@ -11,20 +11,20 @@ Moran [Py]cess
    :maxdepth: 2
    :caption: General Information
 
-   custom/installation
-   custom/background
-   custom/example-results
-   custom/citing-contributing
-   custom/changelog
-   custom/license
+   general-info/installation
+   general-info/background
+   general-info/example-results
+   general-info/citing-contributing
+   general-info/changelog
+   general-info/license
 
 .. toctree::
    :hidden:
    :maxdepth: 2
    :caption: API
 
-   custom/users-api
-   custom/internal-api
+   api/users-api
+   api/internal-api
 
 .. image:: https://github.com/AngryMaciek/angry-moran-simulator/workflows/build/badge.svg?branch=master
    :alt: build
