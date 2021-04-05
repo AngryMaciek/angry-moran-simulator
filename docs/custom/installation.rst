@@ -47,7 +47,12 @@ please execute:
    It might happen that in the future our Moran [Py]cess image
    will be deleted.
 
-setup.py
+At last, if all the other methods fail once can still clone the repository
+from GitHub and build/install the package manually:
+
+.. code-block:: console
+
+   $ docker pull angrymaciek/moranpycess:1.0.38
 
 .. _Python Package Index: https://pypi.org/
 .. _Anaconda Cloud: https://anaconda.org/
