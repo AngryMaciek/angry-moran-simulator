@@ -3,9 +3,6 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Moran [Py]cess
-==========================================
-
 .. toctree::
    :hidden:
    :maxdepth: 2
@@ -25,6 +22,9 @@ Moran [Py]cess
 
    api/users-api
    api/internal-api
+
+Moran [Py]cess
+==========================================
 
 .. image:: https://github.com/AngryMaciek/angry-moran-simulator/workflows/build/badge.svg?branch=master
    :alt: build
@@ -68,6 +68,11 @@ Moran [Py]cess
 .. image:: https://joss.theoj.org/papers/10.21105/joss.02643/status.svg
    :alt: JOSS
    :target: https://doi.org/10.21105/joss.02643
+
+.. image:: ../images/scheme.svg
+  :width: 500
+  :alt: Population dynamics: schematic
+  :align: center
 
 The following Python package presents a general game-theoretical framework
 to carry out scientific simulations according to the Moran model.
