@@ -69,7 +69,16 @@ Moran [Py]cess
    :alt: JOSS
    :target: https://doi.org/10.21105/joss.02643
 
-General information...
+The following Python package presents a general game-theoretical framework
+to carry out scientific simulations according to the Moran model.
+Registering distinct types of individuals together with specification of
+payoffs between them allows to replicate evolution of the population
+and observe growth dynamics.
+
+If you use Moran [Py]cess in your research **please cite the following
+article** in your paper:
+
+   Bak et al., (2020). Moran Pycess: a Python package to simulate Moran processes driven by game theory. Journal of Open Source Software, 5(54), 2643, https://doi.org/10.21105/joss.02643
 
 Indices and tables
 ==================
