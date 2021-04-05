@@ -80,9 +80,13 @@ article** in your paper:
 
    Bak et al., (2020). Moran Pycess: a Python package to simulate Moran processes driven by game theory. Journal of Open Source Software, 5(54), 2643, https://doi.org/10.21105/joss.02643
 
+Feel free to inspect the code behind our work at the `official GitHub repository`_.
+
 Indices and tables
 ==================
 
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+.. _official GitHub repository: https://github.com/AngryMaciek/angry-moran-simulator

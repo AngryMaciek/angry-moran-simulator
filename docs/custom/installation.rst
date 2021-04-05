@@ -47,14 +47,17 @@ please execute:
    It might happen that in the future our Moran [Py]cess image
    will be deleted.
 
-At last, if all the other methods fail once can still clone the repository
-from GitHub and build/install the package manually:
+At last, if all of the above methods fail, one can still manually clone the
+repository from `GitHub`_ and build/install our package from the command line:
 
 .. code-block:: console
 
-   $ docker pull angrymaciek/moranpycess:1.0.38
+   $ https://github.com/AngryMaciek/angry-moran-simulator.git
+   $ cd angry-moran-simulator
+   $ python setup.py install
 
 .. _Python Package Index: https://pypi.org/
 .. _Anaconda Cloud: https://anaconda.org/
 .. _setup configuration file: https://github.com/AngryMaciek/angry-moran-simulator/blob/master/setup.cfg
 .. _DockerHub: https://hub.docker.com/
+.. _GitHub: https://github.com/
