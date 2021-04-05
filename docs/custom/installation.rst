@@ -34,14 +34,22 @@ Please beware that this installation method requires *conda>=4.3* version.
 Alternatives
 ------------
 
-setup.py and DockerHub.
+We have also prepared a container with the package and uploaded it to
+`DockerHub`_. To pull it (provided that a *docker* deamon is running)
+please execute:
+
+.. code-block:: console
+
+   $ docker pull angrymaciek/moranpycess:1.0.38
 
 .. warning::
    DockerHub regularly removes unused images from their servers.
-   It may happen that in the future an image with Moran [Py]cess
+   It might happen that in the future our Moran [Py]cess image
    will be deleted.
 
+setup.py
 
 .. _Python Package Index: https://pypi.org/
 .. _Anaconda Cloud: https://anaconda.org/
 .. _setup configuration file: https://github.com/AngryMaciek/angry-moran-simulator/blob/master/setup.cfg
+.. _DockerHub: https://hub.docker.com/
