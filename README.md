@@ -47,44 +47,6 @@ Average payoff for an individual is calcualted based on interactions with 26 dir
 ![figure.png](images/supplementary_figure2.png)
 > Growth curve for the population evolution according a Prisoners Dilemma model.
 
-## Installation instructions
-
-### Install from Python Package Index
-
-The easiest way to install our Python package in the current environment is via the `pip` command (requires internet connection):
-```bash
-pip install moranpycess
-```
-
-All of the dependencies will be installed alongside automatically. Their versions are specified in the [setup configuration file](setup.cfg).
-
-### Install from Anaconda Cloud
-
-Alternatively, if one uses _conda_ package manager, the software might be installed directly from Anaconda servers with:
-```bash
-conda install -c angrymaciek moranpycess
-```
-
-And again, the dependencies are taken care of by the package manager.  
-Please beware that this installation method requires `conda>=4.3` version.
-
-## Code documentation
-
-Inspect the documentation & how-to [here](documentation.md).
-
-## Contributing
-
-This project lives off your contributions, be it in the form of bug reports,
-feature requests, discussions, or fixes and other code changes. Please refer
-to the [contributing guidelines](CONTRIBUTING.md) if you are interested to
-contribute. Please mind the [code of conduct](CODE_OF_CONDUCT.md) for all
-interactions with the community.
-
-## Contact
-
-For questions or suggestions regarding the code, please use the
-[issue tracker](https://github.com/AngryMaciek/angry-moran-simulator/issues).  
-
 [miniconda]: https://docs.conda.io/en/latest/miniconda.html
 [Moran model]: <https://en.wikipedia.org/wiki/Moran_process>
 [Python package manager]: <https://pypi.org/project/pip/>
