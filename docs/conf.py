@@ -19,8 +19,8 @@ sys.path.insert(0, os.path.abspath('../moranpycess'))
 # -- Project information -----------------------------------------------------
 
 project = 'Moran [Py]cess'
-copyright = '2021, Maciej Bak'
-author = 'Maciej Bak'
+copyright = '2021, Maciek Bak'
+author = 'Maciek Bak'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0.38'
