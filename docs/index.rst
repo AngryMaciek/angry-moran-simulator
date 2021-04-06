@@ -12,7 +12,7 @@
    general-info/background
    general-info/example-results
    general-info/citing-contributing
-   general-info/changelog
+   CHANGELOG.md
    general-info/license
 
 .. toctree::
@@ -69,10 +69,10 @@ Moran [Py]cess
    :alt: JOSS
    :target: https://doi.org/10.21105/joss.02643
 
-.. image:: ../images/scheme.svg
-  :width: 500
-  :alt: Population dynamics: schematic
-  :align: center
+.. .. image:: ../images/scheme.svg
+   :width: 500
+   :alt: Population dynamics: schematic
+   :align: center
 
 The following Python package presents a general game-theoretical framework
 to carry out scientific simulations according to the Moran model.
