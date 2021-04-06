@@ -5,7 +5,7 @@
 
 .. toctree::
    :hidden:
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: General Information
 
    general-info/installation
@@ -17,7 +17,7 @@
 
 .. toctree::
    :hidden:
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: API
 
    api/users-api
