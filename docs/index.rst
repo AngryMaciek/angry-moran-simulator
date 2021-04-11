@@ -69,7 +69,7 @@ Moran [Py]cess
    :alt: JOSS
    :target: https://doi.org/10.21105/joss.02643
 
-.. .. image:: ../images/scheme.svg
+.. image:: ../images/scheme.svg
    :width: 500
    :alt: Population dynamics: schematic
    :align: center
