@@ -31,8 +31,7 @@
     - pandas=1.0.2
     - pip=20.1.1
     - pip:
-      - docutils==0.16
-      - sphinx-rtd-theme==0.5.1
+      - sphinx-rtd-theme==0.5.2
     - pytest=5.4.3
     - python=3.7.4
     - recommonmark=0.7.1
