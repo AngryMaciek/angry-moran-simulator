@@ -21,32 +21,9 @@
 
 The following Python package presents a general game-theoretical framework to carry out scientific simulations according to the [Moran model]. Registering distinct types of individuals together with specification of payoffs between them allows to replicate evolution of the population and observe growth dynamics.
 
-For more information please visit project's homepage.
-
-## Example results
-
-### General Moran Model
-
-![figure.png](images/figure.png)
-> Simulations of population evolution according to four basic models of game theory: (A) Stag Hunt, (B) Chicken, (C) Prisoners Dilemma, (D) Rock-Paper-Scissors
-
-### Moran Model based on 2D neighbourhood
-
-Average payoff for an individual is calcualted based on interactions with 8 direct neighbours of a given individual (2D grid). Periodic boundary conditions are applied.
-
-![figure.png](images/supplementary_figure1a.png)
-> Population snapshots during an evolution according to a Prisoners Dilemma model. Starting from a small subpopulation of Defectors (A, t=0) we observe gradual growth (B, t=50000), (C, t=200000) until the whole population is almost completely overtaken (D, t=500000).
-
-![figure.png](images/supplementary_figure1b.png)
-> Growth curve for the population evolution according a Prisoners Dilemma model.
-
-### Moran Model based on 3D neighbourhood
-
-Average payoff for an individual is calcualted based on interactions with 26 direct neighbours of a given individual (3D grid). Periodic boundary conditions are applied.
-
-![figure.png](images/supplementary_figure2.png)
-> Growth curve for the population evolution according a Prisoners Dilemma model.
+For more information please visit the [project's homepage].
 
 [miniconda]: https://docs.conda.io/en/latest/miniconda.html
 [Moran model]: <https://en.wikipedia.org/wiki/Moran_process>
 [Python package manager]: <https://pypi.org/project/pip/>
+[project's homepage]: <https://angrymaciek.github.io/angry-moran-simulator/_build/html/index.html>
