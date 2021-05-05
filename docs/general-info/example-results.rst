@@ -19,16 +19,16 @@ examples which have been well-described in the literature:
 
    Simulations of population evolution based on: (A) Stag Hunt (B) Chicken game, (C) Prisoners’ Dilemma, (D) Rock Paper Scissors.
 
-(A) The Stag Hunt game model describes a conflict between safety and social cooperation:
+*(A) The Stag Hunt game model describes a conflict between safety and social cooperation:
 the hare hunt represents small but certain profit, the stag hunt, great benefit but at
 great risk. Failure in cooperation leads to a player’s loss. There is no dominant strategy
 in this game as it is most beneficial for individuals to agree on the same strategy. Both
 stag hunt and hare hunt are evolutionarily stable strategies. A perfect example of this
 type of interaction is the “carousel feeding” behavior, a cooperative hunting method
 used by Norwegian orcas which forces a school of fish to form a tight ball; the orcas
-then stun fish with their tails.
+then stun fish with their tails.*
 
-(B) In the game of Chicken a confrontational strategy brings a greater profit. However,
+*(B) In the game of Chicken a confrontational strategy brings a greater profit. However,
 if chosen by both individuals it yields the worst outcome. A peaceful strategy, while
 protecting against the greatest possible loss brings no reward when challenged by an
 aggressor. No player has a dominant strategy and there are no ESS in pure strategies
@@ -46,9 +46,9 @@ them. Moreover, the analogy holds while inspecting the behaviour of wildtype yea
 Trying to avoid that worst scenario, in the presence of mutants, wildtype cells cooperate
 in invertase expression over a wide range of conditions. However, when competing
 against other wildtype strains, invertase expression is repressed, causing them to exhibit
-the confrontational strategy - cheat.
+the confrontational strategy - cheat.*
 
-(C) Prisoners’ dilemma, often analyzed in game theory due to its multiple applications,
+*(C) Prisoners’ dilemma, often analyzed in game theory due to its multiple applications,
 presents a case where two completely rational individuals within incomplete knowledge
 might not cooperate, even if it appears that it is in their best interests to do so. The most
 rational strategy yields the worst collective outcome. Every participant has a dominant
@@ -58,15 +58,15 @@ framework for testing hypotheses and formulating claims in a quantitative manner
 In the case of malignant tumors, we observe
 the possibility of infiltration of adjacent tissues by cancer cells. Their characteristic
 uncontrolled proliferation leads to the growth of another tumor in this place and the
-destruction of healthy tissue.
+destruction of healthy tissue.*
 
-(D) Rock-Paper-Scissors is a game with cyclic dominance resulting in oscillating populations
+*(D) Rock-Paper-Scissors is a game with cyclic dominance resulting in oscillating populations
 of individuals among types. There is no ESS in this game. As an example, consider
 male side-blotched lizards, which come in three color morphs: orange, yellow, and blue.
 The orange males defend large territories. The yellow males can invade orange males’
 territories. The blue male, in turn, effectively expels yellow males from their territory
 but are outcompeted by aggressive orange males. As a result:
-yellow beats orange, which bests blue which beats yellow.
+yellow beats orange, which bests blue which beats yellow.*
 
 *References:*
    * https://press.princeton.edu/books/hardcover/9780691129082/game-theory
