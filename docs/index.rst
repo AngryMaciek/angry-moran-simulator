@@ -92,6 +92,5 @@ Indices and tables
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`
 
 .. _official GitHub repository: https://github.com/AngryMaciek/angry-moran-simulator
