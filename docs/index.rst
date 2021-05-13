@@ -87,6 +87,8 @@ article** in your paper:
 
 Feel free to inspect the code behind our work at the `official GitHub repository`_.
 
+Build date: |today|, Latest version: |release|
+
 Indices and tables
 ==================
 

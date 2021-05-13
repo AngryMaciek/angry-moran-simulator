@@ -11,7 +11,7 @@ General Moran Model
 ###################
 
 We have designed four distinct systems based on well-known interaction
-examples which have been well-described in the literature:
+examples which have been well-described in the literature [Tadelis-2012]_:
 
 .. figure:: ../../images/figure.png
    :alt: example results 1D
@@ -26,7 +26,7 @@ in this game as it is most beneficial for individuals to agree on the same strat
 stag hunt and hare hunt are evolutionarily stable strategies. A perfect example of this
 type of interaction is the “carousel feeding” behavior, a cooperative hunting method
 used by Norwegian orcas which forces a school of fish to form a tight ball; the orcas
-then stun fish with their tails.*
+then stun fish with their tails* [Fort-2007]_\ *.*
 
 *(B) In the game of Chicken a confrontational strategy brings a greater profit. However,
 if chosen by both individuals it yields the worst outcome. A peaceful strategy, while
@@ -46,7 +46,7 @@ them. Moreover, the analogy holds while inspecting the behaviour of wildtype yea
 Trying to avoid that worst scenario, in the presence of mutants, wildtype cells cooperate
 in invertase expression over a wide range of conditions. However, when competing
 against other wildtype strains, invertase expression is repressed, causing them to exhibit
-the confrontational strategy - cheat.*
+the confrontational strategy - cheat* [Gore-Youk-Oudenaarden-2009]_\ *.*
 
 *(C) Prisoners’ dilemma, often analyzed in game theory due to its multiple applications,
 presents a case where two completely rational individuals within incomplete knowledge
@@ -54,8 +54,8 @@ might not cooperate, even if it appears that it is in their best interests to do
 rational strategy yields the worst collective outcome. Every participant has a dominant
 strategy. The only ESS is to always cooperate. In biological context the prisoner’s
 dilemma successfully captures the essential features of cancer growth and provides a
-framework for testing hypotheses and formulating claims in a quantitative manner.
-In the case of malignant tumors, we observe
+framework for testing hypotheses and formulating claims in a quantitative manner*
+[West-Hasnain-Macklin-Newton-2016]_\ *. In the case of malignant tumors, we observe
 the possibility of infiltration of adjacent tissues by cancer cells. Their characteristic
 uncontrolled proliferation leads to the growth of another tumor in this place and the
 destruction of healthy tissue.*
@@ -65,15 +65,16 @@ of individuals among types. There is no ESS in this game. As an example, conside
 male side-blotched lizards, which come in three color morphs: orange, yellow, and blue.
 The orange males defend large territories. The yellow males can invade orange males’
 territories. The blue male, in turn, effectively expels yellow males from their territory
-but are outcompeted by aggressive orange males. As a result:
+but are outcompeted by aggressive orange males* [Sinervo-Lively-1996]_\ *. As a result:
 yellow beats orange, which bests blue which beats yellow.*
 
-*References:*
-   * https://press.princeton.edu/books/hardcover/9780691129082/game-theory
-   * https://www.hindawi.com/journals/ijecol/2007/018636
-   * https://www.nature.com/articles/nature07921
-   * https://epubs.siam.org/doi/10.1137/15M1044825
-   * https://www.nature.com/articles/380240a0
+.. rubric:: References:
+
+.. [Tadelis-2012] https://press.princeton.edu/books/hardcover/9780691129082/game-theory
+.. [Fort-2007] https://www.hindawi.com/journals/ijecol/2007/018636
+.. [Gore-Youk-Oudenaarden-2009] https://www.nature.com/articles/nature07921
+.. [West-Hasnain-Macklin-Newton-2016] https://epubs.siam.org/doi/10.1137/15M1044825
+.. [Sinervo-Lively-1996] https://www.nature.com/articles/380240a0
 
 Moran Model based on 2D neighbourhood
 #####################################

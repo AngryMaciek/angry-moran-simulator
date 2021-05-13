@@ -4,7 +4,7 @@ Theoretical Background
 
 General information about a Moran Process are easily available on
 `the internet <https://letmegooglethat.com/?q=Moran+Process>`_.
-The following series of short lectures provides an excellent introduction
+The following series of short lectures\ [#f1]_ provides an excellent introduction
 to the topic:
 
 .. raw:: html
@@ -36,3 +36,5 @@ For each subpopulation :math:`(N_x, T_x)` we calculate average payoffs
 
 These values might be later used in the simulations during
 fitness-proportional selection of individuals for the Birth process.
+
+.. [#f1] Just a few hand-picked videos, for sure there are more resources out there.
