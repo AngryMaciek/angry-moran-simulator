@@ -44,6 +44,7 @@ class IncorrectValueError(Error):
                 Defaults to "Please check the documentation
                 for expected argument values.".
         """
+
         self.parameter = parameter
         self.message = message
         super().__init__(self.message)
@@ -54,4 +55,5 @@ class IncorrectValueError(Error):
         Returns:
             str: error message
         """
+
         return f"Incorrect value for {self.parameter}. {self.message}"
