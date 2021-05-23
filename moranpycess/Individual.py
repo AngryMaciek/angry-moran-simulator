@@ -20,9 +20,21 @@ class Individual:
     def __init__(self, ID, label):
         """Class initializer.
 
+        Note:
+            Not to be instantiated by the user directly.
+
         Args:
-            ID (int): unique index of a class instance.
+            ID (int): unique index for this class instance.
+            label (str): type label for this individual.
+
+        Attributes:
+            ID (int): unique index of this class instance.
             label (str): type label of this individual.
+            AvgBirthPayoff (float): Average Birth Payoff for this individual.
+            AvgDeathPayoff (float): Average Death Payoff for this individual.
+            BirthFitness (float): Birth Fitness for this individual.
+            DeathFitness (float): Death Fitness for this individual.
+
         """
         self.ID = ID
         self.label = label
