@@ -13,17 +13,19 @@
 ##############################################################################
 """
 
-# imports
-import copy
-
 
 class Individual:
     """Abstract representation of an individual in the population."""
 
-    def __init__(self, ID, ind_label):
-        """Basic initializer."""
-        self.ID = copy.deepcopy(ID)
-        self.label = copy.deepcopy(ind_label)
+    def __init__(self, ID, label):
+        """Class initializer.
+
+        Args:
+            ID (int): unique index of a class instance.
+            label (str): type label of this individual.
+        """
+        self.ID = ID
+        self.label = label
         self.AvgBirthPayoff = None
         self.AvgDeathPayoff = None
         self.BirthFitness = None
@@ -31,60 +33,60 @@ class Individual:
 
     @property
     def ID(self):
-        """Python getter."""
+        """Python getter: ID."""
         return self._ID
 
     @ID.setter
     def ID(self, ID):
-        """Python setter."""
+        """Python setter: ID."""
         self._ID = ID
 
     @property
     def label(self):
-        """Python getter."""
+        """Python getter: label."""
         return self._label
 
     @label.setter
     def label(self, label):
-        """Python setter."""
+        """Python setter: label."""
         self._label = label
 
     @property
     def BirthFitness(self):
-        """Python getter."""
+        """Python getter: BirthFitness."""
         return self._BirthFitness
 
     @BirthFitness.setter
     def BirthFitness(self, BirthFitness):
-        """Python setter."""
+        """Python setter: BirthFitness."""
         self._BirthFitness = BirthFitness
 
     @property
     def DeathFitness(self):
-        """Python getter."""
+        """Python getter: DeathFitness."""
         return self._DeathFitness
 
     @DeathFitness.setter
     def DeathFitness(self, DeathFitness):
-        """Python setter."""
+        """Python setter: DeathFitness."""
         self._DeathFitness = DeathFitness
 
     @property
     def AvgBirthPayoff(self):
-        """Python getter."""
+        """Python getter: AvgBirthPayoff."""
         return self._AvgBirthPayoff
 
     @AvgBirthPayoff.setter
     def AvgBirthPayoff(self, AvgBirthPayoff):
-        """Python setter."""
+        """Python setter: AvgBirthPayoff."""
         self._AvgBirthPayoff = AvgBirthPayoff
 
     @property
     def AvgDeathPayoff(self):
-        """Python getter."""
+        """Python getter: AvgDeathPayoff."""
         return self._AvgDeathPayoff
 
     @AvgDeathPayoff.setter
     def AvgDeathPayoff(self, AvgDeathPayoff):
-        """Python setter."""
+        """Python setter: AvgDeathPayoff."""
         self._AvgDeathPayoff = AvgDeathPayoff

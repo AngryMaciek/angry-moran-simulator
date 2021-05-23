@@ -101,7 +101,7 @@ class MoranProcess3D:
             for y in range(self.init_grid.shape[1]):
                 for z in range(self.init_grid.shape[2]):
                     self.population[x, y, z] = moranpycess.Individual(
-                        ID=ID_counter, ind_label=self.init_grid[x, y, z]
+                        ID=ID_counter, label=self.init_grid[x, y, z]
                     )
                     ID_counter += 1
 

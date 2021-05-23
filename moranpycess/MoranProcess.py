@@ -49,7 +49,7 @@ class MoranProcess:
             for i in range(size_list[label_index]):
                 self.population.append(
                     moranpycess.Individual(
-                        ID=ID_counter, ind_label=label_list[label_index]
+                        ID=ID_counter, label=label_list[label_index]
                     )
                 )
                 ID_counter += 1
