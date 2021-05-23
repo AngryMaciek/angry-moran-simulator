@@ -412,7 +412,7 @@ class TestClass:
         )
         # test the selection:
         random.seed(0)
-        (x, y, z) = mp.roulette_wheel_selection_Birth()
+        (x, y, z) = mp._roulette_wheel_selection_Birth()
         ind = mp.population[x, y, z]
         assert ind.ID == 13
         assert ind.label == "B"
@@ -441,7 +441,7 @@ class TestClass:
         )
         # test the selection:
         random.seed(0)
-        (x, y, z) = mp.roulette_wheel_selection_Death(0, 0, 0)
+        (x, y, z) = mp._roulette_wheel_selection_Death(0, 0, 0)
         ind = mp.population[x, y, z]
         assert ind.ID == 13
         assert ind.label == "B"

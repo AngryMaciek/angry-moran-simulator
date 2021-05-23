@@ -90,19 +90,19 @@ class MoranProcess:
 
         # calculate avg payoffs
         self.AvgBirthPayoffDict = {}
-        self.UpdateAvgBirthPayoffForAll()
+        self._UpdateAvgBirthPayoffForAll()
         self.AvgDeathPayoffDict = {}
-        self.UpdateAvgDeathPayoffForAll()
+        self._UpdateAvgDeathPayoffForAll()
 
         # calculate fitnesses
         self.BirthFitnessDict = {}
-        self.UpdateBirthFitnessForAll()
+        self._UpdateBirthFitnessForAll()
         self.DeathFitnessDict = {}
-        self.UpdateDeathFitnessForAll()
+        self._UpdateDeathFitnessForAll()
 
         # calculate entropy of the types distribution
         self.Entropy = 0
-        self.UpdateEntropy()
+        self._UpdateEntropy()
 
         # assign the transition matrix between types
         if TransitionMatrix is not None:
@@ -256,7 +256,7 @@ class MoranProcess:
         """Python setter."""
         self._TransitionMatrix = TransitionMatrix
 
-    def UpdateAvgBirthPayoffForAll(self):
+    def _UpdateAvgBirthPayoffForAll(self):
         """Calculate avg Birth Payoffs in the whole population."""
         nrows = np.shape(self.BirthPayoffMatrix)[0]
         ncols = np.shape(self.BirthPayoffMatrix)[1]
@@ -273,7 +273,7 @@ class MoranProcess:
         for ind in self.population:
             ind.AvgBirthPayoff = self.AvgBirthPayoffDict[ind.label]
 
-    def UpdateAvgDeathPayoffForAll(self):
+    def _UpdateAvgDeathPayoffForAll(self):
         """Calculate avg Death Payoffs in the whole population."""
         nrows = np.shape(self.DeathPayoffMatrix)[0]
         ncols = np.shape(self.DeathPayoffMatrix)[1]
@@ -290,7 +290,7 @@ class MoranProcess:
         for ind in self.population:
             ind.AvgDeathPayoff = self.AvgDeathPayoffDict[ind.label]
 
-    def UpdateBirthFitnessForAll(self):
+    def _UpdateBirthFitnessForAll(self):
         """Calculate Birth Fitness in the whole population."""
         # calculate fitness for distinct Individual types:
         for label in self.init_label_list:
@@ -301,7 +301,7 @@ class MoranProcess:
         for ind in self.population:
             ind.BirthFitness = self.BirthFitnessDict[ind.label]
 
-    def UpdateDeathFitnessForAll(self):
+    def _UpdateDeathFitnessForAll(self):
         """Calculate Death Fitness in the whole population."""
         # calculate fitness for distinct Individual types:
         for label in self.init_label_list:
@@ -312,11 +312,11 @@ class MoranProcess:
         for ind in self.population:
             ind.DeathFitness = self.DeathFitnessDict[ind.label]
 
-    def roulette_wheel_selection_Birth(self):
+    def _roulette_wheel_selection_Birth(self):
         """Select an individual according to the Birth Fitness."""
         return self.__roulette_wheel_selection(attr="BirthFitness")
 
-    def roulette_wheel_selection_Death(self):
+    def _roulette_wheel_selection_Death(self):
         """Select an individual according to the Death Fitness."""
         return self.__roulette_wheel_selection(attr="DeathFitness")
 
@@ -364,11 +364,11 @@ class MoranProcess:
         for g in range(generations):
 
             # select one individual to multiply
-            selectedBirth = self.roulette_wheel_selection_Birth()
+            selectedBirth = self._roulette_wheel_selection_Birth()
             # create a copy
             new_individual = copy.deepcopy(selectedBirth)
             # select one individual to die
-            selectedDeath = self.roulette_wheel_selection_Death()
+            selectedDeath = self._roulette_wheel_selection_Death()
             # add the new individual to the population
             self.population.append(new_individual)
             # remove the selected individual from the population
@@ -394,12 +394,12 @@ class MoranProcess:
 
             # after each birth-death cycle:
             # re-evaluate the payoffs and fitnesses of all Individuals in the population
-            self.UpdateAvgBirthPayoffForAll()
-            self.UpdateAvgDeathPayoffForAll()
-            self.UpdateBirthFitnessForAll()
-            self.UpdateDeathFitnessForAll()
+            self._UpdateAvgBirthPayoffForAll()
+            self._UpdateAvgDeathPayoffForAll()
+            self._UpdateBirthFitnessForAll()
+            self._UpdateDeathFitnessForAll()
             # re-evaluate the population Entropy
-            self.UpdateEntropy()
+            self._UpdateEntropy()
 
             # update the log dataframe
             for l in range(len(self.init_label_list)):
@@ -421,7 +421,7 @@ class MoranProcess:
 
         return log_df
 
-    def UpdateEntropy(self):
+    def _UpdateEntropy(self):
         """Calculate entropy of Individual types for the population."""
         self.Entropy = 0
         for type_size in self.curr_size_list:

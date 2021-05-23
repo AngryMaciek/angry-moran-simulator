@@ -160,7 +160,7 @@ class TestClass:
         )
         # test the selection:
         random.seed(0)
-        ind = mp.roulette_wheel_selection_Birth()
+        ind = mp._roulette_wheel_selection_Birth()
         assert ind.ID == 3
         assert ind.label == "abc"
 
@@ -179,7 +179,7 @@ class TestClass:
         )
         # test the selection:
         random.seed(0)
-        ind = mp.roulette_wheel_selection_Death()
+        ind = mp._roulette_wheel_selection_Death()
         assert ind.ID == 27
         assert ind.label == "ZYX"
 

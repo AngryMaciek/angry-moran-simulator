@@ -107,14 +107,14 @@ class MoranProcess2D:
         # iterate over the whole 2D population and update payoffs
         for x in range(self.population.shape[0]):
             for y in range(self.population.shape[1]):
-                self.UpdateBirthPayoff(x, y)
-                self.UpdateDeathPayoff(x, y)
-                self.UpdateBirthFitness(x, y)
-                self.UpdateDeathFitness(x, y)
+                self._UpdateBirthPayoff(x, y)
+                self._UpdateDeathPayoff(x, y)
+                self._UpdateBirthFitness(x, y)
+                self._UpdateDeathFitness(x, y)
 
         # calculate entropy of the types distribution
         self.Entropy = 0
-        self.UpdateEntropy()
+        self._UpdateEntropy()
 
         # assign the transition matrix between types
         if TransitionMatrix is not None:
@@ -248,7 +248,7 @@ class MoranProcess2D:
         """Python setter."""
         self._TransitionMatrix = TransitionMatrix
 
-    def UpdateBirthPayoff(self, x, y):
+    def _UpdateBirthPayoff(self, x, y):
         """Calculate Birth Payoff for a given Individual"""
 
         this_label = self.population[x, y].label
@@ -282,7 +282,7 @@ class MoranProcess2D:
         payoff = payoff / 8.0
         self.population[x, y].AvgBirthPayoff = payoff
 
-    def UpdateDeathPayoff(self, x, y):
+    def _UpdateDeathPayoff(self, x, y):
         """Calculate Death Payoff for a given Individual"""
 
         this_label = self.population[x, y].label
@@ -316,19 +316,19 @@ class MoranProcess2D:
         payoff = payoff / 8.0
         self.population[x, y].AvgDeathPayoff = payoff
 
-    def UpdateBirthFitness(self, x, y):
+    def _UpdateBirthFitness(self, x, y):
         """Calculate Birth Fitness for a given Individual"""
         self.population[x, y].BirthFitness = (
             1 - self.w + self.w * self.population[x, y].AvgBirthPayoff
         )
 
-    def UpdateDeathFitness(self, x, y):
+    def _UpdateDeathFitness(self, x, y):
         """Calculate Death Fitness for a given Individual"""
         self.population[x, y].DeathFitness = (
             1 - self.w + self.w * self.population[x, y].AvgDeathPayoff
         )
 
-    def UpdateEntropy(self):
+    def _UpdateEntropy(self):
         """Calculate entropy of Individual types for the population."""
         self.Entropy = 0
         for type_size in self.curr_size_list:
@@ -336,7 +336,7 @@ class MoranProcess2D:
             if fraction != 0.0:
                 self.Entropy -= fraction * np.log2(fraction)
 
-    def roulette_wheel_selection_Birth(self):
+    def _roulette_wheel_selection_Birth(self):
         """Fitness-proportional selection according to the Birth Fitness."""
         max_value = 0
         for x in range(self.init_grid.shape[0]):
@@ -350,7 +350,7 @@ class MoranProcess2D:
                 if current > pick:
                     return (x, y)
 
-    def roulette_wheel_selection_Death(self, x, y):
+    def _roulette_wheel_selection_Death(self, x, y):
         """Fitness-proportional selection (from neighbours) according to the Death Fitness."""
         pop_nrows = self.population.shape[0]
         pop_ncols = self.population.shape[1]
@@ -402,12 +402,12 @@ class MoranProcess2D:
         for g in range(generations):
 
             # select one individual to multiply
-            (x, y) = self.roulette_wheel_selection_Birth()
+            (x, y) = self._roulette_wheel_selection_Birth()
             selectedBirth = self.population[x, y]
             # create a copy
             new_individual = copy.deepcopy(selectedBirth)
             # select one individual to die
-            (x, y) = self.roulette_wheel_selection_Death(x, y)
+            (x, y) = self._roulette_wheel_selection_Death(x, y)
             selectedDeath = copy.deepcopy(self.population[x, y])
             # swap the individuals
             self.population[x, y] = new_individual
@@ -438,10 +438,10 @@ class MoranProcess2D:
             if self.TransitionMatrix is not None:
                 for x_ in range(self.population.shape[0]):
                     for y_ in range(self.population.shape[1]):
-                        self.UpdateBirthPayoff(x_, y_)
-                        self.UpdateDeathPayoff(x_, y_)
-                        self.UpdateBirthFitness(x_, y_)
-                        self.UpdateDeathFitness(x_, y_)
+                        self._UpdateBirthPayoff(x_, y_)
+                        self._UpdateDeathPayoff(x_, y_)
+                        self._UpdateBirthFitness(x_, y_)
+                        self._UpdateDeathFitness(x_, y_)
             # in other case:
             # re-evaluate the payoffs and fitnesses of only
             # the affected neigbours Individuals in the population
@@ -459,10 +459,10 @@ class MoranProcess2D:
                     ((x + 1) % pop_nrows, (y + 1) % pop_ncols),
                 ]
                 for indices in indices_list:
-                    self.UpdateBirthPayoff(indices[0], indices[1])
-                    self.UpdateDeathPayoff(indices[0], indices[1])
-                    self.UpdateBirthFitness(indices[0], indices[1])
-                    self.UpdateDeathFitness(indices[0], indices[1])
+                    self._UpdateBirthPayoff(indices[0], indices[1])
+                    self._UpdateDeathPayoff(indices[0], indices[1])
+                    self._UpdateBirthFitness(indices[0], indices[1])
+                    self._UpdateDeathFitness(indices[0], indices[1])
 
             # update the grid
             for x_ in range(self.curr_grid.shape[0]):
@@ -470,7 +470,7 @@ class MoranProcess2D:
                     self.curr_grid[x_, y_] = self.population[x_, y_].label
 
             # re-evaluate the population Entropy
-            self.UpdateEntropy()
+            self._UpdateEntropy()
 
             # update the log dataframe
             for l in range(len(self.init_label_list)):

@@ -109,14 +109,14 @@ class MoranProcess3D:
         for x in range(self.population.shape[0]):
             for y in range(self.population.shape[1]):
                 for z in range(self.init_grid.shape[2]):
-                    self.UpdateBirthPayoff(x, y, z)
-                    self.UpdateDeathPayoff(x, y, z)
-                    self.UpdateBirthFitness(x, y, z)
-                    self.UpdateDeathFitness(x, y, z)
+                    self._UpdateBirthPayoff(x, y, z)
+                    self._UpdateDeathPayoff(x, y, z)
+                    self._UpdateBirthFitness(x, y, z)
+                    self._UpdateDeathFitness(x, y, z)
 
         # calculate entropy of the types distribution
         self.Entropy = 0
-        self.UpdateEntropy()
+        self._UpdateEntropy()
 
         # assign the transition matrix between types
         if TransitionMatrix is not None:
@@ -250,7 +250,7 @@ class MoranProcess3D:
         """Python setter."""
         self._TransitionMatrix = TransitionMatrix
 
-    def UpdateBirthPayoff(self, x, y, z):
+    def _UpdateBirthPayoff(self, x, y, z):
         """Calculate Birth Payoff for a given Individual"""
 
         this_label = self.population[x, y, z].label
@@ -300,7 +300,7 @@ class MoranProcess3D:
         payoff = payoff / 26.0
         self.population[x, y, z].AvgBirthPayoff = payoff
 
-    def UpdateDeathPayoff(self, x, y, z):
+    def _UpdateDeathPayoff(self, x, y, z):
         """Calculate Death Payoff for a given Individual"""
 
         this_label = self.population[x, y, z].label
@@ -350,19 +350,19 @@ class MoranProcess3D:
         payoff = payoff / 26.0
         self.population[x, y, z].AvgDeathPayoff = payoff
 
-    def UpdateBirthFitness(self, x, y, z):
+    def _UpdateBirthFitness(self, x, y, z):
         """Calculate Birth Fitness for a given Individual"""
         self.population[x, y, z].BirthFitness = (
             1 - self.w + self.w * self.population[x, y, z].AvgBirthPayoff
         )
 
-    def UpdateDeathFitness(self, x, y, z):
+    def _UpdateDeathFitness(self, x, y, z):
         """Calculate Death Fitness for a given Individual"""
         self.population[x, y, z].DeathFitness = (
             1 - self.w + self.w * self.population[x, y, z].AvgDeathPayoff
         )
 
-    def UpdateEntropy(self):
+    def _UpdateEntropy(self):
         """Calculate entropy of Individual types for the population."""
         self.Entropy = 0
         for type_size in self.curr_size_list:
@@ -370,7 +370,7 @@ class MoranProcess3D:
             if fraction != 0.0:
                 self.Entropy -= fraction * np.log2(fraction)
 
-    def roulette_wheel_selection_Birth(self):
+    def _roulette_wheel_selection_Birth(self):
         """Fitness-proportional selection according to the Birth Fitness."""
         max_value = 0
         for x in range(self.init_grid.shape[0]):
@@ -386,7 +386,7 @@ class MoranProcess3D:
                     if current > pick:
                         return (x, y, z)
 
-    def roulette_wheel_selection_Death(self, x, y, z):
+    def _roulette_wheel_selection_Death(self, x, y, z):
         """Fitness-proportional selection (from neighbours) according to the Death Fitness."""
         pop_x = self.population.shape[0]
         pop_y = self.population.shape[1]
@@ -492,12 +492,12 @@ class MoranProcess3D:
         for g in range(generations):
 
             # select one individual to multiply
-            (x, y, z) = self.roulette_wheel_selection_Birth()
+            (x, y, z) = self._roulette_wheel_selection_Birth()
             selectedBirth = self.population[x, y, z]
             # create a copy
             new_individual = copy.deepcopy(selectedBirth)
             # select one individual to die
-            (x, y, z) = self.roulette_wheel_selection_Death(x, y, z)
+            (x, y, z) = self._roulette_wheel_selection_Death(x, y, z)
             selectedDeath = copy.deepcopy(self.population[x, y, z])
             # swap the individuals
             self.population[x, y, z] = new_individual
@@ -534,10 +534,10 @@ class MoranProcess3D:
                 for x_ in range(self.population.shape[0]):
                     for y_ in range(self.population.shape[1]):
                         for z_ in range(self.init_grid.shape[2]):
-                            self.UpdateBirthPayoff(x_, y_, z_)
-                            self.UpdateDeathPayoff(x_, y_, z_)
-                            self.UpdateBirthFitness(x_, y_, z_)
-                            self.UpdateDeathFitness(x_, y_, z_)
+                            self._UpdateBirthPayoff(x_, y_, z_)
+                            self._UpdateDeathPayoff(x_, y_, z_)
+                            self._UpdateBirthFitness(x_, y_, z_)
+                            self._UpdateDeathFitness(x_, y_, z_)
             # in other case:
             # re-evaluate the payoffs and fitnesses of only
             # the affected neigbours Individuals in the population
@@ -573,10 +573,10 @@ class MoranProcess3D:
                     ((x + 1) % pop_x, (y + 1) % pop_y, (z + 1) % pop_z),
                 ]
                 for indices in indices_list:
-                    self.UpdateBirthPayoff(indices[0], indices[1], indices[2])
-                    self.UpdateDeathPayoff(indices[0], indices[1], indices[2])
-                    self.UpdateBirthFitness(indices[0], indices[1], indices[2])
-                    self.UpdateDeathFitness(indices[0], indices[1], indices[2])
+                    self._UpdateBirthPayoff(indices[0], indices[1], indices[2])
+                    self._UpdateDeathPayoff(indices[0], indices[1], indices[2])
+                    self._UpdateBirthFitness(indices[0], indices[1], indices[2])
+                    self._UpdateDeathFitness(indices[0], indices[1], indices[2])
 
             # update the grid
             for x_ in range(self.curr_grid.shape[0]):
@@ -585,7 +585,7 @@ class MoranProcess3D:
                         self.curr_grid[x_, y_, z_] = self.population[x_, y_, z_].label
 
             # re-evaluate the population Entropy
-            self.UpdateEntropy()
+            self._UpdateEntropy()
 
             # update the log dataframe
             for l in range(len(self.init_label_list)):
