@@ -23,7 +23,7 @@ import moranpycess
 
 
 class MoranProcess3D:
-    """General Moran Process with multiple types of individuals."""
+    """3D Moran Process with multiple types of individuals."""
 
     def __init__(
         self,
@@ -34,7 +34,39 @@ class MoranProcess3D:
         DeathPayoffMatrix,
         TransitionMatrix=None,
     ):
-        """Class initializer."""
+        """Class initializer.
+
+        Args:
+            size_list (list of int): cardinalities of subpopulations.
+            label_list (list of str): distinct labels of subpopulations.
+            grid (np.array): subpopulations' position in 3D.
+            BirthPayoffMatrix (np.array): payoff matrix for the birth process.
+            DeathPayoffMatrix (np.array): payoff matrix for the death process.
+            TransitionMatrix (np.array, optional): transition probabilities
+                between types. Defaults to None.
+
+        Attributes:
+            population (list of class:Individual): entire population.
+            init_size_list (list of int): cardinalities of initial
+                subpopulations.
+            curr_size_list (list of int): cardinalities of current
+                subpopulations.
+            init_label_list (list of str): distinct labels of initial
+                subpopulations.
+            BirthPayoffMatrix (np.array): payoff matrix for the birth process.
+            DeathPayoffMatrix (np.array): payoff matrix for the death process.
+            w (float): selection pressure weight for the fitness calculation.
+            Entropy (float): current entropy of the whole population.
+            TransitionMatrix (np.array, optional): transition probabilities
+                between types. Defaults to None.
+            init_grid (np.array): subpopulations' initial position in 3D.
+            curr_grid (np.array): subpopulations' initial position in 3D.
+
+        Raises:
+            AssertionError: on invalid arguments.
+            IncorrectValueError: on wrong values in the Transition Matrix.
+
+        """
 
         # check if the argument lists length match
         try:
@@ -142,116 +174,123 @@ class MoranProcess3D:
 
     @property
     def population(self):
-        """Python getter."""
+        """Python getter: population."""
         return self._population
 
     @population.setter
     def population(self, population):
-        """Python setter."""
+        """Python setter: population."""
         self._population = population
 
     @property
     def init_size_list(self):
-        """Python getter."""
+        """Python getter: init_size_list."""
         return self._init_size_list
 
     @init_size_list.setter
     def init_size_list(self, init_size_list):
-        """Python setter."""
+        """Python setter: init_size_list."""
         self._init_size_list = init_size_list
 
     @property
     def curr_size_list(self):
-        """Python getter."""
+        """Python getter: curr_size_list."""
         return self._curr_size_list
 
     @curr_size_list.setter
     def curr_size_list(self, curr_size_list):
-        """Python setter."""
+        """Python setter: curr_size_list."""
         self._curr_size_list = curr_size_list
 
     @property
     def init_label_list(self):
-        """Python getter."""
+        """Python getter: init_label_list."""
         return self._init_label_list
 
     @init_label_list.setter
     def init_label_list(self, init_label_list):
-        """Python setter."""
+        """Python setter: init_label_list."""
         self._init_label_list = init_label_list
 
     @property
     def init_grid(self):
-        """Python getter."""
+        """Python getter: init_grid."""
         return self._init_grid
 
     @init_grid.setter
     def init_grid(self, init_grid):
-        """Python setter."""
+        """Python setter: init_grid."""
         self._init_grid = init_grid
 
     @property
     def curr_grid(self):
-        """Python getter."""
+        """Python getter: curr_grid."""
         return self._curr_grid
 
     @curr_grid.setter
     def curr_grid(self, curr_grid):
-        """Python setter."""
+        """Python setter: curr_grid."""
         self._curr_grid = curr_grid
 
     @property
     def BirthPayoffMatrix(self):
-        """Python getter."""
+        """Python getter: BirthPayoffMatrix."""
         return self._BirthPayoffMatrix
 
     @BirthPayoffMatrix.setter
     def BirthPayoffMatrix(self, BirthPayoffMatrix):
-        """Python setter."""
+        """Python setter: BirthPayoffMatrix."""
         self._BirthPayoffMatrix = BirthPayoffMatrix
 
     @property
     def DeathPayoffMatrix(self):
-        """Python getter."""
+        """Python getter: DeathPayoffMatrix."""
         return self._DeathPayoffMatrix
 
     @DeathPayoffMatrix.setter
     def DeathPayoffMatrix(self, DeathPayoffMatrix):
-        """Python setter."""
+        """Python setter: DeathPayoffMatrix."""
         self._DeathPayoffMatrix = DeathPayoffMatrix
 
     @property
     def w(self):
-        """Python getter."""
+        """Python getter: w."""
         return self._w
 
     @w.setter
     def w(self, w):
-        """Python setter."""
+        """Python setter: w."""
         self._w = w
 
     @property
     def Entropy(self):
-        """Python getter."""
+        """Python getter: Entropy."""
         return self._Entropy
 
     @Entropy.setter
     def Entropy(self, Entropy):
-        """Python setter."""
+        """Python setter: Entropy."""
         self._Entropy = Entropy
 
     @property
     def TransitionMatrix(self):
-        """Python getter."""
+        """Python getter: TransitionMatrix."""
         return self._TransitionMatrix
 
     @TransitionMatrix.setter
     def TransitionMatrix(self, TransitionMatrix):
-        """Python setter."""
+        """Python setter: TransitionMatrix."""
         self._TransitionMatrix = TransitionMatrix
 
     def _UpdateBirthPayoff(self, x, y, z):
-        """Calculate Birth Payoff for a given Individual"""
+        """Calculate Birth Payoff for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+            z (int): z-coordinate of the Individual.
+
+        """
 
         this_label = self.population[x, y, z].label
         this_label_index = self._init_label_list.index(this_label)
@@ -301,7 +340,14 @@ class MoranProcess3D:
         self.population[x, y, z].AvgBirthPayoff = payoff
 
     def _UpdateDeathPayoff(self, x, y, z):
-        """Calculate Death Payoff for a given Individual"""
+        """Calculate Death Payoff for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+            z (int): z-coordinate of the Individual.
+
+        """
 
         this_label = self.population[x, y, z].label
         this_label_index = self._init_label_list.index(this_label)
@@ -351,19 +397,33 @@ class MoranProcess3D:
         self.population[x, y, z].AvgDeathPayoff = payoff
 
     def _UpdateBirthFitness(self, x, y, z):
-        """Calculate Birth Fitness for a given Individual"""
+        """Calculate Birth Fitness for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+            z (int): z-coordinate of the Individual.
+
+        """
         self.population[x, y, z].BirthFitness = (
             1 - self.w + self.w * self.population[x, y, z].AvgBirthPayoff
         )
 
     def _UpdateDeathFitness(self, x, y, z):
-        """Calculate Death Fitness for a given Individual"""
+        """Calculate Death Fitness for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+            z (int): z-coordinate of the Individual.
+
+        """
         self.population[x, y, z].DeathFitness = (
             1 - self.w + self.w * self.population[x, y, z].AvgDeathPayoff
         )
 
     def _UpdateEntropy(self):
-        """Calculate entropy of Individual types for the population."""
+        """Calculate entropy of Individual types in the population."""
         self.Entropy = 0
         for type_size in self.curr_size_list:
             fraction = float(type_size) / self.population.size
@@ -371,7 +431,12 @@ class MoranProcess3D:
                 self.Entropy -= fraction * np.log2(fraction)
 
     def _roulette_wheel_selection_Birth(self):
-        """Fitness-proportional selection according to the Birth Fitness."""
+        """Select one individual according to the Birth Fitness.
+
+        Returns:
+            tuple: (x, y, z) - coordinates of the selected Individual.
+
+        """
         max_value = 0
         for x in range(self.init_grid.shape[0]):
             for y in range(self.init_grid.shape[1]):
@@ -387,7 +452,20 @@ class MoranProcess3D:
                         return (x, y, z)
 
     def _roulette_wheel_selection_Death(self, x, y, z):
-        """Fitness-proportional selection (from neighbours) according to the Death Fitness."""
+        """Select one individual according to the Death Fitness.
+
+        Note:
+            Select from direct neighbours of the Individual in argument.
+
+        Args:
+            x (int): x-coordinate of an Individual.
+            y (int): y-coordinate of an Individual.
+            z (int): z-coordinate of an Individual.
+
+        Returns:
+            tuple: (X, Y, Z) - coordinates of the selected Individual.
+
+        """
         pop_x = self.population.shape[0]
         pop_y = self.population.shape[1]
         pop_z = self.population.shape[2]
@@ -472,8 +550,18 @@ class MoranProcess3D:
                 return indices
 
     def simulate(self, generations):
-        """Simulate 3D population evolution: Birth-Death process with fitness-based selection."""
+        """Simulate 3D population evolution.
 
+        Simulate 3D population evolution: Birth-Death process with
+        fitness-based selection of individuals.
+
+        Args:
+            generations (int): number of time steps.
+
+        Returns:
+            pd.DataFrame: table with simulation logs.
+
+        """
         pop_x = self.population.shape[0]
         pop_y = self.population.shape[1]
         pop_z = self.population.shape[2]
@@ -596,7 +684,13 @@ class MoranProcess3D:
         return log_df
 
     def PlotSize3D(self, df, path):
-        """Plot the sub-populations' sizes after a simulation of a given 3D Moran Process."""
+        """Plot the sub-populations' sizes after a simulation.
+
+        Args:
+            df (pd.DataFrame): table with simulation logs.
+            path (str): path for the plot.
+
+        """
         plt.figure(figsize=(14, 6))
         ax = plt.gca()
         ax.tick_params(width=1)
@@ -616,7 +710,13 @@ class MoranProcess3D:
         plt.savefig(fname=path, dpi=300)
 
     def PlotEntropy3D(self, df, path):
-        """Plot the whole populations entropy after a simulation of a given 3D Moran Process."""
+        """Plot the whole populations entropy after a simulation.
+
+        Args:
+            df (pd.DataFrame): table with simulation logs.
+            path (str): path for the plot.
+
+        """
         plt.figure(figsize=(14, 6))
         ax = plt.gca()
         ax.tick_params(width=1)
