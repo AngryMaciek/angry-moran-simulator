@@ -10,6 +10,7 @@
 
    general-info/installation
    general-info/background
+   general-info/walkthrough
    general-info/example-results
    general-info/citing-contributing
    CHANGELOG.md
@@ -89,10 +90,8 @@ Feel free to inspect the code behind our work at the `official GitHub repository
 
 Build date: |today|, Latest version: |release|
 
-Indices and tables
-==================
+------------
 
-* :ref:`genindex`
 * :ref:`modindex`
 
 .. _official GitHub repository: https://github.com/AngryMaciek/angry-moran-simulator
