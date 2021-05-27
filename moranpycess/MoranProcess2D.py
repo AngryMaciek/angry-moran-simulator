@@ -47,7 +47,7 @@ class MoranProcess2D:
                 between types. Defaults to None.
 
         Attributes:
-            population (list of class:Individual): entire population.
+            population (list of Individual): entire population.
             init_size_list (list of int): cardinalities of initial
                 subpopulations.
             curr_size_list (list of int): cardinalities of current
@@ -173,112 +173,112 @@ class MoranProcess2D:
 
     @property
     def population(self):
-        """Python getter: population."""
+        """Python getter."""
         return self._population
 
     @population.setter
     def population(self, population):
-        """Python setter: population."""
+        """Python setter."""
         self._population = population
 
     @property
     def init_size_list(self):
-        """Python getter: init_size_list."""
+        """Python getter."""
         return self._init_size_list
 
     @init_size_list.setter
     def init_size_list(self, init_size_list):
-        """Python setter: init_size_list."""
+        """Python setter."""
         self._init_size_list = init_size_list
 
     @property
     def curr_size_list(self):
-        """Python getter: curr_size_list."""
+        """Python getter."""
         return self._curr_size_list
 
     @curr_size_list.setter
     def curr_size_list(self, curr_size_list):
-        """Python setter: curr_size_list."""
+        """Python setter."""
         self._curr_size_list = curr_size_list
 
     @property
     def init_label_list(self):
-        """Python getter: init_label_list."""
+        """Python getter."""
         return self._init_label_list
 
     @init_label_list.setter
     def init_label_list(self, init_label_list):
-        """Python setter: init_label_list."""
+        """Python setter."""
         self._init_label_list = init_label_list
 
     @property
     def init_grid(self):
-        """Python getter: init_grid."""
+        """Python getter."""
         return self._init_grid
 
     @init_grid.setter
     def init_grid(self, init_grid):
-        """Python setter: init_grid."""
+        """Python setter."""
         self._init_grid = init_grid
 
     @property
     def curr_grid(self):
-        """Python getter: curr_grid."""
+        """Python getter."""
         return self._curr_grid
 
     @curr_grid.setter
     def curr_grid(self, curr_grid):
-        """Python setter: curr_grid."""
+        """Python setter."""
         self._curr_grid = curr_grid
 
     @property
     def BirthPayoffMatrix(self):
-        """Python getter: BirthPayoffMatrix."""
+        """Python getter."""
         return self._BirthPayoffMatrix
 
     @BirthPayoffMatrix.setter
     def BirthPayoffMatrix(self, BirthPayoffMatrix):
-        """Python setter: BirthPayoffMatrix."""
+        """Python setter."""
         self._BirthPayoffMatrix = BirthPayoffMatrix
 
     @property
     def DeathPayoffMatrix(self):
-        """Python getter: DeathPayoffMatrix."""
+        """Python getter."""
         return self._DeathPayoffMatrix
 
     @DeathPayoffMatrix.setter
     def DeathPayoffMatrix(self, DeathPayoffMatrix):
-        """Python setter: DeathPayoffMatrix."""
+        """Python setter."""
         self._DeathPayoffMatrix = DeathPayoffMatrix
 
     @property
     def w(self):
-        """Python getter: w."""
+        """Python getter."""
         return self._w
 
     @w.setter
     def w(self, w):
-        """Python setter: w."""
+        """Python setter."""
         self._w = w
 
     @property
     def Entropy(self):
-        """Python getter: Entropy."""
+        """Python getter."""
         return self._Entropy
 
     @Entropy.setter
     def Entropy(self, Entropy):
-        """Python setter: Entropy."""
+        """Python setter."""
         self._Entropy = Entropy
 
     @property
     def TransitionMatrix(self):
-        """Python getter: TransitionMatrix."""
+        """Python getter."""
         return self._TransitionMatrix
 
     @TransitionMatrix.setter
     def TransitionMatrix(self, TransitionMatrix):
-        """Python setter: TransitionMatrix."""
+        """Python setter."""
         self._TransitionMatrix = TransitionMatrix
 
     def _UpdateBirthPayoff(self, x, y):

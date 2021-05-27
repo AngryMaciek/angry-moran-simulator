@@ -45,27 +45,27 @@ class MoranProcess:
                 between types. Defaults to None.
 
         Attributes:
-            population (list of class:Individual): entire population.
+            population (list of Individual): entire population.
             init_size_list (list of int): cardinalities of initial
-            subpopulations.
+                subpopulations.
             curr_size_list (list of int): cardinalities of current
-            subpopulations.
+                subpopulations.
             init_label_list (list of str): distinct labels of initial
-            subpopulations.
+                subpopulations.
             BirthPayoffMatrix (np.array): payoff matrix for the birth process.
             DeathPayoffMatrix (np.array): payoff matrix for the death process.
             w (float): selection pressure weight for the fitness calculation.
-            AvgBirthPayoffDict (dict of str:float): current average birth
-            payoffs for distinct subpopulations.
-            AvgDeathPayoffDict (dict of str:float): current average death
-            payoffs for distinct subpopulations.
-            BirthFitnessDict (dict of str:float): current birth fitnesses
-            for distinct subpopulations.
-            DeathFitnessDict (dict of str:float): current death fitnesses
-            for distinct subpopulations.
+            AvgBirthPayoffDict (dict of str-float): current average birth
+                payoffs for distinct subpopulations.
+            AvgDeathPayoffDict (dict of str-float): current average death
+                payoffs for distinct subpopulations.
+            BirthFitnessDict (dict of str-float): current birth fitnesses
+                for distinct subpopulations.
+            DeathFitnessDict (dict of str-float): current death fitnesses
+                for distinct subpopulations.
             Entropy (float): current entropy of the whole population.
             TransitionMatrix (np.array, optional): transition probabilities
-            between types. Defaults to None.
+                between types. Defaults to None.
 
         Raises:
             AssertionError: on invalid arguments.
@@ -164,132 +164,132 @@ class MoranProcess:
 
     @property
     def population(self):
-        """Python getter: population."""
+        """Python getter."""
         return self._population
 
     @population.setter
     def population(self, population):
-        """Python setter: population."""
+        """Python setter."""
         self._population = population
 
     @property
     def init_size_list(self):
-        """Python getter: init_size_list."""
+        """Python getter."""
         return self._init_size_list
 
     @init_size_list.setter
     def init_size_list(self, init_size_list):
-        """Python setter: init_size_list."""
+        """Python setter."""
         self._init_size_list = init_size_list
 
     @property
     def curr_size_list(self):
-        """Python getter: curr_size_list."""
+        """Python getter."""
         return self._curr_size_list
 
     @curr_size_list.setter
     def curr_size_list(self, curr_size_list):
-        """Python setter: curr_size_list."""
+        """Python setter."""
         self._curr_size_list = curr_size_list
 
     @property
     def init_label_list(self):
-        """Python getter: init_label_list."""
+        """Python getter."""
         return self._init_label_list
 
     @init_label_list.setter
     def init_label_list(self, init_label_list):
-        """Python setter: init_label_list."""
+        """Python setter."""
         self._init_label_list = init_label_list
 
     @property
     def BirthPayoffMatrix(self):
-        """Python getter: BirthPayoffMatrix."""
+        """Python getter."""
         return self._BirthPayoffMatrix
 
     @BirthPayoffMatrix.setter
     def BirthPayoffMatrix(self, BirthPayoffMatrix):
-        """Python setter: BirthPayoffMatrix."""
+        """Python setter."""
         self._BirthPayoffMatrix = BirthPayoffMatrix
 
     @property
     def DeathPayoffMatrix(self):
-        """Python getter: DeathPayoffMatrix."""
+        """Python getter."""
         return self._DeathPayoffMatrix
 
     @DeathPayoffMatrix.setter
     def DeathPayoffMatrix(self, DeathPayoffMatrix):
-        """Python setter: DeathPayoffMatrix."""
+        """Python setter."""
         self._DeathPayoffMatrix = DeathPayoffMatrix
 
     @property
     def w(self):
-        """Python getter: w."""
+        """Python getter."""
         return self._w
 
     @w.setter
     def w(self, w):
-        """Python setter: w."""
+        """Python setter."""
         self._w = w
 
     @property
     def AvgBirthPayoffDict(self):
-        """Python getter: AvgBirthPayoffDict."""
+        """Python getter."""
         return self._AvgBirthPayoffDict
 
     @AvgBirthPayoffDict.setter
     def AvgBirthPayoffDict(self, AvgBirthPayoffDict):
-        """Python setter: AvgBirthPayoffDict."""
+        """Python setter."""
         self._AvgBirthPayoffDict = AvgBirthPayoffDict
 
     @property
     def AvgDeathPayoffDict(self):
-        """Python getter: AvgDeathPayoffDict."""
+        """Python getter."""
         return self._AvgDeathPayoffDict
 
     @AvgDeathPayoffDict.setter
     def AvgDeathPayoffDict(self, AvgDeathPayoffDict):
-        """Python setter: AvgDeathPayoffDict."""
+        """Python setter."""
         self._AvgDeathPayoffDict = AvgDeathPayoffDict
 
     @property
     def BirthFitnessDict(self):
-        """Python getter: BirthFitnessDict."""
+        """Python getter."""
         return self._BirthFitnessDict
 
     @BirthFitnessDict.setter
     def BirthFitnessDict(self, BirthFitnessDict):
-        """Python setter: BirthFitnessDict."""
+        """Python setter."""
         self._BirthFitnessDict = BirthFitnessDict
 
     @property
     def DeathFitnessDict(self):
-        """Python getter: DeathFitnessDict."""
+        """Python getter."""
         return self._DeathFitnessDict
 
     @DeathFitnessDict.setter
     def DeathFitnessDict(self, DeathFitnessDict):
-        """Python setter: DeathFitnessDict."""
+        """Python setter."""
         self._DeathFitnessDict = DeathFitnessDict
 
     @property
     def Entropy(self):
-        """Python getter: Entropy."""
+        """Python getter."""
         return self._Entropy
 
     @Entropy.setter
     def Entropy(self, Entropy):
-        """Python setter: Entropy."""
+        """Python setter."""
         self._Entropy = Entropy
 
     @property
     def TransitionMatrix(self):
-        """Python getter: TransitionMatrix."""
+        """Python getter."""
         return self._TransitionMatrix
 
     @TransitionMatrix.setter
     def TransitionMatrix(self, TransitionMatrix):
-        """Python setter: TransitionMatrix."""
+        """Python setter."""
         self._TransitionMatrix = TransitionMatrix
 
     def _UpdateAvgBirthPayoffForAll(self):
