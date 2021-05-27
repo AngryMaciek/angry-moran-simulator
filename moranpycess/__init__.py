@@ -14,8 +14,8 @@
 """
 
 # imports
-import .Individual
-import .MoranProcess
-import .MoranProcess2D
-import .MoranProcess3D
-import .exceptions
+from .Individual import Individual
+from .MoranProcess import MoranProcess
+from .MoranProcess2D import MoranProcess2D
+from .MoranProcess3D import MoranProcess3D
+from .exceptions import IncorrectValueError
