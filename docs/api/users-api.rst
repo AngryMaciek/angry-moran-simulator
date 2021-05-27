@@ -2,8 +2,14 @@
 User's API
 ##########
 
-* Moran Process
-* Moran Process 2D
-* Moran Process 3D
+.. autoclass:: MoranProcess::MoranProcess
+    :special-members:
+    :members:
 
-<- generated with autodoc, one level below from a dropdown list
+.. autoclass:: MoranProcess2D::MoranProcess2D
+    :special-members:
+    :members:
+
+.. autoclass:: MoranProcess3D::MoranProcess3D
+    :special-members:
+    :members:

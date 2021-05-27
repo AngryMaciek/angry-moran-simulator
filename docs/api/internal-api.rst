@@ -2,7 +2,14 @@
 Internal API
 ############
 
-* Individual
-* exceptions
+.. autoclass:: Individual::Individual
+    :special-members:
+    :members:
 
-<- generated with autodoc, one level below from a dropdown list
+.. autoclass:: exceptions::Error
+    :special-members:
+    :members:
+
+.. autoclass:: exceptions::IncorrectValueError
+    :special-members:
+    :members:

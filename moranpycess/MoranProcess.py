@@ -47,25 +47,25 @@ class MoranProcess:
         Attributes:
             population (list of class:Individual): entire population.
             init_size_list (list of int): cardinalities of initial
-                subpopulations.
+            subpopulations.
             curr_size_list (list of int): cardinalities of current
-                subpopulations.
+            subpopulations.
             init_label_list (list of str): distinct labels of initial
-                subpopulations.
+            subpopulations.
             BirthPayoffMatrix (np.array): payoff matrix for the birth process.
             DeathPayoffMatrix (np.array): payoff matrix for the death process.
             w (float): selection pressure weight for the fitness calculation.
             AvgBirthPayoffDict (dict of str:float): current average birth
-                payoffs for distinct subpopulations.
+            payoffs for distinct subpopulations.
             AvgDeathPayoffDict (dict of str:float): current average death
-                payoffs for distinct subpopulations.
+            payoffs for distinct subpopulations.
             BirthFitnessDict (dict of str:float): current birth fitnesses
-                for distinct subpopulations.
+            for distinct subpopulations.
             DeathFitnessDict (dict of str:float): current death fitnesses
-                for distinct subpopulations.
+            for distinct subpopulations.
             Entropy (float): current entropy of the whole population.
             TransitionMatrix (np.array, optional): transition probabilities
-                between types. Defaults to None.
+            between types. Defaults to None.
 
         Raises:
             AssertionError: on invalid arguments.
