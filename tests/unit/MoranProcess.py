@@ -17,7 +17,7 @@
 import numpy as np
 import pytest
 import random
-from context import moranpycess
+from .context import MoranProcess, exceptions
 
 
 class TestClass:
@@ -30,7 +30,7 @@ class TestClass:
         label_list = ["A", "B"]
         BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
         DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
-        mp = moranpycess.MoranProcess(
+        mp = MoranProcess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
             BirthPayoffMatrix=BirthPayoffMatrix,
@@ -152,7 +152,7 @@ class TestClass:
         label_list = ["abc", "def"]
         BirthPayoffMatrix = np.array([[100, 100], [1, 1]])
         DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
-        mp = moranpycess.MoranProcess(
+        mp = MoranProcess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
             BirthPayoffMatrix=BirthPayoffMatrix,
@@ -171,7 +171,7 @@ class TestClass:
         label_list = ["XYZ", "ZYX"]
         BirthPayoffMatrix = np.array([[1, 1], [1, 1]])
         DeathPayoffMatrix = np.array([[1, 1], [100, 100]])
-        mp = moranpycess.MoranProcess(
+        mp = MoranProcess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
             BirthPayoffMatrix=BirthPayoffMatrix,
@@ -190,7 +190,7 @@ class TestClass:
         label_list = ["a", "b"]
         BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
         DeathPayoffMatrix = np.array([[0.1, 0.2], [0.3, 0.4]])
-        mp = moranpycess.MoranProcess(
+        mp = MoranProcess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
             BirthPayoffMatrix=BirthPayoffMatrix,
@@ -214,7 +214,7 @@ class TestClass:
         BirthPayoffMatrix = np.array([[10, 20], [30, 40]])
         DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
         with pytest.raises(AssertionError):
-            moranpycess.MoranProcess(
+            MoranProcess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
@@ -226,7 +226,7 @@ class TestClass:
         BirthPayoffMatrix = np.array([[10, 20, 20], [30, 40, 40], [1, 1, 1]])
         DeathPayoffMatrix = np.array([[1, 2], [3, 4]])
         with pytest.raises(AssertionError):
-            moranpycess.MoranProcess(
+            MoranProcess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
@@ -238,7 +238,7 @@ class TestClass:
         BirthPayoffMatrix = np.array([[1, 2], [3, 4]])
         DeathPayoffMatrix = np.array([[10, 20, 20], [30, 40, 40], [1, 1, 1]])
         with pytest.raises(AssertionError):
-            moranpycess.MoranProcess(
+            MoranProcess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
@@ -251,7 +251,7 @@ class TestClass:
         DeathPayoffMatrix = np.array([[10, 20], [30, 40]])
         TransitionMatrix = np.array([[0.0], [0.0]])
         with pytest.raises(AssertionError):
-            moranpycess.MoranProcess(
+            MoranProcess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
@@ -267,8 +267,8 @@ class TestClass:
         expected_error_msg = "Incorrect value for Transition Matrix."
         expected_error_msg += " "
         expected_error_msg += "Transition probabilities need to add up to 1.0."
-        with pytest.raises(moranpycess.IncorrectValueError, match=expected_error_msg):
-            moranpycess.MoranProcess(
+        with pytest.raises(exceptions.IncorrectValueError, match=expected_error_msg):
+            MoranProcess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
                 BirthPayoffMatrix=BirthPayoffMatrix,
@@ -283,7 +283,7 @@ class TestClass:
         label_list = ["cooperate", "defect"]
         BirthPayoffMatrix = np.array([[3, 0], [5, 1]])
         DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
-        mp = moranpycess.MoranProcess(
+        mp = MoranProcess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
             BirthPayoffMatrix=BirthPayoffMatrix,
@@ -310,7 +310,7 @@ class TestClass:
         BirthPayoffMatrix = np.array([[1, 1], [1, 1]])
         DeathPayoffMatrix = np.array([[1, 1], [1, 1]])
         TransitionMatrix = np.array([[0.5, 0.5], [0.0, 1.0]])
-        mp = moranpycess.MoranProcess(
+        mp = MoranProcess.MoranProcess(
             size_list=size_list,
             label_list=label_list,
             BirthPayoffMatrix=BirthPayoffMatrix,

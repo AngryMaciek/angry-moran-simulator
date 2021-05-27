@@ -19,7 +19,8 @@ import copy
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import moranpycess
+import Individual
+import exceptions
 
 
 class MoranProcess:
@@ -85,7 +86,7 @@ class MoranProcess:
         for label_index, label in enumerate(label_list):
             for i in range(size_list[label_index]):
                 self.population.append(
-                    moranpycess.Individual(ID=ID_counter, label=label_list[label_index])
+                    Individual.Individual(ID=ID_counter, label=label_list[label_index])
                 )
                 ID_counter += 1
 
@@ -155,7 +156,7 @@ class MoranProcess:
             # check if the values are correct
             for v in np.sum(TransitionMatrix, axis=1):
                 if v != 1.0:
-                    raise moranpycess.IncorrectValueError(
+                    raise exceptions.IncorrectValueError(
                         parameter="Transition Matrix",
                         message="Transition probabilities need to add up to 1.0.",
                     )

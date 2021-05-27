@@ -19,7 +19,8 @@ import copy
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import moranpycess
+import Individual
+import exceptions
 
 
 class MoranProcess2D:
@@ -127,11 +128,11 @@ class MoranProcess2D:
         ID_counter = 0
         self.population = np.empty(
             (self.init_grid.shape[0], self.init_grid.shape[1]),
-            dtype=moranpycess.Individual,
+            dtype=Individual.Individual,
         )
         for x in range(self.init_grid.shape[0]):
             for y in range(self.init_grid.shape[1]):
-                self.population[x, y] = moranpycess.Individual(
+                self.population[x, y] = Individual.Individual(
                     ID=ID_counter, label=self.init_grid[x, y]
                 )
                 ID_counter += 1
@@ -164,7 +165,7 @@ class MoranProcess2D:
             # check if the values are correct
             for v in np.sum(TransitionMatrix, axis=1):
                 if v != 1.0:
-                    raise moranpycess.IncorrectValueError(
+                    raise exceptions.IncorrectValueError(
                         parameter="Transition Matrix",
                         message="Transition probabilities need to add up to 1.0.",
                     )
