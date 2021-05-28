@@ -21,8 +21,6 @@ import sys
 sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 # import distinct classes from modules of this package
-from .Individual import Individual
 from .MoranProcess import MoranProcess
 from .MoranProcess2D import MoranProcess2D
 from .MoranProcess3D import MoranProcess3D
-from .CustomExceptions import IncorrectValueError
