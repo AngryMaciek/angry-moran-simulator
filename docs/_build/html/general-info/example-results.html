@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Example Results &mdash; Moran [Py]cess 1.0.39 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Citing &amp; Contributing" href="citing-contributing.html" />
+    <link rel="prev" title="Quick Walkthrough" href="walkthrough.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Moran [Py]cess
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Theoretical Background</a></li>
+<li class="toctree-l1"><a class="reference internal" href="walkthrough.html">Quick Walkthrough</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example Results</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-moran-model">General Moran Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#moran-model-based-on-2d-neighbourhood">Moran Model based on 2D neighbourhood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#moran-model-based-on-3d-neighbourhood">Moran Model based on 3D neighbourhood</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="citing-contributing.html">Citing &amp; Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/users-api.html">User’s API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/internal-api.html">Internal API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Moran [Py]cess</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Example Results</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="example-results">
+<h1>Example Results<a class="headerlink" href="#example-results" title="Permalink to this headline">¶</a></h1>
+<p>Results below might be reproduced from the
+<a class="reference external" href="https://github.com/AngryMaciek/angry-moran-simulator/blob/master/tests/usecase.ipynb">following notebook</a>.
+If you like you can try it yourself via the
+<a class="reference external" href="https://mybinder.org/v2/gh/AngryMaciek/angry-moran-simulator/master?filepath=tests%2Fusecase.ipynb">interactive version</a>.</p>
+<div class="section" id="general-moran-model">
+<h2>General Moran Model<a class="headerlink" href="#general-moran-model" title="Permalink to this headline">¶</a></h2>
+<p>We have designed four distinct systems based on well-known interaction
+examples which have been well-described in the literature <a class="reference internal" href="#tadelis-2012" id="id1"><span>[Tadelis-2012]</span></a>:</p>
+<div class="figure align-center" id="id6">
+<img alt="example results 1D" src="../_images/figure.png" />
+<p class="caption"><span class="caption-text">Simulations of population evolution based on: (A) Stag Hunt (B) Chicken game, (C) Prisoners’ Dilemma, (D) Rock Paper Scissors.</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</div>
+<p><em>(A) The Stag Hunt game model describes a conflict between safety and social cooperation:
+the hare hunt represents small but certain profit, the stag hunt, great benefit but at
+great risk. Failure in cooperation leads to a player’s loss. There is no dominant strategy
+in this game as it is most beneficial for individuals to agree on the same strategy. Both
+stag hunt and hare hunt are evolutionarily stable strategies. A perfect example of this
+type of interaction is the “carousel feeding” behavior, a cooperative hunting method
+used by Norwegian orcas which forces a school of fish to form a tight ball; the orcas
+then stun fish with their tails</em> <a class="reference internal" href="#fort-2007" id="id2"><span>[Fort-2007]</span></a><em>.</em></p>
+<p><em>(B) In the game of Chicken a confrontational strategy brings a greater profit. However,
+if chosen by both individuals it yields the worst outcome. A peaceful strategy, while
+protecting against the greatest possible loss brings no reward when challenged by an
+aggressor. No player has a dominant strategy and there are no ESS in pure strategies
+in this game. Consider an example of two strains of the yeasts S. cerevisiae: wildtype
+and a mutant lacking the invertase gene. In a monosaccharide-poor environment yeasts
+may utilise invertase to produce an energy source from more complex molecules. Most
+monosaccharides are excreted to the extracellular environment from where they can
+also be taken up by other cells. Mutant strains (“cheaters”) follow a confrontational
+strategy: they consume glucose created by wildtype cells without bearing the metabolic
+cost of invertase production and secretion. Therefore, in a population, a confrontational
+strategy has a good advantage over the peaceful one, given the number of wildtype
+yeasts exceeds the number of mutants vastly. In case this condition is not met cheaters
+would fail to live off the others, leading to starvation - the worst possible scenario for
+them. Moreover, the analogy holds while inspecting the behaviour of wildtype yeasts.
+Trying to avoid that worst scenario, in the presence of mutants, wildtype cells cooperate
+in invertase expression over a wide range of conditions. However, when competing
+against other wildtype strains, invertase expression is repressed, causing them to exhibit
+the confrontational strategy - cheat</em> <a class="reference internal" href="#gore-youk-oudenaarden-2009" id="id3"><span>[Gore-Youk-Oudenaarden-2009]</span></a><em>.</em></p>
+<p><em>(C) Prisoners’ dilemma, often analyzed in game theory due to its multiple applications,
+presents a case where two completely rational individuals within incomplete knowledge
+might not cooperate, even if it appears that it is in their best interests to do so. The most
+rational strategy yields the worst collective outcome. Every participant has a dominant
+strategy. The only ESS is to always cooperate. In biological context the prisoner’s
+dilemma successfully captures the essential features of cancer growth and provides a
+framework for testing hypotheses and formulating claims in a quantitative manner</em>
+<a class="reference internal" href="#west-hasnain-macklin-newton-2016" id="id4"><span>[West-Hasnain-Macklin-Newton-2016]</span></a><em>. In the case of malignant tumors, we observe
+the possibility of infiltration of adjacent tissues by cancer cells. Their characteristic
+uncontrolled proliferation leads to the growth of another tumor in this place and the
+destruction of healthy tissue.</em></p>
+<p><em>(D) Rock-Paper-Scissors is a game with cyclic dominance resulting in oscillating populations
+of individuals among types. There is no ESS in this game. As an example, consider
+male side-blotched lizards, which come in three color morphs: orange, yellow, and blue.
+The orange males defend large territories. The yellow males can invade orange males’
+territories. The blue male, in turn, effectively expels yellow males from their territory
+but are outcompeted by aggressive orange males</em> <a class="reference internal" href="#sinervo-lively-1996" id="id5"><span>[Sinervo-Lively-1996]</span></a><em>. As a result:
+yellow beats orange, which bests blue which beats yellow.</em></p>
+<p class="rubric">References:</p>
+<dl class="citation">
+<dt class="label" id="tadelis-2012"><span class="brackets"><a class="fn-backref" href="#id1">Tadelis-2012</a></span></dt>
+<dd><p><a class="reference external" href="https://press.princeton.edu/books/hardcover/9780691129082/game-theory">https://press.princeton.edu/books/hardcover/9780691129082/game-theory</a></p>
+</dd>
+<dt class="label" id="fort-2007"><span class="brackets"><a class="fn-backref" href="#id2">Fort-2007</a></span></dt>
+<dd><p><a class="reference external" href="https://www.hindawi.com/journals/ijecol/2007/018636">https://www.hindawi.com/journals/ijecol/2007/018636</a></p>
+</dd>
+<dt class="label" id="gore-youk-oudenaarden-2009"><span class="brackets"><a class="fn-backref" href="#id3">Gore-Youk-Oudenaarden-2009</a></span></dt>
+<dd><p><a class="reference external" href="https://www.nature.com/articles/nature07921">https://www.nature.com/articles/nature07921</a></p>
+</dd>
+<dt class="label" id="west-hasnain-macklin-newton-2016"><span class="brackets"><a class="fn-backref" href="#id4">West-Hasnain-Macklin-Newton-2016</a></span></dt>
+<dd><p><a class="reference external" href="https://epubs.siam.org/doi/10.1137/15M1044825">https://epubs.siam.org/doi/10.1137/15M1044825</a></p>
+</dd>
+<dt class="label" id="sinervo-lively-1996"><span class="brackets"><a class="fn-backref" href="#id5">Sinervo-Lively-1996</a></span></dt>
+<dd><p><a class="reference external" href="https://www.nature.com/articles/380240a0">https://www.nature.com/articles/380240a0</a></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="moran-model-based-on-2d-neighbourhood">
+<h2>Moran Model based on 2D neighbourhood<a class="headerlink" href="#moran-model-based-on-2d-neighbourhood" title="Permalink to this headline">¶</a></h2>
+<p>Average payoff for an individual is calcualted based on interactions with
+8 direct neighbours of a given individual (2D grid).
+Periodic boundary conditions are applied.</p>
+<div class="figure align-center" id="id7">
+<img alt="example results 2DA" src="../_images/supplementary_figure1a.png" />
+<p class="caption"><span class="caption-text">Population snapshots during an evolution according to a Prisoners Dilemma model. Starting from a small subpopulation of Defectors (A, t=0) we observe gradual growth (B, t=50000), (C, t=200000) until the whole population is almost completely overtaken (D, t=500000).</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id8">
+<img alt="example results 2DB" src="../_images/supplementary_figure1b.png" />
+<p class="caption"><span class="caption-text">Growth curve for population evolution according to a Prisoners Dilemma model.</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="moran-model-based-on-3d-neighbourhood">
+<h2>Moran Model based on 3D neighbourhood<a class="headerlink" href="#moran-model-based-on-3d-neighbourhood" title="Permalink to this headline">¶</a></h2>
+<p>Average payoff for an individual is calcualted based on interactions with
+26 direct neighbours of a given individual (3D grid).
+Periodic boundary conditions are applied.</p>
+<div class="figure align-center" id="id9">
+<img alt="example results 3D" src="../_images/supplementary_figure2.png" />
+<p class="caption"><span class="caption-text">Growth curve for population evolution according to a Prisoners Dilemma model.</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="citing-contributing.html" class="btn btn-neutral float-right" title="Citing &amp; Contributing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="walkthrough.html" class="btn btn-neutral float-left" title="Quick Walkthrough" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Maciek Bak.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,504 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Quick Walkthrough &mdash; Moran [Py]cess 1.0.39 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example Results" href="example-results.html" />
+    <link rel="prev" title="Theoretical Background" href="background.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Moran [Py]cess
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">General Information</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="background.html">Theoretical Background</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Quick Walkthrough</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#general-moran-model">General Moran Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#moran-model-based-on-2d-neighbourhood">Moran Model based on 2D neighbourhood</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#moran-model-based-on-3d-neighbourhood">Moran Model based on 3D neighbourhood</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example-results.html">Example Results</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citing-contributing.html">Citing &amp; Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+<p class="caption"><span class="caption-text">API</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/users-api.html">User’s API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/internal-api.html">Internal API</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Moran [Py]cess</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Quick Walkthrough</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quick-walkthrough">
+<h1>Quick Walkthrough<a class="headerlink" href="#quick-walkthrough" title="Permalink to this headline">¶</a></h1>
+<p><em>Moran Pycess</em> is a Python package with a general game-theoretical framework
+for scientific simulations according to the Moran model. It is aimed to
+capture dynamics of populations composed of individuals of distinct phenotypes
+(which correspond to strategies in the language of game theory).
+Individual’s fitness is calcualted based on its average payoff, averaged over
+interactions with other members of the group. The package is both simple in
+use and robust, allowing any possible model of an antagonistic game to be
+considered. It serves well as a research aid for evolutionary, computational
+as well as cell biologists as it allows to simulate two-dimensional and
+three-dimensional populations too.</p>
+<div class="section" id="general-moran-model">
+<h2>General Moran Model<a class="headerlink" href="#general-moran-model" title="Permalink to this headline">¶</a></h2>
+<p>From the user’s perspective only one class is relevant: <em>MoranProcess</em>.</p>
+<p>Initializer of this class has the follwing signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+  <span class="bp">self</span><span class="p">,</span>
+  <span class="n">size_list</span><span class="p">,</span>
+  <span class="n">label_list</span><span class="p">,</span>
+  <span class="n">BirthPayoffMatrix</span><span class="p">,</span>
+  <span class="n">DeathPayoffMatrix</span><span class="p">,</span>
+  <span class="n">TransitionMatrix</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+
+<span class="c1"># size_list: list of integers which represent the cardinality of</span>
+<span class="c1"># distinct sub-populations</span>
+
+<span class="c1"># label_list: list of strings which represent the labels of individuals</span>
+<span class="c1"># from distinct sub-populations</span>
+
+<span class="c1"># BirthPayoffMatrix: payoff matrix based on which individuals&#39; Birth Fitness</span>
+<span class="c1"># is calculated. Used for the roulette-based selection of an individual to reproduce</span>
+
+<span class="c1"># DeathPayoffMatrix: payoff matrix based on which individuals&#39; Death Fitness</span>
+<span class="c1"># is calculated. Used for the roulette-based selection of an individual to die</span>
+
+<span class="c1"># TransitionMatrix: an optional parameter: a matrix similar to Birth/Death</span>
+<span class="c1"># payoffs which specifies transition probabilities from a given</span>
+<span class="c1"># Strategy (rows) to another (columns). Row sums must equal to one.</span>
+<span class="c1"># If this parameter is specified at the end of each Birth-Death cycle each of</span>
+<span class="c1"># the individuals will randomly sample to switch Strategies.</span>
+</pre></div>
+</div>
+<p>Both individuals’ selection for reproduction and death are proportional to
+individuals’ fitnesses calculated based on two separate payoff matrices
+(Birth/Death). For a random selection please provide a <em>numpy</em> array
+composed entirely of one-values.
+<strong>Payoffs always need to be non-negative.</strong></p>
+<p>Example of creating a <em>MoranProcess</em> instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">moranpycess</span>
+
+<span class="n">size_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">label_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">]</span>
+<span class="n">BirthPayoffMatrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+<span class="n">DeathPayoffMatrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">]])</span>
+
+<span class="n">mp</span> <span class="o">=</span> <span class="n">moranpycess</span><span class="o">.</span><span class="n">MoranProcess</span><span class="p">(</span>
+  <span class="n">size_list</span><span class="o">=</span><span class="n">size_list</span><span class="p">,</span>
+  <span class="n">label_list</span><span class="o">=</span><span class="n">label_list</span><span class="p">,</span>
+  <span class="n">BirthPayoffMatrix</span><span class="o">=</span><span class="n">BirthPayoffMatrix</span><span class="p">,</span>
+  <span class="n">DeathPayoffMatrix</span><span class="o">=</span><span class="n">DeathPayoffMatrix</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>The key method of this object is a called <code class="samp docutils literal notranslate"><span class="pre">simulate(generations)</span></code>
+and it takes an integer as an argument (simulation time specified as a number
+of birth-death cycles). This function returns a <em>pandas</em> dataframe with
+a per-cycle summary of the population’s state.
+The following code demonstrates the simulation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Information which are stored in the dataframe’s columns include:</p>
+<ul class="simple">
+<li><p>per-sub-population sub-population’s size</p></li>
+<li><p>per-sub-population Average Birth Payoff for a single individual of a given sub-population (averaged over interactions with all other individuals of the whole population)</p></li>
+<li><p>per-sub-population Average Death Payoff for a single individual of a given sub-population (averaged over interactions with all other individuals of the whole population)</p></li>
+<li><p>per-sub-population Birth Fitness of an individual from a given sub-popualtion</p></li>
+<li><p>per-sub-population Death Fitness of an individual from a given sub-popualtion</p></li>
+<li><p>Entropy of the distribution of Strategies in the whole population</p></li>
+</ul>
+<p>The class is equipped with several plotting methods to visualise results of the simulation:</p>
+<ul class="simple">
+<li><p><code class="samp docutils literal notranslate"><span class="pre">PlotSize</span></code></p></li>
+<li><p><code class="samp docutils literal notranslate"><span class="pre">PlotAvgBirthPayoff</span></code></p></li>
+<li><p><code class="samp docutils literal notranslate"><span class="pre">PlotAvgDeathPayoff</span></code></p></li>
+<li><p><code class="samp docutils literal notranslate"><span class="pre">PlotBirthFitness</span></code></p></li>
+<li><p><code class="samp docutils literal notranslate"><span class="pre">PlotDeathFitness</span></code></p></li>
+<li><p><code class="samp docutils literal notranslate"><span class="pre">PlotEntropy</span></code></p></li>
+</ul>
+<p>Each of which with the same signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">FUNCTION</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+
+<span class="c1"># df: simulation results - pandas dataframe returned by the method .simulate()</span>
+<span class="c1"># path: path for the output plot in png format</span>
+</pre></div>
+</div>
+<p>Following the previous simulation one may generate the plots with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span><span class="o">.</span><span class="n">PlotSize</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;Size.png&quot;</span><span class="p">)</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">PlotAvgBirthPayoff</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;AvgBirthPayoff.png&quot;</span><span class="p">)</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">PlotAvgDeathPayoff</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;AvgDeathPayoff.png&quot;</span><span class="p">)</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">PlotBirthFitness</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;BirthFitness.png&quot;</span><span class="p">)</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">PlotDeathFitness</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;DeathFitness.png&quot;</span><span class="p">)</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">PlotEntropy</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;Entropy.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="moran-model-based-on-2d-neighbourhood">
+<h2>Moran Model based on 2D neighbourhood<a class="headerlink" href="#moran-model-based-on-2d-neighbourhood" title="Permalink to this headline">¶</a></h2>
+<p>From the user’s perspective only one class is relevant: <em>MoranProcess2D</em>.</p>
+<p>Initializer of this class has the follwing signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+  <span class="bp">self</span><span class="p">,</span>
+  <span class="n">size_list</span><span class="p">,</span>
+  <span class="n">label_list</span><span class="p">,</span>
+  <span class="n">grid</span><span class="p">,</span>
+  <span class="n">BirthPayoffMatrix</span><span class="p">,</span>
+  <span class="n">DeathPayoffMatrix</span><span class="p">,</span>
+  <span class="n">TransitionMatrix</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+
+<span class="c1"># All arguments are the same as for the class MoranProcess except the additional one:</span>
+<span class="c1">#</span>
+<span class="c1"># grid: 2-dimensional numpy array filled with strings from the &quot;label_list&quot;</span>
+<span class="c1"># according to their cardinality in &quot;size_list&quot;. This argument essentially</span>
+<span class="c1"># specifies the initial spatial state of the population.</span>
+</pre></div>
+</div>
+<p>Similarly as in the previous case:
+Both individuals’ selection for reproduction and death are proportional to
+individuals’ fitnesses calculated based on two separate payoff matrices (Birth/Death).
+However, the average payoffs (and therefore fitnesses) of each individual is
+calculated based only on its direct neighbourhood in the population (8 neighbours).
+For individuals at boundaries we apply periodic boundary conditions.
+For a random selection please provide a <em>numpy</em> array composed entirely of one-values.
+<strong>Payoffs always need to be non-negative.</strong></p>
+<p>Example of creating a <em>MoranProcess2D</em> instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">moranpycess</span>
+
+<span class="n">size_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">label_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]])</span>
+<span class="n">BirthPayoffMatrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">DeathPayoffMatrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+
+<span class="n">mp</span> <span class="o">=</span> <span class="n">moranpycess</span><span class="o">.</span><span class="n">MoranProcess2D</span><span class="p">(</span>
+  <span class="n">size_list</span><span class="o">=</span><span class="n">size_list</span><span class="p">,</span>
+  <span class="n">label_list</span><span class="o">=</span><span class="n">label_list</span><span class="p">,</span>
+  <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+  <span class="n">BirthPayoffMatrix</span><span class="o">=</span><span class="n">BirthPayoffMatrix</span><span class="p">,</span>
+  <span class="n">DeathPayoffMatrix</span><span class="o">=</span><span class="n">DeathPayoffMatrix</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Similarly as in the previous case:
+the key method of this object is a called <code class="samp docutils literal notranslate"><span class="pre">simulate(generations)</span></code> and it
+takes an integer as an argument (simulation time specified as a number of
+birth-death cycles). This function returns a <cite>pandas</cite> dataframe with a per-cycle
+summary of the population’s state.
+The following code demonstrates the simulation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In case of the simulation in 2D each Birth-Death cycle consist of the following steps:</p>
+<ol class="arabic simple">
+<li><p>Select an individual for reproduction (fitness-proportional selection)</p></li>
+<li><p>Out of its neigbours: select an individual to die (fitness-proportional selection)</p></li>
+<li><p>Copy the selected individual from (1) in place of the one from (2)</p></li>
+<li><p>Perform Transitions for each individual (in case <code class="samp docutils literal notranslate"><span class="pre">TransitionMatrix</span></code> was specified)</p></li>
+<li><p>Update Payoffs and Fitnesses</p></li>
+</ol>
+<p>Information which are stored in the dataframe’s columns include:</p>
+<ul class="simple">
+<li><p>per-sub-population sub-population’s size</p></li>
+<li><p>Entropy of the distribution of Strategies in the whole population</p></li>
+</ul>
+<p>The class is equipped with three plotting methods to visualise results of the simulation:</p>
+<ul class="simple">
+<li><p><code class="samp docutils literal notranslate"><span class="pre">PlotSize2D</span></code></p></li>
+<li><p><code class="samp docutils literal notranslate"><span class="pre">PlotEntropy2D</span></code></p></li>
+<li><p><code class="samp docutils literal notranslate"><span class="pre">PlotPopulationSnapshot2D</span></code></p></li>
+</ul>
+<p>With <code class="samp docutils literal notranslate"><span class="pre">PlotSize2D</span></code> and <code class="samp docutils literal notranslate"><span class="pre">PlotEntropy2D</span></code> having the same signatures
+as their previous analogues. The latter, <code class="samp docutils literal notranslate"><span class="pre">PlotPopulationSnapshot2D</span></code>,
+may produce a heatmap-like snapshot of a population at it’s current state.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">PlotPopulationSnapshot2D</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
+
+<span class="c1"># path: path for the output plot in png format</span>
+</pre></div>
+</div>
+<p>Following the previous simulation one may generate the plots with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span><span class="o">.</span><span class="n">PlotSize2D</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;Size2D.png&quot;</span><span class="p">)</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">PlotEntropy2D</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;Entropy2D.png&quot;</span><span class="p">)</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">PlotPopulationSnapshot2D</span><span class="p">(</span><span class="s2">&quot;PopulationSnapshot2D.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="moran-model-based-on-3d-neighbourhood">
+<h2>Moran Model based on 3D neighbourhood<a class="headerlink" href="#moran-model-based-on-3d-neighbourhood" title="Permalink to this headline">¶</a></h2>
+<p>From the user’s perspective only one class is relevant: <em>MoranProcess3D</em>.</p>
+<p>Initializer of this class has the follwing signature:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+  <span class="bp">self</span><span class="p">,</span>
+  <span class="n">size_list</span><span class="p">,</span>
+  <span class="n">label_list</span><span class="p">,</span>
+  <span class="n">grid</span><span class="p">,</span>
+  <span class="n">BirthPayoffMatrix</span><span class="p">,</span>
+  <span class="n">DeathPayoffMatrix</span><span class="p">,</span>
+  <span class="n">TransitionMatrix</span><span class="o">=</span><span class="kc">None</span>
+<span class="p">):</span>
+</pre></div>
+</div>
+<p>All arguments are the same as for the class <em>MoranProcess2D</em> with the note
+that this time <code class="samp docutils literal notranslate"><span class="pre">grid</span></code> is a 3-dimensional array.</p>
+<p>Similarly as in the previous case:
+both individuals’ selection for reproduction and death are proportional to
+individuals’ fitnesses calculated based on two separate payoff matrices (Birth/Death).
+However, the average payoffs (and therefore fitnesses) of each individual is
+calculated based only on its direct neighbourhood in the population (26 neighbours).
+For individuals at boundaries we apply periodic boundary conditions.
+For a random selection please provide a <em>numpy</em> array composed entirely of one-values.
+<strong>Payoffs always need to be non-negative.</strong></p>
+<p>Example of creating a <em>MoranProcess3D</em> instance:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">moranpycess</span>
+
+<span class="n">size_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">label_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]</span>
+<span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">]],</span> <span class="p">[[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">],</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">]]])</span>
+<span class="n">BirthPayoffMatrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">],</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">]])</span>
+<span class="n">DeathPayoffMatrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span>
+
+<span class="n">mp</span> <span class="o">=</span> <span class="n">moranpycess</span><span class="o">.</span><span class="n">MoranProcess3D</span><span class="p">(</span>
+  <span class="n">size_list</span><span class="o">=</span><span class="n">size_list</span><span class="p">,</span>
+  <span class="n">label_list</span><span class="o">=</span><span class="n">label_list</span><span class="p">,</span>
+  <span class="n">grid</span><span class="o">=</span><span class="n">grid</span><span class="p">,</span>
+  <span class="n">BirthPayoffMatrix</span><span class="o">=</span><span class="n">BirthPayoffMatrix</span><span class="p">,</span>
+  <span class="n">DeathPayoffMatrix</span><span class="o">=</span><span class="n">DeathPayoffMatrix</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Similarly as in the previous cases:
+the key method of this object is a called <code class="samp docutils literal notranslate"><span class="pre">simulate(generations)</span></code> and it
+takes an integer as an argument (simulation time specified as a number of
+birth-death cycles). This function returns a <em>pandas</em> dataframe with a per-cycle
+summary of the population’s state.
+The following code demonstrates the simulation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">mp</span><span class="o">.</span><span class="n">simulate</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In case of the simulation in 3D each Birth-Death cycle consist of the following steps:</p>
+<ol class="arabic simple">
+<li><p>Select an individual for reproduction (fitness-proportional selection)</p></li>
+<li><p>Out of its neigbours: select an individual to die (fitness-proportional selection)</p></li>
+<li><p>Copy the selected individual from (1) in place of the one from (2)</p></li>
+<li><p>Perform Transitions for each individual (in case <code class="samp docutils literal notranslate"><span class="pre">TransitionMatrix</span></code> was specified)</p></li>
+<li><p>Update Payoffs and Fitnesses</p></li>
+</ol>
+<p>Information which are stored in the dataframe’s columns include:</p>
+<ul class="simple">
+<li><p>per-sub-population sub-population’s size</p></li>
+<li><p>Entropy of the distribution of Strategies in the whole population</p></li>
+</ul>
+<p>The class is equipped with two plotting methods to visualise results of the simulation:</p>
+<ul class="simple">
+<li><p><code class="samp docutils literal notranslate"><span class="pre">PlotSize3D</span></code></p></li>
+<li><p><code class="samp docutils literal notranslate"><span class="pre">PlotEntropy3D</span></code></p></li>
+</ul>
+<p>The functions have the same signatures as their previous analogues.
+Following the previous simulation one may generate the plots with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mp</span><span class="o">.</span><span class="n">PlotSize3D</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;Size3D.png&quot;</span><span class="p">)</span>
+<span class="n">mp</span><span class="o">.</span><span class="n">PlotEntropy3D</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&quot;Entropy3D.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="example-results.html" class="btn btn-neutral float-right" title="Example Results" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="background.html" class="btn btn-neutral float-left" title="Theoretical Background" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Maciek Bak.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
