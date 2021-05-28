@@ -50,7 +50,7 @@ jobs:
       - name: Flake8
         shell: bash -l {0}
         run: |
-          flake8 --max-line-length=88 --ignore F401 moranpycess/__init__.py
+          flake8 --max-line-length=88 --ignore F401,E402 moranpycess/__init__.py
           flake8 --max-line-length=88 moranpycess/Individual.py
           flake8 --max-line-length=101 --ignore F401,E231,W503,E741 moranpycess/MoranProcess.py
           flake8 --max-line-length=101 --ignore F401,E231,W503,E741 moranpycess/MoranProcess2D.py
