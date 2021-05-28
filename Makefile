@@ -43,6 +43,7 @@ format:
 	moranpycess/MoranProcess.py \
 	moranpycess/MoranProcess2D.py \
 	moranpycess/MoranProcess3D.py \
+	moranpycess/CustomExceptions.py \
 	tests/unit/context.py \
 	tests/unit/Individual.py \
 	tests/unit/MoranProcess.py \
@@ -55,6 +56,7 @@ lint:
 	flake8 --max-line-length=101 --ignore F401,E231,W503,E741 moranpycess/MoranProcess.py
 	flake8 --max-line-length=101 --ignore F401,E231,W503,E741 moranpycess/MoranProcess2D.py
 	flake8 --max-line-length=101 --ignore F401,E231,W503,E741 moranpycess/MoranProcess3D.py
+	flake8 --max-line-length=88 moranpycess/CustomExceptions.py
 	flake8 --max-line-length=88 --ignore F401,E402 tests/unit/context.py
 	flake8 --max-line-length=88 tests/unit/Individual.py
 	flake8 --max-line-length=88 tests/unit/MoranProcess.py
