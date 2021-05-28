@@ -1,0 +1,30 @@
+name: docs
+
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+
+  gh-pages:
+    runs-on: ubuntu-20.04
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: BuildTheDocs
+        uses: ammaraskar/sphinx-action@master
+        with:
+          docs-folder: "docs/"
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: 'docs'
+          destination_dir: 'docs'
+          keep_files: true

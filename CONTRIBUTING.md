@@ -23,9 +23,6 @@ references (links, screenshots, etc.) to allow other contributors to start
 working on them. For bug reports, it is essential that they include
 reproducible examples.
 
-Please **do not** use the issue tracker to ask usage questions, installation
-problems etc., unless they appear to be bugs.
-
 ## Development
 
 To make it easier for everyone to maintain, read and contribute to the code,

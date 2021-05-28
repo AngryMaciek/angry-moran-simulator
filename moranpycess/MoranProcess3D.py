@@ -19,11 +19,12 @@ import copy
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import moranpycess
+from Individual import Individual
+from CustomExceptions import IncorrectValueError
 
 
 class MoranProcess3D:
-    """General Moran Process with multiple types of individuals."""
+    """3D Moran Process with multiple types of individuals."""
 
     def __init__(
         self,
@@ -34,7 +35,39 @@ class MoranProcess3D:
         DeathPayoffMatrix,
         TransitionMatrix=None,
     ):
-        """Class initializer."""
+        """Class initializer.
+
+        Args:
+            size_list (list of int): cardinalities of subpopulations.
+            label_list (list of str): distinct labels of subpopulations.
+            grid (np.array): subpopulations' position in 3D.
+            BirthPayoffMatrix (np.array): payoff matrix for the birth process.
+            DeathPayoffMatrix (np.array): payoff matrix for the death process.
+            TransitionMatrix (np.array, optional): transition probabilities
+                between types. Defaults to None.
+
+        Attributes:
+            population (list of Individual): entire population.
+            init_size_list (list of int): cardinalities of initial
+                subpopulations.
+            curr_size_list (list of int): cardinalities of current
+                subpopulations.
+            init_label_list (list of str): distinct labels of initial
+                subpopulations.
+            BirthPayoffMatrix (np.array): payoff matrix for the birth process.
+            DeathPayoffMatrix (np.array): payoff matrix for the death process.
+            w (float): selection pressure weight for the fitness calculation.
+            Entropy (float): current entropy of the whole population.
+            TransitionMatrix (np.array, optional): transition probabilities
+                between types. Defaults to None.
+            init_grid (np.array): subpopulations' initial position in 3D.
+            curr_grid (np.array): subpopulations' initial position in 3D.
+
+        Raises:
+            AssertionError: on invalid arguments.
+            IncorrectValueError: on wrong values in the Transition Matrix.
+
+        """
 
         # check if the argument lists length match
         try:
@@ -95,13 +128,13 @@ class MoranProcess3D:
         ID_counter = 0
         self.population = np.empty(
             (self.init_grid.shape[0], self.init_grid.shape[1], self.init_grid.shape[2]),
-            dtype=moranpycess.Individual,
+            dtype=Individual,
         )
         for x in range(self.init_grid.shape[0]):
             for y in range(self.init_grid.shape[1]):
                 for z in range(self.init_grid.shape[2]):
-                    self.population[x, y, z] = moranpycess.Individual(
-                        ID=ID_counter, ind_label=self.init_grid[x, y, z]
+                    self.population[x, y, z] = Individual(
+                        ID=ID_counter, label=self.init_grid[x, y, z]
                     )
                     ID_counter += 1
 
@@ -109,14 +142,14 @@ class MoranProcess3D:
         for x in range(self.population.shape[0]):
             for y in range(self.population.shape[1]):
                 for z in range(self.init_grid.shape[2]):
-                    self.UpdateBirthPayoff(x, y, z)
-                    self.UpdateDeathPayoff(x, y, z)
-                    self.UpdateBirthFitness(x, y, z)
-                    self.UpdateDeathFitness(x, y, z)
+                    self._UpdateBirthPayoff(x, y, z)
+                    self._UpdateDeathPayoff(x, y, z)
+                    self._UpdateBirthFitness(x, y, z)
+                    self._UpdateDeathFitness(x, y, z)
 
         # calculate entropy of the types distribution
         self.Entropy = 0
-        self.UpdateEntropy()
+        self._UpdateEntropy()
 
         # assign the transition matrix between types
         if TransitionMatrix is not None:
@@ -134,7 +167,7 @@ class MoranProcess3D:
             # check if the values are correct
             for v in np.sum(TransitionMatrix, axis=1):
                 if v != 1.0:
-                    raise moranpycess.IncorrectValueError(
+                    raise IncorrectValueError(
                         parameter="Transition Matrix",
                         message="Transition probabilities need to add up to 1.0.",
                     )
@@ -250,8 +283,15 @@ class MoranProcess3D:
         """Python setter."""
         self._TransitionMatrix = TransitionMatrix
 
-    def UpdateBirthPayoff(self, x, y, z):
-        """Calculate Birth Payoff for a given Individual"""
+    def _UpdateBirthPayoff(self, x, y, z):
+        """Calculate Birth Payoff for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+            z (int): z-coordinate of the Individual.
+
+        """
 
         this_label = self.population[x, y, z].label
         this_label_index = self._init_label_list.index(this_label)
@@ -300,8 +340,15 @@ class MoranProcess3D:
         payoff = payoff / 26.0
         self.population[x, y, z].AvgBirthPayoff = payoff
 
-    def UpdateDeathPayoff(self, x, y, z):
-        """Calculate Death Payoff for a given Individual"""
+    def _UpdateDeathPayoff(self, x, y, z):
+        """Calculate Death Payoff for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+            z (int): z-coordinate of the Individual.
+
+        """
 
         this_label = self.population[x, y, z].label
         this_label_index = self._init_label_list.index(this_label)
@@ -350,28 +397,47 @@ class MoranProcess3D:
         payoff = payoff / 26.0
         self.population[x, y, z].AvgDeathPayoff = payoff
 
-    def UpdateBirthFitness(self, x, y, z):
-        """Calculate Birth Fitness for a given Individual"""
+    def _UpdateBirthFitness(self, x, y, z):
+        """Calculate Birth Fitness for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+            z (int): z-coordinate of the Individual.
+
+        """
         self.population[x, y, z].BirthFitness = (
             1 - self.w + self.w * self.population[x, y, z].AvgBirthPayoff
         )
 
-    def UpdateDeathFitness(self, x, y, z):
-        """Calculate Death Fitness for a given Individual"""
+    def _UpdateDeathFitness(self, x, y, z):
+        """Calculate Death Fitness for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+            z (int): z-coordinate of the Individual.
+
+        """
         self.population[x, y, z].DeathFitness = (
             1 - self.w + self.w * self.population[x, y, z].AvgDeathPayoff
         )
 
-    def UpdateEntropy(self):
-        """Calculate entropy of Individual types for the population."""
+    def _UpdateEntropy(self):
+        """Calculate entropy of Individual types in the population."""
         self.Entropy = 0
         for type_size in self.curr_size_list:
             fraction = float(type_size) / self.population.size
             if fraction != 0.0:
                 self.Entropy -= fraction * np.log2(fraction)
 
-    def roulette_wheel_selection_Birth(self):
-        """Fitness-proportional selection according to the Birth Fitness."""
+    def _roulette_wheel_selection_Birth(self):
+        """Select one individual according to the Birth Fitness.
+
+        Returns:
+            tuple: (x, y, z) - coordinates of the selected Individual.
+
+        """
         max_value = 0
         for x in range(self.init_grid.shape[0]):
             for y in range(self.init_grid.shape[1]):
@@ -386,8 +452,21 @@ class MoranProcess3D:
                     if current > pick:
                         return (x, y, z)
 
-    def roulette_wheel_selection_Death(self, x, y, z):
-        """Fitness-proportional selection (from neighbours) according to the Death Fitness."""
+    def _roulette_wheel_selection_Death(self, x, y, z):
+        """Select one individual according to the Death Fitness.
+
+        Note:
+            Select from direct neighbours of the Individual in argument.
+
+        Args:
+            x (int): x-coordinate of an Individual.
+            y (int): y-coordinate of an Individual.
+            z (int): z-coordinate of an Individual.
+
+        Returns:
+            tuple: (X, Y, Z) - coordinates of the selected Individual.
+
+        """
         pop_x = self.population.shape[0]
         pop_y = self.population.shape[1]
         pop_z = self.population.shape[2]
@@ -472,8 +551,18 @@ class MoranProcess3D:
                 return indices
 
     def simulate(self, generations):
-        """Simulate 3D population evolution: Birth-Death process with fitness-based selection."""
+        """Simulate 3D population evolution.
 
+        Simulate 3D population evolution: Birth-Death process with
+        fitness-based selection of individuals.
+
+        Args:
+            generations (int): number of time steps.
+
+        Returns:
+            pd.DataFrame: table with simulation logs.
+
+        """
         pop_x = self.population.shape[0]
         pop_y = self.population.shape[1]
         pop_z = self.population.shape[2]
@@ -492,12 +581,12 @@ class MoranProcess3D:
         for g in range(generations):
 
             # select one individual to multiply
-            (x, y, z) = self.roulette_wheel_selection_Birth()
+            (x, y, z) = self._roulette_wheel_selection_Birth()
             selectedBirth = self.population[x, y, z]
             # create a copy
             new_individual = copy.deepcopy(selectedBirth)
             # select one individual to die
-            (x, y, z) = self.roulette_wheel_selection_Death(x, y, z)
+            (x, y, z) = self._roulette_wheel_selection_Death(x, y, z)
             selectedDeath = copy.deepcopy(self.population[x, y, z])
             # swap the individuals
             self.population[x, y, z] = new_individual
@@ -534,10 +623,10 @@ class MoranProcess3D:
                 for x_ in range(self.population.shape[0]):
                     for y_ in range(self.population.shape[1]):
                         for z_ in range(self.init_grid.shape[2]):
-                            self.UpdateBirthPayoff(x_, y_, z_)
-                            self.UpdateDeathPayoff(x_, y_, z_)
-                            self.UpdateBirthFitness(x_, y_, z_)
-                            self.UpdateDeathFitness(x_, y_, z_)
+                            self._UpdateBirthPayoff(x_, y_, z_)
+                            self._UpdateDeathPayoff(x_, y_, z_)
+                            self._UpdateBirthFitness(x_, y_, z_)
+                            self._UpdateDeathFitness(x_, y_, z_)
             # in other case:
             # re-evaluate the payoffs and fitnesses of only
             # the affected neigbours Individuals in the population
@@ -573,10 +662,10 @@ class MoranProcess3D:
                     ((x + 1) % pop_x, (y + 1) % pop_y, (z + 1) % pop_z),
                 ]
                 for indices in indices_list:
-                    self.UpdateBirthPayoff(indices[0], indices[1], indices[2])
-                    self.UpdateDeathPayoff(indices[0], indices[1], indices[2])
-                    self.UpdateBirthFitness(indices[0], indices[1], indices[2])
-                    self.UpdateDeathFitness(indices[0], indices[1], indices[2])
+                    self._UpdateBirthPayoff(indices[0], indices[1], indices[2])
+                    self._UpdateDeathPayoff(indices[0], indices[1], indices[2])
+                    self._UpdateBirthFitness(indices[0], indices[1], indices[2])
+                    self._UpdateDeathFitness(indices[0], indices[1], indices[2])
 
             # update the grid
             for x_ in range(self.curr_grid.shape[0]):
@@ -585,7 +674,7 @@ class MoranProcess3D:
                         self.curr_grid[x_, y_, z_] = self.population[x_, y_, z_].label
 
             # re-evaluate the population Entropy
-            self.UpdateEntropy()
+            self._UpdateEntropy()
 
             # update the log dataframe
             for l in range(len(self.init_label_list)):
@@ -596,7 +685,13 @@ class MoranProcess3D:
         return log_df
 
     def PlotSize3D(self, df, path):
-        """Plot the sub-populations' sizes after a simulation of a given 3D Moran Process."""
+        """Plot the sub-populations' sizes after a simulation.
+
+        Args:
+            df (pd.DataFrame): table with simulation logs.
+            path (str): path for the plot.
+
+        """
         plt.figure(figsize=(14, 6))
         ax = plt.gca()
         ax.tick_params(width=1)
@@ -616,7 +711,13 @@ class MoranProcess3D:
         plt.savefig(fname=path, dpi=300)
 
     def PlotEntropy3D(self, df, path):
-        """Plot the whole populations entropy after a simulation of a given 3D Moran Process."""
+        """Plot the whole populations entropy after a simulation.
+
+        Args:
+            df (pd.DataFrame): table with simulation logs.
+            path (str): path for the plot.
+
+        """
         plt.figure(figsize=(14, 6))
         ax = plt.gca()
         ax.tick_params(width=1)

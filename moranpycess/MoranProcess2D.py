@@ -19,11 +19,12 @@ import copy
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import moranpycess
+from Individual import Individual
+from CustomExceptions import IncorrectValueError
 
 
 class MoranProcess2D:
-    """General Moran Process with multiple types of individuals."""
+    """2D Moran Process with multiple types of individuals."""
 
     def __init__(
         self,
@@ -34,7 +35,39 @@ class MoranProcess2D:
         DeathPayoffMatrix,
         TransitionMatrix=None,
     ):
-        """Class initializer."""
+        """Class initializer.
+
+        Args:
+            size_list (list of int): cardinalities of subpopulations.
+            label_list (list of str): distinct labels of subpopulations.
+            grid (np.array): subpopulations' position in 2D.
+            BirthPayoffMatrix (np.array): payoff matrix for the birth process.
+            DeathPayoffMatrix (np.array): payoff matrix for the death process.
+            TransitionMatrix (np.array, optional): transition probabilities
+                between types. Defaults to None.
+
+        Attributes:
+            population (list of Individual): entire population.
+            init_size_list (list of int): cardinalities of initial
+                subpopulations.
+            curr_size_list (list of int): cardinalities of current
+                subpopulations.
+            init_label_list (list of str): distinct labels of initial
+                subpopulations.
+            BirthPayoffMatrix (np.array): payoff matrix for the birth process.
+            DeathPayoffMatrix (np.array): payoff matrix for the death process.
+            w (float): selection pressure weight for the fitness calculation.
+            Entropy (float): current entropy of the whole population.
+            TransitionMatrix (np.array, optional): transition probabilities
+                between types. Defaults to None.
+            init_grid (np.array): subpopulations' initial position in 2D.
+            curr_grid (np.array): subpopulations' initial position in 2D.
+
+        Raises:
+            AssertionError: on invalid arguments.
+            IncorrectValueError: on wrong values in the Transition Matrix.
+
+        """
 
         # check if the argument lists length match
         try:
@@ -94,27 +127,26 @@ class MoranProcess2D:
         # initialize a 2D array of Individuals
         ID_counter = 0
         self.population = np.empty(
-            (self.init_grid.shape[0], self.init_grid.shape[1]),
-            dtype=moranpycess.Individual,
+            (self.init_grid.shape[0], self.init_grid.shape[1]), dtype=Individual,
         )
         for x in range(self.init_grid.shape[0]):
             for y in range(self.init_grid.shape[1]):
-                self.population[x, y] = moranpycess.Individual(
-                    ID=ID_counter, ind_label=self.init_grid[x, y]
+                self.population[x, y] = Individual(
+                    ID=ID_counter, label=self.init_grid[x, y]
                 )
                 ID_counter += 1
 
         # iterate over the whole 2D population and update payoffs
         for x in range(self.population.shape[0]):
             for y in range(self.population.shape[1]):
-                self.UpdateBirthPayoff(x, y)
-                self.UpdateDeathPayoff(x, y)
-                self.UpdateBirthFitness(x, y)
-                self.UpdateDeathFitness(x, y)
+                self._UpdateBirthPayoff(x, y)
+                self._UpdateDeathPayoff(x, y)
+                self._UpdateBirthFitness(x, y)
+                self._UpdateDeathFitness(x, y)
 
         # calculate entropy of the types distribution
         self.Entropy = 0
-        self.UpdateEntropy()
+        self._UpdateEntropy()
 
         # assign the transition matrix between types
         if TransitionMatrix is not None:
@@ -132,7 +164,7 @@ class MoranProcess2D:
             # check if the values are correct
             for v in np.sum(TransitionMatrix, axis=1):
                 if v != 1.0:
-                    raise moranpycess.IncorrectValueError(
+                    raise IncorrectValueError(
                         parameter="Transition Matrix",
                         message="Transition probabilities need to add up to 1.0.",
                     )
@@ -248,8 +280,14 @@ class MoranProcess2D:
         """Python setter."""
         self._TransitionMatrix = TransitionMatrix
 
-    def UpdateBirthPayoff(self, x, y):
-        """Calculate Birth Payoff for a given Individual"""
+    def _UpdateBirthPayoff(self, x, y):
+        """Calculate Birth Payoff for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+
+        """
 
         this_label = self.population[x, y].label
         this_label_index = self._init_label_list.index(this_label)
@@ -282,8 +320,14 @@ class MoranProcess2D:
         payoff = payoff / 8.0
         self.population[x, y].AvgBirthPayoff = payoff
 
-    def UpdateDeathPayoff(self, x, y):
-        """Calculate Death Payoff for a given Individual"""
+    def _UpdateDeathPayoff(self, x, y):
+        """Calculate Death Payoff for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+
+        """
 
         this_label = self.population[x, y].label
         this_label_index = self._init_label_list.index(this_label)
@@ -316,28 +360,45 @@ class MoranProcess2D:
         payoff = payoff / 8.0
         self.population[x, y].AvgDeathPayoff = payoff
 
-    def UpdateBirthFitness(self, x, y):
-        """Calculate Birth Fitness for a given Individual"""
+    def _UpdateBirthFitness(self, x, y):
+        """Calculate Birth Fitness for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+
+        """
         self.population[x, y].BirthFitness = (
             1 - self.w + self.w * self.population[x, y].AvgBirthPayoff
         )
 
-    def UpdateDeathFitness(self, x, y):
-        """Calculate Death Fitness for a given Individual"""
+    def _UpdateDeathFitness(self, x, y):
+        """Calculate Death Fitness for a given Individual.
+
+        Args:
+            x (int): x-coordinate of the Individual.
+            y (int): y-coordinate of the Individual.
+
+        """
         self.population[x, y].DeathFitness = (
             1 - self.w + self.w * self.population[x, y].AvgDeathPayoff
         )
 
-    def UpdateEntropy(self):
-        """Calculate entropy of Individual types for the population."""
+    def _UpdateEntropy(self):
+        """Calculate entropy of Individual types in the population."""
         self.Entropy = 0
         for type_size in self.curr_size_list:
             fraction = float(type_size) / self.population.size
             if fraction != 0.0:
                 self.Entropy -= fraction * np.log2(fraction)
 
-    def roulette_wheel_selection_Birth(self):
-        """Fitness-proportional selection according to the Birth Fitness."""
+    def _roulette_wheel_selection_Birth(self):
+        """Select one individual according to the Birth Fitness.
+
+        Returns:
+            tuple: (x, y) - coordinates of the selected Individual.
+
+        """
         max_value = 0
         for x in range(self.init_grid.shape[0]):
             for y in range(self.init_grid.shape[1]):
@@ -350,8 +411,20 @@ class MoranProcess2D:
                 if current > pick:
                     return (x, y)
 
-    def roulette_wheel_selection_Death(self, x, y):
-        """Fitness-proportional selection (from neighbours) according to the Death Fitness."""
+    def _roulette_wheel_selection_Death(self, x, y):
+        """Select one individual according to the Death Fitness.
+
+        Note:
+            Select from direct neighbours of the Individual in argument.
+
+        Args:
+            x (int): x-coordinate of an Individual.
+            y (int): y-coordinate of an Individual.
+
+        Returns:
+            tuple: (X, Y) - coordinates of the selected Individual.
+
+        """
         pop_nrows = self.population.shape[0]
         pop_ncols = self.population.shape[1]
         neighbours_scores = [
@@ -383,8 +456,18 @@ class MoranProcess2D:
                 return indices
 
     def simulate(self, generations):
-        """Simulate 2D population evolution: Birth-Death process with fitness-based selection."""
+        """Simulate 2D population evolution.
 
+        Simulate 2D population evolution: Birth-Death process with
+        fitness-based selection of individuals.
+
+        Args:
+            generations (int): number of time steps.
+
+        Returns:
+            pd.DataFrame: table with simulation logs.
+
+        """
         pop_nrows = self.population.shape[0]
         pop_ncols = self.population.shape[1]
 
@@ -402,12 +485,12 @@ class MoranProcess2D:
         for g in range(generations):
 
             # select one individual to multiply
-            (x, y) = self.roulette_wheel_selection_Birth()
+            (x, y) = self._roulette_wheel_selection_Birth()
             selectedBirth = self.population[x, y]
             # create a copy
             new_individual = copy.deepcopy(selectedBirth)
             # select one individual to die
-            (x, y) = self.roulette_wheel_selection_Death(x, y)
+            (x, y) = self._roulette_wheel_selection_Death(x, y)
             selectedDeath = copy.deepcopy(self.population[x, y])
             # swap the individuals
             self.population[x, y] = new_individual
@@ -438,10 +521,10 @@ class MoranProcess2D:
             if self.TransitionMatrix is not None:
                 for x_ in range(self.population.shape[0]):
                     for y_ in range(self.population.shape[1]):
-                        self.UpdateBirthPayoff(x_, y_)
-                        self.UpdateDeathPayoff(x_, y_)
-                        self.UpdateBirthFitness(x_, y_)
-                        self.UpdateDeathFitness(x_, y_)
+                        self._UpdateBirthPayoff(x_, y_)
+                        self._UpdateDeathPayoff(x_, y_)
+                        self._UpdateBirthFitness(x_, y_)
+                        self._UpdateDeathFitness(x_, y_)
             # in other case:
             # re-evaluate the payoffs and fitnesses of only
             # the affected neigbours Individuals in the population
@@ -459,10 +542,10 @@ class MoranProcess2D:
                     ((x + 1) % pop_nrows, (y + 1) % pop_ncols),
                 ]
                 for indices in indices_list:
-                    self.UpdateBirthPayoff(indices[0], indices[1])
-                    self.UpdateDeathPayoff(indices[0], indices[1])
-                    self.UpdateBirthFitness(indices[0], indices[1])
-                    self.UpdateDeathFitness(indices[0], indices[1])
+                    self._UpdateBirthPayoff(indices[0], indices[1])
+                    self._UpdateDeathPayoff(indices[0], indices[1])
+                    self._UpdateBirthFitness(indices[0], indices[1])
+                    self._UpdateDeathFitness(indices[0], indices[1])
 
             # update the grid
             for x_ in range(self.curr_grid.shape[0]):
@@ -470,7 +553,7 @@ class MoranProcess2D:
                     self.curr_grid[x_, y_] = self.population[x_, y_].label
 
             # re-evaluate the population Entropy
-            self.UpdateEntropy()
+            self._UpdateEntropy()
 
             # update the log dataframe
             for l in range(len(self.init_label_list)):
@@ -481,7 +564,13 @@ class MoranProcess2D:
         return log_df
 
     def PlotSize2D(self, df, path):
-        """Plot the sub-populations' sizes after a simulation of a given 2D Moran Process."""
+        """Plot the sub-populations' sizes after a simulation.
+
+        Args:
+            df (pd.DataFrame): table with simulation logs.
+            path (str): path for the plot.
+
+        """
         plt.figure(figsize=(14, 6))
         ax = plt.gca()
         ax.tick_params(width=1)
@@ -501,7 +590,13 @@ class MoranProcess2D:
         plt.savefig(fname=path, dpi=300)
 
     def PlotEntropy2D(self, df, path):
-        """Plot the whole populations entropy after a simulation of a given 2D Moran Process."""
+        """Plot the whole populations entropy after a simulation.
+
+        Args:
+            df (pd.DataFrame): table with simulation logs.
+            path (str): path for the plot.
+
+        """
         plt.figure(figsize=(14, 6))
         ax = plt.gca()
         ax.tick_params(width=1)
@@ -515,7 +610,12 @@ class MoranProcess2D:
         plt.savefig(fname=path, dpi=300)
 
     def PlotPopulationSnapshot2D(self, path):
-        """Plot the whole populations entropy after a simulation of a given 2D Moran Process."""
+        """Plot a grid snapshot of the current state of the whole population.
+
+        Args:
+            path (str): path for the plot.
+
+        """
         plt.figure(figsize=(10, 10))
         ax = plt.gca()
         ax.tick_params(width=1)

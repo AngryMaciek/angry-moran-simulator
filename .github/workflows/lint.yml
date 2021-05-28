@@ -40,7 +40,7 @@ jobs:
           black --check moranpycess/MoranProcess.py
           black --check moranpycess/MoranProcess2D.py
           black --check moranpycess/MoranProcess3D.py
-          black --check moranpycess/exceptions.py
+          black --check moranpycess/CustomExceptions.py
           black --check tests/unit/context.py
           black --check tests/unit/Individual.py
           black --check tests/unit/MoranProcess.py
@@ -50,12 +50,12 @@ jobs:
       - name: Flake8
         shell: bash -l {0}
         run: |
-          flake8 --max-line-length=88 --ignore F401 moranpycess/__init__.py
+          flake8 --max-line-length=88 --ignore F401,E402 moranpycess/__init__.py
           flake8 --max-line-length=88 moranpycess/Individual.py
           flake8 --max-line-length=101 --ignore F401,E231,W503,E741 moranpycess/MoranProcess.py
           flake8 --max-line-length=101 --ignore F401,E231,W503,E741 moranpycess/MoranProcess2D.py
           flake8 --max-line-length=101 --ignore F401,E231,W503,E741 moranpycess/MoranProcess3D.py
-          flake8 --max-line-length=88 moranpycess/exceptions.py
+          flake8 --max-line-length=88 moranpycess/CustomExceptions.py
           flake8 --max-line-length=88 --ignore F401,E402 tests/unit/context.py
           flake8 --max-line-length=88 tests/unit/Individual.py
           flake8 --max-line-length=88 tests/unit/MoranProcess.py
