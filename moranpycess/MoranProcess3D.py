@@ -20,7 +20,7 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import Individual
-import exceptions
+import CustomExceptions
 
 
 class MoranProcess3D:
@@ -167,7 +167,7 @@ class MoranProcess3D:
             # check if the values are correct
             for v in np.sum(TransitionMatrix, axis=1):
                 if v != 1.0:
-                    raise exceptions.IncorrectValueError(
+                    raise CustomExceptions.IncorrectValueError(
                         parameter="Transition Matrix",
                         message="Transition probabilities need to add up to 1.0.",
                     )

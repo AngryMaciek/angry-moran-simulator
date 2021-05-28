@@ -9,14 +9,14 @@ Internal API
     :member-order: bysource
     :members:
 
-.. autoclass:: exceptions::Error
+.. autoclass:: CustomExceptions::Error
     :noindex:
     :special-members:
     :exclude-members: __weakref__
     :member-order: bysource
     :members:
 
-.. autoclass:: exceptions::IncorrectValueError
+.. autoclass:: CustomExceptions::IncorrectValueError
     :noindex:
     :special-members:
     :exclude-members: __weakref__

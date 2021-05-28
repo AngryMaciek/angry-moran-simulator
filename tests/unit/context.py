@@ -11,4 +11,4 @@ import Individual
 import MoranProcess
 import MoranProcess2D
 import MoranProcess3D
-import exceptions
+import CustomExceptions

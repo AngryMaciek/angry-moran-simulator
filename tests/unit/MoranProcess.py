@@ -17,7 +17,7 @@
 import numpy as np
 import pytest
 import random
-from .context import MoranProcess, exceptions
+from .context import MoranProcess, CustomExceptions
 
 
 class TestClass:
@@ -267,7 +267,9 @@ class TestClass:
         expected_error_msg = "Incorrect value for Transition Matrix."
         expected_error_msg += " "
         expected_error_msg += "Transition probabilities need to add up to 1.0."
-        with pytest.raises(exceptions.IncorrectValueError, match=expected_error_msg):
+        with pytest.raises(
+            CustomExceptions.IncorrectValueError, match=expected_error_msg
+        ):
             MoranProcess.MoranProcess(
                 size_list=size_list,
                 label_list=label_list,
