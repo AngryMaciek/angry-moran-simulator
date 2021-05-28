@@ -19,8 +19,8 @@ import copy
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import Individual
-import CustomExceptions
+from Individual import Individual
+from CustomExceptions import IncorrectValueError
 
 
 class MoranProcess3D:
@@ -128,12 +128,12 @@ class MoranProcess3D:
         ID_counter = 0
         self.population = np.empty(
             (self.init_grid.shape[0], self.init_grid.shape[1], self.init_grid.shape[2]),
-            dtype=Individual.Individual,
+            dtype=Individual,
         )
         for x in range(self.init_grid.shape[0]):
             for y in range(self.init_grid.shape[1]):
                 for z in range(self.init_grid.shape[2]):
-                    self.population[x, y, z] = Individual.Individual(
+                    self.population[x, y, z] = Individual(
                         ID=ID_counter, label=self.init_grid[x, y, z]
                     )
                     ID_counter += 1
@@ -167,7 +167,7 @@ class MoranProcess3D:
             # check if the values are correct
             for v in np.sum(TransitionMatrix, axis=1):
                 if v != 1.0:
-                    raise CustomExceptions.IncorrectValueError(
+                    raise IncorrectValueError(
                         parameter="Transition Matrix",
                         message="Transition probabilities need to add up to 1.0.",
                     )

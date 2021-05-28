@@ -14,8 +14,13 @@
 """
 
 # imports
+import os
+import sys
 from .Individual import Individual
 from .MoranProcess import MoranProcess
 from .MoranProcess2D import MoranProcess2D
 from .MoranProcess3D import MoranProcess3D
 from .CustomExceptions import IncorrectValueError
+
+# modify PYTHONPATH so that modules can import each other
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
