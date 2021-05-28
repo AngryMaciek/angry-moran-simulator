@@ -23,7 +23,7 @@ copyright = '2021, Maciek Bak'
 author = 'Maciek Bak'
 
 # The full version, including alpha/beta/rc tags
-release = '1.0.38'
+release = '1.0.39'
 
 
 # -- General configuration ---------------------------------------------------

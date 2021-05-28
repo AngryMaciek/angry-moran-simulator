@@ -40,7 +40,7 @@ please execute:
 
 .. code-block:: console
 
-   $ docker pull angrymaciek/moranpycess:1.0.38
+   $ docker pull angrymaciek/moranpycess:1.0.39
 
 .. warning::
    DockerHub regularly removes unused images from their servers.

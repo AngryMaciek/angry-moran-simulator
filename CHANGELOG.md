@@ -7,29 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- Added: makefile for development
-- Added: instructions for development for contributors
-- Changed: CI builds for linux/mac a pip/conda pkg separately, installs it and tests import; unit tests run on **not**-installed pkg.
-- Fixed: Circular import errors
-
-## [1.0.38] - 2021-01-18
+## [1.0.39] - 2021-05-28
 
 ### Added
 
-- automatic build and upload images to dockerhub
+- First stable release of the project.
 
-## [1.0.29] - 2020-12-28
-
-### Added
-
-- PiPI package
-- _conda_ package
-- new installation notes
-- GitHub Action: workflow to automatically publish tagged commits
-- interactive usecase notebook inspection via _binder_
-
-
-
-[unreleased]: https://github.com/AngryMaciek/angry-moran-simulator/compare/1.0.29...HEAD
-[1.0.29]: https://github.com/AngryMaciek/angry-moran-simulator/releases/tag/1.0.29
-[1.0.38]: https://github.com/AngryMaciek/angry-moran-simulator/releases/tag/1.0.38
+[unreleased]: https://github.com/AngryMaciek/angry-moran-simulator/compare/1.0.39...HEAD
+[1.0.39]: https://github.com/AngryMaciek/angry-moran-simulator/releases/tag/1.0.39
