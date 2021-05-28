@@ -43,7 +43,7 @@ test:
     - moranpycess
 
 about:
-  home: https://github.com/AngryMaciek/angry-moran-simulator
+  home: https://angrymaciek.github.io/angry-moran-simulator
   summary: >
     Python framework for Moran Processes driven by game theory
   description: |
