@@ -15,12 +15,24 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
 
-      - name: BuildTheDocs
-        uses: ammaraskar/sphinx-action@master
+      - name: Setup Miniconda & Environment
+        uses: conda-incubator/setup-miniconda@v2
         with:
-          docs-folder: "docs/"
-          pre-build-command: "pip install numpy=1.19.0 pandas=1.0.2 matplotlib=3.3.0"
-          build-command: "make html"
+          python-version: 3.7
+          auto-update-conda: true
+          activate-environment: moranpycess-dev
+          environment-file: env/dev.yml
+          auto-activate-base: false
+
+      - name: Conda Info
+        shell: bash -l {0}
+        run: |
+          conda info -a
+          conda list
+
+      - name: BuildTheDocs
+        shell: bash -l {0}
+        run: make docs
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
