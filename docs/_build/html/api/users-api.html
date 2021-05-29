@@ -32,8 +32,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -167,6 +165,923 @@
             
   <div class="section" id="user-s-api">
 <h1>User’s API<a class="headerlink" href="#user-s-api" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">MoranProcess.</span></code><code class="sig-name descname"><span class="pre">MoranProcess</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BirthPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DeathPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TransitionMatrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>General Moran Process with multiple types of individuals.</p>
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BirthPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DeathPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TransitionMatrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Class initializer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size_list</strong> (<em>list of int</em>) – cardinalities of subpopulations.</p></li>
+<li><p><strong>label_list</strong> (<em>list of str</em>) – distinct labels of subpopulations.</p></li>
+<li><p><strong>BirthPayoffMatrix</strong> (<em>np.array</em>) – payoff matrix for the birth process.</p></li>
+<li><p><strong>DeathPayoffMatrix</strong> (<em>np.array</em>) – payoff matrix for the death process.</p></li>
+<li><p><strong>TransitionMatrix</strong> (<em>np.array</em><em>, </em><em>optional</em>) – transition probabilities
+between types. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">population</span></code></dt>
+<dd><p>entire population.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of Individual</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">init_size_list</span></code></dt>
+<dd><p>cardinalities of initial
+subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">curr_size_list</span></code></dt>
+<dd><p>cardinalities of current
+subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">init_label_list</span></code></dt>
+<dd><p>distinct labels of initial
+subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">BirthPayoffMatrix</span></code></dt>
+<dd><p>payoff matrix for the birth process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">DeathPayoffMatrix</span></code></dt>
+<dd><p>payoff matrix for the death process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">w</span></code></dt>
+<dd><p>selection pressure weight for the fitness calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">AvgBirthPayoffDict</span></code></dt>
+<dd><p>current average birth
+payoffs for distinct subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict of str-float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">AvgDeathPayoffDict</span></code></dt>
+<dd><p>current average death
+payoffs for distinct subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict of str-float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">BirthFitnessDict</span></code></dt>
+<dd><p>current birth fitnesses
+for distinct subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict of str-float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">DeathFitnessDict</span></code></dt>
+<dd><p>current death fitnesses
+for distinct subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>dict of str-float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">Entropy</span></code></dt>
+<dd><p>current entropy of the whole population.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">TransitionMatrix</span></code></dt>
+<dd><p>transition probabilities
+between types. Defaults to None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AssertionError</strong> – on invalid arguments.</p></li>
+<li><p><strong>IncorrectValueError</strong> – on wrong values in the Transition Matrix.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">population</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">init_size_list</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">curr_size_list</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">init_label_list</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">BirthPayoffMatrix</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">DeathPayoffMatrix</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">w</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">AvgBirthPayoffDict</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">AvgDeathPayoffDict</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">BirthFitnessDict</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">DeathFitnessDict</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">Entropy</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">TransitionMatrix</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">simulate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generations</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Simulate population evolution.</p>
+<p>Simulate population evolution: Birth-Death process with fitness-based
+selection of individuals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>generations</strong> (<em>int</em>) – number of time steps.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>table with simulation logs.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">PlotSize</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the sub-populations’ sizes after a simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">PlotAvgBirthPayoff</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the sub-populations’ AvgBirthPayoff after a simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">PlotAvgDeathPayoff</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the sub-populations’ AvgDeathPayoff after a simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">PlotBirthFitness</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the sub-populations’ BirthFitness after a simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">PlotDeathFitness</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the sub-populations’ DeathFitness after a simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">PlotEntropy</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the whole populations entropy after a simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">MoranProcess2D.</span></code><code class="sig-name descname"><span class="pre">MoranProcess2D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BirthPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DeathPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TransitionMatrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>2D Moran Process with multiple types of individuals.</p>
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BirthPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DeathPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TransitionMatrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Class initializer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size_list</strong> (<em>list of int</em>) – cardinalities of subpopulations.</p></li>
+<li><p><strong>label_list</strong> (<em>list of str</em>) – distinct labels of subpopulations.</p></li>
+<li><p><strong>grid</strong> (<em>np.array</em>) – subpopulations’ position in 2D.</p></li>
+<li><p><strong>BirthPayoffMatrix</strong> (<em>np.array</em>) – payoff matrix for the birth process.</p></li>
+<li><p><strong>DeathPayoffMatrix</strong> (<em>np.array</em>) – payoff matrix for the death process.</p></li>
+<li><p><strong>TransitionMatrix</strong> (<em>np.array</em><em>, </em><em>optional</em>) – transition probabilities
+between types. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">population</span></code></dt>
+<dd><p>entire population.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of Individual</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">init_size_list</span></code></dt>
+<dd><p>cardinalities of initial
+subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">curr_size_list</span></code></dt>
+<dd><p>cardinalities of current
+subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">init_label_list</span></code></dt>
+<dd><p>distinct labels of initial
+subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">BirthPayoffMatrix</span></code></dt>
+<dd><p>payoff matrix for the birth process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">DeathPayoffMatrix</span></code></dt>
+<dd><p>payoff matrix for the death process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">w</span></code></dt>
+<dd><p>selection pressure weight for the fitness calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">Entropy</span></code></dt>
+<dd><p>current entropy of the whole population.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">TransitionMatrix</span></code></dt>
+<dd><p>transition probabilities
+between types. Defaults to None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">init_grid</span></code></dt>
+<dd><p>subpopulations’ initial position in 2D.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">curr_grid</span></code></dt>
+<dd><p>subpopulations’ initial position in 2D.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AssertionError</strong> – on invalid arguments.</p></li>
+<li><p><strong>IncorrectValueError</strong> – on wrong values in the Transition Matrix.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">population</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">init_size_list</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">curr_size_list</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">init_label_list</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">init_grid</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">curr_grid</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">BirthPayoffMatrix</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">DeathPayoffMatrix</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">w</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">Entropy</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">TransitionMatrix</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">simulate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generations</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Simulate 2D population evolution.</p>
+<p>Simulate 2D population evolution: Birth-Death process with
+fitness-based selection of individuals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>generations</strong> (<em>int</em>) – number of time steps.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>table with simulation logs.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">PlotSize2D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the sub-populations’ sizes after a simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">PlotEntropy2D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the whole populations entropy after a simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">PlotPopulationSnapshot2D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot a grid snapshot of the current state of the whole population.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path for the plot.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">MoranProcess3D.</span></code><code class="sig-name descname"><span class="pre">MoranProcess3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BirthPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DeathPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TransitionMatrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>3D Moran Process with multiple types of individuals.</p>
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BirthPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DeathPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TransitionMatrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Class initializer.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>size_list</strong> (<em>list of int</em>) – cardinalities of subpopulations.</p></li>
+<li><p><strong>label_list</strong> (<em>list of str</em>) – distinct labels of subpopulations.</p></li>
+<li><p><strong>grid</strong> (<em>np.array</em>) – subpopulations’ position in 3D.</p></li>
+<li><p><strong>BirthPayoffMatrix</strong> (<em>np.array</em>) – payoff matrix for the birth process.</p></li>
+<li><p><strong>DeathPayoffMatrix</strong> (<em>np.array</em>) – payoff matrix for the death process.</p></li>
+<li><p><strong>TransitionMatrix</strong> (<em>np.array</em><em>, </em><em>optional</em>) – transition probabilities
+between types. Defaults to None.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">population</span></code></dt>
+<dd><p>entire population.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of Individual</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">init_size_list</span></code></dt>
+<dd><p>cardinalities of initial
+subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">curr_size_list</span></code></dt>
+<dd><p>cardinalities of current
+subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of int</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">init_label_list</span></code></dt>
+<dd><p>distinct labels of initial
+subpopulations.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>list of str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">BirthPayoffMatrix</span></code></dt>
+<dd><p>payoff matrix for the birth process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">DeathPayoffMatrix</span></code></dt>
+<dd><p>payoff matrix for the death process.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">w</span></code></dt>
+<dd><p>selection pressure weight for the fitness calculation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">Entropy</span></code></dt>
+<dd><p>current entropy of the whole population.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">TransitionMatrix</span></code></dt>
+<dd><p>transition probabilities
+between types. Defaults to None.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array, optional</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">init_grid</span></code></dt>
+<dd><p>subpopulations’ initial position in 3D.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">curr_grid</span></code></dt>
+<dd><p>subpopulations’ initial position in 3D.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>np.array</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="field-list simple">
+<dt class="field-odd">Raises</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>AssertionError</strong> – on invalid arguments.</p></li>
+<li><p><strong>IncorrectValueError</strong> – on wrong values in the Transition Matrix.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">population</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">init_size_list</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">curr_size_list</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">init_label_list</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">init_grid</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">curr_grid</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">BirthPayoffMatrix</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">DeathPayoffMatrix</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">w</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">Entropy</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">TransitionMatrix</span></code></dt>
+<dd><p>Python getter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">simulate</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">generations</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Simulate 3D population evolution.</p>
+<p>Simulate 3D population evolution: Birth-Death process with
+fitness-based selection of individuals.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>generations</strong> (<em>int</em>) – number of time steps.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>table with simulation logs.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>pd.DataFrame</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">PlotSize3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the sub-populations’ sizes after a simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt>
+<code class="sig-name descname"><span class="pre">PlotEntropy3D</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
+<dd><p>Plot the whole populations entropy after a simulation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 

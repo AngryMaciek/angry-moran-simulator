@@ -32,8 +32,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -166,13 +164,13 @@
             
   <div class="section" id="internal-api">
 <h1>Internal API<a class="headerlink" href="#internal-api" title="Permalink to this headline">¶</a></h1>
-<dl class="class">
+<dl class="py class">
 <dt>
-<em class="property">class </em><code class="sig-prename descclassname">Individual.</code><code class="sig-name descname">Individual</code><span class="sig-paren">(</span><em class="sig-param">ID</em>, <em class="sig-param">label</em><span class="sig-paren">)</span></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">Individual.</span></code><code class="sig-name descname"><span class="pre">Individual</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Abstract representation of an individual in the population.</p>
-<dl class="method">
+<dl class="py method">
 <dt>
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">ID</em>, <em class="sig-param">label</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ID</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Class initializer.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -186,9 +184,9 @@
 </ul>
 </dd>
 </dl>
-<dl class="attribute">
-<dt id="Individual.Individual.ID">
-<code class="sig-name descname">ID</code><a class="headerlink" href="#Individual.Individual.ID" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">ID</span></code></dt>
 <dd><p>unique index of this class instance.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -197,9 +195,9 @@
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="Individual.Individual.label">
-<code class="sig-name descname">label</code><a class="headerlink" href="#Individual.Individual.label" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">label</span></code></dt>
 <dd><p>type label of this individual.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -208,9 +206,9 @@
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="Individual.Individual.AvgBirthPayoff">
-<code class="sig-name descname">AvgBirthPayoff</code><a class="headerlink" href="#Individual.Individual.AvgBirthPayoff" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">AvgBirthPayoff</span></code></dt>
 <dd><p>Average Birth Payoff for this individual.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -219,9 +217,9 @@
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="Individual.Individual.AvgDeathPayoff">
-<code class="sig-name descname">AvgDeathPayoff</code><a class="headerlink" href="#Individual.Individual.AvgDeathPayoff" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">AvgDeathPayoff</span></code></dt>
 <dd><p>Average Death Payoff for this individual.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -230,9 +228,9 @@
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="Individual.Individual.BirthFitness">
-<code class="sig-name descname">BirthFitness</code><a class="headerlink" href="#Individual.Individual.BirthFitness" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">BirthFitness</span></code></dt>
 <dd><p>Birth Fitness for this individual.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -241,9 +239,9 @@
 </dl>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="Individual.Individual.DeathFitness">
-<code class="sig-name descname">DeathFitness</code><a class="headerlink" href="#Individual.Individual.DeathFitness" title="Permalink to this definition">¶</a></dt>
+<dl class="py attribute">
+<dt>
+<code class="sig-name descname"><span class="pre">DeathFitness</span></code></dt>
 <dd><p>Death Fitness for this individual.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -254,47 +252,47 @@
 
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt>
-<em class="property">property </em><code class="sig-name descname">ID</code></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">ID</span></code></dt>
 <dd><p>Python getter</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt>
-<em class="property">property </em><code class="sig-name descname">label</code></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">label</span></code></dt>
 <dd><p>Python getter</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt>
-<em class="property">property </em><code class="sig-name descname">BirthFitness</code></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">BirthFitness</span></code></dt>
 <dd><p>Python getter</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt>
-<em class="property">property </em><code class="sig-name descname">DeathFitness</code></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">DeathFitness</span></code></dt>
 <dd><p>Python getter</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt>
-<em class="property">property </em><code class="sig-name descname">AvgBirthPayoff</code></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">AvgBirthPayoff</span></code></dt>
 <dd><p>Python getter</p>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt>
-<em class="property">property </em><code class="sig-name descname">AvgDeathPayoff</code></dt>
+<em class="property"><span class="pre">property</span> </em><code class="sig-name descname"><span class="pre">AvgDeathPayoff</span></code></dt>
 <dd><p>Python getter</p>
 </dd></dl>
 
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt>
-<em class="property">class </em><code class="sig-prename descclassname">CustomExceptions.</code><code class="sig-name descname">Error</code></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">CustomExceptions.</span></code><code class="sig-name descname"><span class="pre">Error</span></code></dt>
 <dd><p>Base class for other exceptions.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -303,18 +301,18 @@
 </dl>
 </dd></dl>
 
-<dl class="class">
+<dl class="py class">
 <dt>
-<em class="property">class </em><code class="sig-prename descclassname">CustomExceptions.</code><code class="sig-name descname">IncorrectValueError</code><span class="sig-paren">(</span><em class="sig-param">parameter</em>, <em class="sig-param">message='Please check the documentation for expected argument values.'</em><span class="sig-paren">)</span></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">CustomExceptions.</span></code><code class="sig-name descname"><span class="pre">IncorrectValueError</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Please</span> <span class="pre">check</span> <span class="pre">the</span> <span class="pre">documentation</span> <span class="pre">for</span> <span class="pre">expected</span> <span class="pre">argument</span> <span class="pre">values.'</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Handling incorrect values of user’s arguments.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>Error</strong> (<em>Error</em>) – Base class for other exceptions.</p>
 </dd>
 </dl>
-<dl class="method">
+<dl class="py method">
 <dt>
-<code class="sig-name descname">__init__</code><span class="sig-paren">(</span><em class="sig-param">parameter</em>, <em class="sig-param">message='Please check the documentation for expected argument values.'</em><span class="sig-paren">)</span></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">parameter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'Please</span> <span class="pre">check</span> <span class="pre">the</span> <span class="pre">documentation</span> <span class="pre">for</span> <span class="pre">expected</span> <span class="pre">argument</span> <span class="pre">values.'</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Class initializer.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -328,9 +326,9 @@ for expected argument values.”.</p></li>
 </dl>
 </dd></dl>
 
-<dl class="method">
+<dl class="py method">
 <dt>
-<code class="sig-name descname">__str__</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<code class="sig-name descname"><span class="pre">__str__</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
 <dd><p>Display the error message.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
