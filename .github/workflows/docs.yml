@@ -19,6 +19,7 @@ jobs:
         uses: ammaraskar/sphinx-action@master
         with:
           docs-folder: "docs/"
+          pre-build-command: "pip install numpy=1.19.0 pandas=1.0.2 matplotlib=3.3.0"
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
