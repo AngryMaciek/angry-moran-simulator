@@ -18,7 +18,7 @@ import os
 import sys
 
 # modify PYTHONPATH so that modules can import each other
-sys.path.append(os.path.dirname(os.path.realpath(__file__)))
+#sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 # import distinct classes from modules of this package
 from .MoranProcess import MoranProcess
