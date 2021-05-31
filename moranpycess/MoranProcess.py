@@ -19,8 +19,8 @@ import copy
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from Individual import Individual
-from CustomExceptions import IncorrectValueError
+from moranpycess.Individual import Individual
+from moranpycess.CustomExceptions import IncorrectValueError
 
 
 class MoranProcess:
