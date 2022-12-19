@@ -30,6 +30,10 @@ jobs:
           conda info -a
           conda list
 
+      - name: Install
+        shell: bash -l {0}
+        run: make install
+
       - name: BuildTheDocs
         shell: bash -l {0}
         run: make docs
