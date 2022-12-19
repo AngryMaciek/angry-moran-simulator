@@ -446,7 +446,9 @@ class MoranProcess:
                     new_label = np.random.choice(
                         a=self.init_label_list,
                         size=1,
-                        p=self.TransitionMatrix[row_index,],
+                        p=self.TransitionMatrix[
+                            row_index,
+                        ],
                     )[0]
                     old_label = ind.label
                     ind.label = new_label

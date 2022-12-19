@@ -127,7 +127,8 @@ class MoranProcess2D:
         # initialize a 2D array of Individuals
         ID_counter = 0
         self.population = np.empty(
-            (self.init_grid.shape[0], self.init_grid.shape[1]), dtype=Individual,
+            (self.init_grid.shape[0], self.init_grid.shape[1]),
+            dtype=Individual,
         )
         for x in range(self.init_grid.shape[0]):
             for y in range(self.init_grid.shape[1]):
@@ -507,7 +508,9 @@ class MoranProcess2D:
                         new_label = np.random.choice(
                             a=self.init_label_list,
                             size=1,
-                            p=self.TransitionMatrix[row_index,],
+                            p=self.TransitionMatrix[
+                                row_index,
+                            ],
                         )[0]
                         old_label = ind.label
                         ind.label = new_label

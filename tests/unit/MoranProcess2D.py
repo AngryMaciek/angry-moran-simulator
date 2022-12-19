@@ -172,7 +172,11 @@ class TestClass:
         size_list = [5, 6, 1]
         label_list = ["A", "B", "C"]
         grid = np.array(
-            [["A", "B", "B", "B"], ["A", "C", "A", "B"], ["A", "B", "A", "B"],]
+            [
+                ["A", "B", "B", "B"],
+                ["A", "C", "A", "B"],
+                ["A", "B", "A", "B"],
+            ]
         )
 
         BirthPayoffMatrix = np.array([[1, 5, 25], [0.1, 7, 0.02], [0.99, 9.52, 0.111]])
@@ -193,7 +197,11 @@ class TestClass:
         size_list = [5, 6, 1]
         label_list = ["A", "B", "C"]
         grid = np.array(
-            [["A", "B", "B", "B"], ["A", "C", "A", "B"], ["A", "B", "A", "B"],]
+            [
+                ["A", "B", "B", "B"],
+                ["A", "C", "A", "B"],
+                ["A", "B", "A", "B"],
+            ]
         )
 
         BirthPayoffMatrix = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
@@ -214,7 +222,11 @@ class TestClass:
         size_list = [5, 6, 1]
         label_list = ["A", "B", "C"]
         grid = np.array(
-            [["A", "B", "B", "B"], ["A", "C", "A", "B"], ["A", "B", "A", "B"],]
+            [
+                ["A", "B", "B", "B"],
+                ["A", "C", "A", "B"],
+                ["A", "B", "A", "B"],
+            ]
         )
         BirthPayoffMatrix = np.array([[1, 5, 25], [0.1, 7, 0.02], [0.99, 9.52, 0.111]])
         DeathPayoffMatrix = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
@@ -234,7 +246,11 @@ class TestClass:
         size_list = [5, 6, 1]
         label_list = ["A", "B", "C"]
         grid = np.array(
-            [["A", "B", "B", "B"], ["A", "C", "A", "B"], ["A", "B", "A", "B"],]
+            [
+                ["A", "B", "B", "B"],
+                ["A", "C", "A", "B"],
+                ["A", "B", "A", "B"],
+            ]
         )
 
         BirthPayoffMatrix = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
@@ -276,7 +292,13 @@ class TestClass:
         # initialize an instance of MoranProcess2D:
         size_list = [1, 8]
         label_list = ["A", "B"]
-        grid = np.array([["A", "B", "B"], ["B", "B", "B"], ["B", "B", "B"],])
+        grid = np.array(
+            [
+                ["A", "B", "B"],
+                ["B", "B", "B"],
+                ["B", "B", "B"],
+            ]
+        )
         BirthPayoffMatrix = np.array([[1, 1], [1, 1]])
         DeathPayoffMatrix = np.array([[1, 100], [1, 1]])
         mp = moranpycess.MoranProcess2D(
