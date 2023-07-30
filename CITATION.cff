@@ -1,0 +1,34 @@
+cff-version: "1.2.0"
+authors:
+- family-names: Bak
+  given-names: Maciek
+  orcid: "https://orcid.org/0000-0003-1361-7301"
+- family-names: Rozlach
+  given-names: Anna M.
+  orcid: "https://orcid.org/0000-0002-5195-4299"
+doi: 10.5281/zenodo.4114143
+message: If you use this software, please cite our article in the
+  Journal of Open Source Software.
+preferred-citation:
+  authors:
+  - family-names: Bak
+    given-names: Maciek
+    orcid: "https://orcid.org/0000-0003-1361-7301"
+  - family-names: Rozlach
+    given-names: Anna M.
+    orcid: "https://orcid.org/0000-0002-5195-4299"
+  date-published: 2020-10-26
+  doi: 10.21105/joss.02643
+  issn: 2475-9066
+  issue: 54
+  journal: Journal of Open Source Software
+  publisher:
+    name: Open Journals
+  start: 2643
+  title: "Moran Pycess: a Python package to simulate Moran processes
+    driven by game theory"
+  type: article
+  url: "https://joss.theoj.org/papers/10.21105/joss.02643"
+  volume: 5
+title: "Moran Pycess: a Python package to simulate Moran processes
+  driven by game theory"

@@ -90,10 +90,13 @@ and observe growth dynamics.
 If you use Moran [Py]cess in your research **please cite the following
 article** in your paper:
 
-   Bak et al., (2020). Moran Pycess: a Python package to simulate Moran processes driven by game theory. Journal of Open Source Software, 5(54), 2643, https://doi.org/10.21105/joss.02643
+   Bak & Rozlach, (2020). Moran Pycess: a Python package to simulate Moran processes driven by game theory. Journal of Open Source Software, 5(54), 2643, https://doi.org/10.21105/joss.02643
+
+Check out our `preliminary results`_ (published in the Journal of Brief Ideas) too!
 
 Feel free to inspect the code behind our work at the `official GitHub repository`_.
 
 Build date: |today|, Latest version: |release|
 
 .. _official GitHub repository: https://github.com/AngryMaciek/angry-moran-simulator
+.. _preliminary results: https://beta.briefideas.org/ideas/d292ad28e6818d20aad2286e1c9b6aa2
