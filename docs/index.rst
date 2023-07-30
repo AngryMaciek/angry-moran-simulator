@@ -27,6 +27,9 @@
 Moran [Py]cess
 ==========================================
 
+.. image:: https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod
+   :alt: build
+   :target: https://gitpod.io/#https://github.com/AngryMaciek/angry-moran-simulator
 .. image:: https://github.com/AngryMaciek/angry-moran-simulator/workflows/build/badge.svg?branch=master
    :alt: build
    :target: https://github.com/AngryMaciek/angry-moran-simulator/actions?query=workflow%3Abuild
