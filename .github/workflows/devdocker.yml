@@ -1,0 +1,39 @@
+name: development container tests
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  devcontainer:
+    runs-on: ubuntu-22.04
+
+    steps:
+
+      - name: Check out source repository
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        run: docker build -t moranpycess:latest -f Dockerfile .
+
+      # non-interactive shell needs to initialise & activate conda in a different way than -it
+      # ~AngryMaciek
+      - name: make help
+        run: |
+          docker run --name moranpycess -v /home/runner/work/moranpycess/moranpycess:/moranpycess moranpycess /bin/bash -c "source /mambaforge/etc/profile.d/conda.sh && conda activate moranpycess-dev && make"
+          docker rm moranpycess
+      # Dockerception is not advised (running Docker in a Docker, dind)
+      # https://stackoverflow.com/a/33003273/2340598
+      #
+      # While running the ci (github actions) we already start a container
+      # for each workflow; then above we build another container and would
+      # execute commands inside it. This is not a good practice.
+      # In the CI issues arise related to file permissions on the mounted
+      # volume (the moranpycess source code). Therefore we will only test
+      # "make help", not all commands of the Makefile.
+      # Development from the container has been tested locally and the
+      # commands are functional.
+      # By the way: I don't expect many developers would insist on contributing
+      # from a container anyway...
+      # ~AngryMaciek
