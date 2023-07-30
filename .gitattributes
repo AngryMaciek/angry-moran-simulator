@@ -1,0 +1,45 @@
+# Normalise line endings automatically for files detected as text by default.
+# That is: let the git installation on a user's machine decide
+# which line ending to use when a repository is checked out.
+# Subsequent lines may override this setting.
+*                                      text=auto
+
+# recognise file syntax during diff
+*.py                                   text diff=python
+*.tex                                  text diff=tex
+*.bib                                  text diff=bibtex
+*.md                                   text diff=markdown
+*.sh                                   text diff=bash
+
+# force batch scripts to always use CRLF
+*.cmd                                  text eol=crlf
+*.bat                                  text eol=crlf
+
+# force bash scripts & Makefile to always use LF
+*.sh                                   text eol=lf
+Makefile                               text eol=lf
+
+# mark binary files explicitly
+# (Git does not try to merge these files)
+# binary is a built-in macro attribute == -diff -merge -text
+*.png                                  binary
+*.svg                                  binary
+
+# specify which files/dirs to ignore on [download ZIP] (not a git repo)
+.gitattributes                         export-ignore
+.gitignore                             export-ignore
+.github                                export-ignore
+/tests                                 export-ignore
+/binder                                export-ignore
+.coveragerc                            export-ignore
+.gitpod.dockerfile                     export-ignore
+.gitpod.yml                            export-ignore
+CONTRIBUTING.md                        export-ignore
+Makefile                               export-ignore
+environment.yml                        export-ignore
+
+# linguist settings:
+#
+# Gitpod configuration file
+.gitpod.dockerfile                     -linguist-detectable
+tests/usecase.ipynb                    -linguist-detectable
