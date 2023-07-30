@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User’s API &mdash; Moran [Py]cess 1.0.39 documentation</title>
@@ -11,10 +11,9 @@
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/doctools.js"></script>
         <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/js/theme.js"></script>
@@ -29,11 +28,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> Moran [Py]cess
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Moran [Py]cess
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -67,7 +70,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">User’s API</li>
       <li class="wy-breadcrumbs-aside">
       </li>
@@ -88,7 +91,7 @@
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BirthPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DeathPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TransitionMatrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Class initializer.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>size_list</strong> (<em>list</em><em> of </em><em>int</em>) – cardinalities of subpopulations.</p></li>
 <li><p><strong>label_list</strong> (<em>list</em><em> of </em><em>str</em>) – distinct labels of subpopulations.</p></li>
@@ -104,7 +107,7 @@ between types. Defaults to None.</p></li>
 <span class="sig-name descname"><span class="pre">population</span></span></dt>
 <dd><p>entire population.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of Individual</p>
 </dd>
 </dl>
@@ -116,7 +119,7 @@ between types. Defaults to None.</p></li>
 <dd><p>cardinalities of initial
 subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of int</p>
 </dd>
 </dl>
@@ -128,7 +131,7 @@ subpopulations.</p>
 <dd><p>cardinalities of current
 subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of int</p>
 </dd>
 </dl>
@@ -140,7 +143,7 @@ subpopulations.</p>
 <dd><p>distinct labels of initial
 subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of str</p>
 </dd>
 </dl>
@@ -151,7 +154,7 @@ subpopulations.</p>
 <span class="sig-name descname"><span class="pre">BirthPayoffMatrix</span></span></dt>
 <dd><p>payoff matrix for the birth process.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
 </dd>
 </dl>
@@ -162,7 +165,7 @@ subpopulations.</p>
 <span class="sig-name descname"><span class="pre">DeathPayoffMatrix</span></span></dt>
 <dd><p>payoff matrix for the death process.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
 </dd>
 </dl>
@@ -173,7 +176,7 @@ subpopulations.</p>
 <span class="sig-name descname"><span class="pre">w</span></span></dt>
 <dd><p>selection pressure weight for the fitness calculation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -185,7 +188,7 @@ subpopulations.</p>
 <dd><p>current average birth
 payoffs for distinct subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict of str-float</p>
 </dd>
 </dl>
@@ -197,7 +200,7 @@ payoffs for distinct subpopulations.</p>
 <dd><p>current average death
 payoffs for distinct subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict of str-float</p>
 </dd>
 </dl>
@@ -209,7 +212,7 @@ payoffs for distinct subpopulations.</p>
 <dd><p>current birth fitnesses
 for distinct subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict of str-float</p>
 </dd>
 </dl>
@@ -221,7 +224,7 @@ for distinct subpopulations.</p>
 <dd><p>current death fitnesses
 for distinct subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>dict of str-float</p>
 </dd>
 </dl>
@@ -232,7 +235,7 @@ for distinct subpopulations.</p>
 <span class="sig-name descname"><span class="pre">Entropy</span></span></dt>
 <dd><p>current entropy of the whole population.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -244,14 +247,14 @@ for distinct subpopulations.</p>
 <dd><p>transition probabilities
 between types. Defaults to None.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array, optional</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>AssertionError</strong> – on invalid arguments.</p></li>
 <li><p><strong>IncorrectValueError</strong> – on wrong values in the Transition Matrix.</p></li>
@@ -345,13 +348,13 @@ between types. Defaults to None.</p>
 <p>Simulate population evolution: Birth-Death process with fitness-based
 selection of individuals.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>generations</strong> (<em>int</em>) – number of time steps.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>table with simulation logs.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
@@ -362,7 +365,7 @@ selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">PlotSize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Plot the sub-populations’ sizes after a simulation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
@@ -376,7 +379,7 @@ selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">PlotAvgBirthPayoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Plot the sub-populations’ AvgBirthPayoff after a simulation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
@@ -390,7 +393,7 @@ selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">PlotAvgDeathPayoff</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Plot the sub-populations’ AvgDeathPayoff after a simulation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
@@ -404,7 +407,7 @@ selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">PlotBirthFitness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Plot the sub-populations’ BirthFitness after a simulation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
@@ -418,7 +421,7 @@ selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">PlotDeathFitness</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Plot the sub-populations’ DeathFitness after a simulation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
@@ -432,7 +435,7 @@ selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">PlotEntropy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Plot the whole populations entropy after a simulation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
@@ -452,7 +455,7 @@ selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BirthPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DeathPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TransitionMatrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Class initializer.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>size_list</strong> (<em>list</em><em> of </em><em>int</em>) – cardinalities of subpopulations.</p></li>
 <li><p><strong>label_list</strong> (<em>list</em><em> of </em><em>str</em>) – distinct labels of subpopulations.</p></li>
@@ -469,7 +472,7 @@ between types. Defaults to None.</p></li>
 <span class="sig-name descname"><span class="pre">population</span></span></dt>
 <dd><p>entire population.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of Individual</p>
 </dd>
 </dl>
@@ -481,7 +484,7 @@ between types. Defaults to None.</p></li>
 <dd><p>cardinalities of initial
 subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of int</p>
 </dd>
 </dl>
@@ -493,7 +496,7 @@ subpopulations.</p>
 <dd><p>cardinalities of current
 subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of int</p>
 </dd>
 </dl>
@@ -505,7 +508,7 @@ subpopulations.</p>
 <dd><p>distinct labels of initial
 subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of str</p>
 </dd>
 </dl>
@@ -516,7 +519,7 @@ subpopulations.</p>
 <span class="sig-name descname"><span class="pre">BirthPayoffMatrix</span></span></dt>
 <dd><p>payoff matrix for the birth process.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
 </dd>
 </dl>
@@ -527,7 +530,7 @@ subpopulations.</p>
 <span class="sig-name descname"><span class="pre">DeathPayoffMatrix</span></span></dt>
 <dd><p>payoff matrix for the death process.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
 </dd>
 </dl>
@@ -538,7 +541,7 @@ subpopulations.</p>
 <span class="sig-name descname"><span class="pre">w</span></span></dt>
 <dd><p>selection pressure weight for the fitness calculation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -549,7 +552,7 @@ subpopulations.</p>
 <span class="sig-name descname"><span class="pre">Entropy</span></span></dt>
 <dd><p>current entropy of the whole population.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -561,7 +564,7 @@ subpopulations.</p>
 <dd><p>transition probabilities
 between types. Defaults to None.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array, optional</p>
 </dd>
 </dl>
@@ -572,7 +575,7 @@ between types. Defaults to None.</p>
 <span class="sig-name descname"><span class="pre">init_grid</span></span></dt>
 <dd><p>subpopulations’ initial position in 2D.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
 </dd>
 </dl>
@@ -583,14 +586,14 @@ between types. Defaults to None.</p>
 <span class="sig-name descname"><span class="pre">curr_grid</span></span></dt>
 <dd><p>subpopulations’ initial position in 2D.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>AssertionError</strong> – on invalid arguments.</p></li>
 <li><p><strong>IncorrectValueError</strong> – on wrong values in the Transition Matrix.</p></li>
@@ -672,13 +675,13 @@ between types. Defaults to None.</p>
 <p>Simulate 2D population evolution: Birth-Death process with
 fitness-based selection of individuals.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>generations</strong> (<em>int</em>) – number of time steps.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>table with simulation logs.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
@@ -689,7 +692,7 @@ fitness-based selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">PlotSize2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Plot the sub-populations’ sizes after a simulation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
@@ -703,7 +706,7 @@ fitness-based selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">PlotEntropy2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Plot the whole populations entropy after a simulation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
@@ -717,7 +720,7 @@ fitness-based selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">PlotPopulationSnapshot2D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Plot a grid snapshot of the current state of the whole population.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>path</strong> (<em>str</em>) – path for the plot.</p>
 </dd>
 </dl>
@@ -734,7 +737,7 @@ fitness-based selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">label_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">grid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BirthPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DeathPayoffMatrix</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">TransitionMatrix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Class initializer.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>size_list</strong> (<em>list</em><em> of </em><em>int</em>) – cardinalities of subpopulations.</p></li>
 <li><p><strong>label_list</strong> (<em>list</em><em> of </em><em>str</em>) – distinct labels of subpopulations.</p></li>
@@ -751,7 +754,7 @@ between types. Defaults to None.</p></li>
 <span class="sig-name descname"><span class="pre">population</span></span></dt>
 <dd><p>entire population.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of Individual</p>
 </dd>
 </dl>
@@ -763,7 +766,7 @@ between types. Defaults to None.</p></li>
 <dd><p>cardinalities of initial
 subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of int</p>
 </dd>
 </dl>
@@ -775,7 +778,7 @@ subpopulations.</p>
 <dd><p>cardinalities of current
 subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of int</p>
 </dd>
 </dl>
@@ -787,7 +790,7 @@ subpopulations.</p>
 <dd><p>distinct labels of initial
 subpopulations.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list of str</p>
 </dd>
 </dl>
@@ -798,7 +801,7 @@ subpopulations.</p>
 <span class="sig-name descname"><span class="pre">BirthPayoffMatrix</span></span></dt>
 <dd><p>payoff matrix for the birth process.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
 </dd>
 </dl>
@@ -809,7 +812,7 @@ subpopulations.</p>
 <span class="sig-name descname"><span class="pre">DeathPayoffMatrix</span></span></dt>
 <dd><p>payoff matrix for the death process.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
 </dd>
 </dl>
@@ -820,7 +823,7 @@ subpopulations.</p>
 <span class="sig-name descname"><span class="pre">w</span></span></dt>
 <dd><p>selection pressure weight for the fitness calculation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -831,7 +834,7 @@ subpopulations.</p>
 <span class="sig-name descname"><span class="pre">Entropy</span></span></dt>
 <dd><p>current entropy of the whole population.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
@@ -843,7 +846,7 @@ subpopulations.</p>
 <dd><p>transition probabilities
 between types. Defaults to None.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array, optional</p>
 </dd>
 </dl>
@@ -854,7 +857,7 @@ between types. Defaults to None.</p>
 <span class="sig-name descname"><span class="pre">init_grid</span></span></dt>
 <dd><p>subpopulations’ initial position in 3D.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
 </dd>
 </dl>
@@ -865,14 +868,14 @@ between types. Defaults to None.</p>
 <span class="sig-name descname"><span class="pre">curr_grid</span></span></dt>
 <dd><p>subpopulations’ initial position in 3D.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>np.array</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="field-list simple">
-<dt class="field-odd">Raises</dt>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>AssertionError</strong> – on invalid arguments.</p></li>
 <li><p><strong>IncorrectValueError</strong> – on wrong values in the Transition Matrix.</p></li>
@@ -954,13 +957,13 @@ between types. Defaults to None.</p>
 <p>Simulate 3D population evolution: Birth-Death process with
 fitness-based selection of individuals.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>generations</strong> (<em>int</em>) – number of time steps.</p>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p>table with simulation logs.</p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>pd.DataFrame</p>
 </dd>
 </dl>
@@ -971,7 +974,7 @@ fitness-based selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">PlotSize3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Plot the sub-populations’ sizes after a simulation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
@@ -985,7 +988,7 @@ fitness-based selection of individuals.</p>
 <span class="sig-name descname"><span class="pre">PlotEntropy3D</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span></dt>
 <dd><p>Plot the whole populations entropy after a simulation.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>df</strong> (<em>pd.DataFrame</em>) – table with simulation logs.</p></li>
 <li><p><strong>path</strong> (<em>str</em>) – path for the plot.</p></li>
