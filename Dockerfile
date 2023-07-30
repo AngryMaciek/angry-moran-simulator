@@ -33,6 +33,10 @@ ARG MAMBAURL="https://github.com/conda-forge/miniforge/releases/latest/download/
 ##### SET ENVIROMENTAL VARIABLES #####
 ENV LANG C.UTF-8
 
+##### PREPARE WORKING DIRECTORY #####
+VOLUME /moranpycess
+WORKDIR /moranpycess
+
 ##### INSTALL MAMBAFORGE #####
 RUN /bin/bash -c "curl -L ${MAMBAURL} > mambaforge.sh \
     && bash mambaforge.sh -b -p ${MAMBADIR} \
@@ -50,10 +54,6 @@ RUN /bin/bash -c "${CONDABINDIR}/mamba install conda-build boa conda-verify -c c
 
 ##### EXPOSE PORTS #####
 EXPOSE 8888
-
-##### PREPARE WORKING DIRECTORY #####
-VOLUME /moranpycess
-WORKDIR /moranpycess
 
 ##### SETUP ENTRYPOINT #####
 COPY entrypoint.sh /bin/entrypoint.sh

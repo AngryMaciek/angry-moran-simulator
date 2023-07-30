@@ -1,24 +1,32 @@
-## Description
+## Proposed changes ⤴️
 
-Please include a summary of the change and which issue is fixed. Please also include relevant motivation and context. List any dependencies that are required for this change.
+Describe the big picture of your changes, add relevant motivation and context.
 
-Fixes # (issue)
+**If it fixes a bug or resolves a feature request, please link a corresponding issue:**
+Fixes #
 
-## Type of change
+## Types of changes 🔧
 
-Please delete options that are not relevant.
+What type of changes does your code introduce to the project?
 
-- [ ] Bug fix (non-breaking change which fixes an issue)
+- [ ] Bugfix (non-breaking change which fixes an issue)
 - [ ] New feature (non-breaking change which adds functionality)
 - [ ] Breaking change (fix or feature that would cause existing functionality to not work as expected)
-- [ ] Documentation updated
+- [ ] Other
 
-## Checklist:
+## Checklist ✅
 
-- [ ] My code follows the style guidelines of this project
-- [ ] I have performed a self-review of my own code
-- [ ] I have commented my code, particularly in hard-to-understand areas
-- [ ] My changes generate no new warnings
-- [ ] I have added tests that prove my fix is effective or that my feature works
-- [ ] New and existing unit tests pass locally with my changes
-- [ ] I have not reduced the existing code coverage
+If you're unsure about any of those below, ask explicitly.
+This is simply a reminder of what needs to be checked before merging your code.
+
+- [ ] I have read the [CONTRIBUTING](https://github.com/AngryMaciek/angry-moran-simulator/blob/master/CONTRIBUTING.md).
+- [ ] I have performed a self-review of my own code.
+- [ ] Tests specified with the 'make' framework do not raise any errors.
+- [ ] I have added tests that prove my fix is effective or that my feature works.
+- [ ] I have added necessary documentation (if appropriate).
+- [ ] My changes generate no new warnings.
+- [ ] I have commented my code, particularly in hard-to-understand areas.
+
+## Further comments 🧠
+
+If this is a relatively large or complex change feel free to provide additional information or explanation.
