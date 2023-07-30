@@ -21,7 +21,7 @@ jobs:
       # ~AngryMaciek
       - name: make help
         run: |
-          docker run --name moranpycess -v /home/runner/work/moranpycess/moranpycess:/moranpycess moranpycess /bin/bash -c "source /mambaforge/etc/profile.d/conda.sh && conda activate moranpycess-dev && cd /moranpycess && make"
+          docker run --name moranpycess -v /home/runner/work/moranpycess/moranpycess:/moranpycess moranpycess /bin/bash -c "source /mambaforge/etc/profile.d/conda.sh && conda activate moranpycess-dev && cd /moranpycess && ls"
           docker rm moranpycess
       # Dockerception is not advised (running Docker in a Docker, dind)
       # https://stackoverflow.com/a/33003273/2340598
