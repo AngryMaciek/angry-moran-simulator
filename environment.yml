@@ -21,7 +21,7 @@
     - jiayi_anaconda
 
   dependencies:
-    - black=22.10.0 
+    - black=22.10.0
     - coverage=7.0.0
     - flake8=6.0.0
     - jupyterlab=3.5.2
