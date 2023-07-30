@@ -27,6 +27,9 @@
 Moran [Py]cess
 ==========================================
 
+.. image:: https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod
+   :alt: gitpod
+   :target: https://gitpod.io/#https://github.com/AngryMaciek/angry-moran-simulator
 .. image:: https://github.com/AngryMaciek/angry-moran-simulator/workflows/build/badge.svg?branch=master
    :alt: build
    :target: https://github.com/AngryMaciek/angry-moran-simulator/actions?query=workflow%3Abuild
@@ -63,9 +66,12 @@ Moran [Py]cess
 .. image:: https://img.shields.io/github/issues/AngryMaciek/angry-moran-simulator
    :alt: GitHub issues
    :target: https://github.com/AngryMaciek/angry-moran-simulator/issues
+.. image:: https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg
+   :alt: CoC
+   :target: code_of_conduct.md
 .. image:: https://img.shields.io/github/license/AngryMaciek/angry-moran-simulator
    :alt: GitHub license
-   :target: https://github.com/AngryMaciek/angry-moran-simulator/blob/master/LICENSE
+   :target: LICENSE
 .. image:: https://joss.theoj.org/papers/10.21105/joss.02643/status.svg
    :alt: JOSS
    :target: https://doi.org/10.21105/joss.02643

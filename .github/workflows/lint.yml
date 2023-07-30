@@ -4,13 +4,10 @@ on:
   push:
     branches:
       - '*'
-  pull_request:
-    branches:
-      - master
 
 jobs:
   flake8:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
 
@@ -23,7 +20,7 @@ jobs:
           python-version: 3.9
           auto-update-conda: true
           activate-environment: moranpycess-dev
-          environment-file: env/dev.yml
+          environment-file: environment.yml
           auto-activate-base: false
 
       - name: Conda Info

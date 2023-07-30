@@ -1,0 +1,98 @@
+name: Bug Report 🐛
+description: Create a bug report
+title: "<descriptive title goes here>"
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+          value: |
+            Thank you for your interest in our project!
+
+            Please read the following instructions carefully.
+            Having detailed, yet not overcomplicated feedback will help us resolve the issue efficiently 🚀
+
+            **Before reporting a bug, please search for a similar problem in the issues section**
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Initial check.
+      description: Please go through the options carefully.
+      options:
+        - label: I added a very descriptive title above.
+          required: true
+        - label: I searched through the issues in this repository to find a similar problem, but didn't find any.
+          required: true
+        - label: I searched the documentation and found no explanation.
+          required: true
+        - label: I searched through Google (including the 2nd page of results) and didn't find any relevant information.
+          required: true
+        - label: I asked ChatGPT for help but did not get any meaningful response.
+          required: false
+  - type: textarea
+    id: description
+    attributes:
+      label: Please describe what triggered the error.
+      description: Add a self-contained, [minimal, reproducible, example](https://stackoverflow.com/help/minimal-reproducible-example) with your use case.
+      placeholder: If you can copy it, run it, and see it right away, there's a much higher chance someone will be able to help you.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+      description: How should the program behave without the bug?
+      placeholder: Describe the ideal outcome.
+    validations:
+      required: true
+  - type: textarea
+    id: error
+    attributes:
+      label: What went wrong?
+      description: What kind of error message did you get?
+      placeholder: You should add terminal logs.
+    validations:
+      required: true
+  - type: input
+    id: python_version
+    attributes:
+      label: Please specify your Python version.
+      placeholder: python --version
+    validations:
+      required: true
+  - type: dropdown
+    id: os_version
+    attributes:
+      label: Operating System
+      options:
+        - Linux
+        - macOS
+        - Microsoft Windows
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: os_details
+    attributes:
+      label: Here you can specify more details regarding your operating system.
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      options:
+        - label: I agree to follow this project's [Code of Conduct](https://github.com/AngryMaciek/angry-moran-simulator/blob/master/CODE_OF_CONDUCT.md)
+          required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional information
+      description: Add any additional context or screenshots you think might be useful or helpful.
+    validations:
+      required: false
+  - type: markdown
+    attributes:
+      value: |
+
+
+        *Thank you for your contribution!*

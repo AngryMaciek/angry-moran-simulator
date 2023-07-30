@@ -1,0 +1,71 @@
+name: Feature Request 💡
+description: Suggest an idea for improvement
+title: "<descriptive title goes here>"
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+          value: |
+            Thank you for your interest in our project!
+
+            Please read the following instructions carefully.
+            Having detailed, yet not overcomplicated feedback will help us implement the idea efficiently 🚀
+
+            **Before suggesting an idea, please search for a similar feature request in the issues section**
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Initial check.
+      description: Please go through the options carefully.
+      options:
+        - label: I added a very descriptive title above.
+          required: true
+        - label: I searched the documentation and found no similar feature.
+          required: true
+        - label:  I searched through the issues in this repository to find a similar request, but didn't find any.
+          required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe briefly the idea behind the improvement.
+      description: When would it be useful? What problem would it solve?
+      placeholder: Try to come up with a use case
+    validations:
+      required: true
+  - type: textarea
+    id: ideas
+    attributes:
+      label: Please specify what would you like to add/change.
+      description: How would you make your idea come true?
+      placeholder: You may inclue code snippets
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Please add other solutions if you considered them.
+      description: Alternative ways to bring your idea to life.
+      placeholder: First thought best thought?
+    validations:
+      required: false
+  - type: textarea
+    id: supplement
+    attributes:
+      label: Feel free to provide additional information or more context for your idea.
+      description: Screenshots or other information you find worth sharing; anything the developers might find useful.
+      placeholder:
+    validations:
+      required: false
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this feature request, you agree to follow our Code of Conduct.
+      options:
+        - label: I agree to follow this project's [Code of Conduct](https://github.com/AngryMaciek/angry-moran-simulator/blob/master/CODE_OF_CONDUCT.md)
+          required: true
+  - type: markdown
+    attributes:
+      value: |
+        *Keep the ideas coming!*
