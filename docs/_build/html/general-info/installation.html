@@ -51,7 +51,6 @@
 <li class="toctree-l1"><a class="reference internal" href="walkthrough.html">Quick Walkthrough</a></li>
 <li class="toctree-l1"><a class="reference internal" href="example-results.html">Example Results</a></li>
 <li class="toctree-l1"><a class="reference internal" href="citing-contributing.html">Citing &amp; Contributing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CHANGELOG.html">Changelog</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">API</span></p>
@@ -92,7 +91,7 @@ Both of them require stable internet connection.</p>
 <h2>Install from Python Package Index<a class="headerlink" href="#install-from-python-package-index" title="Permalink to this heading"></a></h2>
 <p>To install our Python package in the current working environment
 please run the <em>pip</em> command:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip install moranpycess
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>pip<span class="w"> </span>install<span class="w"> </span>moranpycess
 </pre></div>
 </div>
 <p>All of the dependencies will be installed alongside automatically.
@@ -101,7 +100,7 @@ Their versions are specified in the <a class="reference external" href="https://
 <section id="install-from-anaconda-cloud">
 <h2>Install from Anaconda Cloud<a class="headerlink" href="#install-from-anaconda-cloud" title="Permalink to this heading"></a></h2>
 <p>In case one uses <em>conda</em> package manager our software might be installed with:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda install -c angrymaciek moranpycess
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>conda<span class="w"> </span>install<span class="w"> </span>-c<span class="w"> </span>angrymaciek<span class="w"> </span>moranpycess
 </pre></div>
 </div>
 <p>And again, the dependencies are taken care of automatically.
@@ -112,7 +111,7 @@ Please beware that this installation method requires <em>conda&gt;=4.3</em> vers
 <p>We have also prepared a container with the package and uploaded it to
 <a class="reference external" href="https://hub.docker.com/">DockerHub</a>. To pull it (provided that a <em>docker</em> deamon is running)
 please execute:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker pull angrymaciek/moranpycess:1.0.39
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>docker<span class="w"> </span>pull<span class="w"> </span>angrymaciek/moranpycess:1.0.39
 </pre></div>
 </div>
 <div class="admonition warning">
@@ -124,8 +123,8 @@ will be deleted.</p>
 <p>At last, if all of the above methods fail, one can still manually clone the
 repository from <a class="reference external" href="https://github.com/">GitHub</a> and build/install our package from the command line:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>https://github.com/AngryMaciek/angry-moran-simulator.git
-<span class="gp">$ </span><span class="nb">cd</span> angry-moran-simulator
-<span class="gp">$ </span>python setup.py install
+<span class="gp">$ </span><span class="nb">cd</span><span class="w"> </span>angry-moran-simulator
+<span class="gp">$ </span>python<span class="w"> </span>setup.py<span class="w"> </span>install
 </pre></div>
 </div>
 </section>
