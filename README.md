@@ -1,4 +1,5 @@
 [![Contribute with Gitpod](https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/AngryMaciek/angry-moran-simulator)
+[![pre-commit](https://img.shields.io/badge/pre--commit-+-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![build](https://github.com/AngryMaciek/angry-moran-simulator/workflows/build/badge.svg?branch=master)](https://github.com/AngryMaciek/angry-moran-simulator/actions?query=workflow%3Abuild)
 [![pytest](https://github.com/AngryMaciek/angry-moran-simulator/workflows/pytest/badge.svg?branch=master)](https://github.com/AngryMaciek/angry-moran-simulator/actions?query=workflow%3Apytest)
 [![codecov](https://codecov.io/gh/AngryMaciek/angry-moran-simulator/branch/master/graph/badge.svg?token=V9IFEOWN71)](https://codecov.io/gh/AngryMaciek/angry-moran-simulator)
