@@ -43,3 +43,6 @@ source = [
 omit = [
     "moranpycess/__init__.py",
 ]
+
+[tool.black]
+line-length = 79

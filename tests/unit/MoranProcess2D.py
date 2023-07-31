@@ -155,7 +155,8 @@ class TestClass:
         expected_error_msg += " "
         expected_error_msg += "Transition probabilities need to add up to 1.0."
         with pytest.raises(
-            moranpycess.CustomExceptions.IncorrectValueError, match=expected_error_msg
+            moranpycess.CustomExceptions.IncorrectValueError,
+            match=expected_error_msg,
         ):
             moranpycess.MoranProcess2D(
                 size_list=size_list,
@@ -179,7 +180,9 @@ class TestClass:
             ]
         )
 
-        BirthPayoffMatrix = np.array([[1, 5, 25], [0.1, 7, 0.02], [0.99, 9.52, 0.111]])
+        BirthPayoffMatrix = np.array(
+            [[1, 5, 25], [0.1, 7, 0.02], [0.99, 9.52, 0.111]]
+        )
         DeathPayoffMatrix = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
         mp = moranpycess.MoranProcess2D(
             size_list=size_list,
@@ -205,7 +208,9 @@ class TestClass:
         )
 
         BirthPayoffMatrix = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
-        DeathPayoffMatrix = np.array([[1, 5, 25], [0.1, 7, 0.02], [0.99, 9.52, 0.111]])
+        DeathPayoffMatrix = np.array(
+            [[1, 5, 25], [0.1, 7, 0.02], [0.99, 9.52, 0.111]]
+        )
         mp = moranpycess.MoranProcess2D(
             size_list=size_list,
             label_list=label_list,
@@ -228,7 +233,9 @@ class TestClass:
                 ["A", "B", "A", "B"],
             ]
         )
-        BirthPayoffMatrix = np.array([[1, 5, 25], [0.1, 7, 0.02], [0.99, 9.52, 0.111]])
+        BirthPayoffMatrix = np.array(
+            [[1, 5, 25], [0.1, 7, 0.02], [0.99, 9.52, 0.111]]
+        )
         DeathPayoffMatrix = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
         mp = moranpycess.MoranProcess2D(
             size_list=size_list,
@@ -254,7 +261,9 @@ class TestClass:
         )
 
         BirthPayoffMatrix = np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
-        DeathPayoffMatrix = np.array([[1, 5, 25], [0.1, 7, 0.02], [0.99, 9.52, 0.111]])
+        DeathPayoffMatrix = np.array(
+            [[1, 5, 25], [0.1, 7, 0.02], [0.99, 9.52, 0.111]]
+        )
         mp = moranpycess.MoranProcess2D(
             size_list=size_list,
             label_list=label_list,

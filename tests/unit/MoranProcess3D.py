@@ -155,7 +155,8 @@ class TestClass:
         expected_error_msg += " "
         expected_error_msg += "Transition probabilities need to add up to 1.0."
         with pytest.raises(
-            moranpycess.CustomExceptions.IncorrectValueError, match=expected_error_msg
+            moranpycess.CustomExceptions.IncorrectValueError,
+            match=expected_error_msg,
         ):
             moranpycess.MoranProcess3D(
                 size_list=size_list,
