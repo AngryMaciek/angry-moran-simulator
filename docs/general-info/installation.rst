@@ -28,7 +28,7 @@ In case one uses *conda* package manager our software might be installed with:
 
    $ conda install -c angrymaciek moranpycess
 
-And again, the dependencies are taken care of automatically.  
+And again, the dependencies are taken care of automatically.
 Please beware that this installation method requires *conda>=4.3* version.
 
 Alternatives
@@ -40,7 +40,7 @@ please execute:
 
 .. code-block:: console
 
-   $ docker pull angrymaciek/moranpycess:1.0.39
+   $ docker pull angrymaciek/moranpycess:1.1.0
 
 .. warning::
    DockerHub regularly removes unused images from their servers.

@@ -1,1 +1,1 @@
-moranpycess==1.0.39
+moranpycess==1.1.0
