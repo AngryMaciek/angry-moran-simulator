@@ -1,3 +1,0 @@
-[run]
-source = moranpycess
-omit = moranpycess/__init__.py

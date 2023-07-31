@@ -34,3 +34,12 @@ repository = "https://github.com/AngryMaciek/angry-moran-simulator"
 [tool.setuptools]
 packages = ["moranpycess"]
 zip-safe = false
+
+[tool.coverage.run]
+branch = true
+source = [
+    "moranpycess",
+]
+omit = [
+    "moranpycess/__init__.py",
+]
