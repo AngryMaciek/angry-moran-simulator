@@ -8,7 +8,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/angrymaciek/angry-moran-simulator/badge)](https://www.codefactor.io/repository/github/angrymaciek/angry-moran-simulator)
 [![publish](https://github.com/AngryMaciek/angry-moran-simulator/workflows/publish/badge.svg)](https://github.com/AngryMaciek/angry-moran-simulator/actions?query=workflow%3Apublish)
 [![PyPI](https://img.shields.io/badge/pypi-1.1.0-blue)](https://pypi.org/project/moranpycess/)
-[![conda](https://anaconda.org/angrymaciek/moranpycess/badges/version.svg?service=github)](https://anaconda.org/AngryMaciek/moranpycess)
+[![conda](https://anaconda.org/angrymaciek/moranpycess/badges/version.svg)](https://anaconda.org/AngryMaciek/moranpycess)
 [![DockerHub](https://img.shields.io/badge/DockerHub-1.1.0-blue)](https://hub.docker.com/r/angrymaciek/moranpycess)
 [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/AngryMaciek/angry-moran-simulator/master?filepath=tests%2Fusecase.ipynb)
 [![GitHub issues](https://img.shields.io/github/issues/AngryMaciek/angry-moran-simulator)](https://github.com/AngryMaciek/angry-moran-simulator/issues)
