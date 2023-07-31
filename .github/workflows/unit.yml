@@ -15,7 +15,7 @@ jobs:
     steps:
 
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Miniconda & Environment
         uses: conda-incubator/setup-miniconda@v2
@@ -34,9 +34,7 @@ jobs:
 
       - name: Unit-Test + Coverage
         shell: bash -l {0}
-        run: |
-          coverage run -m pytest tests/unit/Individual.py tests/unit/MoranProcess.py tests/unit/MoranProcess2D.py tests/unit/MoranProcess3D.py
-          coverage report -m
+        run: make test
 
       - name: Submit Report to Codecov
         shell: bash -l {0}
