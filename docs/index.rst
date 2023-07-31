@@ -13,7 +13,6 @@
    general-info/walkthrough
    general-info/example-results
    general-info/citing-contributing
-   CHANGELOG.md
    general-info/license
 
 .. toctree::
@@ -51,13 +50,13 @@ Moran [Py]cess
 .. image:: https://github.com/AngryMaciek/angry-moran-simulator/workflows/publish/badge.svg
    :alt: publish
    :target: https://github.com/AngryMaciek/angry-moran-simulator/actions?query=workflow%3Apublish
-.. image:: https://img.shields.io/badge/pypi-1.0.39-blue
+.. image:: https://img.shields.io/badge/pypi-1.1.0-blue
    :alt: PyPI
    :target: https://pypi.org/project/moranpycess/
 .. image:: https://anaconda.org/angrymaciek/moranpycess/badges/version.svg?service=github
    :alt: conda
    :target: https://anaconda.org/AngryMaciek/moranpycess
-.. image:: https://img.shields.io/badge/DockerHub-1.0.39-blue
+.. image:: https://img.shields.io/badge/DockerHub-1.1.0-blue
    :alt: DockerHub
    :target: https://hub.docker.com/r/angrymaciek/moranpycess
 .. image:: https://mybinder.org/badge_logo.svg

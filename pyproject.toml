@@ -1,6 +1,6 @@
 [project]
 name = "moranpycess"
-version = "1.0.39"
+version = "1.1.0"
 description = "Python framework for Moran Processes driven by game theory"
 authors = [
     {name = "Maciek Bak", email = "wsciekly.maciek@gmail.com"},
