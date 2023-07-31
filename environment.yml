@@ -18,7 +18,6 @@
     - bioconda
     - conda-forge
     - anaconda
-    - jiayi_anaconda
 
   dependencies:
     - black>=22.6.0
