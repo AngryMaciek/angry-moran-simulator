@@ -13,10 +13,12 @@
 ##############################################################################
 """
 
+import random
+
 # imports
 import numpy as np
 import pytest
-import random
+
 from .context import moranpycess
 
 

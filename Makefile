@@ -40,6 +40,7 @@ uninstall:
 
 format:
 	@black moranpycess/ tests/unit/
+	@isort moranpycess/ tests/unit/
 
 lint:
 	@flake8 moranpycess/ tests/unit/
