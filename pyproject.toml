@@ -15,17 +15,16 @@ dependencies = [
     "scipy>=1.5.3",
     "seaborn>=0.11.2"
 ]
-
-[build-system]
-requires = ["setuptools", "setuptools-scm"]
-build-backend = "setuptools.build_meta"
-
 classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3.7",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
 
 [project.urls]
 homepage = "https://angrymaciek.github.io/angry-moran-simulator/_build/html/index.html"
