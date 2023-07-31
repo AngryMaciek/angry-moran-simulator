@@ -15,6 +15,7 @@ jobs:
     steps:
       - uses: morrisoncole/pr-lint-action@v1.7.0
         with:
+          repo-token: "${{ secrets.GITHUB_TOKEN }}"
           title-regex: "^(feat|fix|docs|style|refactor|perf|test|build|ci|chore): .{1,}"
           on-failed-regex-fail-action: true
           on-failed-regex-create-review: true
