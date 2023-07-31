@@ -28,22 +28,22 @@ channels:
 
 requirements:
   host:
-    - python>=3.7
+    - python>=3.9
     - pip
   run:
-    - matplotlib>=3.3.0
-    - numpy>=1.19.0
-    - pandas>=1.0.2
-    - python>=3.7
-    - scipy>=1.5.2
-    - seaborn>=0.10.1
+    - matplotlib>=3.3.4
+    - numpy>=1.19.5
+    - pandas>=1.1.5
+    - python>=3.9
+    - scipy>=1.5.3
+    - seaborn>=0.11.2
 
 test:
   imports:
     - moranpycess
 
 about:
-  home: https://angrymaciek.github.io/angry-moran-simulator
+  home: https://angrymaciek.github.io/angry-moran-simulator/_build/html/index.html
   summary: >
     Python framework for Moran Processes driven by game theory
   description: |
