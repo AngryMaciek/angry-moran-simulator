@@ -17,7 +17,6 @@
   channels:
     - bioconda
     - conda-forge
-    - anaconda
 
   dependencies:
     - black>=22.6.0
