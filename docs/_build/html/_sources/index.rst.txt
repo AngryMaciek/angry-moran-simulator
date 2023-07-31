@@ -29,6 +29,9 @@ Moran [Py]cess
 .. image:: https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod
    :alt: gitpod
    :target: https://gitpod.io/#https://github.com/AngryMaciek/angry-moran-simulator
+.. image:: https://img.shields.io/badge/pre--commit-+-brightgreen?logo=pre-commit
+   :alt: precommit
+   :target: https://github.com/pre-commit/pre-commit
 .. image:: https://github.com/AngryMaciek/angry-moran-simulator/workflows/build/badge.svg?branch=master
    :alt: build
    :target: https://github.com/AngryMaciek/angry-moran-simulator/actions?query=workflow%3Abuild
