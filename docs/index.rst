@@ -13,7 +13,6 @@
    general-info/walkthrough
    general-info/example-results
    general-info/citing-contributing
-   CHANGELOG.md
    general-info/license
 
 .. toctree::

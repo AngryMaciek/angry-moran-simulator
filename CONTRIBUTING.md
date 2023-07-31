@@ -111,6 +111,7 @@ Make sure the following checks pass with no errors:
 * `make lint`
 * `make test`
 * `make install`
+* `make docs`
 * `make build`
 
 ### Merging the pull request
