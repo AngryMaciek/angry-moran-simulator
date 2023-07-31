@@ -1,3 +1,52 @@
+[project]
+name = "moranpycess"
+version = "1.0.39"
+description = "Python framework for Moran Processes driven by game theory"
+authors = [
+    {name = "Maciek Bak", email = "wsciekly.maciek@gmail.com"},
+]
+readme = "dist/.pypi.md"
+license = {text = "MIT"}
+requires-python = ">=3.9"
+dependencies = [
+    "matplotlib>=3.3.4",
+    "numpy>=1.19.5",
+    "pandas>=1.1.5",
+    "scipy>=1.5.3",
+    "seaborn>=0.11.2"
+]
+
 [build-system]
-requires = ["setuptools>=41.0", "wheel"]
+requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
+
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.7",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+homepage = "https://angrymaciek.github.io/angry-moran-simulator/_build/html/index.html"
+repository = "https://github.com/AngryMaciek/angry-moran-simulator"
+
+[tool.setuptools]
+packages = ["moranpycess"]
+zip-safe = false
+
+[tool.coverage.run]
+branch = true
+source = [
+    "moranpycess",
+]
+omit = [
+    "moranpycess/__init__.py",
+]
+
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"
+line_length = 79

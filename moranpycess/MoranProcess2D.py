@@ -1,4 +1,5 @@
-"""
+""".
+
 ##############################################################################
 #
 #   Implementation of the 2D population evolution
@@ -13,14 +14,17 @@
 ##############################################################################
 """
 
+import copy
+
 # imports
 import random
-import copy
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from moranpycess.Individual import Individual
+
 from moranpycess.CustomExceptions import IncorrectValueError
+from moranpycess.Individual import Individual
 
 
 class MoranProcess2D:
@@ -68,7 +72,6 @@ class MoranProcess2D:
             IncorrectValueError: on wrong values in the Transition Matrix.
 
         """
-
         # check if the argument lists length match
         try:
             assert len(size_list) == len(label_list)
@@ -116,10 +119,13 @@ class MoranProcess2D:
         try:
             unique, counts = np.unique(grid, return_counts=True)
             grid_dict = dict(zip(unique, counts))
-            for l in unique:
-                assert l in self.init_label_list
+            for label in unique:
+                assert label in self.init_label_list
             for i in range(len(unique)):
-                assert self.init_size_list[i] == grid_dict[self.init_label_list[i]]
+                assert (
+                    self.init_size_list[i]
+                    == grid_dict[self.init_label_list[i]]
+                )
         except AssertionError as e:
             e.args += ("Invalid Population Grid",)
             raise
@@ -163,11 +169,12 @@ class MoranProcess2D:
                 e.args += ("Invalid Transition Matrix",)
                 raise
             # check if the values are correct
+            message = "Transition probabilities need to add up to 1.0."
             for v in np.sum(TransitionMatrix, axis=1):
                 if v != 1.0:
                     raise IncorrectValueError(
                         parameter="Transition Matrix",
-                        message="Transition probabilities need to add up to 1.0.",
+                        message=message,
                     )
         self.TransitionMatrix = copy.deepcopy(TransitionMatrix)
 
@@ -289,14 +296,13 @@ class MoranProcess2D:
             y (int): y-coordinate of the Individual.
 
         """
-
         this_label = self.population[x, y].label
         this_label_index = self._init_label_list.index(this_label)
 
         pop_nrows = self.population.shape[0]
         pop_ncols = self.population.shape[1]
 
-        # Select direct neighbours in the grid with periodical boundary conditions:
+        # Select neighbours in the grid w/ periodical boundary conditions:
         # upper left, upper middle, upper right
         # middle left, middle right
         # lower left, lower middle, lower right
@@ -329,14 +335,13 @@ class MoranProcess2D:
             y (int): y-coordinate of the Individual.
 
         """
-
         this_label = self.population[x, y].label
         this_label_index = self._init_label_list.index(this_label)
 
         pop_nrows = self.population.shape[0]
         pop_ncols = self.population.shape[1]
 
-        # Select direct neighbours in the grid with periodical boundary conditions:
+        # Select neighbours in the grid w/ periodical boundary conditions:
         # upper left, upper middle, upper right
         # middle left, middle right
         # lower left, lower middle, lower right
@@ -429,14 +434,22 @@ class MoranProcess2D:
         pop_nrows = self.population.shape[0]
         pop_ncols = self.population.shape[1]
         neighbours_scores = [
-            self.population[(x - 1) % pop_nrows, (y - 1) % pop_ncols].DeathFitness,
+            self.population[
+                (x - 1) % pop_nrows, (y - 1) % pop_ncols
+            ].DeathFitness,
             self.population[(x - 1) % pop_nrows, y % pop_ncols].DeathFitness,
-            self.population[(x - 1) % pop_nrows, (y + 1) % pop_ncols].DeathFitness,
+            self.population[
+                (x - 1) % pop_nrows, (y + 1) % pop_ncols
+            ].DeathFitness,
             self.population[x % pop_nrows, (y - 1) % pop_ncols].DeathFitness,
             self.population[x % pop_nrows, (y + 1) % pop_ncols].DeathFitness,
-            self.population[(x + 1) % pop_nrows, (y - 1) % pop_ncols].DeathFitness,
+            self.population[
+                (x + 1) % pop_nrows, (y - 1) % pop_ncols
+            ].DeathFitness,
             self.population[(x + 1) % pop_nrows, y % pop_ncols].DeathFitness,
-            self.population[(x + 1) % pop_nrows, (y + 1) % pop_ncols].DeathFitness,
+            self.population[
+                (x + 1) % pop_nrows, (y + 1) % pop_ncols
+            ].DeathFitness,
         ]
         max_value = sum(neighbours_scores)
         pick = random.uniform(0, max_value)
@@ -473,14 +486,16 @@ class MoranProcess2D:
         pop_ncols = self.population.shape[1]
 
         # prepare a dataframe to store the logs
-        colnames = [l + "__size" for l in self.init_label_list] + ["Entropy"]
+        colnames = [label + "__size" for label in self.init_label_list] + [
+            "Entropy"
+        ]
         log_df = pd.DataFrame(index=range(generations + 1), columns=colnames)
         log_df.index.name = "generation"
 
         # update the dataframe with features of the initial population
-        for l in range(len(self.init_label_list)):
-            label = self.init_label_list[l]
-            log_df.at[0, label + "__size"] = self.init_size_list[l]
+        for index in range(len(self.init_label_list)):
+            label = self.init_label_list[index]
+            log_df.at[0, label + "__size"] = self.init_size_list[index]
             log_df.at[0, "Entropy"] = self.Entropy
 
         for g in range(generations):
@@ -495,8 +510,12 @@ class MoranProcess2D:
             # swap the individuals
             self.population[x, y] = new_individual
             # update the list with population info
-            self.curr_size_list[self.init_label_list.index(selectedBirth.label)] += 1
-            self.curr_size_list[self.init_label_list.index(selectedDeath.label)] -= 1
+            self.curr_size_list[
+                self.init_label_list.index(selectedBirth.label)
+            ] += 1
+            self.curr_size_list[
+                self.init_label_list.index(selectedDeath.label)
+            ] -= 1
 
             # perform transitions (if TransitionMatrix was specified)
             if self.TransitionMatrix is not None:
@@ -512,12 +531,16 @@ class MoranProcess2D:
                         old_label = ind.label
                         ind.label = new_label
                         # update the list with population info
-                        self.curr_size_list[self.init_label_list.index(new_label)] += 1
-                        self.curr_size_list[self.init_label_list.index(old_label)] -= 1
+                        self.curr_size_list[
+                            self.init_label_list.index(new_label)
+                        ] += 1
+                        self.curr_size_list[
+                            self.init_label_list.index(old_label)
+                        ] -= 1
 
             # after each birth-death cycle:
 
-            # update scores for all individuals (if TransitionMatrix was specified)
+            # update scores for all individuals (if TransitionMatrix present)
             if self.TransitionMatrix is not None:
                 for x_ in range(self.population.shape[0]):
                     for y_ in range(self.population.shape[1]):
@@ -529,7 +552,7 @@ class MoranProcess2D:
             # re-evaluate the payoffs and fitnesses of only
             # the affected neigbours Individuals in the population
             else:
-                # re-evaluate the payoffs and fitnesses of the affected Individuals in the population
+                # re-evaluate payoffs & fitnesses of affected ind in the pop
                 indices_list = [
                     ((x - 1) % pop_nrows, (y - 1) % pop_ncols),
                     ((x - 1) % pop_nrows, y),
@@ -556,9 +579,9 @@ class MoranProcess2D:
             self._UpdateEntropy()
 
             # update the log dataframe
-            for l in range(len(self.init_label_list)):
-                label = self.init_label_list[l]
-                log_df.at[g + 1, label + "__size"] = self.curr_size_list[l]
+            for index in range(len(self.init_label_list)):
+                label = self.init_label_list[index]
+                log_df.at[g + 1, label + "__size"] = self.curr_size_list[index]
                 log_df.at[g + 1, "Entropy"] = self.Entropy
 
         return log_df
@@ -577,7 +600,7 @@ class MoranProcess2D:
         for axis in ["top", "bottom", "left", "right"]:
             ax.spines[axis].set_linewidth(1)
         cmap = plt.get_cmap("coolwarm")
-        columns = [l + "__size" for l in self.init_label_list]
+        columns = [label + "__size" for label in self.init_label_list]
         df_copy = df[columns].copy()
         df_copy.columns = self.init_label_list
         df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
@@ -602,7 +625,9 @@ class MoranProcess2D:
         ax.tick_params(width=1)
         for axis in ["top", "bottom", "left", "right"]:
             ax.spines[axis].set_linewidth(1)
-        df["Entropy"].plot(color="black", linewidth=1.5, ax=ax, label="Entropy")
+        df["Entropy"].plot(
+            color="black", linewidth=1.5, ax=ax, label="Entropy"
+        )
         plt.xlabel("Generation", size=14)
         plt.ylabel("", size=14)
         ax.tick_params(axis="both", which="major", labelsize=12)
@@ -624,7 +649,9 @@ class MoranProcess2D:
         plot_grid = self.curr_grid.copy()
         ticks_labels = []
         for label_index in range(len(self.init_label_list)):
-            plot_grid[plot_grid == self.init_label_list[label_index]] = label_index
+            plot_grid[
+                plot_grid == self.init_label_list[label_index]
+            ] = label_index
             ticks_labels.append(self.init_label_list[label_index])
         plot_grid = plot_grid.astype(float)
         cmap = plt.get_cmap(

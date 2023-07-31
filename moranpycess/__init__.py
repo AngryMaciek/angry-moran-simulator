@@ -1,4 +1,5 @@
-"""
+""".
+
 ##############################################################################
 #
 #   Init file for the package
@@ -14,6 +15,6 @@
 """
 
 # import distinct classes from modules of this package
-from .MoranProcess import MoranProcess
-from .MoranProcess2D import MoranProcess2D
-from .MoranProcess3D import MoranProcess3D
+from .MoranProcess import MoranProcess  # noqa
+from .MoranProcess2D import MoranProcess2D  # noqa
+from .MoranProcess3D import MoranProcess3D  # noqa

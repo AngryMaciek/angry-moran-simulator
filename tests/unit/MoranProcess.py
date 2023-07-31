@@ -1,4 +1,5 @@
-"""
+""".
+
 ##############################################################################
 #
 #   Unit tests for the population evolution
@@ -13,10 +14,12 @@
 ##############################################################################
 """
 
+import random
+
 # imports
 import numpy as np
 import pytest
-import random
+
 from .context import moranpycess
 
 
@@ -268,7 +271,8 @@ class TestClass:
         expected_error_msg += " "
         expected_error_msg += "Transition probabilities need to add up to 1.0."
         with pytest.raises(
-            moranpycess.CustomExceptions.IncorrectValueError, match=expected_error_msg
+            moranpycess.CustomExceptions.IncorrectValueError,
+            match=expected_error_msg,
         ):
             moranpycess.MoranProcess(
                 size_list=size_list,
@@ -296,8 +300,12 @@ class TestClass:
         simulation = mp.simulate(generations=25000)
         # test the plotting:
         mp.PlotSize(simulation, "./tests/output/PD_size.png")
-        mp.PlotAvgBirthPayoff(simulation, "./tests/output/PD_AvgBirthPayoff.png")
-        mp.PlotAvgDeathPayoff(simulation, "./tests/output/PD_AvgDeathPayoff.png")
+        mp.PlotAvgBirthPayoff(
+            simulation, "./tests/output/PD_AvgBirthPayoff.png"
+        )
+        mp.PlotAvgDeathPayoff(
+            simulation, "./tests/output/PD_AvgDeathPayoff.png"
+        )
         mp.PlotBirthFitness(simulation, "./tests/output/PD_BirthFitness.png")
         mp.PlotDeathFitness(simulation, "./tests/output/PD_DeathFitness.png")
         mp.PlotEntropy(simulation, "./tests/output/PD_Entropy.png")
@@ -305,7 +313,6 @@ class TestClass:
 
     def test_MoranProcessWithTransitionMatrix(self):
         """Test the simulation with a Transition Matrix."""
-
         # initialize an instance of MoranProcess:
         size_list = [10, 0]
         label_list = ["A", "B"]

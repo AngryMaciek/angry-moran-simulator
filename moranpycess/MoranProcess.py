@@ -1,4 +1,5 @@
-"""
+""".
+
 ##############################################################################
 #
 #   Implementation of the population evolution
@@ -13,14 +14,17 @@
 ##############################################################################
 """
 
+import copy
+
 # imports
 import random
-import copy
+
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
-from moranpycess.Individual import Individual
+
 from moranpycess.CustomExceptions import IncorrectValueError
+from moranpycess.Individual import Individual
 
 
 class MoranProcess:
@@ -72,7 +76,6 @@ class MoranProcess:
             IncorrectValueError: on wrong values in the Transition Matrix.
 
         """
-
         # check if the argument lists length match
         try:
             assert len(size_list) == len(label_list)
@@ -154,11 +157,12 @@ class MoranProcess:
                 e.args += ("Invalid Transition Matrix",)
                 raise
             # check if the values are correct
+            message = "Transition probabilities need to add up to 1.0."
             for v in np.sum(TransitionMatrix, axis=1):
                 if v != 1.0:
                     raise IncorrectValueError(
                         parameter="Transition Matrix",
-                        message="Transition probabilities need to add up to 1.0.",
+                        message=message,
                     )
         self.TransitionMatrix = copy.deepcopy(TransitionMatrix)
 
@@ -367,7 +371,7 @@ class MoranProcess:
         return self.__roulette_wheel_selection(attr="DeathFitness")
 
     def __roulette_wheel_selection(self, attr):
-        """A simple implementation of fitness proportional selection.
+        """Select individual based on fitness (fitness-proportional).
 
         Returns:
             Individual: an individual selected from the population.
@@ -400,27 +404,34 @@ class MoranProcess:
             pd.DataFrame: table with simulation logs.
 
         """
-
         # prepare a dataframe to store the logs
         colnames = (
-            [l + "__size" for l in self.init_label_list]
-            + [l + "__AvgBirthPayoff" for l in self.init_label_list]
-            + [l + "__AvgDeathPayoff" for l in self.init_label_list]
-            + [l + "__BirthFitness" for l in self.init_label_list]
-            + [l + "__DeathFitness" for l in self.init_label_list]
+            [label + "__size" for label in self.init_label_list]
+            + [label + "__AvgBirthPayoff" for label in self.init_label_list]
+            + [label + "__AvgDeathPayoff" for label in self.init_label_list]
+            + [label + "__BirthFitness" for label in self.init_label_list]
+            + [label + "__DeathFitness" for label in self.init_label_list]
             + ["Entropy"]
         )
         log_df = pd.DataFrame(index=range(generations + 1), columns=colnames)
         log_df.index.name = "generation"
 
         # update the dataframe with features of the initial population
-        for l in range(len(self.init_label_list)):
-            label = self.init_label_list[l]
-            log_df.at[0, label + "__size"] = self.init_size_list[l]
-            log_df.at[0, label + "__AvgBirthPayoff"] = self.AvgBirthPayoffDict[label]
-            log_df.at[0, label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[label]
-            log_df.at[0, label + "__BirthFitness"] = self.BirthFitnessDict[label]
-            log_df.at[0, label + "__DeathFitness"] = self.DeathFitnessDict[label]
+        for index in range(len(self.init_label_list)):
+            label = self.init_label_list[index]
+            log_df.at[0, label + "__size"] = self.init_size_list[index]
+            log_df.at[0, label + "__AvgBirthPayoff"] = self.AvgBirthPayoffDict[
+                label
+            ]
+            log_df.at[0, label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[
+                label
+            ]
+            log_df.at[0, label + "__BirthFitness"] = self.BirthFitnessDict[
+                label
+            ]
+            log_df.at[0, label + "__DeathFitness"] = self.DeathFitnessDict[
+                label
+            ]
             log_df.at[0, "Entropy"] = self.Entropy
 
         for g in range(generations):
@@ -435,8 +446,12 @@ class MoranProcess:
             # remove the selected individual from the population
             self.population.remove(selectedDeath)
             # update the list with population info
-            self.curr_size_list[self.init_label_list.index(selectedBirth.label)] += 1
-            self.curr_size_list[self.init_label_list.index(selectedDeath.label)] -= 1
+            self.curr_size_list[
+                self.init_label_list.index(selectedBirth.label)
+            ] += 1
+            self.curr_size_list[
+                self.init_label_list.index(selectedDeath.label)
+            ] -= 1
 
             # perform transitions (if TransitionMatrix was specified)
             if self.TransitionMatrix is not None:
@@ -450,11 +465,15 @@ class MoranProcess:
                     old_label = ind.label
                     ind.label = new_label
                     # update the list with population info
-                    self.curr_size_list[self.init_label_list.index(new_label)] += 1
-                    self.curr_size_list[self.init_label_list.index(old_label)] -= 1
+                    self.curr_size_list[
+                        self.init_label_list.index(new_label)
+                    ] += 1
+                    self.curr_size_list[
+                        self.init_label_list.index(old_label)
+                    ] -= 1
 
             # after each birth-death cycle:
-            # re-evaluate the payoffs and fitnesses of all Individuals in the population
+            # re-evaluate the payoffs and fitnesses of all ind in the pop
             self._UpdateAvgBirthPayoffForAll()
             self._UpdateAvgDeathPayoffForAll()
             self._UpdateBirthFitnessForAll()
@@ -463,21 +482,21 @@ class MoranProcess:
             self._UpdateEntropy()
 
             # update the log dataframe
-            for l in range(len(self.init_label_list)):
-                label = self.init_label_list[l]
-                log_df.at[g + 1, label + "__size"] = self.curr_size_list[l]
-                log_df.at[g + 1, label + "__AvgBirthPayoff"] = self.AvgBirthPayoffDict[
-                    label
-                ]
-                log_df.at[g + 1, label + "__AvgDeathPayoff"] = self.AvgDeathPayoffDict[
-                    label
-                ]
-                log_df.at[g + 1, label + "__BirthFitness"] = self.BirthFitnessDict[
-                    label
-                ]
-                log_df.at[g + 1, label + "__DeathFitness"] = self.DeathFitnessDict[
-                    label
-                ]
+            for index in range(len(self.init_label_list)):
+                label = self.init_label_list[index]
+                log_df.at[g + 1, label + "__size"] = self.curr_size_list[index]
+                log_df.at[
+                    g + 1, label + "__AvgBirthPayoff"
+                ] = self.AvgBirthPayoffDict[label]
+                log_df.at[
+                    g + 1, label + "__AvgDeathPayoff"
+                ] = self.AvgDeathPayoffDict[label]
+                log_df.at[
+                    g + 1, label + "__BirthFitness"
+                ] = self.BirthFitnessDict[label]
+                log_df.at[
+                    g + 1, label + "__DeathFitness"
+                ] = self.DeathFitnessDict[label]
                 log_df.at[g + 1, "Entropy"] = self.Entropy
 
         return log_df
@@ -504,7 +523,7 @@ class MoranProcess:
         for axis in ["top", "bottom", "left", "right"]:
             ax.spines[axis].set_linewidth(1)
         cmap = plt.get_cmap("coolwarm")
-        columns = [l + "__size" for l in self.init_label_list]
+        columns = [label + "__size" for label in self.init_label_list]
         df_copy = df[columns].copy()
         df_copy.columns = self.init_label_list
         df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
@@ -530,7 +549,9 @@ class MoranProcess:
         for axis in ["top", "bottom", "left", "right"]:
             ax.spines[axis].set_linewidth(1)
         cmap = plt.get_cmap("coolwarm")
-        columns = [l + "__AvgBirthPayoff" for l in self.init_label_list]
+        columns = [
+            label + "__AvgBirthPayoff" for label in self.init_label_list
+        ]
         df_copy = df[columns].copy()
         df_copy.columns = self.init_label_list
         df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
@@ -554,7 +575,9 @@ class MoranProcess:
         for axis in ["top", "bottom", "left", "right"]:
             ax.spines[axis].set_linewidth(1)
         cmap = plt.get_cmap("coolwarm")
-        columns = [l + "__AvgDeathPayoff" for l in self.init_label_list]
+        columns = [
+            label + "__AvgDeathPayoff" for label in self.init_label_list
+        ]
         df_copy = df[columns].copy()
         df_copy.columns = self.init_label_list
         df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
@@ -578,7 +601,7 @@ class MoranProcess:
         for axis in ["top", "bottom", "left", "right"]:
             ax.spines[axis].set_linewidth(1)
         cmap = plt.get_cmap("coolwarm")
-        columns = [l + "__BirthFitness" for l in self.init_label_list]
+        columns = [label + "__BirthFitness" for label in self.init_label_list]
         df_copy = df[columns].copy()
         df_copy.columns = self.init_label_list
         df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
@@ -602,7 +625,7 @@ class MoranProcess:
         for axis in ["top", "bottom", "left", "right"]:
             ax.spines[axis].set_linewidth(1)
         cmap = plt.get_cmap("coolwarm")
-        columns = [l + "__DeathFitness" for l in self.init_label_list]
+        columns = [label + "__DeathFitness" for label in self.init_label_list]
         df_copy = df[columns].copy()
         df_copy.columns = self.init_label_list
         df_copy.plot(linewidth=1.5, ax=ax, cmap=cmap)
@@ -625,7 +648,9 @@ class MoranProcess:
         ax.tick_params(width=1)
         for axis in ["top", "bottom", "left", "right"]:
             ax.spines[axis].set_linewidth(1)
-        df["Entropy"].plot(color="black", linewidth=1.5, ax=ax, label="Entropy")
+        df["Entropy"].plot(
+            color="black", linewidth=1.5, ax=ax, label="Entropy"
+        )
         plt.xlabel("Generation", size=14)
         plt.ylabel("", size=14)
         ax.tick_params(axis="both", which="major", labelsize=12)

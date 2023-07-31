@@ -1,0 +1,84 @@
+repos:
+
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+
+    - id: no-commit-to-branch
+      name: "[01/15] Forbid committing to `master` branch"
+      args: [--branch=master]
+      always_run: true
+
+    - id: check-merge-conflict
+      name: "[02/15] Check for merge conflict strings"
+      always_run: true
+
+    - id: check-case-conflict
+      name: "[03/15] Guard against case-insensitive filesystems"
+      always_run: true
+
+    - id: fix-byte-order-marker
+      name: "[04/15] Remove UTF-8 byte order marker (BOM)"
+      always_run: true
+
+    - id: check-added-large-files
+      name: "[05/15] Forbid commiting files bigger than 1MB"
+      args: [— maxkb=1024]
+      always_run: true
+
+    - id: trailing-whitespace
+      name: "[06/15] Check for trailing whitespaces"
+      args: [--markdown-linebreak-ext=md]
+      always_run: true
+
+    - id: end-of-file-fixer
+      name: "[07/15] Ensure 1 newline at the end of each file"
+      always_run: true
+
+    - id: mixed-line-ending
+      name: "[08/15] Correct mixed line endings"
+      always_run: true
+
+    - id: check-yaml
+      name: "[09/15] Check YAML files syntax"
+      files: \.ya?ml$
+      exclude: ^meta.yaml
+      always_run: true
+
+    - id: check-toml
+      name: "[10/15] Check TOML files syntax"
+      files: \.toml$
+      always_run: true
+
+    - id: check-ast
+      name: "[11/15] Check Python files syntax"
+      files: \.py$
+      always_run: true
+
+    - id: check-builtin-literals
+      name: "[12/15] Replace built-in literals with constants or functions"
+      always_run: true
+
+- repo: local
+  hooks:
+
+    - id: flake8
+      name: "[13/15] Run flake8"
+      entry: bash -c 'flake8 moranpycess/ tests/unit/'
+      language: system
+      pass_filenames: false
+      always_run: true
+
+    - id: black
+      name: "[14/15] Run black"
+      entry: bash -c 'black --check moranpycess/ tests/unit/'
+      language: system
+      pass_filenames: false
+      always_run: true
+
+    - id: isort
+      name: "[15/15] Run isort"
+      entry: bash -c 'isort --check moranpycess/ tests/unit/'
+      language: system
+      pass_filenames: false
+      always_run: true
