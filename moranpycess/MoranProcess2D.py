@@ -1,4 +1,5 @@
-"""
+""".
+
 ##############################################################################
 #
 #   Implementation of the 2D population evolution
@@ -71,7 +72,6 @@ class MoranProcess2D:
             IncorrectValueError: on wrong values in the Transition Matrix.
 
         """
-
         # check if the argument lists length match
         try:
             assert len(size_list) == len(label_list)
@@ -296,7 +296,6 @@ class MoranProcess2D:
             y (int): y-coordinate of the Individual.
 
         """
-
         this_label = self.population[x, y].label
         this_label_index = self._init_label_list.index(this_label)
 
@@ -336,7 +335,6 @@ class MoranProcess2D:
             y (int): y-coordinate of the Individual.
 
         """
-
         this_label = self.population[x, y].label
         this_label_index = self._init_label_list.index(this_label)
 

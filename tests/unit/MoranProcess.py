@@ -1,4 +1,5 @@
-"""
+""".
+
 ##############################################################################
 #
 #   Unit tests for the population evolution
@@ -312,7 +313,6 @@ class TestClass:
 
     def test_MoranProcessWithTransitionMatrix(self):
         """Test the simulation with a Transition Matrix."""
-
         # initialize an instance of MoranProcess:
         size_list = [10, 0]
         label_list = ["A", "B"]

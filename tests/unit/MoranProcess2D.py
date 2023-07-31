@@ -1,4 +1,5 @@
-"""
+""".
+
 ##############################################################################
 #
 #   Unit tests for the 2D population evolution
@@ -403,7 +404,6 @@ class TestClass:
 
     def test_MoranProcess2DWithTransitionMatrix(self):
         """Test the 2D simulation with a Transition Matrix."""
-
         # initialize an instance of MoranProcess2D:
         size_list = [4, 0]
         label_list = ["A", "B"]

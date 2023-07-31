@@ -1,4 +1,5 @@
-"""
+""".
+
 ##############################################################################
 #
 #   Implementation of the 3D population evolution
@@ -71,7 +72,6 @@ class MoranProcess3D:
             IncorrectValueError: on wrong values in the Transition Matrix.
 
         """
-
         # check if the argument lists length match
         try:
             assert len(size_list) == len(label_list)
@@ -303,7 +303,6 @@ class MoranProcess3D:
             z (int): z-coordinate of the Individual.
 
         """
-
         this_label = self.population[x, y, z].label
         this_label_index = self._init_label_list.index(this_label)
 
@@ -376,7 +375,6 @@ class MoranProcess3D:
             z (int): z-coordinate of the Individual.
 
         """
-
         this_label = self.population[x, y, z].label
         this_label_index = self._init_label_list.index(this_label)
 

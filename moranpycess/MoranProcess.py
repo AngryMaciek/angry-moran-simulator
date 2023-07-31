@@ -1,4 +1,5 @@
-"""
+""".
+
 ##############################################################################
 #
 #   Implementation of the population evolution
@@ -75,7 +76,6 @@ class MoranProcess:
             IncorrectValueError: on wrong values in the Transition Matrix.
 
         """
-
         # check if the argument lists length match
         try:
             assert len(size_list) == len(label_list)
@@ -371,7 +371,7 @@ class MoranProcess:
         return self.__roulette_wheel_selection(attr="DeathFitness")
 
     def __roulette_wheel_selection(self, attr):
-        """A simple implementation of fitness proportional selection.
+        """Select individual based on fitness (fitness-proportional).
 
         Returns:
             Individual: an individual selected from the population.
@@ -404,7 +404,6 @@ class MoranProcess:
             pd.DataFrame: table with simulation logs.
 
         """
-
         # prepare a dataframe to store the logs
         colnames = (
             [label + "__size" for label in self.init_label_list]
