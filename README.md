@@ -1,12 +1,3 @@
-### ⚠️ NOTICE
-This repository has been archived.  
-There is nothing wrong with it, it just means I will no longer implement new features.  
-I still maintain the software and will fix any bugs (if discovered).  
-Consider it a complete, finished & stable package.  
-_~AngryMaciek_
-
----
-
 [![Contribute with Gitpod](https://img.shields.io/badge/Contribute%20with-Gitpod-908a85?logo=gitpod)](https://gitpod.io/#https://github.com/AngryMaciek/angry-moran-simulator)
 [![pre-commit](https://img.shields.io/badge/pre--commit-+-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
 [![build](https://github.com/AngryMaciek/angry-moran-simulator/workflows/build/badge.svg?branch=master)](https://github.com/AngryMaciek/angry-moran-simulator/actions?query=workflow%3Abuild)
