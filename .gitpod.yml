@@ -40,23 +40,6 @@ ports:
     visibility: private
     onOpen: ignore
 
-github:
-  prebuilds:
-    # enable for the default branch
-    master: true
-    # enable for all branches in this repo
-    branches: false
-    # enable for pull requests coming from this repo
-    pullRequests: true
-    # enable for pull requests coming from forks
-    pullRequestsFromForks: false
-    # add a check to pull requests
-    addCheck: prevent-merge-on-error
-    # add a "Review in Gitpod" button as a comment to pull requests
-    addComment: false
-    # add a "Review in Gitpod" button to the pull request's description
-    addBadge: true
-
 vscode:
   extensions:
     - njpwerner.autodocstring # docstrings for Python
