@@ -1,21 +1,23 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Example Results &mdash; Moran [Py]cess 1.1.0 documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
   <!--[if lt IE 9]>
     <script src="../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=fc837d61"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -86,19 +88,19 @@
            <div itemprop="articleBody">
              
   <section id="example-results">
-<h1>Example Results<a class="headerlink" href="#example-results" title="Permalink to this heading"></a></h1>
+<h1>Example Results<a class="headerlink" href="#example-results" title="Link to this heading"></a></h1>
 <p>Results below might be reproduced from the
 <a class="reference external" href="https://github.com/AngryMaciek/angry-moran-simulator/blob/master/tests/usecase.ipynb">following notebook</a>.
 If you like you can try it yourself via the
 <a class="reference external" href="https://mybinder.org/v2/gh/AngryMaciek/angry-moran-simulator/master?filepath=tests%2Fusecase.ipynb">interactive version</a>.</p>
 <section id="general-moran-model">
-<h2>General Moran Model<a class="headerlink" href="#general-moran-model" title="Permalink to this heading"></a></h2>
+<h2>General Moran Model<a class="headerlink" href="#general-moran-model" title="Link to this heading"></a></h2>
 <p>We have designed four distinct systems based on well-known interaction
 examples which have been well-described in the literature <a class="reference internal" href="#tadelis-2012" id="id1"><span>[Tadelis-2012]</span></a>:</p>
 <figure class="align-center" id="id6">
 <img alt="example results 1D" src="../_images/figure.png" />
 <figcaption>
-<p><span class="caption-text">Simulations of population evolution based on: (A) Stag Hunt (B) Chicken game, (C) Prisoners’ Dilemma, (D) Rock Paper Scissors.</span><a class="headerlink" href="#id6" title="Permalink to this image"></a></p>
+<p><span class="caption-text">Simulations of population evolution based on: (A) Stag Hunt (B) Chicken game, (C) Prisoners’ Dilemma, (D) Rock Paper Scissors.</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <p><em>(A) The Stag Hunt game model describes a conflict between safety and social cooperation:
@@ -171,32 +173,32 @@ yellow beats orange, which bests blue which beats yellow.</em></p>
 </div>
 </section>
 <section id="moran-model-based-on-2d-neighbourhood">
-<h2>Moran Model based on 2D neighbourhood<a class="headerlink" href="#moran-model-based-on-2d-neighbourhood" title="Permalink to this heading"></a></h2>
+<h2>Moran Model based on 2D neighbourhood<a class="headerlink" href="#moran-model-based-on-2d-neighbourhood" title="Link to this heading"></a></h2>
 <p>Average payoff for an individual is calcualted based on interactions with
 8 direct neighbours of a given individual (2D grid).
 Periodic boundary conditions are applied.</p>
 <figure class="align-center" id="id7">
 <img alt="example results 2DA" src="../_images/supplementary_figure1a.png" />
 <figcaption>
-<p><span class="caption-text">Population snapshots during an evolution according to a Prisoners Dilemma model. Starting from a small subpopulation of Defectors (A, t=0) we observe gradual growth (B, t=50000), (C, t=200000) until the whole population is almost completely overtaken (D, t=500000).</span><a class="headerlink" href="#id7" title="Permalink to this image"></a></p>
+<p><span class="caption-text">Population snapshots during an evolution according to a Prisoners Dilemma model. Starting from a small subpopulation of Defectors (A, t=0) we observe gradual growth (B, t=50000), (C, t=200000) until the whole population is almost completely overtaken (D, t=500000).</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 <figure class="align-center" id="id8">
 <img alt="example results 2DB" src="../_images/supplementary_figure1b.png" />
 <figcaption>
-<p><span class="caption-text">Growth curve for population evolution according to a Prisoners Dilemma model.</span><a class="headerlink" href="#id8" title="Permalink to this image"></a></p>
+<p><span class="caption-text">Growth curve for population evolution according to a Prisoners Dilemma model.</span><a class="headerlink" href="#id8" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
 <section id="moran-model-based-on-3d-neighbourhood">
-<h2>Moran Model based on 3D neighbourhood<a class="headerlink" href="#moran-model-based-on-3d-neighbourhood" title="Permalink to this heading"></a></h2>
+<h2>Moran Model based on 3D neighbourhood<a class="headerlink" href="#moran-model-based-on-3d-neighbourhood" title="Link to this heading"></a></h2>
 <p>Average payoff for an individual is calcualted based on interactions with
 26 direct neighbours of a given individual (3D grid).
 Periodic boundary conditions are applied.</p>
 <figure class="align-center" id="id9">
 <img alt="example results 3D" src="../_images/supplementary_figure2.png" />
 <figcaption>
-<p><span class="caption-text">Growth curve for population evolution according to a Prisoners Dilemma model.</span><a class="headerlink" href="#id9" title="Permalink to this image"></a></p>
+<p><span class="caption-text">Growth curve for population evolution according to a Prisoners Dilemma model.</span><a class="headerlink" href="#id9" title="Link to this image"></a></p>
 </figcaption>
 </figure>
 </section>
